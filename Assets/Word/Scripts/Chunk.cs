@@ -1,3 +1,4 @@
+using System;
 using Soultia.Util;
 using System.Collections;
 using System.Collections.Generic;
@@ -38,6 +39,7 @@ namespace Soultia.Voxel
 
         //当前Chunk是否正在生成中
         private bool isWorking = false;
+        private bool isFinished = false;
 
         void Start()
         {
@@ -51,6 +53,15 @@ namespace Soultia.Voxel
             {
                 Map.instance.chunks.Add(position, this.gameObject);
                 this.name = "(" + position.x + "," + position.y + "," + position.z + ")";
+                //StartFunction();
+            }
+        }
+
+        private void Update()
+        {
+            if (isWorking == false && isFinished == false)
+            {
+                isFinished = true;
                 StartFunction();
             }
         }
@@ -58,6 +69,7 @@ namespace Soultia.Voxel
 
         void StartFunction()
         {
+            isWorking = true;
             mesh = new Mesh();
             mesh.name = "Chunk";
 
@@ -66,11 +78,6 @@ namespace Soultia.Voxel
 
         IEnumerator CreateMap()
         {
-            while (isWorking)
-            {
-                yield return null;
-            }
-            isWorking = true;
             blocks = new byte[width, height, width];
             for (int x = 0; x < Chunk.width; x++)
             {
@@ -78,21 +85,20 @@ namespace Soultia.Voxel
                 {
                     for (int z = 0; z < Chunk.width; z++)
                     {
-                        if (y == Chunk.height - 1)
+                        byte blockid = Terrain.GetTerrainBlock(new Vector3i(x, y, z) + position);
+                        if (blockid == 1 && Terrain.GetTerrainBlock(new Vector3i(x, y + 1, z) + position) == 0)
                         {
-                            if (Random.Range(1, 5) == 1)
-                            {
-                                blocks[x, y, z] = 2;
-                            }
+                            blocks[x, y, z] = 2;
                         }
                         else
                         {
-                            blocks[x, y, z] = 1;
+                            blocks[x, y, z] = Terrain.GetTerrainBlock(new Vector3i(x, y, z) + position);
                         }
                     }
                 }
             }
 
+            yield return null;
             StartCoroutine(CreateMesh());
         }
 
@@ -149,7 +155,6 @@ namespace Soultia.Voxel
             {
                 mesh.uv = uv.ToArray();
             }
-            Debug.Log(mesh.vertices.Length + " " + uv.Count);
 
             //重新计算顶点和法线
             mesh.RecalculateBounds();
@@ -342,25 +347,78 @@ namespace Soultia.Voxel
         }
 
         // 世界坐标转区块坐标
-        public Vector3i WorldTransferBlock(Vector3 position)
+        public Vector3i WorldTransferChunk(Vector3 position)
         {
-            Vector3i nowPosition = new Vector3i(position) - this.position - new Vector3i(-1, 0, 0);
-            if(nowPosition.x >= Chunk.width || nowPosition.y >= Chunk.height || nowPosition.z >= Chunk.width || nowPosition.x < 0 || nowPosition.y < 0 || nowPosition.z < 0 || blocks[nowPosition.x, nowPosition.y, nowPosition.z] != 0)
-            {
-                return Vector3i.zero;
-            }
-            isWorking = true;
-            mesh = new Mesh();
-            mesh.name = "Chunk";
-            blocks[nowPosition.x, nowPosition.y, nowPosition.z] = 1;
-            StartCoroutine(CreateMesh());
-            return new Vector3i(position) - this.position + new Vector3i(8, 8, 8);
+            return new Vector3i(position) - this.position - new Vector3i(-1, 0, 0);
         }
 
         // 区块坐标转世界坐标
-        public Vector3 BlockTransferWorld(Vector3i position)
+        public Vector3 ChunkTransferWorld(Vector3i position)
         {
-            return position.ToVector3() - new Vector3(8.5f, 8.5f, 8.5f) + this.position;
+            return position.ToVector3() + new Vector3(-0.5f, 0.5f, 0.5f) + this.position;
+        }
+
+        // 生成方块
+        public byte CreateBlock(Vector3 position, Vector3 playPosition)
+        {
+            Vector3i chunkPosition = WorldTransferChunk(position);
+            Vector3 wordPosition = ChunkTransferWorld(chunkPosition);
+
+            // 如果与角色重合，则不生成
+            if(Math.Abs(wordPosition.x - playPosition.x) < 1 && Math.Abs(wordPosition.y - playPosition.y) < 1.5f && Math.Abs(wordPosition.z - playPosition.z) < 1)
+            {
+                Debug.Log("C与角色重合");
+                return 1;
+            }
+
+            // 如果超过区块界限，则不生成
+            if(chunkPosition.x >= Chunk.width || chunkPosition.y >= Chunk.height || chunkPosition.z >= Chunk.width || chunkPosition.x < 0 || chunkPosition.y < 0 || chunkPosition.z < 0)
+            {
+                Debug.Log("C越界");
+                return 2;
+            }
+
+            // 该位置已有方块
+            if (blocks[chunkPosition.x, chunkPosition.y, chunkPosition.z] != 0)
+            {
+                Debug.Log("C该位置已有方块");
+                return 3;
+            }
+            Debug.Log("生成");
+            isWorking = true;
+            mesh = new Mesh();
+            mesh.name = "Chunk";
+            blocks[chunkPosition.x, chunkPosition.y, chunkPosition.z] = 1;
+            StartCoroutine(CreateMesh());
+            return 0;
+        }
+
+        // 销毁方块
+        public byte DestroyBlock(Vector3 position)
+        {
+            Vector3i chunkPosition = WorldTransferChunk(position);
+
+            // 如果超过区块界限
+            if (chunkPosition.x >= Chunk.width || chunkPosition.y >= Chunk.height || chunkPosition.z >= Chunk.width || chunkPosition.x < 0 || chunkPosition.y < 0 || chunkPosition.z < 0)
+            {
+                Debug.Log("D越界");
+                return 1;
+            }
+
+            // 该位置没有方块
+            if (blocks[chunkPosition.x, chunkPosition.y, chunkPosition.z] == 0)
+            {
+                Debug.Log("D该位置没有方块");
+                return 2;
+            }
+            Debug.Log("销毁");
+            isWorking = true;
+            mesh = new Mesh();
+            mesh.name = "Chunk";
+            blocks[chunkPosition.x, chunkPosition.y, chunkPosition.z] = 0;
+            StartCoroutine(CreateMesh());
+            return 0;
+
         }
     }
 }
