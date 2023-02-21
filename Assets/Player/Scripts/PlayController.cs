@@ -21,8 +21,12 @@ public class PlayController : MonoBehaviour
     public float jumpHeight = 1.2f;
     // 旋转的速度。
     public float rotateSpeed = 2;
-    //视线范围
+    // 视线范围
     public int viewRange = 30;
+    // 视角
+    public bool person = true;
+    // 上次选择的方块
+    public Transform LastTrans;
 
     // Start is called before the first frame update
     void Start()
@@ -58,32 +62,51 @@ public class PlayController : MonoBehaviour
             }
         }
 
-        //gameObject.GetComponent<MakeCube>().Click(this.transform.position);
-
-        // 第三人称摄像机移动方式
-        cameraMove.ActiveCameraMove();
-
-        transform.RotateAround(this.transform.position, this.transform.up, rotateSpeed * Input.GetAxis("Mouse X"));
-
+        Person();
         MoveUpdate();
         HeightUpdate();
         characterController.Move(velocity * Time.deltaTime);
 
         if (Input.GetMouseButtonDown(1))
         {
-            // 鼠标左键点击事件
             CreateBlock();
         }
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButton(0))
         {
             DestroyBlock();
         }
+        if (Input.GetMouseButtonUp(0))
+        {
+            // 停止销毁，置空
+            LastTrans = null;
+        }
 
+    }
+
+    // 视角更新
+    public void Person()
+    {
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            person = !person;
+        }
+        if (person)
+        {
+            // 第一人称
+            cameraMove.FirstPerson();
+        }
+        else
+        {
+            // 第三人称
+            cameraMove.ThirdPerson();
+        }
     }
 
     // 移动更新函数
     public void MoveUpdate()
     {
+        // 旋转
+        transform.RotateAround(this.transform.position, this.transform.up, rotateSpeed * Input.GetAxis("Mouse X"));
         // 左右
         float h = Input.GetAxis("Horizontal");
         // 上下
@@ -119,7 +142,7 @@ public class PlayController : MonoBehaviour
     // 射线检测
     public bool RayDetection(out RaycastHit hitInfo)
     {
-        return Physics.Raycast(this.transform.position, this.transform.position - Camera.main.transform.position, out hitInfo, 10, LayerMask.GetMask("Cube"));
+        return Physics.Raycast(this.transform.position, Camera.main.transform.forward, out hitInfo, 10, LayerMask.GetMask("Cube"));
     }
 
     // 生成方块
@@ -179,10 +202,21 @@ public class PlayController : MonoBehaviour
             // 获取碰撞点的法向量
             Vector3 normal = hitInfo.normal;
 
-            // 碰撞点向角色移动一点距离，保证销毁的方块位置准确
+            // 碰撞点向角色远移一点距离，保证销毁的方块位置准确
             point -= normal * 0.01f;
 
-            trans.GetComponent<Chunk>().DestroyBlock(point);
+            // 如果与上次选择的方块不同，则更新
+            if(trans != LastTrans)
+            {
+                LastTrans = trans;
+                trans.GetComponent<Chunk>().setDestroyTime(point);
+            }
+
+            if (trans.GetComponent<Chunk>().DestroyBlock(point) == 0)
+            {
+                // 销毁成功，置空
+                LastTrans = null;
+            }
         }
     }
 }

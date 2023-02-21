@@ -22,6 +22,9 @@ namespace Soultia.Voxel
         // 区块位置
         public Vector3i position;
 
+        // 方块销毁时间
+        private float destroyTime;
+
         private Mesh mesh;
 
         //面需要的点
@@ -65,7 +68,6 @@ namespace Soultia.Voxel
                 StartFunction();
             }
         }
-
 
         void StartFunction()
         {
@@ -181,8 +183,6 @@ namespace Soultia.Voxel
                 return this.blocks[x, y, z] == 0;
             }
         }
-
-
 
         //前面
         void AddFrontFace(int x, int y, int z, Block block)
@@ -411,6 +411,14 @@ namespace Soultia.Voxel
                 Debug.Log("D该位置没有方块");
                 return 2;
             }
+            Debug.Log(destroyTime);
+            // 判断是否销毁够时间
+            if(destroyTime >= 0)
+            {
+                // 不够则更新时间
+                destroyTime -= Time.deltaTime;
+                return 3;
+            }
             Debug.Log("销毁");
             isWorking = true;
             mesh = new Mesh();
@@ -419,6 +427,16 @@ namespace Soultia.Voxel
             StartCoroutine(CreateMesh());
             return 0;
 
+        }
+
+        // 刷新时间
+        public void setDestroyTime(Vector3 position)
+        {
+            Vector3i chunkPosition = WorldTransferChunk(position);
+
+            Block block = BlockList.GetBlock(this.blocks[chunkPosition.x, chunkPosition.y, chunkPosition.z]);
+            if (block == null) return;
+            destroyTime = block.destroyTime;
         }
     }
 }

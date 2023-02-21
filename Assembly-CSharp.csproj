@@ -56,50 +56,51 @@
     <Analyzer Include="C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\Extensions\Microsoft\Visual Studio Tools for Unity\Analyzers\Microsoft.Unity.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\LibNoise.Unity-master\Generator\Spheres.cs" />
+    <Compile Include="Assets\LibNoise.Unity-master\Generator\Cylinders.cs" />
+    <Compile Include="Assets\LibNoise.Unity-master\Operator\Exponent.cs" />
     <Compile Include="Assets\Other\Scripts\Vector3ii.cs" />
+    <Compile Include="Assets\LibNoise.Unity-master\Operator\Scale.cs" />
     <Compile Include="Assets\Word\Scripts\Map.cs" />
+    <Compile Include="Assets\LibNoise.Unity-master\ModuleBase.cs" />
+    <Compile Include="Assets\LibNoise.Unity-master\Operator\Multiply.cs" />
+    <Compile Include="Assets\LibNoise.Unity-master\Generator\Perlin.cs" />
+    <Compile Include="Assets\LibNoise.Unity-master\Operator\Invert.cs" />
+    <Compile Include="Assets\LibNoise.Unity-master\Operator\Displace.cs" />
+    <Compile Include="Assets\LibNoise.Unity-master\Properties\AssemblyInfo.cs" />
+    <Compile Include="Assets\LibNoise.Unity-master\Generator\Billow.cs" />
+    <Compile Include="Assets\LibNoise.Unity-master\GradientPresets.cs" />
     <Compile Include="Assets\Player\Scripts\PlayController.cs" />
     <Compile Include="Assets\Other\Scripts\Vector3i.cs" />
+    <Compile Include="Assets\LibNoise.Unity-master\Utils.cs" />
+    <Compile Include="Assets\LibNoise.Unity-master\Operator\Terrace.cs" />
     <Compile Include="Assets\Blocks\Scripts\Block.cs" />
+    <Compile Include="Assets\LibNoise.Unity-master\Generator\Checker.cs" />
+    <Compile Include="Assets\Word\Scripts\GameManager.cs" />
     <Compile Include="Assets\Word\Scripts\Chunk.cs" />
     <Compile Include="Assets\Player\Scripts\CameraMove.cs" />
-    <Compile Include="Assets\Blocks\Scripts\BlockList.cs" />
-    <Compile Include="Assets\LibNoise.Unity-master\Operator\Turbulence.cs" />
-    <Compile Include="Assets\LibNoise.Unity-master\ModuleBase.cs" />
-    <Compile Include="Assets\LibNoise.Unity-master\Operator\Subtract.cs" />
-    <Compile Include="Assets\LibNoise.Unity-master\Generator\Billow.cs" />
-    <Compile Include="Assets\LibNoise.Unity-master\Operator\Invert.cs" />
-    <Compile Include="Assets\LibNoise.Unity-master\Operator\Max.cs" />
-    <Compile Include="Assets\LibNoise.Unity-master\Operator\Exponent.cs" />
-    <Compile Include="Assets\LibNoise.Unity-master\Noise2D.cs" />
-    <Compile Include="Assets\LibNoise.Unity-master\Operator\Add.cs" />
-    <Compile Include="Assets\LibNoise.Unity-master\Utils.cs" />
-    <Compile Include="Assets\LibNoise.Unity-master\Generator\Checker.cs" />
-    <Compile Include="Assets\LibNoise.Unity-master\Operator\Clamp.cs" />
-    <Compile Include="Assets\LibNoise.Unity-master\Generator\Cylinders.cs" />
-    <Compile Include="Assets\LibNoise.Unity-master\Operator\Displace.cs" />
-    <Compile Include="Assets\LibNoise.Unity-master\Operator\ScaleBias.cs" />
-    <Compile Include="Assets\LibNoise.Unity-master\Operator\Translate.cs" />
-    <Compile Include="Assets\LibNoise.Unity-master\Operator\Terrace.cs" />
-    <Compile Include="Assets\LibNoise.Unity-master\Operator\Multiply.cs" />
-    <Compile Include="Assets\LibNoise.Unity-master\Operator\Curve.cs" />
-    <Compile Include="Assets\LibNoise.Unity-master\GradientPresets.cs" />
     <Compile Include="Assets\LibNoise.Unity-master\Generator\Const.cs" />
-    <Compile Include="Assets\LibNoise.Unity-master\Operator\Scale.cs" />
-    <Compile Include="Assets\LibNoise.Unity-master\Operator\Blend.cs" />
-    <Compile Include="Assets\LibNoise.Unity-master\Generator\Voronoi.cs" />
-    <Compile Include="Assets\LibNoise.Unity-master\Operator\Abs.cs" />
-    <Compile Include="Assets\LibNoise.Unity-master\Operator\Min.cs" />
-    <Compile Include="Assets\LibNoise.Unity-master\Operator\Cache.cs" />
     <Compile Include="Assets\LibNoise.Unity-master\Operator\Power.cs" />
-    <Compile Include="Assets\LibNoise.Unity-master\Operator\Rotate.cs" />
-    <Compile Include="Assets\LibNoise.Unity-master\Generator\Spheres.cs" />
-    <Compile Include="Assets\LibNoise.Unity-master\Generator\Perlin.cs" />
-    <Compile Include="Assets\LibNoise.Unity-master\Operator\Select.cs" />
-    <Compile Include="Assets\LibNoise.Unity-master\Properties\AssemblyInfo.cs" />
-    <Compile Include="Assets\LibNoise.Unity-master\Generator\RidgedMultifractal.cs" />
+    <Compile Include="Assets\LibNoise.Unity-master\Operator\Curve.cs" />
     <Compile Include="Assets\Word\Scripts\Terrain.cs" />
-    <Compile Include="Assets\Word\Scripts\GameManager.cs" />
+    <Compile Include="Assets\LibNoise.Unity-master\Operator\Cache.cs" />
+    <Compile Include="Assets\LibNoise.Unity-master\Operator\Rotate.cs" />
+    <Compile Include="Assets\LibNoise.Unity-master\Operator\Subtract.cs" />
+    <Compile Include="Assets\LibNoise.Unity-master\Operator\Translate.cs" />
+    <Compile Include="Assets\LibNoise.Unity-master\Operator\Turbulence.cs" />
+    <Compile Include="Assets\LibNoise.Unity-master\Noise2D.cs" />
+    <Compile Include="Assets\LibNoise.Unity-master\Operator\Min.cs" />
+    <Compile Include="Assets\LibNoise.Unity-master\Operator\Select.cs" />
+    <Compile Include="Assets\LibNoise.Unity-master\Operator\Max.cs" />
+    <Compile Include="Assets\LibNoise.Unity-master\Generator\RidgedMultifractal.cs" />
+    <Compile Include="Assets\LibNoise.Unity-master\Operator\ScaleBias.cs" />
+    <Compile Include="Assets\LibNoise.Unity-master\Operator\Abs.cs" />
+    <Compile Include="Assets\Blocks\Scripts\BlockList.cs" />
+    <Compile Include="Assets\LibNoise.Unity-master\Operator\Clamp.cs" />
+    <Compile Include="Assets\LibNoise.Unity-master\Generator\Voronoi.cs" />
+    <Compile Include="Assets\LibNoise.Unity-master\Operator\Add.cs" />
+    <Compile Include="Assets\LibNoise.Unity-master\Operator\Blend.cs" />
+    <Compile Include="Assets\FrameAnimation.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\LibNoise.Unity-master\COPYING.txt" />
@@ -801,6 +802,9 @@
     </Reference>
     <Reference Include="Unity.VisualScripting.State">
       <HintPath>Library\ScriptAssemblies\Unity.VisualScripting.State.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.2D.Sprite.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.2D.Sprite.Editor.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
