@@ -27,6 +27,8 @@ public class PlayController : MonoBehaviour
     public bool person = true;
     // 上次选择的方块
     public Transform LastTrans;
+    // 射线
+    Ray ray;
 
     // Start is called before the first frame update
     void Start()
@@ -40,32 +42,16 @@ public class PlayController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-        for (float x = transform.position.x - Chunk.width * 3; x < transform.position.x + Chunk.width * 3; x += Chunk.width)
-        {
-            for (float y = transform.position.y - Chunk.height * 3; y < transform.position.y + Chunk.height * 3; y += Chunk.height)
-            {
-                //Y轴上是允许最大16个Chunk，方块高度最大是256
-                if (y <= Chunk.height * 16 && y > 0)
-                {
-                    for (float z = transform.position.z - Chunk.width * 3; z < transform.position.z + Chunk.width * 3; z += Chunk.width)
-                    {
-                        int xx = Chunk.width * Mathf.FloorToInt(x / Chunk.width);
-                        int yy = Chunk.height * Mathf.FloorToInt(y / Chunk.height);
-                        int zz = Chunk.width * Mathf.FloorToInt(z / Chunk.width);
-                        if (!Map.instance.ChunkExists(xx, yy, zz))
-                        {
-                            Map.instance.CreateChunk(new Vector3i(xx, yy, zz));
-                        }
-                    }
-                }
-            }
-        }
-
+        // 地图跟随玩家生成
+        Map.instance.CreateMap(this.transform.position);
+        
         Person();
         MoveUpdate();
         HeightUpdate();
         characterController.Move(velocity * Time.deltaTime);
+        // 从摄像机中心发射一条射线
+        ray = cameraMove.camera.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
+        Debug.DrawRay(ray.origin, ray.direction * 10, Color.red);
 
         if (Input.GetMouseButtonDown(1))
         {
@@ -142,7 +128,7 @@ public class PlayController : MonoBehaviour
     // 射线检测
     public bool RayDetection(out RaycastHit hitInfo)
     {
-        return Physics.Raycast(this.transform.position, Camera.main.transform.forward, out hitInfo, 10, LayerMask.GetMask("Cube"));
+        return Physics.Raycast(ray.origin, ray.direction * 10, out hitInfo, 10, LayerMask.GetMask("Cube"));
     }
 
     // 生成方块
@@ -205,11 +191,11 @@ public class PlayController : MonoBehaviour
             // 碰撞点向角色远移一点距离，保证销毁的方块位置准确
             point -= normal * 0.01f;
 
-            // 如果与上次选择的方块不同，则更新
+            // 如果与上次选择的区块不同，则更新
             if(trans != LastTrans)
             {
                 LastTrans = trans;
-                trans.GetComponent<Chunk>().setDestroyTime(point);
+                trans.GetComponent<Chunk>().SetDestroyTime(point);
             }
 
             if (trans.GetComponent<Chunk>().DestroyBlock(point) == 0)

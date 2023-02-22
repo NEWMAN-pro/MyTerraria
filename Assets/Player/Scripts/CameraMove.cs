@@ -6,7 +6,7 @@ public class CameraMove : MonoBehaviour
 {
 
     // 相机
-    public new GameObject camera;
+    public new Camera camera;
     // 摄像头与角色的距离
     public float distance = 10;
     public float scrollspeed = 1;//拉近视野速度
@@ -21,7 +21,7 @@ public class CameraMove : MonoBehaviour
 
     private void Start()
     {
-        camera = GameObject.Find("Main Camera");
+        //camera = GameObject.Find("Play Camera");
         rotateSpeed = player.GetComponent<PlayController>().rotateSpeed;
         camera.transform.forward = player.transform.forward;
         //ThirdPerson();

@@ -22,8 +22,14 @@ namespace Soultia.Voxel
         // 区块位置
         public Vector3i position;
 
+        // 上次选择销毁的方块
+        private Vector3i lastBlock = Vector3i.back;
         // 方块销毁时间
         private float destroyTime;
+        // 方块血量
+        private float blockHP;
+        // 是否销毁
+        public bool destroy = false;
 
         private Mesh mesh;
 
@@ -78,6 +84,7 @@ namespace Soultia.Voxel
             StartCoroutine(CreateMap());
         }
 
+        // 构造
         IEnumerator CreateMap()
         {
             blocks = new byte[width, height, width];
@@ -104,6 +111,7 @@ namespace Soultia.Voxel
             StartCoroutine(CreateMesh());
         }
 
+        // 绘制
         IEnumerator CreateMesh()
         {
             vertices.Clear();
@@ -317,6 +325,16 @@ namespace Soultia.Voxel
             uv.Add(new Vector2(block.textureTopX * textureOffset + textureOffset, block.textureTopY * textureOffset) + new Vector2(-shrinkSize, shrinkSize));
             uv.Add(new Vector2(block.textureTopX * textureOffset + textureOffset, block.textureTopY * textureOffset + textureOffset) + new Vector2(-shrinkSize, -shrinkSize));
             uv.Add(new Vector2(block.textureTopX * textureOffset, block.textureTopY * textureOffset + textureOffset) + new Vector2(shrinkSize, -shrinkSize));
+
+            //if (destroy)
+            //{
+            //    AddDestroyFace(x, y, z);
+            //    //添加4个点
+            //    vertices.Add(new Vector3(0 + x, 1 + y, 0 + z));
+            //    vertices.Add(new Vector3(0 + x, 1 + y, 1 + z));
+            //    vertices.Add(new Vector3(-1 + x, 1 + y, 1 + z));
+            //    vertices.Add(new Vector3(-1 + x, 1 + y, 0 + z));
+            //}
         }
 
         //下面
@@ -346,6 +364,27 @@ namespace Soultia.Voxel
             uv.Add(new Vector2(block.textureBottomX * textureOffset, block.textureBottomY * textureOffset + textureOffset) + new Vector2(shrinkSize, -shrinkSize));
         }
 
+        // 销毁
+        void AddDestroyFace(int x, int y, int z)
+        {
+            //第一个三角面
+            triangles.Add(1 + vertices.Count);
+            triangles.Add(0 + vertices.Count);
+            triangles.Add(3 + vertices.Count);
+
+            //第二个三角面
+            triangles.Add(3 + vertices.Count);
+            triangles.Add(2 + vertices.Count);
+            triangles.Add(1 + vertices.Count);
+
+            //添加UV坐标点，跟上面4个点循环的顺序一致
+            float flag = (float)Math.Floor(blockHP / 10);
+            uv.Add(new Vector2(flag * textureOffset, 16 * textureOffset) + new Vector2(shrinkSize, shrinkSize));
+            uv.Add(new Vector2(flag * textureOffset + textureOffset, 16 * textureOffset) + new Vector2(-shrinkSize, shrinkSize));
+            uv.Add(new Vector2(flag * textureOffset + textureOffset, 16 * textureOffset + textureOffset) + new Vector2(-shrinkSize, -shrinkSize));
+            uv.Add(new Vector2(flag * textureOffset, 16 * textureOffset + textureOffset) + new Vector2(shrinkSize, -shrinkSize));
+        }
+
         // 世界坐标转区块坐标
         public Vector3i WorldTransferChunk(Vector3 position)
         {
@@ -365,7 +404,7 @@ namespace Soultia.Voxel
             Vector3 wordPosition = ChunkTransferWorld(chunkPosition);
 
             // 如果与角色重合，则不生成
-            if(Math.Abs(wordPosition.x - playPosition.x) < 1 && Math.Abs(wordPosition.y - playPosition.y) < 1.5f && Math.Abs(wordPosition.z - playPosition.z) < 1)
+            if(Math.Abs(wordPosition.x - playPosition.x) < 0.5f && Math.Abs(wordPosition.y - playPosition.y) < 1f && Math.Abs(wordPosition.z - playPosition.z) < 0.5f)
             {
                 Debug.Log("C与角色重合");
                 return 1;
@@ -411,18 +450,28 @@ namespace Soultia.Voxel
                 Debug.Log("D该位置没有方块");
                 return 2;
             }
-            Debug.Log(destroyTime);
-            // 判断是否销毁够时间
-            if(destroyTime >= 0)
+
+            // 如果方块改变，则更新信息
+            if(chunkPosition != lastBlock)
             {
-                // 不够则更新时间
-                destroyTime -= Time.deltaTime;
-                return 3;
+                lastBlock = chunkPosition;
+                SetDestroyTime(position);
             }
-            Debug.Log("销毁");
+            //Debug.Log(blockHP);
             isWorking = true;
             mesh = new Mesh();
             mesh.name = "Chunk";
+            // 判断是否销毁够时间
+            if(blockHP <= 100)
+            {
+                destroy = true;
+                // 不够则更新时间
+                blockHP += Time.deltaTime * destroyTime;
+                //StartCoroutine(CreateMesh());
+                destroy = false;
+                return 3;
+            }
+            Debug.Log("销毁");
             blocks[chunkPosition.x, chunkPosition.y, chunkPosition.z] = 0;
             StartCoroutine(CreateMesh());
             return 0;
@@ -430,13 +479,14 @@ namespace Soultia.Voxel
         }
 
         // 刷新时间
-        public void setDestroyTime(Vector3 position)
+        public void SetDestroyTime(Vector3 position)
         {
             Vector3i chunkPosition = WorldTransferChunk(position);
 
             Block block = BlockList.GetBlock(this.blocks[chunkPosition.x, chunkPosition.y, chunkPosition.z]);
             if (block == null) return;
-            destroyTime = block.destroyTime;
+            destroyTime = 100 / block.destroyTime;
+            blockHP = 0;
         }
     }
 }

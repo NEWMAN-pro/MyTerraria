@@ -59,7 +59,7 @@ public class Block
 
     // 都是A面的方块
     public Block(byte id, string name, float destroyTime, byte textureX, byte textureY)
-        : this(id, name, destroyTime, textureX, textureY, textureX, textureY, textureX, textureY, textureX, textureY)
+        : this(id, name, destroyTime, textureX, textureY, textureX, textureY, textureX, textureY, textureX, textureY, textureX, textureY, textureX, textureY)
     {
     }
 

@@ -72,6 +72,7 @@
     <Compile Include="Assets\LibNoise.Unity-master\GradientPresets.cs" />
     <Compile Include="Assets\Player\Scripts\PlayController.cs" />
     <Compile Include="Assets\Other\Scripts\Vector3i.cs" />
+    <Compile Include="Assets\FrameAnimation.cs" />
     <Compile Include="Assets\LibNoise.Unity-master\Utils.cs" />
     <Compile Include="Assets\LibNoise.Unity-master\Operator\Terrace.cs" />
     <Compile Include="Assets\Blocks\Scripts\Block.cs" />
@@ -100,7 +101,6 @@
     <Compile Include="Assets\LibNoise.Unity-master\Generator\Voronoi.cs" />
     <Compile Include="Assets\LibNoise.Unity-master\Operator\Add.cs" />
     <Compile Include="Assets\LibNoise.Unity-master\Operator\Blend.cs" />
-    <Compile Include="Assets\FrameAnimation.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\LibNoise.Unity-master\COPYING.txt" />
@@ -758,6 +758,9 @@
     <Reference Include="Unity.VisualScripting.SettingsProvider.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.VisualScripting.SettingsProvider.Editor.dll</HintPath>
     </Reference>
+    <Reference Include="Unity.2D.Sprite.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.2D.Sprite.Editor.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.TestTools.CodeCoverage.Editor.OpenCover.Mono.Reflection">
       <HintPath>Library\ScriptAssemblies\Unity.TestTools.CodeCoverage.Editor.OpenCover.Mono.Reflection.dll</HintPath>
     </Reference>
@@ -802,9 +805,6 @@
     </Reference>
     <Reference Include="Unity.VisualScripting.State">
       <HintPath>Library\ScriptAssemblies\Unity.VisualScripting.State.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.2D.Sprite.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.2D.Sprite.Editor.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

@@ -9,7 +9,7 @@ public class Terrain : MonoBehaviour
     public static byte GetTerrainBlock(Vector3i worldPosition)
     {
         //LibNoise噪音对象
-        Perlin noise = new LibNoise.Generator.Perlin(1f, 1f, 1f, 8, GameManager.randomSeed, QualityMode.High);
+        Perlin noise = new Perlin(1f, 1f, 1f, 8, GameManager.randomSeed, QualityMode.High);
         //为随机数指定种子，这样每次随机的都是同样的值
         Random.InitState(GameManager.randomSeed);
         //因为柏林噪音在(0,0)点是上下左右对称的，所以我们设置一个很远很远的地方作为新的(0,0)点
