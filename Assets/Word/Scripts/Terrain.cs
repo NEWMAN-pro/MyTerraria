@@ -23,7 +23,11 @@ public class Terrain : MonoBehaviour
         noiseValue += (20 - worldPosition.y) / 15f;
         noiseValue /= worldPosition.y / 5f;
 
-        if (noiseValue > 0.5f)
+        if(noiseValue > 1.0f)
+        {
+            return 2;
+        }
+        else if (noiseValue > 0.5f)
         {
             return 1;
         }

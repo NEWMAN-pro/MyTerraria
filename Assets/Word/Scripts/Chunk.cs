@@ -95,13 +95,25 @@ namespace Soultia.Voxel
                     for (int z = 0; z < Chunk.width; z++)
                     {
                         byte blockid = Terrain.GetTerrainBlock(new Vector3i(x, y, z) + position);
-                        if (blockid == 1 && Terrain.GetTerrainBlock(new Vector3i(x, y + 1, z) + position) == 0)
+                        byte upBlockid = Terrain.GetTerrainBlock(new Vector3i(x, y + 1, z) + position);
+                        if (blockid == 2)
+                        {
+                            if(upBlockid == 0)
+                            {
+                                blocks[x, y, z] = 2;
+                            }
+                            else
+                            {
+                                blocks[x, y, z] = 3;
+                            }
+                        }
+                        else if (blockid == 1 && upBlockid == 0)
                         {
                             blocks[x, y, z] = 2;
                         }
                         else
                         {
-                            blocks[x, y, z] = Terrain.GetTerrainBlock(new Vector3i(x, y, z) + position);
+                            blocks[x, y, z] = blockid;
                         }
                     }
                 }
