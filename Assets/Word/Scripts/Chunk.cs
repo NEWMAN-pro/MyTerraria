@@ -21,6 +21,8 @@ namespace Soultia.Voxel
         public byte[,,] blocks;
         // 区块位置
         public Vector3i position;
+        // 地形起伏度
+        public float fluctuation = 4f;
 
         // 上次选择销毁的方块
         private Vector3i lastBlock = Vector3i.back;
@@ -94,26 +96,54 @@ namespace Soultia.Voxel
                 {
                     for (int z = 0; z < Chunk.width; z++)
                     {
-                        byte blockid = Terrain.GetTerrainBlock(new Vector3i(x, y, z) + position);
-                        byte upBlockid = Terrain.GetTerrainBlock(new Vector3i(x, y + 1, z) + position);
-                        if (blockid == 2)
+                        if(position.y >= 0)
                         {
-                            if(upBlockid == 0)
+                            if(position.x <= 48 && position.x >= -48 && position.z <= 48 && position.z >= -48)
+                            {
+                                fluctuation = 4f;
+                            }
+                            else
+                            {
+                                fluctuation = Math.Max(0.5f, 4f - (Math.Abs(Math.Max(position.x, position.z)) - 48) / 64);
+                            }
+                            byte blockid = Terrain.GetTerrainBlock(new Vector3i(x, y, z) + position, fluctuation);
+                            byte upBlockid = Terrain.GetTerrainBlock(new Vector3i(x, y + 1, z) + position, fluctuation);
+                            if (position.y == 0 && y == 0 && upBlockid == 0)
+                            {
+                                blocks[x, y, z] = 2;
+                            }
+                            else if (blockid == 2)
+                            {
+                                if (upBlockid == 0)
+                                {
+                                    blocks[x, y, z] = 2;
+                                }
+                                else
+                                {
+                                    blocks[x, y, z] = 3;
+                                }
+                            }
+                            else if (blockid == 1 && upBlockid == 0)
                             {
                                 blocks[x, y, z] = 2;
                             }
                             else
                             {
-                                blocks[x, y, z] = 3;
+                                blocks[x, y, z] = blockid;
                             }
-                        }
-                        else if (blockid == 1 && upBlockid == 0)
-                        {
-                            blocks[x, y, z] = 2;
                         }
                         else
                         {
-                            blocks[x, y, z] = blockid;
+                            if(position.y <= -128 && y <= 8)
+                            {
+                                // 最底层生成基岩
+                                blocks[x, y, z] = 5;
+                            }
+                            else
+                            {
+                                // 底层全生成石头
+                                blocks[x, y, z] = 3;
+                            }
                         }
                     }
                 }

@@ -25,6 +25,10 @@ public class BlockList : MonoBehaviour
         // 沙子
         Block sand = new Block(4, "Sand", 2, 2, 30);
         blocks.Add(sand.id, sand);
+
+        // 基岩
+        Block bedrock = new Block(5, "Bedrock", -1, 3, 18);
+        blocks.Add(bedrock.id, bedrock);
     }
 
     // 判断是否存在该方块

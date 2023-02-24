@@ -6,7 +6,7 @@ using UnityEngine;
 public class Terrain : MonoBehaviour
 {
     //通过方块的世界坐标获取它的方块类型
-    public static byte GetTerrainBlock(Vector3i worldPosition)
+    public static byte GetTerrainBlock(Vector3i worldPosition, float fluctuation)
     {
         //LibNoise噪音对象
         Perlin noise = new Perlin(1f, 1f, 1f, 8, GameManager.randomSeed, QualityMode.High);
@@ -23,11 +23,11 @@ public class Terrain : MonoBehaviour
         noiseValue += (20 - worldPosition.y) / 15f;
         noiseValue /= worldPosition.y / 5f;
 
-        if(noiseValue > 1.0f)
+        if(noiseValue > 2 * fluctuation)
         {
             return 2;
         }
-        else if (noiseValue > 0.5f)
+        else if (noiseValue > fluctuation)
         {
             return 1;
         }

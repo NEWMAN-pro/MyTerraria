@@ -80,6 +80,7 @@
     <Compile Include="Assets\Word\Scripts\GameManager.cs" />
     <Compile Include="Assets\Word\Scripts\Chunk.cs" />
     <Compile Include="Assets\Player\Scripts\CameraMove.cs" />
+    <Compile Include="Assets\Other\Scripts\Voronoi.cs" />
     <Compile Include="Assets\LibNoise.Unity-master\Generator\Const.cs" />
     <Compile Include="Assets\LibNoise.Unity-master\Operator\Power.cs" />
     <Compile Include="Assets\LibNoise.Unity-master\Operator\Curve.cs" />
@@ -101,7 +102,6 @@
     <Compile Include="Assets\LibNoise.Unity-master\Generator\Voronoi.cs" />
     <Compile Include="Assets\LibNoise.Unity-master\Operator\Add.cs" />
     <Compile Include="Assets\LibNoise.Unity-master\Operator\Blend.cs" />
-    <Compile Include="Assets\Other\Scripts\Voronoi.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\LibNoise.Unity-master\COPYING.txt" />

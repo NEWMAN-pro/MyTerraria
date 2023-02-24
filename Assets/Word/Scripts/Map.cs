@@ -54,7 +54,7 @@ namespace Soultia.Voxel
                 for (float y = position.y - Chunk.height * 3; y < position.y + Chunk.height * 3; y += Chunk.height)
                 {
                     //Y轴上是允许最大16个Chunk，方块高度最大是256
-                    if (y <= Chunk.height * 16 && y > 0)
+                    if (y <= Chunk.height * 16 && y >= -Chunk.height * 8)
                     {
                         for (float z = position.z - Chunk.width * 3; z < position.z + Chunk.width * 3; z += Chunk.width)
                         {
