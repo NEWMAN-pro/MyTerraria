@@ -33,6 +33,11 @@ namespace Soultia.Voxel
         // 是否销毁
         public bool destroy = false;
 
+        // 随机数种子
+        public int seed = 1234;
+        // 树木疏密度
+        public int treeDensity = 10;
+
         private Mesh mesh;
 
         //面需要的点
@@ -100,36 +105,43 @@ namespace Soultia.Voxel
                         {
                             if(position.x <= 48 && position.x >= -48 && position.z <= 48 && position.z >= -48)
                             {
+                                // 初始为平原
                                 fluctuation = 4f;
                             }
                             else
                             {
-                                fluctuation = Math.Max(0.5f, 4f - (Math.Abs(Math.Max(position.x, position.z)) - 48) / 64);
+                                // 离中心点越远的区域，地形起伏越大
+                                fluctuation = Math.Max(0.5f, 4f - (Math.Abs(Vector2.Distance(new Vector2(position.x, position.z), Vector2.zero)) - 48) / 128);
                             }
                             byte blockid = Terrain.GetTerrainBlock(new Vector3i(x, y, z) + position, fluctuation);
                             byte upBlockid = Terrain.GetTerrainBlock(new Vector3i(x, y + 1, z) + position, fluctuation);
                             if (position.y == 0 && y == 0 && upBlockid == 0)
                             {
+                                // 低洼空洞用草方块填补
                                 blocks[x, y, z] = 2;
                             }
                             else if (blockid == 2)
                             {
                                 if (upBlockid == 0)
                                 {
+                                    // 如果方块上层没有方块，则用草方块
                                     blocks[x, y, z] = 2;
                                 }
                                 else
                                 {
+                                    // 否则用石块
                                     blocks[x, y, z] = 3;
                                 }
                             }
                             else if (blockid == 1 && upBlockid == 0)
                             {
+                                // 表层草方块
                                 blocks[x, y, z] = 2;
+                                CreateTree(x, y, z);
                             }
                             else
                             {
-                                blocks[x, y, z] = blockid;
+                                if(blocks[x, y, z] == 0) blocks[x, y, z] = blockid;
                             }
                         }
                         else
@@ -231,6 +243,47 @@ namespace Soultia.Voxel
             {
                 //如果当前方块的id是0，那的确是透明的
                 return this.blocks[x, y, z] == 0;
+            }
+        }
+
+        public void CreateTree(int x, int y, int z)
+        {
+            
+            System.Random rand = new System.Random(seed);
+            int treeFlag = rand.Next(0, treeDensity);
+            seed = seed + treeFlag + 1;
+            if (treeFlag == 0 && y < 10 && x > 0 && x < 15 && z > 0 && z < 15)
+            {
+                for(int i = 0; i < 3; i++)
+                {
+                    for(int j = 0; j < 3; j++)
+                    {
+                        if(blocks[x - 1 + i, y, z - 1 + j] == 6)
+                        {
+                            // 如果九宫格类有一颗树则不生成
+                            return;
+                        }
+                    }
+                }
+                // 生成树干
+                for (int i = 1; i <= 5; i++)
+                {
+                    blocks[x, y + i, z] = 6;
+                }
+                // 生成树叶
+                blocks[x, y + 6, z] = 7;
+                for (int i = 0; i < 3; i++)
+                {
+                    for (int j = 0; j < 3; j++)
+                    {
+                        if (!(i == j && i == 1))
+                        {
+                            if (blocks[x - 1 + i, y + 6, z - 1 + j] == 0) blocks[x - 1 + i, y + 6, z - 1 + j] = 7;
+                            if (blocks[x - 1 + i, y + 5, z - 1 + j] == 0) blocks[x - 1 + i, y + 5, z - 1 + j] = 7;
+                            if (blocks[x - 1 + i, y + 4, z - 1 + j] == 0) blocks[x - 1 + i, y + 4, z - 1 + j] = 7;
+                        }
+                    }
+                }
             }
         }
 

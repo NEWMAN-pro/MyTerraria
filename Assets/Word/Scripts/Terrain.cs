@@ -25,10 +25,12 @@ public class Terrain : MonoBehaviour
 
         if(noiseValue > 2 * fluctuation)
         {
+            // КЇїй
             return 2;
         }
         else if (noiseValue > fluctuation)
         {
+            // Даїй
             return 1;
         }
 
