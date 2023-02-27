@@ -29,6 +29,8 @@ public class PlayController : MonoBehaviour
     public Transform LastTrans;
     // 射线
     Ray ray;
+    // 射线发射点
+    public Vector3 rayPosi;
 
     // Start is called before the first frame update
     void Start()
@@ -45,13 +47,13 @@ public class PlayController : MonoBehaviour
         // 地图跟随玩家生成
         Map.instance.CreateMap(this.transform.position);
         
+        // 从摄像机中心发射一条射线
+        ray = cameraMove.camera.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
+        Debug.DrawRay(rayPosi, ray.direction * 10, Color.red);
         Person();
         MoveUpdate();
         HeightUpdate();
         characterController.Move(velocity * Time.deltaTime);
-        // 从摄像机中心发射一条射线
-        ray = cameraMove.camera.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
-        Debug.DrawRay(ray.origin, ray.direction * 10, Color.red);
 
         if (Input.GetMouseButtonDown(1))
         {
@@ -75,16 +77,19 @@ public class PlayController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.P))
         {
             person = !person;
+            cameraMove.SetMash();
         }
         if (person)
         {
             // 第一人称
             cameraMove.FirstPerson();
+            rayPosi = ray.origin;
         }
         else
         {
             // 第三人称
             cameraMove.ThirdPerson();
+            rayPosi = transform.position + new Vector3(0, 0.7f, 0);
         }
     }
 
@@ -99,7 +104,7 @@ public class PlayController : MonoBehaviour
         float v = Input.GetAxis("Vertical");
 
         //Vector3 dir = Vector3.right * h + Vector3.forward * v;
-        Vector3 dir = this.transform.right * h + this.transform.forward * v;
+        Vector3 dir = (this.transform.right * h + this.transform.forward * v).normalized;
         velocity.x = dir.x * speed;
         velocity.z = dir.z * speed;
     }
@@ -128,7 +133,7 @@ public class PlayController : MonoBehaviour
     // 射线检测
     public bool RayDetection(out RaycastHit hitInfo)
     {
-        return Physics.Raycast(ray.origin, ray.direction * 10, out hitInfo, 10, LayerMask.GetMask("Cube"));
+        return Physics.Raycast(rayPosi, ray.direction * 10, out hitInfo, 10, LayerMask.GetMask("Cube"));
     }
 
     // 生成方块

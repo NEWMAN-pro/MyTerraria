@@ -155,6 +155,11 @@ namespace Soultia.Voxel
                             {
                                 // 底层全生成石头
                                 blocks[x, y, z] = 3;
+                                //int voidFlag = Random(10);
+                                //if (voidFlag == 0)
+                                //{
+                                //    blocks[x, y, z] = 0;
+                                //}
                             }
                         }
                     }
@@ -246,12 +251,10 @@ namespace Soultia.Voxel
             }
         }
 
+        // 生成一棵树
         public void CreateTree(int x, int y, int z)
         {
-            
-            System.Random rand = new System.Random(seed);
-            int treeFlag = rand.Next(0, treeDensity);
-            seed = seed + treeFlag + 1;
+            int treeFlag = Random(treeDensity);
             if (treeFlag == 0 && y < 10 && x > 0 && x < 15 && z > 0 && z < 15)
             {
                 for(int i = 0; i < 3; i++)
@@ -582,6 +585,15 @@ namespace Soultia.Voxel
             if (block == null) return;
             destroyTime = 100 / block.destroyTime;
             blockHP = 0;
+        }
+
+        // 生成随机数
+        public int Random(int max)
+        {
+            System.Random rand = new System.Random(seed);
+            int flag = rand.Next(0, max);
+            seed = seed + flag + 1;
+            return flag;
         }
     }
 }

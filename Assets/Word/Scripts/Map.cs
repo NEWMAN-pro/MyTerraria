@@ -39,7 +39,7 @@ namespace Soultia.Voxel
                 // 初始地图创建完，创建角色
                 if(player == null)
                 {
-                    player = Resources.Load("Prefabs/Play") as GameObject;
+                    player = Resources.Load("Prefabs/Player") as GameObject;
                     Instantiate(player, new Vector3(0, 25, 0), Quaternion.identity);
                     player.transform.name = "Play";
                 }
@@ -47,7 +47,7 @@ namespace Soultia.Voxel
         }
 
         // 随玩家生成地图
-        public bool CreateMap(Vector3 position)
+        public void CreateMap(Vector3 position)
         {
             for (float x = position.x - Chunk.width * 3; x < position.x + Chunk.width * 3; x += Chunk.width)
             {
@@ -73,7 +73,6 @@ namespace Soultia.Voxel
             {
                 cnt++;
             }
-            return true;
         }
 
         //生成Chunk
