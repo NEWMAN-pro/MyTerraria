@@ -393,6 +393,7 @@
 "Assets/Other/Scripts/Voronoi.cs"
 "Assets/Player/Scripts/CameraMove.cs"
 "Assets/Player/Scripts/PlayController.cs"
+"Assets/Player/Scripts/Wobble.cs"
 "Assets/Scenes/Play.cs"
 "Assets/Word/Scripts/Chunk.cs"
 "Assets/Word/Scripts/GameManager.cs"

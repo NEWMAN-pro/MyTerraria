@@ -16,7 +16,8 @@ public class CameraMove : MonoBehaviour
     // 摄像头与角色的当前角度
     public Vector3 nowAngle = new Vector3(30, 0, 0);
     // 设置遮罩
-    int mask;
+    int maskFirst;
+    int maskThird;
 
     // 角色
     public Transform player;
@@ -24,12 +25,8 @@ public class CameraMove : MonoBehaviour
     private void Start()
     {
         camera.transform.forward = player.transform.forward;
-        mask = 1 << LayerMask.NameToLayer("Body");
-    }
-
-    void Update()
-    {
-
+        maskFirst = 1 << LayerMask.NameToLayer("First");
+        maskThird = 1 << LayerMask.NameToLayer("Third");
     }
 
     // 基础摄像机移动，垂直旋转
@@ -91,6 +88,7 @@ public class CameraMove : MonoBehaviour
     // 更改遮罩
     public void SetMash()
     {
-        camera.cullingMask ^= mask;
+        camera.cullingMask ^= maskFirst;
+        camera.cullingMask ^= maskThird;
     }
 }

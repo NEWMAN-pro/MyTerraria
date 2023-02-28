@@ -31,6 +31,10 @@ public class PlayController : MonoBehaviour
     Ray ray;
     // 射线发射点
     public Vector3 rayPosi;
+    // 是否按住鼠标左键
+    public bool mouse0Flag = false;
+    // 当前选择的方块ID
+    public byte blockID = 1;
 
     // Start is called before the first frame update
     void Start()
@@ -55,20 +59,44 @@ public class PlayController : MonoBehaviour
         HeightUpdate();
         characterController.Move(velocity * Time.deltaTime);
 
+        GetNumber();
+        MouseButton();
+    }
+
+    // 处理鼠标事件
+    public void MouseButton()
+    {
         if (Input.GetMouseButtonDown(1))
         {
-            CreateBlock();
+            if(blockID < 10)
+            {
+                CreateBlock(blockID);
+            }
         }
         if (Input.GetMouseButton(0))
         {
+            Transform trans = this.transform.GetChild(3);
+            if (!mouse0Flag)
+            {
+                // 开始按下时重置手臂位置
+                trans.GetComponent<Wobble>().Recovery(trans, Vector3.zero);
+            }
+            mouse0Flag = true;
+            trans.GetComponent<Wobble>().Move(160, -90, -20, trans, trans.position, trans.right);
+            trans = this.transform.GetChild(6).GetChild(0);
+            trans.GetComponent<Wobble>().Move(160, -20, 40, trans, trans.position, trans.right);
             DestroyBlock();
         }
         if (Input.GetMouseButtonUp(0))
         {
+            Transform trans = this.transform.GetChild(3);
+            trans.GetComponent<Wobble>().Recovery(trans, Vector3.zero);
+            trans = this.transform.GetChild(6).GetChild(0);
+            trans.GetComponent<Wobble>().Recovery(trans, new Vector3(-120, 0, 0));
+            mouse0Flag = false;
             // 停止销毁，置空
             LastTrans = null;
         }
-
     }
 
     // 视角更新
@@ -107,6 +135,40 @@ public class PlayController : MonoBehaviour
         Vector3 dir = (this.transform.right * h + this.transform.forward * v).normalized;
         velocity.x = dir.x * speed;
         velocity.z = dir.z * speed;
+
+        if(velocity.x != 0 || velocity.z != 0)
+        {
+            // 摆动腿部
+            Transform trans = this.transform.GetChild(5);
+            trans.GetComponent<Wobble>().Move(160, -40, 40, trans.transform, trans.position, trans.right);
+            trans = this.transform.GetChild(4);
+            trans.GetComponent<Wobble>().Move(160, -40, 40, trans.transform, trans.position, trans.right);
+            // 摆动手部
+            if (!mouse0Flag)
+            {
+                // 如果鼠标左键按下，则停止行走摆动
+                trans = this.transform.GetChild(3);
+                trans.GetComponent<Wobble>().Move(160, -40, 40, trans.transform, trans.position, trans.right);
+            }
+            trans = this.transform.GetChild(2);
+            trans.GetComponent<Wobble>().Move(160, -40, 40, trans.transform, trans.position, trans.right);
+        }
+        else
+        {
+            // 复位腿部
+            Transform trans = this.transform.GetChild(5);
+            trans.GetComponent<Wobble>().Recovery(trans.transform, Vector3.zero);
+            trans = this.transform.GetChild(4);
+            trans.GetComponent<Wobble>().Recovery(trans.transform, Vector3.zero);
+            // 复位手部
+            if (!mouse0Flag)
+            {
+                trans = this.transform.GetChild(3);
+                trans.GetComponent<Wobble>().Recovery(trans.transform, Vector3.zero);
+            }
+            trans = this.transform.GetChild(2);
+            trans.GetComponent<Wobble>().Recovery(trans.transform, Vector3.zero);
+        }
     }
 
     // 高度更新函数
@@ -137,7 +199,7 @@ public class PlayController : MonoBehaviour
     }
 
     // 生成方块
-    public void CreateBlock()
+    public void CreateBlock(byte blockID)
     {
         RaycastHit hitInfo;
         bool hit = RayDetection(out hitInfo);
@@ -152,7 +214,7 @@ public class PlayController : MonoBehaviour
 
             // 碰撞点向角色移动一点距离，保证方块生成位置准确
             point += normal * 0.01f;
-            if (trans.GetComponent<Chunk>().CreateBlock(point, this.transform.position) == 2)
+            if (trans.GetComponent<Chunk>().CreateBlock(point, this.transform.position, blockID) == 2)
             {
                 // 方块生成位置不在当前区块内，则需改变区块trans
                 Regex regex = new Regex(@"\((-?\d+),(-?\d+),(-?\d+)\)");
@@ -167,7 +229,7 @@ public class PlayController : MonoBehaviour
                     trans = GameObject.Find(newName).transform;
                     Debug.Log(trans.name);
                     // 在新区块生成方块
-                    trans.GetComponent<Chunk>().CreateBlock(point, this.transform.position);
+                    trans.GetComponent<Chunk>().CreateBlock(point, this.transform.position, blockID);
                 }
                 else
                 {
@@ -207,6 +269,19 @@ public class PlayController : MonoBehaviour
             {
                 // 销毁成功，置空
                 LastTrans = null;
+            }
+        }
+    }
+
+    // 获取按下的数字键
+    public void GetNumber()
+    {
+        for(byte i = 0; i <= 9; i++)
+        {
+            if(Input.GetKey(KeyCode.Alpha0 + i))
+            {
+                blockID = i;
+                return;
             }
         }
     }

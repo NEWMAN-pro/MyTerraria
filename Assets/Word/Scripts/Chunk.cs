@@ -69,6 +69,8 @@ namespace Soultia.Voxel
             {
                 Map.instance.chunks.Add(position, this.gameObject);
                 this.name = "(" + position.x + "," + position.y + "," + position.z + ")";
+                // 将区块放置在MAP组件下
+                this.transform.transform.SetParent(Map.instance.transform);
                 //StartFunction();
             }
         }
@@ -496,7 +498,7 @@ namespace Soultia.Voxel
         }
 
         // 生成方块
-        public byte CreateBlock(Vector3 position, Vector3 playPosition)
+        public byte CreateBlock(Vector3 position, Vector3 playPosition, byte blockID)
         {
             Vector3i chunkPosition = WorldTransferChunk(position);
             Vector3 wordPosition = ChunkTransferWorld(chunkPosition);
@@ -525,7 +527,7 @@ namespace Soultia.Voxel
             isWorking = true;
             mesh = new Mesh();
             mesh.name = "Chunk";
-            blocks[chunkPosition.x, chunkPosition.y, chunkPosition.z] = 1;
+            blocks[chunkPosition.x, chunkPosition.y, chunkPosition.z] = blockID;
             StartCoroutine(CreateMesh());
             return 0;
         }
