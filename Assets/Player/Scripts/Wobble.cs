@@ -26,7 +26,6 @@ public class Wobble : MonoBehaviour
         angle += (direction ? 1 : -1) * speed * Time.deltaTime;
 
         // 判断是否超出摆动范围，超出则改变方向
-        //if (Mathf.Abs(angle) > range)
         if(angle < min || angle > max)
         {
             direction = !direction;

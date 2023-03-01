@@ -82,7 +82,7 @@ public class CameraMove : MonoBehaviour
         // 左右旋转
         // 摄像机跟随头部旋转
         camera.transform.rotation = player.rotation;
-        camera.transform.position = player.position;
+        camera.transform.position = player.position + new Vector3(0, -0.1f, 0);
     }
 
     // 更改遮罩

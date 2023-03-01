@@ -280,7 +280,12 @@ public class PlayController : MonoBehaviour
         {
             if(Input.GetKey(KeyCode.Alpha0 + i))
             {
-                blockID = i;
+                if(BlockList.GetBlock(i) != null)
+                {
+                    blockID = i;
+                    this.transform.GetChild(6).GetChild(0).GetChild(1).GetComponent<CreateBlockUI>().CreateUI(BlockList.GetBlock(i), true, 0.1f);
+                    this.transform.GetChild(3).GetChild(1).GetComponent<CreateBlockUI>().CreateUI(BlockList.GetBlock(i), true, 0.1f);
+                }
                 return;
             }
         }

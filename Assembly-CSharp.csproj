@@ -84,6 +84,7 @@
     <Compile Include="Assets\LibNoise.Unity-master\Generator\Const.cs" />
     <Compile Include="Assets\LibNoise.Unity-master\Operator\Power.cs" />
     <Compile Include="Assets\LibNoise.Unity-master\Operator\Curve.cs" />
+    <Compile Include="Assets\Player\Scripts\Wobble.cs" />
     <Compile Include="Assets\Scenes\Play.cs" />
     <Compile Include="Assets\Word\Scripts\Terrain.cs" />
     <Compile Include="Assets\LibNoise.Unity-master\Operator\Cache.cs" />
@@ -103,7 +104,7 @@
     <Compile Include="Assets\LibNoise.Unity-master\Generator\Voronoi.cs" />
     <Compile Include="Assets\LibNoise.Unity-master\Operator\Add.cs" />
     <Compile Include="Assets\LibNoise.Unity-master\Operator\Blend.cs" />
-    <Compile Include="Assets\Player\Scripts\Wobble.cs" />
+    <Compile Include="Assets\Blocks\Scripts\CreateBlockUI.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\LibNoise.Unity-master\COPYING.txt" />
