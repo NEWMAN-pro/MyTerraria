@@ -33,16 +33,18 @@ public class PlayController : MonoBehaviour
     public Vector3 rayPosi;
     // 是否按住鼠标左键
     public bool mouse0Flag = false;
-    // 当前选择的方块ID
-    public byte blockID = 1;
+    // 当前选择的物品ID
+    public byte itemID = 1;
+    // 物品栏
+    public Inventory inventory;
 
     // Start is called before the first frame update
     void Start()
     {
         // 隐藏鼠标
-        //Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
         velocity.y = -1f;
+        inventory = GameObject.Find("Inventory").GetComponent<Inventory>();
     }
 
     // Update is called once per frame
@@ -68,9 +70,9 @@ public class PlayController : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(1))
         {
-            if(blockID < 10)
+            if(itemID < 10)
             {
-                CreateBlock(blockID);
+                CreateBlock(itemID);
             }
         }
         if (Input.GetMouseButton(0))
@@ -276,15 +278,18 @@ public class PlayController : MonoBehaviour
     // 获取按下的数字键
     public void GetNumber()
     {
+        Item item = new Item();
         for(byte i = 0; i <= 9; i++)
         {
             if(Input.GetKey(KeyCode.Alpha0 + i))
             {
-                if(BlockList.GetBlock(i) != null)
+                item = inventory.GetItem(i);
+                if(item != null && BlockList.GetBlock(item.ID) != null)
                 {
-                    blockID = i;
-                    this.transform.GetChild(6).GetChild(0).GetChild(1).GetComponent<CreateBlockUI>().CreateUI(BlockList.GetBlock(i), true, 0.1f);
-                    this.transform.GetChild(3).GetChild(1).GetComponent<CreateBlockUI>().CreateUI(BlockList.GetBlock(i), true, 0.1f);
+                    inventory.SetSelect(i);
+                    itemID = item.ID;
+                    this.transform.GetChild(6).GetChild(0).GetChild(1).GetComponent<CreateBlockUI>().CreateUI(BlockList.GetBlock(itemID), true, 0.1f, Vector3.zero);
+                    this.transform.GetChild(3).GetChild(1).GetComponent<CreateBlockUI>().CreateUI(BlockList.GetBlock(itemID), true, 0.1f, Vector3.zero);
                 }
                 return;
             }

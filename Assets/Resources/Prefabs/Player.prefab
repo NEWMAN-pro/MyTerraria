@@ -112,6 +112,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   size: 0
+  posi: {x: 0, y: 0, z: 0}
 --- !u!1 &404249902947111360
 GameObject:
   m_ObjectHideFlags: 0
@@ -404,7 +405,8 @@ MonoBehaviour:
   LastTrans: {fileID: 0}
   rayPosi: {x: 0, y: 0, z: 0}
   mouse0Flag: 0
-  blockID: 1
+  itemID: 1
+  inventory: {fileID: 0}
 --- !u!114 &295391558186620235
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -930,9 +932,9 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3713520769288229736}
   m_LocalRotation: {x: -0.86602545, y: 0, z: 0, w: 0.49999994}
-  m_LocalPosition: {x: -0.032, y: -0.501, z: 0.016}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalPosition: {x: -0.032, y: -0.413, z: 0.148}
+  m_LocalScale: {x: 0.6, y: 0.6, z: 0.6}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 8322035569554923792}
   - {fileID: 558009915381359629}
@@ -1246,6 +1248,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   size: 0
+  posi: {x: 0, y: 0, z: 0}
 --- !u!1 &8178959493590773572
 GameObject:
   m_ObjectHideFlags: 0

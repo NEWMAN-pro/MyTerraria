@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(MeshFilter))]
+[RequireComponent(typeof(MeshRenderer))]
+[RequireComponent(typeof(MeshCollider))]
 public class CreateBlockUI : MonoBehaviour
 {
     private Mesh mesh;
@@ -20,18 +23,23 @@ public class CreateBlockUI : MonoBehaviour
 
     // 绘制大小
     public float size;
+    // 绘制位置
+    public Vector3 posi;
 
     void Start()
     {
+        //Block block = new Block(2, "Grass", 2, 3, 31, 0, 31, 2, 31);
+        //CreateUI(block, true, size, posi);
     }
 
-    public void CreateUI(Block block, bool flag, float size)
+    public void CreateUI(Block block, bool flag, float size, Vector3 posi)
     {
         vertices.Clear();
         triangles.Clear();
         uv.Clear();
 
         this.size = size;
+        this.posi = posi;
         mesh = new Mesh();
 
         // 先绘制正面
@@ -60,16 +68,16 @@ public class CreateBlockUI : MonoBehaviour
     void AddFrontFace(Block block, bool flag)
     {
         //添加4个点
-        vertices.Add(new Vector3(0, 0, 0));
-        vertices.Add(new Vector3(0.8f, 0.4f, 0) * size);
-        vertices.Add(new Vector3(0.8f, 1.4f, 0) * size);
-        vertices.Add(new Vector3(0, 1, 0) * size);
-        vertices.Add(new Vector3(-0.8f, 1.4f, 0) * size);
-        vertices.Add(new Vector3(-0.8f, 0.4f, 0) * size);
-        vertices.Add(new Vector3(0, 1, 0) * size);
-        vertices.Add(new Vector3(0.8f, 1.4f, 0) * size);
-        vertices.Add(new Vector3(0f, 1.8f, 0) * size);
-        vertices.Add(new Vector3(-0.8f, 1.4f, 0) * size);
+        vertices.Add((new Vector3(0, 0, 0) + posi) * size);
+        vertices.Add((new Vector3(0.8f, 0.4f, 0) + posi) * size);
+        vertices.Add((new Vector3(0.8f, 1.4f, 0) + posi) * size);
+        vertices.Add((new Vector3(0, 1, 0) + posi) * size);
+        vertices.Add((new Vector3(-0.8f, 1.4f, 0) + posi) * size);
+        vertices.Add((new Vector3(-0.8f, 0.4f, 0) + posi) * size);
+        vertices.Add((new Vector3(0, 1, 0) + posi) * size);
+        vertices.Add((new Vector3(0.8f, 1.4f, 0) + posi) * size);
+        vertices.Add((new Vector3(0f, 1.8f, 0) + posi) * size);
+        vertices.Add((new Vector3(-0.8f, 1.4f, 0) + posi) * size);
 
         if (flag)
         {

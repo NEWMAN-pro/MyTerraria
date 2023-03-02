@@ -63,6 +63,7 @@
     <Compile Include="Assets\LibNoise.Unity-master\Operator\Scale.cs" />
     <Compile Include="Assets\Word\Scripts\Map.cs" />
     <Compile Include="Assets\LibNoise.Unity-master\ModuleBase.cs" />
+    <Compile Include="Assets\Blocks\Scripts\CreateBlockUI.cs" />
     <Compile Include="Assets\LibNoise.Unity-master\Operator\Multiply.cs" />
     <Compile Include="Assets\LibNoise.Unity-master\Generator\Perlin.cs" />
     <Compile Include="Assets\LibNoise.Unity-master\Operator\Invert.cs" />
@@ -85,7 +86,7 @@
     <Compile Include="Assets\LibNoise.Unity-master\Operator\Power.cs" />
     <Compile Include="Assets\LibNoise.Unity-master\Operator\Curve.cs" />
     <Compile Include="Assets\Player\Scripts\Wobble.cs" />
-    <Compile Include="Assets\Scenes\Play.cs" />
+    <Compile Include="Assets\UI\Scripts\Play.cs" />
     <Compile Include="Assets\Word\Scripts\Terrain.cs" />
     <Compile Include="Assets\LibNoise.Unity-master\Operator\Cache.cs" />
     <Compile Include="Assets\LibNoise.Unity-master\Operator\Rotate.cs" />
@@ -104,7 +105,9 @@
     <Compile Include="Assets\LibNoise.Unity-master\Generator\Voronoi.cs" />
     <Compile Include="Assets\LibNoise.Unity-master\Operator\Add.cs" />
     <Compile Include="Assets\LibNoise.Unity-master\Operator\Blend.cs" />
-    <Compile Include="Assets\Blocks\Scripts\CreateBlockUI.cs" />
+    <Compile Include="Assets\UI\Scripts\UIScaler.cs" />
+    <Compile Include="Assets\UI\Scripts\Inventory.cs" />
+    <Compile Include="Assets\Items\Scripts\Item.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\LibNoise.Unity-master\COPYING.txt" />

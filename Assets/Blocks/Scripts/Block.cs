@@ -16,7 +16,7 @@ public enum BlockDirection : byte
 /// <summary>
 /// 方块对象，存储方块的所有信息
 /// </summary>
-public class Block
+public class Block : Item
 {
     // 方块的ID
     public byte id;
