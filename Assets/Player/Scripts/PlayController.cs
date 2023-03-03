@@ -41,10 +41,9 @@ public class PlayController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        // 隐藏鼠标
-        Cursor.lockState = CursorLockMode.Locked;
         velocity.y = -1f;
         inventory = GameObject.Find("Inventory").GetComponent<Inventory>();
+        DrawItem(1);
     }
 
     // Update is called once per frame
@@ -278,21 +277,28 @@ public class PlayController : MonoBehaviour
     // 获取按下的数字键
     public void GetNumber()
     {
-        Item item = new Item();
         for(byte i = 0; i <= 9; i++)
         {
             if(Input.GetKey(KeyCode.Alpha0 + i))
             {
-                item = inventory.GetItem(i);
-                if(item != null && BlockList.GetBlock(item.ID) != null)
-                {
-                    inventory.SetSelect(i);
-                    itemID = item.ID;
-                    this.transform.GetChild(6).GetChild(0).GetChild(1).GetComponent<CreateBlockUI>().CreateUI(BlockList.GetBlock(itemID), true, 0.1f, Vector3.zero);
-                    this.transform.GetChild(3).GetChild(1).GetComponent<CreateBlockUI>().CreateUI(BlockList.GetBlock(itemID), true, 0.1f, Vector3.zero);
-                }
+                DrawItem(i);
                 return;
             }
+        }
+    }
+
+    // 绘制手部图案
+    public void DrawItem(byte i)
+    {
+        Item item = new();
+        item = inventory.GetItem(i);
+        if (item == null) return;
+        if (BlockList.GetBlock(item.ID) != null)
+        {
+            inventory.SetSelect(i);
+            itemID = item.ID;
+            this.transform.GetChild(6).GetChild(0).GetChild(1).GetComponent<CreateUI>().CreateBlockUI(BlockList.GetBlock(itemID), true, 0.1f, Vector3.zero);
+            this.transform.GetChild(3).GetChild(1).GetComponent<CreateUI>().CreateBlockUI(BlockList.GetBlock(itemID), true, 0.1f, Vector3.zero);
         }
     }
 }
