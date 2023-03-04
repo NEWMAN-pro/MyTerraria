@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class Backpack : MonoBehaviour
 {
@@ -9,7 +10,9 @@ public class Backpack : MonoBehaviour
     // 物品栏
     public Inventory inventory;
     // 选择框
-    public CreateUI selectCreateUI;
+    public RectTransform select;
+    // 当前选择的物品
+    public Item selectItem;
 
     private void Awake()
     {
@@ -66,7 +69,12 @@ public class Backpack : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if(selectItem != null)
+        {
+            // 让选择框随鼠标移动
+            select.anchoredPosition = (((Vector2)Input.mousePosition - new Vector2(Screen.width, Screen.height) / 2f) * 1920f / (float)Screen.width - this.transform.GetComponent<RectTransform>().anchoredPosition) * 1.25f;
+        }
+
     }
 
     // 获取物品
@@ -93,8 +101,13 @@ public class Backpack : MonoBehaviour
     }
 
     // 绘制
-    public void CreateUI(Item item, byte key, bool select)
+    public void CreateUI(Item item, byte key, bool selectFlag)
     {
+        if(item == null)
+        {
+            this.transform.GetChild(key).GetComponent<CreateUI>().CreateBlank();
+            return;
+        }
         if (item.type == Type.Block)
         {
             Block block = BlockList.GetBlock(item.ID);
@@ -103,9 +116,9 @@ public class Backpack : MonoBehaviour
                 Debug.Log("该物品为空ba");
                 return;
             }
-            if (select)
+            if (selectFlag)
             {
-                selectCreateUI.CreateBlockUI(block, true, 50, new Vector3(0, -0.9f, -0.01f));
+                select.GetComponent<CreateUI>().CreateBlockUI(block, true, 50, new Vector3(0, -0.9f, -0.01f));
             }
             else
             {
@@ -114,10 +127,53 @@ public class Backpack : MonoBehaviour
         }
     }
 
+    // 更改修改框
     public void Select(int key)
     {
         Item item = GetItem((byte)key);
-        if (item == null) return;
-        CreateUI(item, (byte)key, true);
+        if (selectItem != null)
+        {
+            // 将选择框中的物体物品放到该格
+            SetItem((byte)key, selectItem);
+            if(item == null)
+            {
+                // 如果该格为空，则置空选择框
+                selectItem = null;
+                //select.SetActive(false);
+                select.gameObject.SetActive(false);
+            }
+            else
+            {
+                // 否则更新选择框的物品
+                CreateUI(item, (byte)key, true);
+                selectItem = item;
+            }
+        }
+        else
+        {
+            // 选择框没有物品，则获取该格物品
+            if (item == null)
+            {
+                return;
+            }
+            //select.SetActive(true);
+            select.gameObject.SetActive(true);
+            CreateUI(item, (byte)key, true);
+            selectItem = item;
+            SetItem((byte)key, null);
+        }
+    }
+
+    // 结束时
+    private void OnDisable()
+    {
+        if(selectItem != null)
+        {
+            // 如果在选择框未清空的情况下退出，则找到背包中第一个为空的格子，将选择框中的物体放入并清空选择框
+            byte key = items.FirstOrDefault(x => x.Value == null).Key;
+            SetItem(key, selectItem);
+            selectItem = null;
+            select.gameObject.SetActive(false);
+        }
     }
 }

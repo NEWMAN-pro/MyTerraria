@@ -32,6 +32,27 @@ public class CreateUI : MonoBehaviour
         //CreateUI(block, true, size, posi);
     }
 
+    // 绘制空白
+    public void CreateBlank()
+    {
+        vertices.Clear();
+        triangles.Clear();
+        uv.Clear();
+        mesh = new Mesh();
+        mesh.vertices = vertices.ToArray();
+        mesh.triangles = triangles.ToArray();
+        mesh.uv = uv.ToArray();
+
+        //重新计算顶点和法线
+        mesh.RecalculateBounds();
+        mesh.RecalculateNormals();
+
+        //将生成好的面赋值给组件
+        GetComponent<MeshFilter>().mesh = mesh;
+        this.GetComponent<MeshCollider>().sharedMesh = mesh;
+    }
+
+    // 绘制方块UI
     public void CreateBlockUI(Block block, bool flag, float size, Vector3 posi)
     {
         vertices.Clear();

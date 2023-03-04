@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class Inventory : MonoBehaviour
 {
+    // 物品栏是否有物品改变
+    public byte selectID = 10;
+
     // 物品队列
     public Dictionary<byte, Item> items = new()
     {
@@ -39,12 +42,18 @@ public class Inventory : MonoBehaviour
     {
         items[key] = item;
         CreateUI(item, key);
+        selectID = key;
     }
 
     // 绘制
     public void CreateUI(Item item, byte key)
     {
-        if(item.type == Type.Block)
+        if (item == null)
+        {
+            this.transform.GetChild(key).GetComponent<CreateUI>().CreateBlank();
+            return;
+        }
+        if (item.type == Type.Block)
         {
             Block block = BlockList.GetBlock(item.ID);
             if(block == null)
@@ -59,6 +68,10 @@ public class Inventory : MonoBehaviour
     // 移动选择框
     public void SetSelect(byte key)
     {
+        if(key == 0)
+        {
+            key = 10;
+        }
         select.anchoredPosition = new Vector2((key - 5) * 100 - 50, 0);
     }
 }

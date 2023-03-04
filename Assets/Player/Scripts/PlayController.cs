@@ -35,6 +35,7 @@ public class PlayController : MonoBehaviour
     public bool mouse0Flag = false;
     // 当前选择的物品ID
     public byte itemID = 1;
+    public byte inventoryID = 1;
     // 物品栏
     public Inventory inventory;
 
@@ -62,6 +63,12 @@ public class PlayController : MonoBehaviour
 
         GetNumber();
         MouseButton();
+        if(inventory.selectID < 10 && inventoryID == inventory.selectID)
+        {
+            // 物品栏物品发生改变，重新绘制手部图案
+            DrawItem(inventory.selectID);
+            inventory.selectID = 10;
+        }
     }
 
     // 处理鼠标事件
@@ -290,15 +297,17 @@ public class PlayController : MonoBehaviour
     // 绘制手部图案
     public void DrawItem(byte i)
     {
-        Item item = new();
-        item = inventory.GetItem(i);
-        if (item == null) return;
-        if (BlockList.GetBlock(item.ID) != null)
+        Item item = inventory.GetItem(i);
+        inventory.SetSelect(i);
+        inventoryID = i;
+        if (item == null)
         {
-            inventory.SetSelect(i);
-            itemID = item.ID;
-            this.transform.GetChild(6).GetChild(0).GetChild(1).GetComponent<CreateUI>().CreateBlockUI(BlockList.GetBlock(itemID), true, 0.1f, Vector3.zero);
-            this.transform.GetChild(3).GetChild(1).GetComponent<CreateUI>().CreateBlockUI(BlockList.GetBlock(itemID), true, 0.1f, Vector3.zero);
+            this.transform.GetChild(6).GetChild(0).GetChild(1).GetComponent<CreateUI>().CreateBlank();
+            this.transform.GetChild(3).GetChild(1).GetComponent<CreateUI>().CreateBlank();
+            return;
         }
+        itemID = item.ID;
+        this.transform.GetChild(6).GetChild(0).GetChild(1).GetComponent<CreateUI>().CreateBlockUI(BlockList.GetBlock(itemID), true, 0.1f, Vector3.zero);
+        this.transform.GetChild(3).GetChild(1).GetComponent<CreateUI>().CreateBlockUI(BlockList.GetBlock(itemID), true, 0.1f, Vector3.zero);
     }
 }

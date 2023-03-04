@@ -69,6 +69,7 @@
     <Compile Include="Assets\LibNoise.Unity-master\Operator\Invert.cs" />
     <Compile Include="Assets\LibNoise.Unity-master\Operator\Displace.cs" />
     <Compile Include="Assets\LibNoise.Unity-master\Properties\AssemblyInfo.cs" />
+    <Compile Include="Assets\UI\Scripts\Backpack.cs" />
     <Compile Include="Assets\UI\Scripts\Inventory.cs" />
     <Compile Include="Assets\LibNoise.Unity-master\Generator\Billow.cs" />
     <Compile Include="Assets\LibNoise.Unity-master\GradientPresets.cs" />
@@ -91,6 +92,7 @@
     <Compile Include="Assets\UI\Scripts\Play.cs" />
     <Compile Include="Assets\Word\Scripts\Terrain.cs" />
     <Compile Include="Assets\UI\Scripts\UIScaler.cs" />
+    <Compile Include="Assets\UI\Scripts\UI.cs" />
     <Compile Include="Assets\LibNoise.Unity-master\Operator\Cache.cs" />
     <Compile Include="Assets\LibNoise.Unity-master\Operator\Rotate.cs" />
     <Compile Include="Assets\LibNoise.Unity-master\Operator\Subtract.cs" />
@@ -108,8 +110,6 @@
     <Compile Include="Assets\LibNoise.Unity-master\Generator\Voronoi.cs" />
     <Compile Include="Assets\LibNoise.Unity-master\Operator\Add.cs" />
     <Compile Include="Assets\LibNoise.Unity-master\Operator\Blend.cs" />
-    <Compile Include="Assets\UI\Scripts\Backpack.cs" />
-    <Compile Include="Assets\UI\Scripts\UI.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\LibNoise.Unity-master\COPYING.txt" />
