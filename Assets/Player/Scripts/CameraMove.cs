@@ -52,16 +52,27 @@ public class CameraMove : MonoBehaviour
     }
 
     // 第三人称
-    public void ThirdPerson()
+    public void ThirdPerson(Vector3 rayPosi, Ray ray)
     {
         BaseCameraMove(player.transform);
-
-        distance -= Input.GetAxis("Mouse ScrollWheel") * scrollspeed;   //拉近视野
-        if(Mathf.Abs(distance) < 1 || Mathf.Abs(distance) > 10)
+        // 放置摄像机穿模
+        RaycastHit hitInfo;
+        if(Physics.Raycast(rayPosi, -ray.direction * 10, out hitInfo, 10, LayerMask.GetMask("Cube")))
         {
-            // 如果超出范围，则回滚
-            distance += Input.GetAxis("Mouse ScrollWheel") * scrollspeed;
+            // 获取碰撞点坐标
+            Vector3 point = hitInfo.point;
+            distance = Vector3.Distance(point, rayPosi);
         }
+        else
+        {
+            distance = 10;
+        }
+        //distance -= Input.GetAxis("Mouse ScrollWheel") * scrollspeed;   //拉近视野
+        //if (Mathf.Abs(distance) < 1 || Mathf.Abs(distance) > 10)
+        //{
+        //    // 如果超出范围，则回滚
+        //    distance += Input.GetAxis("Mouse ScrollWheel") * scrollspeed;
+        //}
 
         // 计算摄像机坐标
         float dis = distance / (Mathf.Pow(player.forward.x, 2f) + Mathf.Pow(player.forward.y, 2f) + Mathf.Pow(player.forward.z, 2f));

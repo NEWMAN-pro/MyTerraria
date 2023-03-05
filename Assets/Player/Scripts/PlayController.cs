@@ -124,8 +124,8 @@ public class PlayController : MonoBehaviour
         else
         {
             // µÚÈýÈË³Æ
-            cameraMove.ThirdPerson();
             rayPosi = transform.position + new Vector3(0, 0.7f, 0);
+            cameraMove.ThirdPerson(rayPosi, ray);
         }
     }
 

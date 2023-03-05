@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using System.Linq;
 
 public class Backpack : MonoBehaviour
@@ -13,6 +14,10 @@ public class Backpack : MonoBehaviour
     public RectTransform select;
     // 当前选择的物品
     public Item selectItem;
+    // 未标记的颜色
+    public Color NotFlag;
+    // 标记的颜色
+    public Color FlagColor;
 
     private void Awake()
     {
@@ -127,19 +132,27 @@ public class Backpack : MonoBehaviour
         }
     }
 
-    // 更改修改框
+    // 更改选择框
     public void Select(int key)
     {
         Item item = GetItem((byte)key);
+        if (Input.GetKey(KeyCode.LeftAlt) && item != null)
+        {
+            // 如果是按下LeftAlt键，则标记物品
+            item.flag = !item.flag;
+            SetItem((byte)key, item);
+            SetColor(key, item.flag);
+            return;
+        }
         if (selectItem != null)
         {
             // 将选择框中的物体物品放到该格
             SetItem((byte)key, selectItem);
+            SetColor(key, selectItem.flag);
             if(item == null)
             {
                 // 如果该格为空，则置空选择框
                 selectItem = null;
-                //select.SetActive(false);
                 select.gameObject.SetActive(false);
             }
             else
@@ -156,15 +169,46 @@ public class Backpack : MonoBehaviour
             {
                 return;
             }
-            //select.SetActive(true);
             select.gameObject.SetActive(true);
             CreateUI(item, (byte)key, true);
             selectItem = item;
             SetItem((byte)key, null);
+            SetColor(key, false);
         }
     }
 
-    // 结束时
+    // 一键整理
+    public void Neaten()
+    {
+        // 对字典排序，先比较type再比较ID，物品栏不参与排序，被标记的物品不参与排序
+        Dictionary<byte, Item> sortedItems = items.Where(i => i.Value != null && i.Key > 9 && !i.Value.flag)
+            .OrderBy(i => i.Value.type).ThenBy(i => i.Value.ID)
+            .ToDictionary(i => i.Key, i => i.Value);
+        byte key = 10;
+        foreach (var pair in sortedItems)
+        {
+            // 先清空
+            SetItem(pair.Key, null);
+        }
+        foreach (var pair in sortedItems)
+        {
+            while(GetItem(key) != null)
+            {
+                // 找到不为空的背包格
+                key++;
+            }
+            // 再重新绘制
+            SetItem(key++, pair.Value);
+        }
+    }
+
+    // 更改物品格颜色
+    public void SetColor(int key, bool flag)
+    {
+        this.transform.GetChild(key).GetComponent<Image>().color = flag ? FlagColor : NotFlag;
+    }
+
+    // 脚本结束时
     private void OnDisable()
     {
         if(selectItem != null)

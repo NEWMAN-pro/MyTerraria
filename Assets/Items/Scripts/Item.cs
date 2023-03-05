@@ -16,5 +16,6 @@ public class Item
     public Type type;
     // 物品数量
     public int count;
-
+    // 是否被标记
+    public bool flag;
 }
