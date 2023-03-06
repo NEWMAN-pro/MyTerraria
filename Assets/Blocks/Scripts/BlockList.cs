@@ -37,6 +37,10 @@ public class BlockList : MonoBehaviour
         // Ê÷Ò¶
         Block leaf = new Block(7, "Leaf", 0.5f, 4, 29);
         blocks.Add(leaf.id, leaf);
+
+        // ±¦Ïä
+        Block box = new Block(8, "Box", 2, 11, 30, 10, 30, 11, 27, 9, 30);
+        blocks.Add(box.id, box);
     }
 
     // ÅÐ¶ÏÊÇ·ñ´æÔÚ¸Ã·½¿é

@@ -397,6 +397,7 @@
 "Assets/Player/Scripts/PlayController.cs"
 "Assets/Player/Scripts/Wobble.cs"
 "Assets/UI/Scripts/Backpack.cs"
+"Assets/UI/Scripts/Box.cs"
 "Assets/UI/Scripts/Inventory.cs"
 "Assets/UI/Scripts/Play.cs"
 "Assets/UI/Scripts/UI.cs"

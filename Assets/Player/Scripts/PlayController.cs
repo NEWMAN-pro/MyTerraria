@@ -302,6 +302,7 @@ public class PlayController : MonoBehaviour
         inventoryID = i;
         if (item == null)
         {
+            itemID = 10;
             this.transform.GetChild(6).GetChild(0).GetChild(1).GetComponent<CreateUI>().CreateBlank();
             this.transform.GetChild(3).GetChild(1).GetComponent<CreateUI>().CreateBlank();
             return;

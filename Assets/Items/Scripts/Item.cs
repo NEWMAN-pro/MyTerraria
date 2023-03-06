@@ -5,7 +5,12 @@ using UnityEngine;
 public enum Type : byte
 {
     Block = 0,
-    Other = 1
+    Weapon = 1,
+    Furniture = 2,
+    Buff = 3,
+    Money = 4,
+    Ammo = 5,
+    Other = 7
 }
 
 public class Item

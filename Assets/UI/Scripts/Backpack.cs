@@ -10,6 +10,8 @@ public class Backpack : MonoBehaviour
     public Dictionary<byte, Item> items = new Dictionary<byte, Item>();
     // 物品栏
     public Inventory inventory;
+    // 宝箱
+    public Box box;
     // 选择框
     public RectTransform select;
     // 当前选择的物品
@@ -63,6 +65,12 @@ public class Backpack : MonoBehaviour
         items.Add(6, item_7);
         inventory.SetItem(7, item_7);
         CreateUI(item_7, 6, false);
+        Item item_8 = new Item();
+        item_8.type = 0;
+        item_8.ID = 8;
+        items.Add(7, item_8);
+        inventory.SetItem(8, item_8);
+        CreateUI(item_8, 7, false);
     }
 
     // Start is called before the first frame update
@@ -135,8 +143,18 @@ public class Backpack : MonoBehaviour
     // 更改选择框
     public void Select(int key)
     {
+        if(key >= 60)
+        {
+            Item item_ = box.Select(key, ref selectItem, ref select);
+            if(item_ != null)
+            {
+                // 选择框获取背包中的物品
+                CreateUI(item_, (byte)key, true);
+            }
+            return;
+        }
         Item item = GetItem((byte)key);
-        if (Input.GetKey(KeyCode.LeftAlt) && item != null)
+        if (Input.GetKey(KeyCode.LeftAlt) && item != null && key < 50)
         {
             // 如果是按下LeftAlt键，则标记物品
             item.flag = !item.flag;
@@ -147,11 +165,31 @@ public class Backpack : MonoBehaviour
         if (selectItem != null)
         {
             // 将选择框中的物体物品放到该格
+            if(key == 50)
+            {
+                selectItem.flag = false;
+            }
+            if(key > 50 && key < 55)
+            {
+                if(selectItem.type != Type.Money)
+                {
+                    // 如果物品类型不是金钱则不能放入钱币格
+                    return;
+                }
+            }
+            if(key > 55 && key < 59)
+            {
+                if(selectItem.type != Type.Ammo)
+                {
+                    // 如果物品类型不是弹药则不能放入弹药格
+                    return;
+                }
+            }
             SetItem((byte)key, selectItem);
             SetColor(key, selectItem.flag);
-            if(item == null)
+            if(item == null || key == 50)
             {
-                // 如果该格为空，则置空选择框
+                // 如果该格为空，则置空选择框，当选中的是垃圾桶，翻盖其中物品
                 selectItem = null;
                 select.gameObject.SetActive(false);
             }

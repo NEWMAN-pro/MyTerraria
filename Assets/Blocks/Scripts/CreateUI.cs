@@ -88,17 +88,24 @@ public class CreateUI : MonoBehaviour
     // 绘制方块的UI显示, flag正反面
     void AddFrontFace(Block block, bool flag)
     {
-        //添加4个点
+        //添加12个点
+        // 侧面
         vertices.Add((new Vector3(0, 0, 0) + posi) * size);
         vertices.Add((new Vector3(0.8f, 0.4f, 0) + posi) * size);
         vertices.Add((new Vector3(0.8f, 1.4f, 0) + posi) * size);
         vertices.Add((new Vector3(0, 1, 0) + posi) * size);
-        vertices.Add((new Vector3(-0.8f, 1.4f, 0) + posi) * size);
+
+        // 前面
         vertices.Add((new Vector3(-0.8f, 0.4f, 0) + posi) * size);
+        vertices.Add((new Vector3(0, 0, 0) + posi) * size);
+        vertices.Add((new Vector3(0, 1, 0) + posi) * size);
+        vertices.Add((new Vector3(-0.8f, 1.4f, 0) + posi) * size);
+
+        // 顶面
+        vertices.Add((new Vector3(-0.8f, 1.4f, 0) + posi) * size);
         vertices.Add((new Vector3(0, 1, 0) + posi) * size);
         vertices.Add((new Vector3(0.8f, 1.4f, 0) + posi) * size);
         vertices.Add((new Vector3(0f, 1.8f, 0) + posi) * size);
-        vertices.Add((new Vector3(-0.8f, 1.4f, 0) + posi) * size);
 
         if (flag)
         {
@@ -113,24 +120,24 @@ public class CreateUI : MonoBehaviour
             triangles.Add(0);
 
             //第三个三角面
-            triangles.Add(0);
             triangles.Add(4);
-            triangles.Add(3);
+            triangles.Add(7);
+            triangles.Add(6);
 
             //第四个三角面
-            triangles.Add(0);
+            triangles.Add(6);
             triangles.Add(5);
             triangles.Add(4);
 
             //第五个三角面
-            triangles.Add(6);
-            triangles.Add(9);
             triangles.Add(8);
+            triangles.Add(11);
+            triangles.Add(10);
 
             //第六个三角面
+            triangles.Add(10);
+            triangles.Add(9);
             triangles.Add(8);
-            triangles.Add(7);
-            triangles.Add(6);
         }
         else
         {
@@ -145,33 +152,40 @@ public class CreateUI : MonoBehaviour
             triangles.Add(2);
 
             //第三个三角面
-            triangles.Add(3);
+            triangles.Add(6);
+            triangles.Add(7);
             triangles.Add(4);
-            triangles.Add(0);
 
             //第四个三角面
             triangles.Add(4);
             triangles.Add(5);
-            triangles.Add(0);
+            triangles.Add(6);
 
             //第五个三角面
+            triangles.Add(10);
+            triangles.Add(11);
             triangles.Add(8);
-            triangles.Add(9);
-            triangles.Add(6);
 
             //第六个三角面
-            triangles.Add(6);
-            triangles.Add(7);
             triangles.Add(8);
+            triangles.Add(9);
+            triangles.Add(10);
         }
 
-        //添加UV坐标点，跟上面4个点循环的顺序一致
+        //添加UV坐标点，跟上面12个点循环的顺序一致
+        // 侧面
+        uv.Add(new Vector2(block.textureRightX * textureOffset, block.textureRightY * textureOffset) + new Vector2(shrinkSize, shrinkSize));
+        uv.Add(new Vector2(block.textureRightX * textureOffset + textureOffset, block.textureRightY * textureOffset) + new Vector2(-shrinkSize, shrinkSize));
+        uv.Add(new Vector2(block.textureRightX * textureOffset + textureOffset, block.textureRightY * textureOffset + textureOffset) + new Vector2(-shrinkSize, -shrinkSize));
+        uv.Add(new Vector2(block.textureRightX * textureOffset, block.textureRightY * textureOffset + textureOffset) + new Vector2(shrinkSize, -shrinkSize));
+
+        // 前面
         uv.Add(new Vector2(block.textureFrontX * textureOffset, block.textureFrontY * textureOffset) + new Vector2(shrinkSize, shrinkSize));
         uv.Add(new Vector2(block.textureFrontX * textureOffset + textureOffset, block.textureFrontY * textureOffset) + new Vector2(-shrinkSize, shrinkSize));
         uv.Add(new Vector2(block.textureFrontX * textureOffset + textureOffset, block.textureFrontY * textureOffset + textureOffset) + new Vector2(-shrinkSize, -shrinkSize));
         uv.Add(new Vector2(block.textureFrontX * textureOffset, block.textureFrontY * textureOffset + textureOffset) + new Vector2(shrinkSize, -shrinkSize));
-        uv.Add(new Vector2(block.textureFrontX * textureOffset + textureOffset, block.textureFrontY * textureOffset + textureOffset) + new Vector2(-shrinkSize, -shrinkSize));
-        uv.Add(new Vector2(block.textureFrontX * textureOffset + textureOffset, block.textureFrontY * textureOffset) + new Vector2(-shrinkSize, shrinkSize));
+
+        // 上面
         uv.Add(new Vector2(block.textureTopX * textureOffset, block.textureTopY * textureOffset) + new Vector2(shrinkSize, shrinkSize));
         uv.Add(new Vector2(block.textureTopX * textureOffset + textureOffset, block.textureTopY * textureOffset) + new Vector2(-shrinkSize, shrinkSize));
         uv.Add(new Vector2(block.textureTopX * textureOffset + textureOffset, block.textureTopY * textureOffset + textureOffset) + new Vector2(-shrinkSize, -shrinkSize));
