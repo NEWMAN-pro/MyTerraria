@@ -5,6 +5,8 @@ using System.Linq;
 
 public class Box : MonoBehaviour
 {
+    // 宝箱密钥
+    public string key;
     // 物品队列
     public Dictionary<byte, Item> items = new Dictionary<byte, Item>();
 
@@ -12,6 +14,11 @@ public class Box : MonoBehaviour
     {
         // 显示宝箱界面时将垃圾箱下调
         this.transform.parent.GetChild(50).GetComponent<RectTransform>().anchoredPosition = new Vector2(352, -765);
+        foreach(var pair in items)
+        {
+            // 重新绘制宝箱物品
+            CreateUI(pair.Value, pair.Key);
+        }
     }
 
     // Update is called once per frame
@@ -49,7 +56,7 @@ public class Box : MonoBehaviour
                 Debug.Log("该物品为空ba");
                 return;
             }
-            this.transform.GetChild(key).GetComponent<CreateUI>().CreateBlockUI(block, true, 50, new Vector3(0, -0.9f, -0.01f));
+            this.transform.GetChild(key).GetComponent<CreateUI>().CreateBlockUI(block, true, 40, new Vector3(0, -1f, -0.01f));
         }
     }
 
@@ -119,5 +126,11 @@ public class Box : MonoBehaviour
     {
         // 隐藏宝箱界面时将垃圾箱归位
         this.transform.parent.GetChild(50).GetComponent<RectTransform>().anchoredPosition = new Vector2(352, -262.57f);
+        // 隐藏时清空队列
+        BoxList.SetBox(key, items);
+        foreach(var pair in items)
+        {
+            CreateUI(null, pair.Key);
+        }
     }
 }

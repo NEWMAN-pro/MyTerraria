@@ -27,11 +27,11 @@ public class Block : Item
     // 方块销毁时间
     public float destroyTime;
 
-    // 方块的图标，并不会采用在游戏中动态生成的做法
-    public Texture icon;
-
     // 方向（指的是前面所面朝的方向）
     public BlockDirection direction = BlockDirection.Front;
+
+    // 宝箱编号，如果为-1则不是宝箱
+    public int boxID = -1;
 
     //前面贴图的坐标
     public byte textureFrontX;

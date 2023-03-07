@@ -34,7 +34,7 @@ public class PlayController : MonoBehaviour
     // 是否按住鼠标左键
     public bool mouse0Flag = false;
     // 当前选择的物品ID
-    public byte itemID = 1;
+    public Item item;
     public byte inventoryID = 1;
     // 物品栏
     public Inventory inventory;
@@ -76,10 +76,8 @@ public class PlayController : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(1))
         {
-            if(itemID < 10)
-            {
-                CreateBlock(itemID);
-            }
+            // 放置方块
+            CreateBlock();
         }
         if (Input.GetMouseButton(0))
         {
@@ -207,7 +205,7 @@ public class PlayController : MonoBehaviour
     }
 
     // 生成方块
-    public void CreateBlock(byte blockID)
+    public void CreateBlock()
     {
         RaycastHit hitInfo;
         bool hit = RayDetection(out hitInfo);
@@ -220,9 +218,18 @@ public class PlayController : MonoBehaviour
             // 获取碰撞点的法向量
             Vector3 normal = hitInfo.normal;
 
+            // 判断选中的是否是宝箱
+            string key = trans.GetComponent<Chunk>().GetBox(point - normal * 0.01f);
+            if(key != "_")
+            {
+                // 是宝箱则打开宝箱
+                GameObject.Find("UI").GetComponent<UI>().OpenBox(key);
+                return;
+            }
+
             // 碰撞点向角色移动一点距离，保证方块生成位置准确
             point += normal * 0.01f;
-            if (trans.GetComponent<Chunk>().CreateBlock(point, this.transform.position, blockID) == 2)
+            if (item != null && trans.GetComponent<Chunk>().CreateBlock(point, this.transform.position, item.ID) == 2)
             {
                 // 方块生成位置不在当前区块内，则需改变区块trans
                 Regex regex = new Regex(@"\((-?\d+),(-?\d+),(-?\d+)\)");
@@ -237,7 +244,7 @@ public class PlayController : MonoBehaviour
                     trans = GameObject.Find(newName).transform;
                     Debug.Log(trans.name);
                     // 在新区块生成方块
-                    trans.GetComponent<Chunk>().CreateBlock(point, this.transform.position, blockID);
+                    trans.GetComponent<Chunk>().CreateBlock(point, this.transform.position, item.ID);
                 }
                 else
                 {
@@ -297,18 +304,16 @@ public class PlayController : MonoBehaviour
     // 绘制手部图案
     public void DrawItem(byte i)
     {
-        Item item = inventory.GetItem(i);
+        item = inventory.GetItem(i);
         inventory.SetSelect(i);
         inventoryID = i;
         if (item == null)
         {
-            itemID = 10;
             this.transform.GetChild(6).GetChild(0).GetChild(1).GetComponent<CreateUI>().CreateBlank();
             this.transform.GetChild(3).GetChild(1).GetComponent<CreateUI>().CreateBlank();
             return;
         }
-        itemID = item.ID;
-        this.transform.GetChild(6).GetChild(0).GetChild(1).GetComponent<CreateUI>().CreateBlockUI(BlockList.GetBlock(itemID), true, 0.1f, Vector3.zero);
-        this.transform.GetChild(3).GetChild(1).GetComponent<CreateUI>().CreateBlockUI(BlockList.GetBlock(itemID), true, 0.1f, Vector3.zero);
+        this.transform.GetChild(6).GetChild(0).GetChild(1).GetComponent<CreateUI>().CreateBlockUI(BlockList.GetBlock(item.ID), true, 0.1f, Vector3.zero);
+        this.transform.GetChild(3).GetChild(1).GetComponent<CreateUI>().CreateBlockUI(BlockList.GetBlock(item.ID), true, 0.1f, Vector3.zero);
     }
 }

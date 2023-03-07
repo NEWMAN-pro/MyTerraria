@@ -16,19 +16,23 @@ public class UI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyUp(KeyCode.L))
-        {
-            this.transform.GetChild(1).GetChild(60).gameObject.SetActive(boxFlag);
-            if (flag)
-            {
-                OpenUI();
-            }
-            boxFlag = !boxFlag;
-        }
         if (Input.GetKeyUp(KeyCode.Escape))
         {
             OpenUI();
         }
+    }
+
+    public void OpenBox(string key)
+    {
+        GameObject box = this.transform.GetChild(1).GetChild(60).gameObject;
+        box.SetActive(boxFlag);
+        box.GetComponent<Box>().items = BoxList.GetBox(key);
+        box.GetComponent<Box>().key = key;
+        if (flag)
+        {
+            OpenUI();
+        }
+        boxFlag = !boxFlag;
     }
 
     // 打开UI，不打开宝箱界面
@@ -53,5 +57,6 @@ public class UI : MonoBehaviour
             Cursor.lockState = CursorLockMode.None;
         }
         flag = !flag;
+        Time.timeScale = !flag ? 0 : 1;
     }
 }

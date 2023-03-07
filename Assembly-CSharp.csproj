@@ -57,6 +57,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\LibNoise.Unity-master\Generator\Spheres.cs" />
+    <Compile Include="Assets\UI\Scripts\Box.cs" />
     <Compile Include="Assets\LibNoise.Unity-master\Generator\Cylinders.cs" />
     <Compile Include="Assets\LibNoise.Unity-master\Operator\Exponent.cs" />
     <Compile Include="Assets\Other\Scripts\Vector3ii.cs" />
@@ -110,7 +111,7 @@
     <Compile Include="Assets\LibNoise.Unity-master\Generator\Voronoi.cs" />
     <Compile Include="Assets\LibNoise.Unity-master\Operator\Add.cs" />
     <Compile Include="Assets\LibNoise.Unity-master\Operator\Blend.cs" />
-    <Compile Include="Assets\UI\Scripts\Box.cs" />
+    <Compile Include="Assets\Blocks\Scripts\BoxList.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\LibNoise.Unity-master\COPYING.txt" />

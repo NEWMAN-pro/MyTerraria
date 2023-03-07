@@ -405,7 +405,6 @@ MonoBehaviour:
   LastTrans: {fileID: 0}
   rayPosi: {x: 0, y: 0, z: 0}
   mouse0Flag: 0
-  itemID: 1
   inventoryID: 1
   inventory: {fileID: 0}
 --- !u!114 &295391558186620235

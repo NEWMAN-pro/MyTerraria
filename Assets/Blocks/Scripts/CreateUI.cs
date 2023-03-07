@@ -91,21 +91,21 @@ public class CreateUI : MonoBehaviour
         //添加12个点
         // 侧面
         vertices.Add((new Vector3(0, 0, 0) + posi) * size);
-        vertices.Add((new Vector3(0.8f, 0.4f, 0) + posi) * size);
-        vertices.Add((new Vector3(0.8f, 1.4f, 0) + posi) * size);
+        vertices.Add((new Vector3(0.87f, 0.5f, 0) + posi) * size);
+        vertices.Add((new Vector3(0.87f, 1.5f, 0) + posi) * size);
         vertices.Add((new Vector3(0, 1, 0) + posi) * size);
 
         // 前面
-        vertices.Add((new Vector3(-0.8f, 0.4f, 0) + posi) * size);
+        vertices.Add((new Vector3(-0.87f, 0.5f, 0) + posi) * size);
         vertices.Add((new Vector3(0, 0, 0) + posi) * size);
         vertices.Add((new Vector3(0, 1, 0) + posi) * size);
-        vertices.Add((new Vector3(-0.8f, 1.4f, 0) + posi) * size);
+        vertices.Add((new Vector3(-0.87f, 1.5f, 0) + posi) * size);
 
         // 顶面
-        vertices.Add((new Vector3(-0.8f, 1.4f, 0) + posi) * size);
+        vertices.Add((new Vector3(-0.87f, 1.5f, 0) + posi) * size);
         vertices.Add((new Vector3(0, 1, 0) + posi) * size);
-        vertices.Add((new Vector3(0.8f, 1.4f, 0) + posi) * size);
-        vertices.Add((new Vector3(0f, 1.8f, 0) + posi) * size);
+        vertices.Add((new Vector3(0.87f, 1.5f, 0) + posi) * size);
+        vertices.Add((new Vector3(0f, 2f, 0) + posi) * size);
 
         if (flag)
         {

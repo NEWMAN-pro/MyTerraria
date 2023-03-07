@@ -353,6 +353,7 @@
 -r:"Library/Bee/artifacts/1900b0aE.dag/UnityEngine.UI.ref.dll"
 "Assets/Blocks/Scripts/Block.cs"
 "Assets/Blocks/Scripts/BlockList.cs"
+"Assets/Blocks/Scripts/BoxList.cs"
 "Assets/Blocks/Scripts/CreateUI.cs"
 "Assets/Items/Scripts/Item.cs"
 "Assets/LibNoise.Unity-master/Generator/Billow.cs"

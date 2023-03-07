@@ -61,7 +61,7 @@ public class Inventory : MonoBehaviour
                 Debug.Log("该物品为空in");
                 return;
             }
-            this.transform.GetChild(key).GetComponent<CreateUI>().CreateBlockUI(block, true, 50, new Vector3(0, -0.9f, -0.01f));
+            this.transform.GetChild(key).GetComponent<CreateUI>().CreateBlockUI(block, true, 40, new Vector3(0, -1f, -0.01f));
         }
     }
 

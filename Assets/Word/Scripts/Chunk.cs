@@ -523,11 +523,17 @@ namespace Soultia.Voxel
                 Debug.Log("C该位置已有方块");
                 return 3;
             }
-            Debug.Log("生成");
+            //Debug.Log("生成");
             isWorking = true;
             mesh = new Mesh();
             mesh.name = "Chunk";
             blocks[chunkPosition.x, chunkPosition.y, chunkPosition.z] = blockID;
+            if(blockID == 8)
+            {
+                // 如果是宝箱，加入宝箱队列，key为区块坐标加方块坐标
+                string key = this.transform.name + chunkPosition.ToString();
+                BoxList.AddBox(key);
+            }
             StartCoroutine(CreateMesh());
             return 0;
         }
@@ -551,6 +557,13 @@ namespace Soultia.Voxel
                 return 2;
             }
 
+            // 如果该位置是宝箱且宝箱不为空
+            if(blocks[chunkPosition.x, chunkPosition.y, chunkPosition.z] == 8 && BoxList.GetBox(this.transform.name + chunkPosition.ToString()).Count != 0)
+            {
+                Debug.Log("D该宝箱不为空");
+                return 4;
+            }
+
             // 如果方块改变，则更新信息
             if(chunkPosition != lastBlock)
             {
@@ -571,7 +584,12 @@ namespace Soultia.Voxel
                 destroy = false;
                 return 3;
             }
-            Debug.Log("销毁");
+            //Debug.Log("销毁");
+            if(blocks[chunkPosition.x, chunkPosition.y, chunkPosition.z] == 8)
+            {
+                // 如果销毁的方块是宝箱，则将该宝箱从宝箱列表中移除
+                BoxList.DelectBox(this.transform.name + chunkPosition.ToString());
+            }
             blocks[chunkPosition.x, chunkPosition.y, chunkPosition.z] = 0;
             StartCoroutine(CreateMesh());
             return 0;
@@ -587,6 +605,17 @@ namespace Soultia.Voxel
             if (block == null) return;
             destroyTime = 100 / block.destroyTime;
             blockHP = 0;
+        }
+
+        // 判断当前位置是否是宝箱
+        public string GetBox(Vector3 position)
+        {
+            Vector3i chunkPosition = WorldTransferChunk(position);
+            if (blocks[chunkPosition.x, chunkPosition.y, chunkPosition.z] == 8)
+            {
+                return this.transform.name + chunkPosition.ToString();
+            }
+            return "_";
         }
 
         // 生成随机数
