@@ -57,8 +57,12 @@ namespace Soultia.Voxel
         private bool isWorking = false;
         private bool isFinished = false;
 
+        // 玩家信息
+        public Transform player;
+
         void Start()
         {
+            player = GameObject.Find("Player").transform;
             position = new Vector3i(this.transform.position);
             if (Map.instance.ChunkExists(position))
             {
@@ -82,6 +86,7 @@ namespace Soultia.Voxel
                 isFinished = true;
                 StartFunction();
             }
+            SetFalse();
         }
 
         void StartFunction()
@@ -250,6 +255,14 @@ namespace Soultia.Voxel
             {
                 //如果当前方块的id是0，那的确是透明的
                 return this.blocks[x, y, z] == 0;
+            }
+        }
+
+        // 如果该区块离玩家过远，则隐藏
+        public void SetFalse()
+        {
+            if(Math.Abs(this.position.x - player.position.x) > width * 4 || Math.Abs(this.position.y - player.position.y) > width * 4 || Math.Abs(this.position.z - player.position.z) > width * 4){
+                this.gameObject.SetActive(false);
             }
         }
 

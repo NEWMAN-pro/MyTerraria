@@ -42,6 +42,7 @@ public class PlayController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        this.name = "Player";
         velocity.y = -1f;
         inventory = GameObject.Find("Inventory").GetComponent<Inventory>();
         DrawItem(1);
