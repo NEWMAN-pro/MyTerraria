@@ -57,6 +57,13 @@ public class UI : MonoBehaviour
             Cursor.lockState = CursorLockMode.None;
         }
         flag = !flag;
-        Time.timeScale = !flag ? 0 : 1;
+        if (!flag)
+        {
+            GameObject.Find("Player").GetComponent<PlayController>().PauseGame();
+        }
+        else
+        {
+            GameObject.Find("Player").GetComponent<PlayController>().UnPauseGame();
+        }
     }
 }

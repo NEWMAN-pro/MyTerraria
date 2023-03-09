@@ -5,7 +5,7 @@ using UnityEngine;
 public class Inventory : MonoBehaviour
 {
     // 物品栏是否有物品改变
-    public byte selectID = 10;
+    public byte selectID = 1;
 
     // 物品队列
     public Dictionary<byte, Item> items = new()

@@ -39,6 +39,9 @@ public class PlayController : MonoBehaviour
     // 物品栏
     public Inventory inventory;
 
+    // 是否暂停
+    public bool pause = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -53,6 +56,17 @@ public class PlayController : MonoBehaviour
     {
         // 地图跟随玩家生成
         Map.instance.CreateMap(this.transform.position);
+
+        if(inventory.selectID < 10 && inventoryID == inventory.selectID)
+        {
+            // 物品栏物品发生改变，重新绘制手部图案
+            DrawItem(inventory.selectID);
+            inventory.selectID = 10;
+        }
+        if (pause)
+        {
+            return;
+        }
         
         // 从摄像机中心发射一条射线
         ray = cameraMove.camera.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
@@ -64,12 +78,6 @@ public class PlayController : MonoBehaviour
 
         GetNumber();
         MouseButton();
-        if(inventory.selectID < 10 && inventoryID == inventory.selectID)
-        {
-            // 物品栏物品发生改变，重新绘制手部图案
-            DrawItem(inventory.selectID);
-            inventory.selectID = 10;
-        }
     }
 
     // 处理鼠标事件
@@ -316,5 +324,15 @@ public class PlayController : MonoBehaviour
         }
         this.transform.GetChild(6).GetChild(0).GetChild(1).GetComponent<CreateUI>().CreateBlockUI(BlockList.GetBlock(item.ID), true, 0.1f, Vector3.zero);
         this.transform.GetChild(3).GetChild(1).GetComponent<CreateUI>().CreateBlockUI(BlockList.GetBlock(item.ID), true, 0.1f, Vector3.zero);
+    }
+
+    public void PauseGame()
+    {
+        pause = true;
+    }
+
+    public void UnPauseGame()
+    {
+        pause = false;
     }
 }

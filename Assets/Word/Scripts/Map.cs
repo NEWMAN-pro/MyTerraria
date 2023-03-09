@@ -28,7 +28,8 @@ namespace Soultia.Voxel
             player = Resources.Load("Prefabs/Player") as GameObject;
             player = Instantiate(player, new Vector3(0, 25, 0), Quaternion.identity);
             // 修改角色重力，防止角色下落过快
-            player.GetComponent<PlayController>().gravity = 0f;
+            //player.GetComponent<PlayController>().gravity = 0f;
+            player.GetComponent<PlayController>().PauseGame();
             StartCoroutine(SetTrue());
         }
 
@@ -49,7 +50,8 @@ namespace Soultia.Voxel
         IEnumerator SetTrue()
         {
             yield return new WaitForSeconds(5);
-            player.GetComponent<PlayController>().gravity = 9.8f;
+            //player.GetComponent<PlayController>().gravity = 9.8f;
+            player.GetComponent<PlayController>().UnPauseGame();
         }
 
         // 随玩家生成地图
