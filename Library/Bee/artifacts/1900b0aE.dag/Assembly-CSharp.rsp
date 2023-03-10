@@ -392,6 +392,7 @@
 "Assets/LibNoise.Unity-master/Utils.cs"
 "Assets/Other/Scripts/FrameAnimation.cs"
 "Assets/Other/Scripts/PauseGame.cs"
+"Assets/Other/Scripts/PauseGameAll.cs"
 "Assets/Other/Scripts/Vector3i.cs"
 "Assets/Other/Scripts/Vector3ii.cs"
 "Assets/Other/Scripts/Voronoi.cs"

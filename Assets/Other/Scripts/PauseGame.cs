@@ -1,37 +1,23 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PauseGame : MonoBehaviour
 {
-    // 对象列表
-    GameObject[] gameObjects;
-    // 脚本列表
-    List<MonoBehaviour> mbList;
+    // 是否暂停
+    public bool pause = false;
 
-    // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
-        // 遍历所有对象
-        foreach(var gb in gameObjects)
-        {
-            // 获取对象上所有组件
-            Component[] components = gb.GetComponents<Component>();
-
-            foreach(var mb in components)
-            {
-                // 筛选脚本
-                if(mb is MonoBehaviour)
-                {
-                    // 添加脚本
-                    mbList.Add((MonoBehaviour)mb);
-                }
-            }
-        }
+        // 加载该脚本时，将脚本增加进总暂停脚本
+        GameObject.Find("Map").GetComponent<PauseGameAll>().Add(this);
     }
 
     public void OnPauseGame()
     {
+        pause = true;
+    }
 
+    public void UnPauseGame()
+    {
+        pause = false;
     }
 }

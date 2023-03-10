@@ -23,60 +23,60 @@ public class Backpack : MonoBehaviour
 
     private void Awake()
     {
+        for(byte i = 0; i < 60; i++)
+        {
+            items[i] = null;
+        }
+
         Item item_1 = new Item();
         item_1.type = 0;
         item_1.ID = 3;
-        items.Add(0, item_1);
+        //items.Add(0, item_1);
+        items[0] = item_1;
         inventory.SetItem(1, item_1);
         CreateUI(item_1, 0, false);
         Item item_2 = new Item();
         item_2.type = 0;
         item_2.ID = 1;
-        items.Add(1, item_2);
+        items[1] = item_2;
         inventory.SetItem(2, item_2);
         CreateUI(item_2, 1, false);
         Item item_3 = new Item();
         item_3.type = 0;
         item_3.ID = 2;
-        items.Add(2, item_3);
+        items[2] = item_3;
         inventory.SetItem(3, item_3);
         CreateUI(item_3, 2, false);
         Item item_4 = new Item();
         item_4.type = 0;
         item_4.ID = 4;
-        items.Add(3, item_4);
+        items[3] = item_4;
         inventory.SetItem(4, item_4);
         CreateUI(item_4, 3, false);
         Item item_5 = new Item();
         item_5.type = 0;
         item_5.ID = 5;
-        items.Add(4, item_5);
+        items[4] = item_5;
         inventory.SetItem(5, item_5);
         CreateUI(item_5, 4, false);
         Item item_6 = new Item();
         item_6.type = 0;
         item_6.ID = 6;
-        items.Add(5, item_6);
+        items[5] = item_6;
         inventory.SetItem(6, item_6);
         CreateUI(item_6, 5, false);
         Item item_7 = new Item();
         item_7.type = 0;
         item_7.ID = 7;
-        items.Add(6, item_7);
+        items[6] = item_7;
         inventory.SetItem(7, item_7);
         CreateUI(item_7, 6, false);
         Item item_8 = new Item();
         item_8.type = 0;
         item_8.ID = 8;
-        items.Add(7, item_8);
+        items[7] = item_8;
         inventory.SetItem(8, item_8);
         CreateUI(item_8, 7, false);
-    }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
     }
 
     // Update is called once per frame
@@ -145,11 +145,20 @@ public class Backpack : MonoBehaviour
     {
         if(key >= 60)
         {
-            Item item_ = box.Select(key, ref selectItem, ref select);
+            bool flag = false;
+            Item item_ = box.Select(key, ref selectItem, ref select, ref flag);
             if(item_ != null)
             {
-                // 选择框获取背包中的物品
-                CreateUI(item_, (byte)key, true);
+                if (flag)
+                {
+                    // 如果是存入物品
+                    Storage(item_);
+                }
+                else
+                {
+                    // 选择框获取背包中的物品
+                    CreateUI(item_, (byte)key, true);
+                }
             }
             return;
         }
@@ -160,6 +169,24 @@ public class Backpack : MonoBehaviour
             item.flag = !item.flag;
             SetItem((byte)key, item);
             SetColor(key, item.flag);
+            return;
+        }
+        if(Input.GetKey(KeyCode.LeftControl) && item != null)
+        {
+            // 如果是按下LeftControl键，则将物品移至垃圾桶
+            SetItem(50, item);
+            // 将本格清空
+            SetItem((byte)key, null);
+            return;
+        }
+        if(Input.GetKey(KeyCode.LeftShift) && item != null && !GameObject.Find("UI").GetComponent<UI>().boxFlag)
+        {
+            // 如果是按下LeftShift键并且打开了宝箱界面，则将该格物品存入背包
+            if (box.Storage(item))
+            {
+                // 如果放入成功，将本格清空
+                SetItem((byte)key, null);
+            }
             return;
         }
         if (selectItem != null)
@@ -246,14 +273,29 @@ public class Backpack : MonoBehaviour
         this.transform.GetChild(key).GetComponent<Image>().color = flag ? FlagColor : NotFlag;
     }
 
+    // 存入物品
+    public bool Storage(Item item)
+    {
+        // 找到第一个为空的空格
+        byte key = items.FirstOrDefault(x => x.Value == null).Key;
+        Item item1 = GetItem(key);
+        if (item1 != null)
+        {
+            // 如果当前队列没找到空格
+            // 背包放满了
+            return false;
+        }
+        SetItem(key, item);
+        return true;
+    }
+
     // 脚本结束时
     private void OnDisable()
     {
         if(selectItem != null)
         {
             // 如果在选择框未清空的情况下退出，则找到背包中第一个为空的格子，将选择框中的物体放入并清空选择框
-            byte key = items.FirstOrDefault(x => x.Value == null).Key;
-            SetItem(key, selectItem);
+            Storage(selectItem);
             selectItem = null;
             select.gameObject.SetActive(false);
         }

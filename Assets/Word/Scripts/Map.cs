@@ -15,8 +15,6 @@ namespace Soultia.Voxel
 
         public GameObject player = null;
 
-        //int cnt = 0;
-
 
         //当前是否正在生成Chunk
         private bool spawningChunk = false;
@@ -27,31 +25,20 @@ namespace Soultia.Voxel
             chunkPrefab = Resources.Load("Prefabs/Chunk") as GameObject;
             player = Resources.Load("Prefabs/Player") as GameObject;
             player = Instantiate(player, new Vector3(0, 25, 0), Quaternion.identity);
-            // 修改角色重力，防止角色下落过快
-            //player.GetComponent<PlayController>().gravity = 0f;
-            player.GetComponent<PlayController>().PauseGame();
+            // 暂停角色
             StartCoroutine(SetTrue());
         }
 
         private void Update()
         {
-            //if(cnt < 500)
-            //{
-            //    // 创建初始地图
-            //    //CreateMap(new Vector3(0, 25, 0));
-            //}
-            //else if(cnt == 500)
-            //{
-            //    Time.timeScale = 1f;
-            //}
+
         }
 
         // 恢复游戏
         IEnumerator SetTrue()
         {
             yield return new WaitForSeconds(5);
-            //player.GetComponent<PlayController>().gravity = 9.8f;
-            player.GetComponent<PlayController>().UnPauseGame();
+            this.transform.GetComponent<PauseGameAll>().UnPauseGame();
         }
 
         // 随玩家生成地图

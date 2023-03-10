@@ -9,7 +9,13 @@ public class BoxList : MonoBehaviour
     // 增加宝箱
     public static void AddBox(string key)
     {
-        boxs.Add(key, new Dictionary<byte, Item>());
+        // 初始化50个空格
+        Dictionary<byte, Item> items = new();
+        for(byte i = 0; i < 50; i++)
+        {
+            items[i] = null;
+        }
+        boxs.Add(key, items);
     }
 
     // 删除宝箱

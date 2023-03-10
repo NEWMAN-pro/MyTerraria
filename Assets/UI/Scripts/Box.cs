@@ -61,10 +61,17 @@ public class Box : MonoBehaviour
     }
 
     // 更改选择框
-    public Item Select(int key, ref Item selectItem, ref RectTransform select)
+    public Item Select(int key, ref Item selectItem, ref RectTransform select, ref bool flag)
     {
         key -= 60;
         Item item = GetItem((byte)key);
+        if (Input.GetKey(KeyCode.LeftShift) && item != null)
+        {
+            // 如果是按下LeftShift键，则将该格物品放入背包，并将该格置空
+            SetItem((byte)key, null);
+            flag = true;
+            return item;
+        }
         if (selectItem != null)
         {
             selectItem.flag = false;
@@ -120,6 +127,22 @@ public class Box : MonoBehaviour
             // 再重新绘制
             SetItem(key++, pair.Value);
         }
+    }
+
+    // 存入物品
+    public bool Storage(Item item)
+    {
+        // 找到第一个为空的空格
+        byte key = items.FirstOrDefault(x => x.Value == null).Key;
+        Item item1 = GetItem(key);
+        if(item1 != null)
+        {
+            // 如果当前队列没找到空格
+            // 背包放满了
+            return false;
+        }
+        SetItem(key, item);
+        return true;
     }
 
     private void OnDisable()

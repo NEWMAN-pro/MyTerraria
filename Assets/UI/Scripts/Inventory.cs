@@ -28,7 +28,7 @@ public class Inventory : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     // 获取物品

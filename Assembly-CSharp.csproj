@@ -95,6 +95,7 @@
     <Compile Include="Assets\Word\Scripts\Terrain.cs" />
     <Compile Include="Assets\UI\Scripts\UIScaler.cs" />
     <Compile Include="Assets\UI\Scripts\UI.cs" />
+    <Compile Include="Assets\Other\Scripts\PauseGame.cs" />
     <Compile Include="Assets\LibNoise.Unity-master\Operator\Cache.cs" />
     <Compile Include="Assets\LibNoise.Unity-master\Operator\Rotate.cs" />
     <Compile Include="Assets\LibNoise.Unity-master\Operator\Subtract.cs" />
@@ -112,7 +113,7 @@
     <Compile Include="Assets\LibNoise.Unity-master\Generator\Voronoi.cs" />
     <Compile Include="Assets\LibNoise.Unity-master\Operator\Add.cs" />
     <Compile Include="Assets\LibNoise.Unity-master\Operator\Blend.cs" />
-    <Compile Include="Assets\Other\Scripts\PauseGame.cs" />
+    <Compile Include="Assets\Other\Scripts\PauseGameAll.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\LibNoise.Unity-master\COPYING.txt" />

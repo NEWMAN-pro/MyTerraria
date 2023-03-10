@@ -5,12 +5,17 @@ using UnityEngine;
 public class UI : MonoBehaviour
 {
     bool flag = true;
-    bool boxFlag = true;
+    public bool boxFlag = true;
     // Start is called before the first frame update
     void Start()
     {
         // 隐藏鼠标，并将鼠标固定在中心
         Cursor.lockState = CursorLockMode.Locked;
+        // 初始隐藏UI
+        this.transform.GetChild(1).gameObject.SetActive(false);
+        this.transform.GetChild(2).gameObject.SetActive(false);
+        this.transform.GetChild(3).gameObject.SetActive(false);
+        this.transform.GetChild(4).gameObject.SetActive(false);
     }
 
     // Update is called once per frame
@@ -54,16 +59,17 @@ public class UI : MonoBehaviour
         }
         else
         {
-            Cursor.lockState = CursorLockMode.None;
+            // 将鼠标限制在游戏窗口内
+            Cursor.lockState = CursorLockMode.Confined;
         }
         flag = !flag;
         if (!flag)
         {
-            GameObject.Find("Player").GetComponent<PlayController>().PauseGame();
+            GameObject.Find("Map").GetComponent<PauseGameAll>().OnPauseGame();
         }
         else
         {
-            GameObject.Find("Player").GetComponent<PlayController>().UnPauseGame();
+            GameObject.Find("Map").GetComponent<PauseGameAll>().UnPauseGame();
         }
     }
 }

@@ -39,16 +39,13 @@ public class PlayController : MonoBehaviour
     // 物品栏
     public Inventory inventory;
 
-    // 是否暂停
-    public bool pause = false;
-
     // Start is called before the first frame update
     void Start()
     {
         this.name = "Player";
         velocity.y = -1f;
         inventory = GameObject.Find("Inventory").GetComponent<Inventory>();
-        DrawItem(1);
+        DrawItem();
     }
 
     // Update is called once per frame
@@ -60,10 +57,10 @@ public class PlayController : MonoBehaviour
         if(inventory.selectID < 10 && inventoryID == inventory.selectID)
         {
             // 物品栏物品发生改变，重新绘制手部图案
-            DrawItem(inventory.selectID);
+            DrawItem();
             inventory.selectID = 10;
         }
-        if (pause)
+        if (this.transform.GetComponent<PauseGame>().pause)
         {
             return;
         }
@@ -104,8 +101,18 @@ public class PlayController : MonoBehaviour
         }
         if (Input.GetMouseButtonUp(0))
         {
+            // 鼠标左键抬起时，将第一人称模型的两只手复位
             Transform trans = this.transform.GetChild(3);
             trans.GetComponent<Wobble>().Recovery(trans, Vector3.zero);
+            bool direction = trans.GetComponent<Wobble>().direction;
+            trans = this.transform.GetChild(2);
+            trans.GetComponent<Wobble>().Recovery(trans, Vector3.zero);
+            if(direction == trans.GetComponent<Wobble>().direction)
+            {
+                // 如果两只手方向相同，则重置方向
+                trans.GetComponent<Wobble>().direction = !direction;
+            }
+
             trans = this.transform.GetChild(6).GetChild(0);
             trans.GetComponent<Wobble>().Recovery(trans, new Vector3(-120, 0, 0));
             mouse0Flag = false;
@@ -297,25 +304,39 @@ public class PlayController : MonoBehaviour
         }
     }
 
-    // 获取按下的数字键
+    // 更改选择的物品
     public void GetNumber()
     {
+        // 鼠标中键滚动切换
+        if (Input.GetAxis("Mouse ScrollWheel") < 0)
+        {
+            inventoryID = (byte)(inventoryID == 9 ? (byte)0 : inventoryID + (byte)1);
+            DrawItem();
+            return;
+        }
+        else if (Input.GetAxis("Mouse ScrollWheel") > 0)
+        {
+            inventoryID = (byte)(inventoryID == 0 ? (byte)9 : inventoryID - (byte)1);
+            DrawItem();
+            return;
+        }
+        // 数字键切换
         for(byte i = 0; i <= 9; i++)
         {
             if(Input.GetKey(KeyCode.Alpha0 + i))
             {
-                DrawItem(i);
+                inventoryID = i;
+                DrawItem();
                 return;
             }
         }
     }
 
     // 绘制手部图案
-    public void DrawItem(byte i)
+    public void DrawItem()
     {
-        item = inventory.GetItem(i);
-        inventory.SetSelect(i);
-        inventoryID = i;
+        item = inventory.GetItem(inventoryID);
+        inventory.SetSelect(inventoryID);
         if (item == null)
         {
             this.transform.GetChild(6).GetChild(0).GetChild(1).GetComponent<CreateUI>().CreateBlank();
@@ -324,15 +345,5 @@ public class PlayController : MonoBehaviour
         }
         this.transform.GetChild(6).GetChild(0).GetChild(1).GetComponent<CreateUI>().CreateBlockUI(BlockList.GetBlock(item.ID), true, 0.1f, Vector3.zero);
         this.transform.GetChild(3).GetChild(1).GetComponent<CreateUI>().CreateBlockUI(BlockList.GetBlock(item.ID), true, 0.1f, Vector3.zero);
-    }
-
-    public void PauseGame()
-    {
-        pause = true;
-    }
-
-    public void UnPauseGame()
-    {
-        pause = false;
     }
 }

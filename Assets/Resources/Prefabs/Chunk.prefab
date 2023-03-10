@@ -118,4 +118,5 @@ MonoBehaviour:
   fluctuation: 4
   destroy: 0
   seed: 1234
-  treeDensity: 10
+  treeDensity: 100
+  player: {fileID: 0}

@@ -269,8 +269,8 @@ namespace Soultia.Voxel
         // 生成一棵树
         public void CreateTree(int x, int y, int z)
         {
-            int treeFlag = Random(treeDensity);
-            if (treeFlag == 0 && y < 10 && x > 0 && x < 15 && z > 0 && z < 15)
+            int treeFlag = Random(treeDensity, 1);
+            if (treeFlag == 0 && y < 10 && x > 1 && x < 14 && z > 1 && z < 14)
             {
                 for(int i = 0; i < 3; i++)
                 {
@@ -290,15 +290,25 @@ namespace Soultia.Voxel
                 }
                 // 生成树叶
                 blocks[x, y + 6, z] = 7;
-                for (int i = 0; i < 3; i++)
+                for (int i = 0; i < 5; i++)
                 {
-                    for (int j = 0; j < 3; j++)
+                    for (int j = 0; j < 5; j++)
                     {
-                        if (!(i == j && i == 1))
+                        if (!(i == j && i == 2))
                         {
-                            if (blocks[x - 1 + i, y + 6, z - 1 + j] == 0) blocks[x - 1 + i, y + 6, z - 1 + j] = 7;
-                            if (blocks[x - 1 + i, y + 5, z - 1 + j] == 0) blocks[x - 1 + i, y + 5, z - 1 + j] = 7;
-                            if (blocks[x - 1 + i, y + 4, z - 1 + j] == 0) blocks[x - 1 + i, y + 4, z - 1 + j] = 7;
+                            for(int ii = 4; ii < 7; ii++)
+                            {
+                                if (i == 4 || j == 4 || i == 0 || j == 0)
+                                {
+                                    // 随机生成最外圈的树叶
+                                    int leaf = Random(5, i + j + i * j * ii + ii);
+                                    if (leaf == 0 || leaf == 1)
+                                    {
+                                        continue;
+                                    }
+                                }
+                                if (blocks[x - 2 + i, y + ii, z - 2 + j] == 0) blocks[x - 2 + i, y + ii, z - 2 + j] = 7;
+                            }
                         }
                     }
                 }
@@ -632,11 +642,11 @@ namespace Soultia.Voxel
         }
 
         // 生成随机数
-        public int Random(int max)
+        public int Random(int max, int increment)
         {
             System.Random rand = new System.Random(seed);
             int flag = rand.Next(0, max);
-            seed = seed + flag + 1;
+            seed = seed + flag + (int)(Time.unscaledTime * 10000 * increment);
             return flag;
         }
     }
