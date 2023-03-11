@@ -19,6 +19,7 @@ public class Play : MonoBehaviour
 
     public void ToScenes()
     {
+        Debug.Log("YES");
         SceneManager.LoadScene(1);
     }
 }

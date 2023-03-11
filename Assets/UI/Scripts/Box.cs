@@ -61,15 +61,23 @@ public class Box : MonoBehaviour
     }
 
     // 更改选择框
-    public Item Select(int key, ref Item selectItem, ref RectTransform select, ref bool flag)
+    public Item Select(int key, ref Item selectItem, ref RectTransform select, ref int flag)
     {
         key -= 60;
         Item item = GetItem((byte)key);
-        if (Input.GetKey(KeyCode.LeftShift) && item != null)
+        if (Input.GetKey(KeyCode.LeftShift) && item != null && !item.flag)
         {
-            // 如果是按下LeftShift键，则将该格物品放入背包，并将该格置空
+            // 如果是按下LeftShift键，并且该物品未被标记，则将该格物品放入背包，并将该格置空
             SetItem((byte)key, null);
-            flag = true;
+            flag = 1;
+            return item;
+        }
+        if (Input.GetKey(KeyCode.LeftControl) && item != null && !item.flag)
+        {
+            // 如果是按下LeftControl键，并且该物品未被标记，则将物品移至垃圾桶
+            // 将本格清空
+            flag = 2;
+            SetItem((byte)key, null);
             return item;
         }
         if (selectItem != null)

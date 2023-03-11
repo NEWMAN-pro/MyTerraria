@@ -145,14 +145,19 @@ public class Backpack : MonoBehaviour
     {
         if(key >= 60)
         {
-            bool flag = false;
+            int flag = 0;
             Item item_ = box.Select(key, ref selectItem, ref select, ref flag);
             if(item_ != null)
             {
-                if (flag)
+                if (flag == 1)
                 {
                     // 如果是存入物品
                     Storage(item_);
+                }
+                else if(flag == 2)
+                {
+                    // 如果是删除物品
+                    SetItem(50, item_);
                 }
                 else
                 {
@@ -171,17 +176,17 @@ public class Backpack : MonoBehaviour
             SetColor(key, item.flag);
             return;
         }
-        if(Input.GetKey(KeyCode.LeftControl) && item != null)
+        if(Input.GetKey(KeyCode.LeftControl) && item != null && !item.flag && key != 50)
         {
-            // 如果是按下LeftControl键，则将物品移至垃圾桶
+            // 如果是按下LeftControl键，并且该物品未被标记，且该格不是垃圾桶，则将物品移至垃圾桶
             SetItem(50, item);
             // 将本格清空
             SetItem((byte)key, null);
             return;
         }
-        if(Input.GetKey(KeyCode.LeftShift) && item != null && !GameObject.Find("UI").GetComponent<UI>().boxFlag)
+        if(Input.GetKey(KeyCode.LeftShift) && item != null && !item.flag && !GameObject.Find("UI").GetComponent<UI>().boxFlag)
         {
-            // 如果是按下LeftShift键并且打开了宝箱界面，则将该格物品存入背包
+            // 如果是按下LeftShift键并且打开了宝箱界面，并且该物品未被标记，则将该格物品存入背包
             if (box.Storage(item))
             {
                 // 如果放入成功，将本格清空
