@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class BoxList : MonoBehaviour
 {
@@ -21,11 +22,6 @@ public class BoxList : MonoBehaviour
     // É¾³ý±¦Ïä
     public static void DelectBox(string key)
     {
-        if(boxs[key].Count != 0)
-        {
-            Debug.Log("¸Ã±¦Ïä²»Îª¿Õ");
-            return;
-        }
         boxs.Remove(key);
     }
 
@@ -39,5 +35,11 @@ public class BoxList : MonoBehaviour
     public static void SetBox(string key, Dictionary<byte, Item> items)
     {
         boxs[key] = items;
+    }
+
+    // ÅÐ¶Ï±¦ÏäÊÇ·ñÎª¿Õ
+    public static bool GetBoxEmpty(string key)
+    {
+        return GetBox(key).Values.All(v => ReferenceEquals(v, null));
     }
 }

@@ -16,7 +16,7 @@ public class Wobble : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //Move(40f, 20, this.transform, transform.position + new Vector3(0, 1, 0), transform.forward);
+
     }
 
     // trans物体绕过点point的axis摆动，速度为speed, 最大角度为range

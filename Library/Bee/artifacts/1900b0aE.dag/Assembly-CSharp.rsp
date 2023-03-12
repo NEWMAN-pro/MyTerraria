@@ -396,6 +396,7 @@
 "Assets/Other/Scripts/Vector3i.cs"
 "Assets/Other/Scripts/Vector3ii.cs"
 "Assets/Other/Scripts/Voronoi.cs"
+"Assets/Player/Scripts/AnimationState.cs"
 "Assets/Player/Scripts/CameraMove.cs"
 "Assets/Player/Scripts/PlayController.cs"
 "Assets/Player/Scripts/Wobble.cs"

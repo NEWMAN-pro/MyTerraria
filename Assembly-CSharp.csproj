@@ -114,6 +114,7 @@
     <Compile Include="Assets\LibNoise.Unity-master\Generator\Voronoi.cs" />
     <Compile Include="Assets\LibNoise.Unity-master\Operator\Add.cs" />
     <Compile Include="Assets\LibNoise.Unity-master\Operator\Blend.cs" />
+    <Compile Include="Assets\Player\Scripts\AnimationState.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\LibNoise.Unity-master\COPYING.txt" />

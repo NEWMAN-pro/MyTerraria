@@ -79,6 +79,18 @@ namespace Soultia.Voxel
             }
         }
 
+        private void OnEnable()
+        {
+            if(isFinished)
+            {
+                // 防止加载中断出现不加载情况
+                isWorking = true;
+                mesh = new Mesh();
+                mesh.name = "Chunk";
+                StartCoroutine(CreateMesh());
+            }
+        }
+
         private void Update()
         {
             if (isWorking == false && isFinished == false)
@@ -254,7 +266,7 @@ namespace Soultia.Voxel
             else
             {
                 //如果当前方块的id是0，那的确是透明的
-                return this.blocks[x, y, z] == 0;
+                return this.blocks[x, y, z] == 0 || BlockList.GetBlock(this.blocks[x, y, z]).lucency;
             }
         }
 
@@ -581,7 +593,7 @@ namespace Soultia.Voxel
             }
 
             // 如果该位置是宝箱且宝箱不为空
-            if(blocks[chunkPosition.x, chunkPosition.y, chunkPosition.z] == 8 && BoxList.GetBox(this.transform.name + chunkPosition.ToString()).Count != 0)
+            if(blocks[chunkPosition.x, chunkPosition.y, chunkPosition.z] == 8 && !BoxList.GetBoxEmpty(this.transform.name + chunkPosition.ToString()))
             {
                 Debug.Log("D该宝箱不为空");
                 return 4;

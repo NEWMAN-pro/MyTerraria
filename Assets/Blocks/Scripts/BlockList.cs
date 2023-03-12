@@ -36,6 +36,7 @@ public class BlockList : MonoBehaviour
 
         // Ê÷Ò¶
         Block leaf = new Block(7, "Leaf", 0.5f, 4, 29);
+        leaf.lucency = true;
         blocks.Add(leaf.id, leaf);
 
         // ±¦Ïä

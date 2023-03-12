@@ -30,8 +30,8 @@ public class Block : Item
     // 方向（指的是前面所面朝的方向）
     public BlockDirection direction = BlockDirection.Front;
 
-    // 宝箱编号，如果为-1则不是宝箱
-    public int boxID = -1;
+    // 是否是透明方块
+    public bool lucency = false;
 
     //前面贴图的坐标
     public byte textureFrontX;

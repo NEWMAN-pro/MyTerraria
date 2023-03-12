@@ -8,7 +8,6 @@ using System.Text.RegularExpressions;
 
 public class PlayController : MonoBehaviour
 {
-    public GameObject Sphere;
     public CameraMove cameraMove;
     public CharacterController characterController;
     // 移动速度
@@ -31,8 +30,6 @@ public class PlayController : MonoBehaviour
     Ray ray;
     // 射线发射点
     public Vector3 rayPosi;
-    // 是否按住鼠标左键
-    public bool mouse0Flag = false;
     // 当前选择的物品ID
     public Item item;
     public byte inventoryID = 1;
@@ -84,38 +81,19 @@ public class PlayController : MonoBehaviour
         {
             // 放置方块
             CreateBlock();
+            // 单击动画
+            this.GetComponent<AnimationState>().SetExcavateOne();
         }
         if (Input.GetMouseButton(0))
         {
-            Transform trans = this.transform.GetChild(3);
-            if (!mouse0Flag)
-            {
-                // 开始按下时重置手臂位置
-                trans.GetComponent<Wobble>().Recovery(trans, Vector3.zero);
-            }
-            mouse0Flag = true;
-            trans.GetComponent<Wobble>().Move(160, -90, -20, trans, trans.position, trans.right);
-            trans = this.transform.GetChild(6).GetChild(0);
-            trans.GetComponent<Wobble>().Move(160, -20, 40, trans, trans.position, trans.right);
+            // 切换持续攻击动画
+            this.GetComponent<AnimationState>().SetExcavate(true);
             DestroyBlock();
         }
         if (Input.GetMouseButtonUp(0))
         {
-            // 鼠标左键抬起时，将第一人称模型的两只手复位
-            Transform trans = this.transform.GetChild(3);
-            trans.GetComponent<Wobble>().Recovery(trans, Vector3.zero);
-            bool direction = trans.GetComponent<Wobble>().direction;
-            trans = this.transform.GetChild(2);
-            trans.GetComponent<Wobble>().Recovery(trans, Vector3.zero);
-            if(direction == trans.GetComponent<Wobble>().direction)
-            {
-                // 如果两只手方向相同，则重置方向
-                trans.GetComponent<Wobble>().direction = !direction;
-            }
-
-            trans = this.transform.GetChild(6).GetChild(0);
-            trans.GetComponent<Wobble>().Recovery(trans, new Vector3(-120, 0, 0));
-            mouse0Flag = false;
+            // 停止持续攻击动画
+            this.GetComponent<AnimationState>().SetExcavate(false);
             // 停止销毁，置空
             LastTrans = null;
         }
@@ -160,36 +138,13 @@ public class PlayController : MonoBehaviour
 
         if(velocity.x != 0 || velocity.z != 0)
         {
-            // 摆动腿部
-            Transform trans = this.transform.GetChild(5);
-            trans.GetComponent<Wobble>().Move(160, -40, 40, trans.transform, trans.position, trans.right);
-            trans = this.transform.GetChild(4);
-            trans.GetComponent<Wobble>().Move(160, -40, 40, trans.transform, trans.position, trans.right);
-            // 摆动手部
-            if (!mouse0Flag)
-            {
-                // 如果鼠标左键按下，则停止行走摆动
-                trans = this.transform.GetChild(3);
-                trans.GetComponent<Wobble>().Move(160, -40, 40, trans.transform, trans.position, trans.right);
-            }
-            trans = this.transform.GetChild(2);
-            trans.GetComponent<Wobble>().Move(160, -40, 40, trans.transform, trans.position, trans.right);
+            // 切换行走
+            this.GetComponent<AnimationState>().SetWalk(true);
         }
         else
         {
-            // 复位腿部
-            Transform trans = this.transform.GetChild(5);
-            trans.GetComponent<Wobble>().Recovery(trans.transform, Vector3.zero);
-            trans = this.transform.GetChild(4);
-            trans.GetComponent<Wobble>().Recovery(trans.transform, Vector3.zero);
-            // 复位手部
-            if (!mouse0Flag)
-            {
-                trans = this.transform.GetChild(3);
-                trans.GetComponent<Wobble>().Recovery(trans.transform, Vector3.zero);
-            }
-            trans = this.transform.GetChild(2);
-            trans.GetComponent<Wobble>().Recovery(trans.transform, Vector3.zero);
+            //  停止行走
+            this.GetComponent<AnimationState>().SetWalk(false);
         }
     }
 
@@ -198,6 +153,7 @@ public class PlayController : MonoBehaviour
     {
         if (characterController.isGrounded)
         {
+            // 只有角色在地面才能跳跃
             if (Input.GetButtonDown("Jump"))
             {
                 velocity.y = Mathf.Sqrt(2 * gravity * jumpHeight);
@@ -211,6 +167,15 @@ public class PlayController : MonoBehaviour
         else
         {
             velocity.y -= gravity * Time.deltaTime;
+        }
+        
+        if(velocity.y == -1)
+        {
+            this.GetComponent<AnimationState>().SetJump(false);
+        }
+        else
+        {
+            this.GetComponent<AnimationState>().SetJump(true);
         }
     }
 
