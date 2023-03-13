@@ -7,7 +7,7 @@ using System.Linq;
 public class Backpack : MonoBehaviour
 {
     // 物品队列
-    public Dictionary<byte, Item> items = new Dictionary<byte, Item>();
+    public Dictionary<byte, Item> items = new();
     // 物品栏
     public Inventory inventory;
     // 宝箱

@@ -9,11 +9,17 @@ namespace Soultia.Voxel
     {
         public static Map instance;
 
+        // 区块
         public static GameObject chunkPrefab;
 
+        // 区块队列
         public Dictionary<Vector3i, GameObject> chunks = new Dictionary<Vector3i, GameObject>();
 
-        public GameObject player = null;
+        // 玩家
+        public static GameObject player;
+
+        // 销毁方块
+        public static GameObject destory;
 
 
         //当前是否正在生成Chunk
@@ -25,7 +31,9 @@ namespace Soultia.Voxel
             chunkPrefab = Resources.Load("Prefabs/Chunk") as GameObject;
             player = Resources.Load("Prefabs/Player") as GameObject;
             player = Instantiate(player, new Vector3(0, 25, 0), Quaternion.identity);
-            // 暂停角色
+            destory = Resources.Load("Prefabs/Destory") as GameObject;
+            destory = Instantiate(destory, Vector3.zero, Quaternion.identity);
+            player.GetComponent<PlayController>().destory = destory;
             StartCoroutine(SetTrue());
         }
 

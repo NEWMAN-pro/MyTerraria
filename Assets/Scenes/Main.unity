@@ -180,6 +180,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   size: 60
   posi: {x: 0, y: -0.8, z: 0}
+  add: 0
+  fps: 30
 --- !u!23 &21428434
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -509,6 +511,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   size: 60
   posi: {x: 0, y: -0.8, z: 0}
+  add: 0
+  fps: 30
 --- !u!23 &49973636
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -686,6 +690,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   size: 60
   posi: {x: 0, y: -0.8, z: 0}
+  add: 0
+  fps: 30
 --- !u!23 &54982330
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -901,6 +907,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   size: 60
   posi: {x: 0, y: -0.8, z: 0}
+  add: 0
+  fps: 30
 --- !u!23 &61691584
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1222,6 +1230,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   size: 60
   posi: {x: 0, y: -0.8, z: 0}
+  add: 0
+  fps: 30
 --- !u!23 &82821589
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1475,6 +1485,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   size: 60
   posi: {x: 0, y: -0.8, z: 0}
+  add: 0
+  fps: 30
 --- !u!23 &88120775
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1690,6 +1702,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   size: 60
   posi: {x: 0, y: -0.8, z: 0}
+  add: 0
+  fps: 30
 --- !u!23 &98666999
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1943,6 +1957,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   size: 60
   posi: {x: 0, y: -0.8, z: 0}
+  add: 0
+  fps: 30
 --- !u!23 &106961393
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -2120,6 +2136,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   size: 60
   posi: {x: 0, y: -0.8, z: 0}
+  add: 0
+  fps: 30
 --- !u!23 &151221090
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -2335,6 +2353,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   size: 60
   posi: {x: 0, y: -0.8, z: 0}
+  add: 0
+  fps: 30
 --- !u!23 &169667543
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -2550,6 +2570,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   size: 60
   posi: {x: 0, y: -0.8, z: 0}
+  add: 0
+  fps: 30
 --- !u!23 &259776768
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -2765,6 +2787,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   size: 60
   posi: {x: 0, y: -0.8, z: 0}
+  add: 0
+  fps: 30
 --- !u!23 &260351483
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -2980,6 +3004,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   size: 60
   posi: {x: 0, y: -0.8, z: 0}
+  add: 0
+  fps: 30
 --- !u!23 &285194108
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -3410,6 +3436,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   size: 60
   posi: {x: 0, y: -0.8, z: 0}
+  add: 0
+  fps: 30
 --- !u!23 &320687916
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -3625,6 +3653,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   size: 60
   posi: {x: 0, y: -0.8, z: 0}
+  add: 0
+  fps: 30
 --- !u!23 &322461034
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -3802,6 +3832,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   size: 60
   posi: {x: 0, y: -0.8, z: 0}
+  add: 0
+  fps: 30
 --- !u!23 &373187192
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -4153,6 +4185,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   size: 60
   posi: {x: 0, y: -0.8, z: 0}
+  add: 0
+  fps: 30
 --- !u!23 &380669812
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -4273,6 +4307,37 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!1 &383226245
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 383226246}
+  m_Layer: 0
+  m_Name: Drops
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &383226246
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 383226245}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -2.9570675, y: 2.0829563, z: -5.679491}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &383772306
 GameObject:
   m_ObjectHideFlags: 0
@@ -4444,6 +4509,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   size: 60
   posi: {x: 0, y: -0.8, z: 0}
+  add: 0
+  fps: 30
 --- !u!23 &388745736
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -4659,6 +4726,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   size: 60
   posi: {x: 0, y: -0.8, z: 0}
+  add: 0
+  fps: 30
 --- !u!23 &388896352
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -4836,6 +4905,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   size: 60
   posi: {x: 0, y: -0.8, z: 0}
+  add: 0
+  fps: 30
 --- !u!23 &412306194
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -5089,6 +5160,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   size: 60
   posi: {x: 0, y: -0.8, z: 0}
+  add: 0
+  fps: 30
 --- !u!23 &435090184
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -5367,6 +5440,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   size: 0
   posi: {x: 0, y: 0, z: 0}
+  add: 0
+  fps: 30
 --- !u!1 &439750518
 GameObject:
   m_ObjectHideFlags: 0
@@ -5424,6 +5499,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   size: 60
   posi: {x: 0, y: -0.8, z: 0}
+  add: 0
+  fps: 30
 --- !u!23 &439750521
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -5719,6 +5796,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   size: 60
   posi: {x: 0, y: -0.8, z: 0}
+  add: 0
+  fps: 30
 --- !u!23 &470509860
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -5934,6 +6013,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   size: 60
   posi: {x: 0, y: -0.8, z: 0}
+  add: 0
+  fps: 30
 --- !u!23 &499261954
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -6149,6 +6230,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   size: 60
   posi: {x: 0, y: -0.8, z: 0}
+  add: 0
+  fps: 30
 --- !u!23 &537583493
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -6402,6 +6485,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   size: 60
   posi: {x: 0, y: -0.8, z: 0}
+  add: 0
+  fps: 30
 --- !u!23 &545379373
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -6579,6 +6664,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   size: 60
   posi: {x: 0, y: -0.8, z: 0}
+  add: 0
+  fps: 30
 --- !u!23 &564558291
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -6975,6 +7062,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   size: 0
   posi: {x: 0, y: 0, z: 0}
+  add: 0
+  fps: 30
 --- !u!1 &605030585
 GameObject:
   m_ObjectHideFlags: 0
@@ -7069,6 +7158,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   size: 0
   posi: {x: 0, y: 0, z: 0}
+  add: 0
+  fps: 30
 --- !u!23 &605030590
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -7227,6 +7318,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   size: 0
   posi: {x: 0, y: 0, z: 0}
+  add: 0
+  fps: 30
 --- !u!23 &606848292
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -7424,6 +7517,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   size: 60
   posi: {x: 0, y: -0.8, z: 0}
+  add: 0
+  fps: 30
 --- !u!23 &630929549
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -7740,6 +7835,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   size: 0
   posi: {x: 0, y: 0, z: 0}
+  add: 0
+  fps: 30
 --- !u!1 &660579970
 GameObject:
   m_ObjectHideFlags: 0
@@ -7834,6 +7931,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   size: 50
   posi: {x: 0, y: -0.9, z: 0}
+  add: 0
+  fps: 30
 --- !u!23 &660579975
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -7954,6 +8053,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   size: 0
   posi: {x: 0, y: 0, z: 0}
+  add: 0
+  fps: 30
 --- !u!64 &704455634
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -8207,6 +8308,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   size: 60
   posi: {x: 0, y: -0.8, z: 0}
+  add: 0
+  fps: 30
 --- !u!23 &743765479
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -8460,6 +8563,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   size: 60
   posi: {x: 0, y: -0.8, z: 0}
+  add: 0
+  fps: 30
 --- !u!23 &767566547
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -8738,6 +8843,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   size: 0
   posi: {x: 0, y: 0, z: 0}
+  add: 0
+  fps: 30
 --- !u!1 &778541846
 GameObject:
   m_ObjectHideFlags: 0
@@ -8795,6 +8902,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   size: 60
   posi: {x: 0, y: -0.8, z: 0}
+  add: 0
+  fps: 30
 --- !u!23 &778541849
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -9010,6 +9119,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   size: 60
   posi: {x: 0, y: -0.8, z: 0}
+  add: 0
+  fps: 30
 --- !u!23 &787945276
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -9263,6 +9374,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   size: 60
   posi: {x: 0, y: -0.8, z: 0}
+  add: 0
+  fps: 30
 --- !u!23 &858032667
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -9440,6 +9553,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   size: 60
   posi: {x: 0, y: -0.8, z: 0}
+  add: 0
+  fps: 30
 --- !u!23 &881552899
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -9693,6 +9808,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   size: 60
   posi: {x: 0, y: -0.8, z: 0}
+  add: 0
+  fps: 30
 --- !u!23 &907604794
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -9870,6 +9987,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   size: 60
   posi: {x: 0, y: -0.8, z: 0}
+  add: 0
+  fps: 30
 --- !u!23 &908314033
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -10123,6 +10242,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   size: 60
   posi: {x: 0, y: -0.8, z: 0}
+  add: 0
+  fps: 30
 --- !u!23 &914009849
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -10338,6 +10459,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   size: 60
   posi: {x: 0, y: -0.8, z: 0}
+  add: 0
+  fps: 30
 --- !u!23 &931977769
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -10595,6 +10718,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   size: 60
   posi: {x: 0, y: -0.8, z: 0}
+  add: 0
+  fps: 30
 --- !u!23 &959856006
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -10894,6 +11019,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   size: 60
   posi: {x: 0, y: -0.8, z: 0}
+  add: 0
+  fps: 30
 --- !u!23 &966477805
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -11109,6 +11236,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   size: 60
   posi: {x: 0, y: -0.8, z: 0}
+  add: 0
+  fps: 30
 --- !u!23 &970488332
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -11361,6 +11490,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   size: 0
   posi: {x: 0, y: 0, z: 0}
+  add: 0
+  fps: 30
 --- !u!23 &972690561
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -11482,6 +11613,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   size: 60
   posi: {x: 0, y: -0.8, z: 0}
+  add: 0
+  fps: 30
 --- !u!23 &1012504378
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -11697,6 +11830,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   size: 60
   posi: {x: 0, y: -0.8, z: 0}
+  add: 0
+  fps: 30
 --- !u!23 &1023152757
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -11985,6 +12120,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   size: 60
   posi: {x: 0, y: -0.8, z: 0}
+  add: 0
+  fps: 30
 --- !u!23 &1043226954
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -12200,6 +12337,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   size: 60
   posi: {x: 0, y: -0.8, z: 0}
+  add: 0
+  fps: 30
 --- !u!23 &1053619412
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -12415,6 +12554,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   size: 60
   posi: {x: 0, y: -0.8, z: 0}
+  add: 0
+  fps: 30
 --- !u!23 &1113706012
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -12630,6 +12771,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   size: 60
   posi: {x: 0, y: -0.8, z: 0}
+  add: 0
+  fps: 30
 --- !u!23 &1145298306
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -12883,6 +13026,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   size: 60
   posi: {x: 0, y: -0.8, z: 0}
+  add: 0
+  fps: 30
 --- !u!23 &1147014470
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -13034,7 +13179,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4e88a665b58ce6438ee4eee57e169ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
 --- !u!4 &1177481367
 Transform:
   m_ObjectHideFlags: 0
@@ -13132,6 +13276,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   size: 60
   posi: {x: 0, y: -0.8, z: 0}
+  add: 0
+  fps: 30
 --- !u!23 &1186002935
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -13385,6 +13531,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   size: 60
   posi: {x: 0, y: -0.8, z: 0}
+  add: 0
+  fps: 30
 --- !u!23 &1259349482
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -13562,6 +13710,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   size: 60
   posi: {x: 0, y: -0.8, z: 0}
+  add: 0
+  fps: 30
 --- !u!23 &1272680061
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -13815,6 +13965,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   size: 60
   posi: {x: 0, y: -0.8, z: 0}
+  add: 0
+  fps: 30
 --- !u!23 &1284842139
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -14155,6 +14307,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   size: 60
   posi: {x: 0, y: -0.8, z: 0}
+  add: 0
+  fps: 30
 --- !u!23 &1293378332
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -14370,6 +14524,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   size: 60
   posi: {x: 0, y: -0.8, z: 0}
+  add: 0
+  fps: 30
 --- !u!23 &1323717159
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -14585,6 +14741,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   size: 60
   posi: {x: 0, y: -0.8, z: 0}
+  add: 0
+  fps: 30
 --- !u!23 &1331043010
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -14800,6 +14958,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   size: 60
   posi: {x: 0, y: -0.8, z: 0}
+  add: 0
+  fps: 30
 --- !u!23 &1334386741
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -15251,6 +15411,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   size: 60
   posi: {x: 0, y: -0.8, z: 0}
+  add: 0
+  fps: 30
 --- !u!23 &1407571985
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -15466,6 +15628,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   size: 60
   posi: {x: 0, y: -0.8, z: 0}
+  add: 0
+  fps: 30
 --- !u!23 &1439617119
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -15719,6 +15883,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   size: 60
   posi: {x: 0, y: -0.8, z: 0}
+  add: 0
+  fps: 30
 --- !u!23 &1441627522
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -15934,6 +16100,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   size: 60
   posi: {x: 0, y: -0.8, z: 0}
+  add: 0
+  fps: 30
 --- !u!23 &1443310366
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -16149,6 +16317,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   size: 60
   posi: {x: 0, y: -0.8, z: 0}
+  add: 0
+  fps: 30
 --- !u!23 &1446229246
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -16326,6 +16496,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   size: 60
   posi: {x: 0, y: -0.8, z: 0}
+  add: 0
+  fps: 30
 --- !u!23 &1458372631
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -16579,6 +16751,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   size: 60
   posi: {x: 0, y: -0.8, z: 0}
+  add: 0
+  fps: 30
 --- !u!23 &1465580539
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -16794,6 +16968,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   size: 60
   posi: {x: 0, y: -0.8, z: 0}
+  add: 0
+  fps: 30
 --- !u!23 &1475216049
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -17009,6 +17185,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   size: 60
   posi: {x: 0, y: -0.8, z: 0}
+  add: 0
+  fps: 30
 --- !u!23 &1491625873
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -17186,6 +17364,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   size: 60
   posi: {x: 0, y: -0.8, z: 0}
+  add: 0
+  fps: 30
 --- !u!23 &1495013128
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -17439,6 +17619,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   size: 60
   posi: {x: 0, y: -0.8, z: 0}
+  add: 0
+  fps: 30
 --- !u!23 &1506416956
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -17654,6 +17836,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   size: 60
   posi: {x: 0, y: -0.8, z: 0}
+  add: 0
+  fps: 30
 --- !u!23 &1513092250
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -18165,6 +18349,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   size: 60
   posi: {x: 0, y: -0.8, z: 0}
+  add: 0
+  fps: 30
 --- !u!23 &1533356610
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -18342,6 +18528,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   size: 60
   posi: {x: 0, y: -0.8, z: 0}
+  add: 0
+  fps: 30
 --- !u!23 &1534608534
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -18595,6 +18783,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   size: 60
   posi: {x: 0, y: -0.8, z: 0}
+  add: 0
+  fps: 30
 --- !u!23 &1536165620
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -18810,6 +19000,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   size: 60
   posi: {x: 0, y: -0.8, z: 0}
+  add: 0
+  fps: 30
 --- !u!23 &1538915706
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -19206,6 +19398,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   size: 0
   posi: {x: 0, y: 0, z: 0}
+  add: 0
+  fps: 30
 --- !u!1 &1597351278
 GameObject:
   m_ObjectHideFlags: 0
@@ -19263,6 +19457,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   size: 60
   posi: {x: 0, y: -0.8, z: 0}
+  add: 0
+  fps: 30
 --- !u!23 &1597351281
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -19478,6 +19674,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   size: 60
   posi: {x: 0, y: -0.8, z: 0}
+  add: 0
+  fps: 30
 --- !u!23 &1602820118
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -19807,6 +20005,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   size: 60
   posi: {x: 0, y: -0.8, z: 0}
+  add: 0
+  fps: 30
 --- !u!23 &1610461564
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -19984,6 +20184,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   size: 60
   posi: {x: 0, y: -0.8, z: 0}
+  add: 0
+  fps: 30
 --- !u!23 &1613258053
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -20199,6 +20401,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   size: 60
   posi: {x: 0, y: -0.8, z: 0}
+  add: 0
+  fps: 30
 --- !u!23 &1618173286
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -20414,6 +20618,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   size: 60
   posi: {x: 0, y: -0.8, z: 0}
+  add: 0
+  fps: 30
 --- !u!23 &1626305663
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -20667,6 +20873,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   size: 60
   posi: {x: 0, y: -0.8, z: 0}
+  add: 0
+  fps: 30
 --- !u!23 &1630654869
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -20844,6 +21052,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   size: 60
   posi: {x: 0, y: -0.8, z: 0}
+  add: 0
+  fps: 30
 --- !u!23 &1641699743
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -21059,6 +21269,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   size: 60
   posi: {x: 0, y: -0.8, z: 0}
+  add: 0
+  fps: 30
 --- !u!23 &1648577183
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -21312,6 +21524,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   size: 60
   posi: {x: 0, y: -0.8, z: 0}
+  add: 0
+  fps: 30
 --- !u!23 &1655039936
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -21527,6 +21741,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   size: 60
   posi: {x: 0, y: -0.8, z: 0}
+  add: 0
+  fps: 30
 --- !u!23 &1672255440
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -21742,6 +21958,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   size: 60
   posi: {x: 0, y: -0.8, z: 0}
+  add: 0
+  fps: 30
 --- !u!23 &1704892480
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -22094,6 +22312,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   size: 60
   posi: {x: 0, y: -0.8, z: 0}
+  add: 0
+  fps: 30
 --- !u!23 &1782294349
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -22309,6 +22529,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   size: 60
   posi: {x: 0, y: -0.8, z: 0}
+  add: 0
+  fps: 30
 --- !u!23 &1849170609
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -22486,6 +22708,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   size: 60
   posi: {x: 0, y: -0.8, z: 0}
+  add: 0
+  fps: 30
 --- !u!23 &1854034677
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -22701,6 +22925,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   size: 60
   posi: {x: 0, y: -0.8, z: 0}
+  add: 0
+  fps: 30
 --- !u!23 &1882884082
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -22889,7 +23115,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cdc8cfb476f1181428503c2899d5f9f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sprite: []
   fps: 3
+  spriteRenderer: {fileID: 0}
 --- !u!212 &1885058777
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -23014,6 +23242,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   size: 60
   posi: {x: 0, y: -0.8, z: 0}
+  add: 0
+  fps: 30
 --- !u!23 &1886306479
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -23267,6 +23497,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   size: 60
   posi: {x: 0, y: -0.8, z: 0}
+  add: 0
+  fps: 30
 --- !u!23 &1917836263
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -23444,6 +23676,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   size: 60
   posi: {x: 0, y: -0.8, z: 0}
+  add: 0
+  fps: 30
 --- !u!23 &1920168352
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -23697,6 +23931,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   size: 60
   posi: {x: 0, y: -0.8, z: 0}
+  add: 0
+  fps: 30
 --- !u!23 &1938445139
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -23912,6 +24148,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   size: 60
   posi: {x: 0, y: -0.8, z: 0}
+  add: 0
+  fps: 30
 --- !u!23 &1940913807
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -24127,6 +24365,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   size: 60
   posi: {x: 0, y: -0.8, z: 0}
+  add: 0
+  fps: 30
 --- !u!23 &1952846659
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -24304,6 +24544,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   size: 60
   posi: {x: 0, y: -0.8, z: 0}
+  add: 0
+  fps: 30
 --- !u!23 &1963091624
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -24519,6 +24761,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   size: 60
   posi: {x: 0, y: -0.8, z: 0}
+  add: 0
+  fps: 30
 --- !u!23 &1966555868
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -24835,6 +25079,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   size: 0
   posi: {x: 0, y: 0, z: 0}
+  add: 0
+  fps: 30
 --- !u!1 &2050139601
 GameObject:
   m_ObjectHideFlags: 0
@@ -24892,6 +25138,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   size: 60
   posi: {x: 0, y: -0.8, z: 0}
+  add: 0
+  fps: 30
 --- !u!23 &2050139604
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -25145,6 +25393,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   size: 60
   posi: {x: 0, y: -0.8, z: 0}
+  add: 0
+  fps: 30
 --- !u!23 &2055270318
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -25322,6 +25572,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   size: 60
   posi: {x: 0, y: -0.8, z: 0}
+  add: 0
+  fps: 30
 --- !u!23 &2064925851
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -25575,6 +25827,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   size: 60
   posi: {x: 0, y: -0.8, z: 0}
+  add: 0
+  fps: 30
 --- !u!23 &2066675155
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -25752,6 +26006,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   size: 60
   posi: {x: 0, y: -0.8, z: 0}
+  add: 0
+  fps: 30
 --- !u!23 &2068494300
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -26005,6 +26261,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   size: 60
   posi: {x: 0, y: -0.8, z: 0}
+  add: 0
+  fps: 30
 --- !u!23 &2071794395
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -26220,6 +26478,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   size: 60
   posi: {x: 0, y: -0.8, z: 0}
+  add: 0
+  fps: 30
 --- !u!23 &2085388461
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -26397,6 +26657,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   size: 60
   posi: {x: 0, y: -0.8, z: 0}
+  add: 0
+  fps: 30
 --- !u!23 &2100244573
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -26650,6 +26912,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   size: 60
   posi: {x: 0, y: -0.8, z: 0}
+  add: 0
+  fps: 30
 --- !u!23 &2107687663
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -26865,6 +27129,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   size: 60
   posi: {x: 0, y: -0.8, z: 0}
+  add: 0
+  fps: 30
 --- !u!23 &2111366884
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -27042,6 +27308,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   size: 60
   posi: {x: 0, y: -0.8, z: 0}
+  add: 0
+  fps: 30
 --- !u!23 &2112385537
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -27257,6 +27525,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   size: 60
   posi: {x: 0, y: -0.8, z: 0}
+  add: 0
+  fps: 30
 --- !u!23 &2130926389
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -27510,6 +27780,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   size: 60
   posi: {x: 0, y: -0.8, z: 0}
+  add: 0
+  fps: 30
 --- !u!23 &2141447226
 MeshRenderer:
   m_ObjectHideFlags: 0

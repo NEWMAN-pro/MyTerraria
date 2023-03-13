@@ -4,25 +4,44 @@ using UnityEngine;
 
 public class FrameAnimation : MonoBehaviour
 {
-    //public Texture[] frames; // 存储动画帧的纹理数组
-    //public Sprite[] sprite;
-    public byte[,] textures;
-    public float fps = 30.0f; // 每秒播放的帧数
+    // 存储动画帧的纹理数组
+    public Sprite[] sprite;
+    // 每秒播放的帧数
+    public float fps = 10.0f;
 
-    private SpriteRenderer spriteRenderer;
+    public SpriteRenderer spriteRenderer;
     private int currentFrame = 0;
+    // 是否开始
+    bool flag = false;
 
     void Start()
     {
         //spriteRenderer = GetComponent<SpriteRenderer>();
-        InvokeRepeating("NextFrame", 0, 1 / fps); // 每1/fps秒切换一次帧
+    }
+
+    public void CreateDestory(float time)
+    {
+        if (flag) return;
+        flag = true;
+        float newTime = Mathf.Round(100f / time);
+        if (newTime < 0) return;
+        InvokeRepeating("NextFrame", 0, newTime / fps); // 每newTime/fps秒切换一次帧
+    }
+
+    public void Stop()
+    {
+        if (!flag) return;
+        CancelInvoke("NextFrame");
+        Debug.Log("+++");
+        currentFrame = 0;
+        spriteRenderer.sprite = null;
+        flag = false;
     }
 
     void NextFrame()
     {
-        if (textures.Length == 0)
-            return;
-        //spriteRenderer.sprite = textures[currentFrame % textures.Length]; // 更新纹理
+        if (sprite.Length == 0) return;
+        spriteRenderer.sprite = sprite[currentFrame % sprite.Length]; // 更新纹理
         currentFrame++;
     }
 }

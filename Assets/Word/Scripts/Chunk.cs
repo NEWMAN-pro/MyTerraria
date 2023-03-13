@@ -460,16 +460,6 @@ namespace Soultia.Voxel
             uv.Add(new Vector2(block.textureTopX * textureOffset + textureOffset, block.textureTopY * textureOffset) + new Vector2(-shrinkSize, shrinkSize));
             uv.Add(new Vector2(block.textureTopX * textureOffset + textureOffset, block.textureTopY * textureOffset + textureOffset) + new Vector2(-shrinkSize, -shrinkSize));
             uv.Add(new Vector2(block.textureTopX * textureOffset, block.textureTopY * textureOffset + textureOffset) + new Vector2(shrinkSize, -shrinkSize));
-
-            //if (destroy)
-            //{
-            //    AddDestroyFace(x, y, z);
-            //    //添加4个点
-            //    vertices.Add(new Vector3(0 + x, 1 + y, 0 + z));
-            //    vertices.Add(new Vector3(0 + x, 1 + y, 1 + z));
-            //    vertices.Add(new Vector3(-1 + x, 1 + y, 1 + z));
-            //    vertices.Add(new Vector3(-1 + x, 1 + y, 0 + z));
-            //}
         }
 
         //下面
@@ -497,27 +487,6 @@ namespace Soultia.Voxel
             uv.Add(new Vector2(block.textureBottomX * textureOffset + textureOffset, block.textureBottomY * textureOffset) + new Vector2(-shrinkSize, shrinkSize));
             uv.Add(new Vector2(block.textureBottomX * textureOffset + textureOffset, block.textureBottomY * textureOffset + textureOffset) + new Vector2(-shrinkSize, -shrinkSize));
             uv.Add(new Vector2(block.textureBottomX * textureOffset, block.textureBottomY * textureOffset + textureOffset) + new Vector2(shrinkSize, -shrinkSize));
-        }
-
-        // 销毁
-        void AddDestroyFace(int x, int y, int z)
-        {
-            //第一个三角面
-            triangles.Add(1 + vertices.Count);
-            triangles.Add(0 + vertices.Count);
-            triangles.Add(3 + vertices.Count);
-
-            //第二个三角面
-            triangles.Add(3 + vertices.Count);
-            triangles.Add(2 + vertices.Count);
-            triangles.Add(1 + vertices.Count);
-
-            //添加UV坐标点，跟上面4个点循环的顺序一致
-            float flag = (float)Math.Floor(blockHP / 10);
-            uv.Add(new Vector2(flag * textureOffset, 16 * textureOffset) + new Vector2(shrinkSize, shrinkSize));
-            uv.Add(new Vector2(flag * textureOffset + textureOffset, 16 * textureOffset) + new Vector2(-shrinkSize, shrinkSize));
-            uv.Add(new Vector2(flag * textureOffset + textureOffset, 16 * textureOffset + textureOffset) + new Vector2(-shrinkSize, -shrinkSize));
-            uv.Add(new Vector2(flag * textureOffset, 16 * textureOffset + textureOffset) + new Vector2(shrinkSize, -shrinkSize));
         }
 
         // 世界坐标转区块坐标
@@ -604,6 +573,7 @@ namespace Soultia.Voxel
             {
                 lastBlock = chunkPosition;
                 SetDestroyTime(position);
+                return 4;
             }
             //Debug.Log(blockHP);
             isWorking = true;
@@ -612,11 +582,9 @@ namespace Soultia.Voxel
             // 判断是否销毁够时间
             if(blockHP <= 100)
             {
-                destroy = true;
+                //destroy = true;
                 // 不够则更新时间
                 blockHP += Time.deltaTime * destroyTime;
-                //StartCoroutine(CreateMesh());
-                destroy = false;
                 return 3;
             }
             //Debug.Log("销毁");
@@ -628,7 +596,14 @@ namespace Soultia.Voxel
             blocks[chunkPosition.x, chunkPosition.y, chunkPosition.z] = 0;
             StartCoroutine(CreateMesh());
             return 0;
+        }
 
+        // 绘制销毁方块
+        public void CreateDestroy(Vector3 point, ref float time, ref Vector3 wordPosition)
+        {
+            Vector3i chunkPosition = WorldTransferChunk(point);
+            wordPosition = ChunkTransferWorld(chunkPosition);
+            time = destroyTime;
         }
 
         // 刷新时间

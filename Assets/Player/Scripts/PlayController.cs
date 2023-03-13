@@ -36,6 +36,9 @@ public class PlayController : MonoBehaviour
     // 物品栏
     public Inventory inventory;
 
+    // 销毁方块
+    public GameObject destory;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -90,10 +93,12 @@ public class PlayController : MonoBehaviour
             this.GetComponent<AnimationState>().SetExcavate(true);
             DestroyBlock();
         }
-        if (Input.GetMouseButtonUp(0))
+        else
         {
             // 停止持续攻击动画
             this.GetComponent<AnimationState>().SetExcavate(false);
+            // 停止销毁动画
+            StopDestory();
             // 停止销毁，置空
             LastTrans = null;
         }
@@ -259,13 +264,50 @@ public class PlayController : MonoBehaviour
             {
                 LastTrans = trans;
                 trans.GetComponent<Chunk>().SetDestroyTime(point);
+                // 重置销毁动画
+                StopDestory();
             }
 
-            if (trans.GetComponent<Chunk>().DestroyBlock(point) == 0)
+            byte flag = trans.GetComponent<Chunk>().DestroyBlock(point);
+            if (flag == 0)
             {
                 // 销毁成功，置空
                 LastTrans = null;
+                // 停止销毁动画
+                StopDestory();
             }
+            else if(flag == 3)
+            {
+                // 销毁中，绘制销毁方块
+                CreateDestory(trans, point);
+            }
+            else if(flag == 4)
+            {
+                // 更换方块，重置动画
+                StopDestory();
+            }
+        }
+    }
+
+    // 启用绘制摧毁方块
+    public void CreateDestory(Transform trans, Vector3 point)
+    {
+        Vector3 posi = Vector3.zero;
+        float time = 0;
+        trans.GetComponent<Chunk>().CreateDestroy(point, ref time , ref posi);
+        destory.transform.position = posi;
+        for(int i = 0; i < 6; i++)
+        {
+            destory.transform.GetChild(i).GetComponent<FrameAnimation>().CreateDestory(time);
+        }
+    }
+
+    // 停止绘制摧毁方块
+    public void StopDestory()
+    {
+        for(int i = 0; i < 6; i++)
+        {
+            destory.transform.GetChild(i).GetComponent<FrameAnimation>().Stop();
         }
     }
 

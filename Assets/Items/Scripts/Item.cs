@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public enum Type : byte
 {
@@ -13,7 +14,7 @@ public enum Type : byte
     Other = 7
 }
 
-public class Item
+public class Item : IComparable<Item>
 {
     // 物品ID
     public byte ID;
@@ -23,4 +24,31 @@ public class Item
     public int count;
     // 是否被标记
     public bool flag;
+
+    public int CompareTo(Item other)
+    {
+        if(this.type == other.type)
+        {
+            if(this.ID < other.ID)
+            {
+                return -1;
+            }
+            else if(this.ID > other.ID)
+            {
+                return 1;
+            }
+            else
+            {
+                return 0;
+            }
+        }
+        else if(this.type < other.type)
+        {
+            return -1;
+        }
+        else
+        {
+            return 1;
+        }
+    }
 }

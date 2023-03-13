@@ -16,6 +16,7 @@ public class PauseGameAll : MonoBehaviour
     // 暂停所有脚本
     public void OnPauseGame()
     {
+        Time.timeScale = 0f;
         foreach(var pg in pgList)
         {
             pg.OnPauseGame();
@@ -25,7 +26,8 @@ public class PauseGameAll : MonoBehaviour
     // 解除所有脚本暂停
     public void UnPauseGame()
     {
-        foreach(var pg in pgList)
+        Time.timeScale = 1f;
+        foreach (var pg in pgList)
         {
             pg.UnPauseGame();
         }
