@@ -32,7 +32,7 @@ public class FrameAnimation : MonoBehaviour
     {
         if (!flag) return;
         CancelInvoke("NextFrame");
-        Debug.Log("+++");
+        //Debug.Log("+++");
         currentFrame = 0;
         spriteRenderer.sprite = null;
         flag = false;

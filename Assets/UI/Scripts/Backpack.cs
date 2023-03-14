@@ -20,60 +20,84 @@ public class Backpack : MonoBehaviour
     public Color NotFlag;
     // 标记的颜色
     public Color FlagColor;
+    // 物品数量text
+    public GameObject textPrefab;
+    public GameObject text;
 
     private void Awake()
     {
-        for(byte i = 0; i < 60; i++)
+        // 物品数量初始化
+        textPrefab = Resources.Load("Prefabs/ItemCount") as GameObject;
+        for (byte i = 0; i < 60; i++)
         {
             items[i] = null;
+            text = Instantiate(textPrefab, this.transform.GetChild(i));
+            text.name = "ItemCount";
+            if (i > 50 && i < 59)
+            {
+                // 如果是金币格或者弹药格，则调整文本框位置
+                text.GetComponent<RectTransform>().anchoredPosition = new Vector3(20f, -15f, -0.4f);
+            }
+            if(i < 10)
+            {
+                text = Instantiate(textPrefab, inventory.transform.GetChild(i));
+                text.name = "ItemCount";
+            }
         }
 
         Item item_1 = new Item();
         item_1.type = 0;
         item_1.ID = 3;
-        //items.Add(0, item_1);
+        item_1.count = 1;
         items[0] = item_1;
         inventory.SetItem(1, item_1);
         CreateUI(item_1, 0, false);
         Item item_2 = new Item();
         item_2.type = 0;
         item_2.ID = 1;
+        item_2.count = 1;
         items[1] = item_2;
         inventory.SetItem(2, item_2);
         CreateUI(item_2, 1, false);
         Item item_3 = new Item();
         item_3.type = 0;
         item_3.ID = 2;
+        item_3.count = 1;
         items[2] = item_3;
         inventory.SetItem(3, item_3);
         CreateUI(item_3, 2, false);
         Item item_4 = new Item();
         item_4.type = 0;
         item_4.ID = 4;
+        item_4.count = 1;
         items[3] = item_4;
         inventory.SetItem(4, item_4);
         CreateUI(item_4, 3, false);
         Item item_5 = new Item();
         item_5.type = 0;
         item_5.ID = 5;
+        item_5.count = 1;
         items[4] = item_5;
         inventory.SetItem(5, item_5);
         CreateUI(item_5, 4, false);
         Item item_6 = new Item();
         item_6.type = 0;
         item_6.ID = 6;
+        item_6.count = 1;
         items[5] = item_6;
         inventory.SetItem(6, item_6);
         CreateUI(item_6, 5, false);
         Item item_7 = new Item();
         item_7.type = 0;
         item_7.ID = 7;
+        item_7.count = 1;
         items[6] = item_7;
         inventory.SetItem(7, item_7);
         CreateUI(item_7, 6, false);
         Item item_8 = new Item();
         item_8.type = 0;
         item_8.ID = 8;
+        item_8.count = 1;
         items[7] = item_8;
         inventory.SetItem(8, item_8);
         CreateUI(item_8, 7, false);
@@ -119,6 +143,11 @@ public class Backpack : MonoBehaviour
         if(item == null)
         {
             this.transform.GetChild(key).GetComponent<CreateUI>().CreateBlank();
+            this.transform.GetChild(key).GetChild(0).GetComponent<Text>().text = "";
+            if (selectFlag)
+            {
+                if (item.count != -1) select.GetChild(0).GetComponent<Text>().text = "";
+            }
             return;
         }
         if (item.type == Type.Block)
@@ -132,12 +161,15 @@ public class Backpack : MonoBehaviour
             if (selectFlag)
             {
                 select.GetComponent<CreateUI>().CreateBlockUI(block, true, 40, new Vector3(0, -1f, -0.01f));
+                if (item.count != -1) select.GetChild(0).GetComponent<Text>().text = item.count.ToString();
+                return;
             }
             else
             {
                 this.transform.GetChild(key).GetComponent<CreateUI>().CreateBlockUI(block, true, 40, new Vector3(0, -1f, -0.01f));
             }
         }
+        if(item.count != -1) this.transform.GetChild(key).GetChild(0).GetComponent<Text>().text = item.count.ToString();
     }
 
     // 更改选择框
@@ -281,10 +313,20 @@ public class Backpack : MonoBehaviour
     // 存入物品
     public bool Storage(Item item)
     {
-        // 找到第一个为空的空格
-        byte key = items.FirstOrDefault(x => x.Value == null).Key;
+        byte key;
+        // 试着寻找相同的物品
+        key = items.FirstOrDefault(x => x.Value != null && x.Value.type == item.type && x.Value.ID == item.ID).Key;
         Item item1 = GetItem(key);
-        if (item1 != null)
+        if(item1.type == item.type && item1.ID == item.ID && item1.count != -1)
+        {
+            // 如果找到相同的物品，并且物品可以合并
+            item1.count += item.count;
+            SetItem(key, item1);
+            return true;
+        }
+        // 找到第一个为空的空格
+        key = items.FirstOrDefault(x => x.Value == null).Key;
+        if (GetItem(key) != null)
         {
             // 如果当前队列没找到空格
             // 背包放满了

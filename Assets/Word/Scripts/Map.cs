@@ -66,35 +66,42 @@ namespace Soultia.Voxel
                             int zz = Chunk.width * Mathf.FloorToInt(z / Chunk.width);
                             if (!ChunkExists(xx, yy, zz))
                             {
-                                CreateChunk(new Vector3i(xx, yy, zz));
+                                CreateChunk(new Vector3i(xx, yy, zz), false);
                             }
                             else
                             {
-                                // 已存在的区块直接显示出来即可
-                                chunks[new Vector3i(xx, yy, zz)].SetActive(true);
+                                if(!chunks[new Vector3i(xx, yy, zz)].activeSelf)
+                                {
+                                    // 如果区块对象已生成且处于未激活状态，则激活区块
+                                    CreateChunk(new Vector3i(xx, yy, zz), true);
+                                }
                             }
                         }
                     }
                 }
             }
-            //if(cnt <= 600)
-            //{
-            //    cnt++;
-            //}
         }
 
         //生成Chunk
-        public void CreateChunk(Vector3i pos)
+        public void CreateChunk(Vector3i pos, bool flag)
         {
             if (spawningChunk) return;
 
-            StartCoroutine(SpawnChunk(pos));
+            StartCoroutine(SpawnChunk(pos, flag));
         }
 
-        private IEnumerator SpawnChunk(Vector3i pos)
+        private IEnumerator SpawnChunk(Vector3i pos, bool flag)
         {
             spawningChunk = true;
-            Instantiate(chunkPrefab, pos, Quaternion.identity);
+            if (flag)
+            {
+                // 已存在的区块直接显示出来即可
+                chunks[pos].SetActive(true);
+            }
+            else
+            {
+                Instantiate(chunkPrefab, pos, Quaternion.identity);
+            }
             yield return null;
             spawningChunk = false;
         }

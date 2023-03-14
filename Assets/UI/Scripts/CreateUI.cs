@@ -201,13 +201,14 @@ public class CreateUI : MonoBehaviour
     }
 
     // 绘制方块掉落贴图
-    public void CreateBlockDrop(Block block, float size)
+    public void CreateBlockDrop(Block block, float size, Vector3 posi)
     {
         vertices.Clear();
         triangles.Clear();
         uv.Clear();
 
         this.size = size;
+        this.posi = posi;
         mesh = new Mesh();
 
         AddFrontFace(block);
@@ -246,10 +247,10 @@ public class CreateUI : MonoBehaviour
 
 
         //添加4个点
-        vertices.Add(new Vector3(0, 0, 0) * size);
-        vertices.Add(new Vector3(0, 0, 1) * size);
-        vertices.Add(new Vector3(0, 1, 1) * size);
-        vertices.Add(new Vector3(0, 1, 0) * size);
+        vertices.Add((new Vector3(0, 0, 0) + posi) * size);
+        vertices.Add((new Vector3(0, 0, 1) + posi) * size);
+        vertices.Add((new Vector3(0, 1, 1) + posi) * size);
+        vertices.Add((new Vector3(0, 1, 0) + posi) * size);
 
         //添加UV坐标点，跟上面4个点循环的顺序一致
         uv.Add(new Vector2(block.textureFrontX * textureOffset, block.textureFrontY * textureOffset) + new Vector2(shrinkSize, shrinkSize));
@@ -273,10 +274,10 @@ public class CreateUI : MonoBehaviour
 
 
         //添加4个点
-        vertices.Add(new Vector3(-1, 0, 1) * size);
-        vertices.Add(new Vector3(-1, 0, 0) * size);
-        vertices.Add(new Vector3(-1, 1, 0) * size);
-        vertices.Add(new Vector3(-1, 1, 1) * size);
+        vertices.Add((new Vector3(-1, 0, 1) + posi) * size);
+        vertices.Add((new Vector3(-1, 0, 0) + posi) * size);
+        vertices.Add((new Vector3(-1, 1, 0) + posi) * size);
+        vertices.Add((new Vector3(-1, 1, 1) + posi) * size);
 
         //添加UV坐标点，跟上面4个点循环的顺序一致
         uv.Add(new Vector2(block.textureBackX * textureOffset, block.textureBackY * textureOffset) + new Vector2(shrinkSize, shrinkSize));
@@ -300,10 +301,10 @@ public class CreateUI : MonoBehaviour
 
 
         //添加4个点
-        vertices.Add(new Vector3(0, 0, 1) * size);
-        vertices.Add(new Vector3(-1, 0, 1) * size);
-        vertices.Add(new Vector3(-1, 1, 1) * size);
-        vertices.Add(new Vector3(0, 1, 1) * size);
+        vertices.Add((new Vector3(0, 0, 1) + posi) * size);
+        vertices.Add((new Vector3(-1, 0, 1) + posi) * size);
+        vertices.Add((new Vector3(-1, 1, 1) + posi) * size);
+        vertices.Add((new Vector3(0, 1, 1) + posi) * size);
 
         //添加UV坐标点，跟上面4个点循环的顺序一致
         uv.Add(new Vector2(block.textureRightX * textureOffset, block.textureRightY * textureOffset) + new Vector2(shrinkSize, shrinkSize));
@@ -327,10 +328,10 @@ public class CreateUI : MonoBehaviour
 
 
         //添加4个点
-        vertices.Add(new Vector3(-1, 0, 0) * size);
-        vertices.Add(new Vector3(0, 0, 0) * size);
-        vertices.Add(new Vector3(0, 1, 0) * size);
-        vertices.Add(new Vector3(-1, 1, 0) * size);
+        vertices.Add((new Vector3(-1, 0, 0) + posi) * size);
+        vertices.Add((new Vector3(0, 0, 0) + posi) * size);
+        vertices.Add((new Vector3(0, 1, 0) + posi) * size);
+        vertices.Add((new Vector3(-1, 1, 0) + posi) * size);
 
         //添加UV坐标点，跟上面4个点循环的顺序一致
         uv.Add(new Vector2(block.textureLeftX * textureOffset, block.textureLeftY * textureOffset) + new Vector2(shrinkSize, shrinkSize));
@@ -354,10 +355,10 @@ public class CreateUI : MonoBehaviour
 
 
         //添加4个点
-        vertices.Add(new Vector3(0, 1, 0) * size);
-        vertices.Add(new Vector3(0, 1, 1) * size);
-        vertices.Add(new Vector3(-1, 1, 1) * size);
-        vertices.Add(new Vector3(-1, 1, 0) * size);
+        vertices.Add((new Vector3(0, 1, 0) + posi) * size);
+        vertices.Add((new Vector3(0, 1, 1) + posi) * size);
+        vertices.Add((new Vector3(-1, 1, 1) + posi) * size);
+        vertices.Add((new Vector3(-1, 1, 0) + posi) * size);
 
         //添加UV坐标点，跟上面4个点循环的顺序一致
         uv.Add(new Vector2(block.textureTopX * textureOffset, block.textureTopY * textureOffset) + new Vector2(shrinkSize, shrinkSize));
@@ -381,10 +382,10 @@ public class CreateUI : MonoBehaviour
 
 
         //添加4个点
-        vertices.Add(new Vector3(-1, 0, 0) * size);
-        vertices.Add(new Vector3(-1, 0, 1) * size);
-        vertices.Add(new Vector3(0, 0, 1) * size);
-        vertices.Add(new Vector3(0, 0, 0) * size);
+        vertices.Add((new Vector3(-1, 0, 0) + posi) * size);
+        vertices.Add((new Vector3(-1, 0, 1) + posi) * size);
+        vertices.Add((new Vector3(0, 0, 1) + posi) * size);
+        vertices.Add((new Vector3(0, 0, 0) + posi) * size);
 
         //添加UV坐标点，跟上面4个点循环的顺序一致
         uv.Add(new Vector2(block.textureBottomX * textureOffset, block.textureBottomY * textureOffset) + new Vector2(shrinkSize, shrinkSize));

@@ -25,6 +25,14 @@ public class Item : IComparable<Item>
     // 是否被标记
     public bool flag;
 
+    public Item(byte ID = 0, Type type = Type.Other, int count = 0, bool flag = false)
+    {
+        this.ID = ID;
+        this.type = type;
+        this.count = count;
+        this.flag = flag;
+    }
+
     public int CompareTo(Item other)
     {
         if(this.type == other.type)

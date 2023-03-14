@@ -10,8 +10,10 @@ public class DropList : MonoBehaviour
     public static int maxDrop = 1000;
     // 掉落物对象队列
     public static GameObject[] dropGBs = new GameObject[maxDrop];
+    // 掉落物类队列
+    public static Drop[] dropList = new Drop[maxDrop];
     // 掉落物队列
-    public static PriorityQueue<Drop> drops;
+    public static PriorityQueue<Drop> drops = new();
     // 掉落物存在时限 s
     public float maxTime = 60;
 
@@ -22,12 +24,16 @@ public class DropList : MonoBehaviour
         for (int i = 0; i < maxDrop; i++)
         {
             GameObject newGB = Instantiate(gameObject, Vector3.zero, Quaternion.identity);
+            newGB.name = i.ToString();
+            newGB.transform.SetParent(this.transform);
+            newGB.SetActive(false);
             dropGBs[i] = newGB;
         }
     }
 
     private void Update()
     {
+        if (drops.Count == 0) return;
         float time = Time.deltaTime;
         foreach(var drop in drops.heap)
         {
@@ -35,36 +41,39 @@ public class DropList : MonoBehaviour
         }
 
         // 将超时的掉落物删除
-        while(drops.Peek().time >= maxTime)
+        if(drops.Peek().time >= maxTime)
         {
-            drops.Dequeue();
+            Destroy(drops.Peek().id.ToString());
         }
     }
 
     // 增加掉落物
-    public static void AddDrop(Item item)
+    public static void AddDrop(Item item, Vector3 posi)
     {
         if(drops.Count >= maxDrop)
         {
             // 到达上限，删除堆顶
-            drops.Dequeue();
+            Destroy(drops.Peek().id.ToString());
         }
         int id = GetGB();
-        CreateDrop(item, id, false);
+        CreateDrop(item, id, false, posi);
         Drop drop = new(id, item);
+        dropList[id] = drop;
         drops.Enqueue(drop);
     }
 
     // 删除掉落物
-    public static void Destroy(Drop drop)
+    public static void Destroy(string name)
     {
+        int id = int.Parse(name);
+        Drop drop = dropList[id];
         if (!drops.Remove(drop))
         {
             Debug.Log("不存在该物品");
             return;
         }
         dropGBs[drop.id].SetActive(false);
-        CreateDrop(drop.item, drop.id, true);
+        CreateDrop(drop.item, drop.id, true, Vector3.zero);
     }
 
     // 找到对象队列第一个为空的值
@@ -84,8 +93,9 @@ public class DropList : MonoBehaviour
     }
 
     // 绘制掉落物
-    public static void CreateDrop(Item item, int id, bool flag)
+    public static void CreateDrop(Item item, int id, bool flag, Vector3 posi)
     {
+        dropGBs[id].transform.position = posi;
         if (flag)
         {
             // 如果是删除，将贴图置空
@@ -96,7 +106,7 @@ public class DropList : MonoBehaviour
         {
             // 如果是方块
             Block block = BlockList.GetBlock(item.ID);
-            dropGBs[id].GetComponent<CreateUI>().CreateBlockDrop(block, 1);
+            dropGBs[id].GetComponent<CreateUI>().CreateBlockDrop(block, 0.3f, new Vector3(0.15f, -0.15f, -0.15f));
         }
     }
 }

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Inventory : MonoBehaviour
 {
@@ -24,6 +25,9 @@ public class Inventory : MonoBehaviour
     //public Item[] items = new Item[10];
     // 选择框
     public RectTransform select;
+    // 物品数量text
+    public GameObject textPrefab;
+    public GameObject text;
 
     // Update is called once per frame
     void Update()
@@ -51,6 +55,7 @@ public class Inventory : MonoBehaviour
         if (item == null)
         {
             this.transform.GetChild(key).GetComponent<CreateUI>().CreateBlank();
+            this.transform.GetChild(key).GetChild(0).GetComponent<Text>().text = "";
             return;
         }
         if (item.type == Type.Block)
@@ -63,6 +68,7 @@ public class Inventory : MonoBehaviour
             }
             this.transform.GetChild(key).GetComponent<CreateUI>().CreateBlockUI(block, true, 40, new Vector3(0, -1f, -0.01f));
         }
+        this.transform.GetChild(key).GetChild(0).GetComponent<Text>().text = item.count.ToString();
     }
 
     // 移动选择框

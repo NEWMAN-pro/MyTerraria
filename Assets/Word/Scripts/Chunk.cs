@@ -31,7 +31,7 @@ namespace Soultia.Voxel
         // 方块血量
         private float blockHP;
         // 是否销毁
-        public bool destroy = false;
+        //public bool destroy = false;
 
         // 随机数种子
         public int seed = 1234;
@@ -575,14 +575,12 @@ namespace Soultia.Voxel
                 SetDestroyTime(position);
                 return 4;
             }
-            //Debug.Log(blockHP);
             isWorking = true;
             mesh = new Mesh();
             mesh.name = "Chunk";
             // 判断是否销毁够时间
             if(blockHP <= 100)
             {
-                //destroy = true;
                 // 不够则更新时间
                 blockHP += Time.deltaTime * destroyTime;
                 return 3;
@@ -593,9 +591,18 @@ namespace Soultia.Voxel
                 // 如果销毁的方块是宝箱，则将该宝箱从宝箱列表中移除
                 BoxList.DelectBox(this.transform.name + chunkPosition.ToString());
             }
+            CreateDrop(chunkPosition);
             blocks[chunkPosition.x, chunkPosition.y, chunkPosition.z] = 0;
             StartCoroutine(CreateMesh());
             return 0;
+        }
+
+        // 绘制掉落物
+        public void CreateDrop(Vector3i chunkPosition)
+        {
+            Block block = BlockList.GetBlock(this.blocks[chunkPosition.x, chunkPosition.y, chunkPosition.z]);
+            Item item = new(block.id, Type.Block, 1);
+            DropList.AddDrop(item, ChunkTransferWorld(chunkPosition));
         }
 
         // 绘制销毁方块

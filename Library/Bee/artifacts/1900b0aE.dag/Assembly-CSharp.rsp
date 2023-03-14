@@ -354,7 +354,7 @@
 "Assets/Blocks/Scripts/Block.cs"
 "Assets/Blocks/Scripts/BlockList.cs"
 "Assets/Blocks/Scripts/BoxList.cs"
-"Assets/Blocks/Scripts/Drop.cs"
+"Assets/Items/Scripts/Drop.cs"
 "Assets/Items/Scripts/DropList.cs"
 "Assets/Items/Scripts/Item.cs"
 "Assets/LibNoise.Unity-master/Generator/Billow.cs"
