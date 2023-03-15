@@ -48,7 +48,7 @@ public class Backpack : MonoBehaviour
         Item item_1 = new Item();
         item_1.type = 0;
         item_1.ID = 3;
-        item_1.count = 1;
+        item_1.count = 60;
         items[0] = item_1;
         inventory.SetItem(1, item_1);
         CreateUI(item_1, 0, false);
@@ -97,10 +97,17 @@ public class Backpack : MonoBehaviour
         Item item_8 = new Item();
         item_8.type = 0;
         item_8.ID = 8;
-        item_8.count = 1;
+        item_8.count = 10;
         items[7] = item_8;
         inventory.SetItem(8, item_8);
         CreateUI(item_8, 7, false);
+        Item item_9 = new Item();
+        item_9.type = 0;
+        item_9.ID = 3;
+        item_9.count = 10;
+        items[8] = item_9;
+        inventory.SetItem(9, item_9);
+        CreateUI(item_9, 8, false);
     }
 
     // Update is called once per frame
@@ -282,9 +289,48 @@ public class Backpack : MonoBehaviour
     // 一键整理
     public void Neaten()
     {
-        // 对字典排序，先比较type再比较ID，物品栏不参与排序，被标记的物品不参与排序
-        Dictionary<byte, Item> sortedItems = items.Where(i => i.Value != null && i.Key > 9 && !i.Value.flag)
-            .OrderBy(i => i.Value.type).ThenBy(i => i.Value.ID)
+        // 对字典排序，先比较type再比较ID（从小到大），再比较flag（true排前），再比较key（从小到大）
+        var sortedItems_ = items.Where(i => i.Value != null)
+           .OrderBy(i => i.Value.type).ThenBy(i => i.Value.ID).ThenByDescending(i => i.Value.flag).ThenBy(i => i.Key)
+           .ToList();
+        for(int i = 0; i < sortedItems_.Count; i++)
+        {
+            // 进行合并
+            var pair = sortedItems_[i];
+            if (i != sortedItems_.Count - 1)
+            {
+                var nextPair = sortedItems_[i + 1];
+                if (pair.Value.type == nextPair.Value.type && pair.Value.ID == nextPair.Value.ID)
+                {
+                    // 两个物品的总数量
+                    int ans = pair.Value.count + nextPair.Value.count;
+                    if (ans <= 64)
+                    {
+                        pair.Value.count = ans;
+                        // 数量为0，删除物品
+                        sortedItems_[i + 1].Value.count = 0;
+                        SetItem(nextPair.Key, null);
+                    }
+                    else
+                    {
+                        pair.Value.count = 64;
+                        sortedItems_[i + 1].Value.count = ans - 64;
+                    }
+                }
+            }
+            // 将物品栏与被标记的物品重新绘制
+            if(pair.Key < 10 || pair.Value.flag)
+            {
+                if(pair.Value.count == 0)
+                {
+                    // 数量为0，不绘制
+                    continue;
+                }
+                SetItem(pair.Key, pair.Value);
+            }
+        }
+        // 将物品栏与被标记的物品以及数量为0的物品剔除
+        var sortedItems = sortedItems_.Where(i => i.Value != null && i.Value.count != 0 && i.Key > 9 && !i.Value.flag)
             .ToDictionary(i => i.Key, i => i.Value);
         byte key = 10;
         foreach (var pair in sortedItems)
@@ -317,12 +363,24 @@ public class Backpack : MonoBehaviour
         // 试着寻找相同的物品
         key = items.FirstOrDefault(x => x.Value != null && x.Value.type == item.type && x.Value.ID == item.ID).Key;
         Item item1 = GetItem(key);
-        if(item1.type == item.type && item1.ID == item.ID && item1.count != -1)
+        if(item1 != null && item1.type == item.type && item1.ID == item.ID && item1.count != -1)
         {
             // 如果找到相同的物品，并且物品可以合并
-            item1.count += item.count;
-            SetItem(key, item1);
-            return true;
+            int ans = item1.count + item.count;
+            if(ans <= 64)
+            {
+                // 合拼后数量未超上限，则合并
+                item1.count = ans;
+                SetItem(key, item1);
+                return true;
+            }
+            else
+            {
+                // 超上限，则新存入一个物品
+                item1.count = 64;
+                item.count = ans - 64;
+                SetItem(key, item1);
+            }
         }
         // 找到第一个为空的空格
         key = items.FirstOrDefault(x => x.Value == null).Key;
@@ -336,6 +394,35 @@ public class Backpack : MonoBehaviour
         return true;
     }
 
+    // 存放全部
+    public void Deposit()
+    {
+        var items_ = items.Where(i => i.Value != null && i.Key > 9 && !i.Value.flag).ToDictionary(i => i.Key, i => i.Value);
+        foreach(var pair in items_)
+        {
+            box.Storage(pair.Value);
+        }
+        foreach(var pair in items_)
+        {
+            SetItem(pair.Key, null);
+        }
+    }
+
+    // 快速堆叠
+    public void Stack()
+    {
+        // 找到背包与宝箱中相同的物品，且未被标记
+        // 垃圾桶中物品不参与匹配
+        var items_ = items.Where(i => i.Key != 50 && i.Value != null && !i.Value.flag).ToDictionary(i => i.Key, i => i.Value);
+        var commonItems = items_.Values.Intersect(box.items.Values, new ItemEqualityComparer()).ToList();
+        var commonItemsWithKeys = items_.Where(pair => commonItems.Contains(pair.Value)).ToDictionary(pair => pair.Key, pair => pair.Value);
+        foreach (var pair in commonItemsWithKeys)
+        {
+            box.Storage(pair.Value);
+            SetItem(pair.Key, null);
+        }
+    }
+
     // 脚本结束时
     private void OnDisable()
     {
@@ -346,5 +433,26 @@ public class Backpack : MonoBehaviour
             selectItem = null;
             select.gameObject.SetActive(false);
         }
+    }
+}
+
+// 自定义比较器
+public class ItemEqualityComparer : IEqualityComparer<Item>
+{
+    public bool Equals(Item x, Item y)
+    {
+        if (x == null || y == null)
+        {
+            return false;
+        }
+        else
+        {
+            return x.ID == y.ID && x.type == y.type;
+        }
+    }
+
+    public int GetHashCode(Item obj)
+    {
+        return obj.ID.GetHashCode() ^ obj.type.GetHashCode();
     }
 }

@@ -115,9 +115,9 @@
     <Compile Include="Assets\Blocks\Scripts\BlockList.cs" />
     <Compile Include="Assets\LibNoise.Unity-master\Operator\Clamp.cs" />
     <Compile Include="Assets\LibNoise.Unity-master\Generator\Voronoi.cs" />
+    <Compile Include="Assets\Items\Scripts\Drop.cs" />
     <Compile Include="Assets\LibNoise.Unity-master\Operator\Add.cs" />
     <Compile Include="Assets\LibNoise.Unity-master\Operator\Blend.cs" />
-    <Compile Include="Assets\Items\Scripts\Drop.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\LibNoise.Unity-master\COPYING.txt" />

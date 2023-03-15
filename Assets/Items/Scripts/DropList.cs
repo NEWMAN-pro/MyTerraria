@@ -47,6 +47,19 @@ public class DropList : MonoBehaviour
         }
     }
 
+    // 获取掉落物
+    public static Item GetDrop(string name)
+    {
+        int id = int.Parse(name);
+        Drop drop = dropList[id];
+        if (!dropGBs[drop.id].activeSelf)
+        {
+            Debug.Log("不存在该物品");
+            return null;
+        }
+        return drop.item;
+    }
+
     // 增加掉落物
     public static void AddDrop(Item item, Vector3 posi)
     {

@@ -6,6 +6,7 @@ using System.Linq;
 public class BoxList : MonoBehaviour
 {
     public static Dictionary<string, Dictionary<byte, Item> > boxs = new Dictionary<string, Dictionary<byte, Item> >();
+    public static Dictionary<string, string> boxsName = new();
 
     // ‘ˆº”±¶œ‰
     public static void AddBox(string key)
@@ -17,29 +18,34 @@ public class BoxList : MonoBehaviour
             items[i] = null;
         }
         boxs.Add(key, items);
+        boxsName.Add(key, "±¶œ‰");
     }
 
     // …æ≥˝±¶œ‰
     public static void DelectBox(string key)
     {
         boxs.Remove(key);
+        boxsName.Remove(key);
     }
 
     // ªÒ»°±¶œ‰
-    public static Dictionary<byte, Item> GetBox(string key)
+    public static Dictionary<byte, Item> GetBox(string key, out string name)
     {
+        name = boxsName.ContainsKey(key) ? boxsName[key] : "";
         return boxs.ContainsKey(key) ? boxs[key] : null;
     }
 
     // –ﬁ∏ƒ±¶œ‰
-    public static void SetBox(string key, Dictionary<byte, Item> items)
+    public static void SetBox(string key, Dictionary<byte, Item> items, string name)
     {
         boxs[key] = items;
+        boxsName[key] = name;
     }
 
     // ≈–∂œ±¶œ‰ «∑ÒŒ™ø’
     public static bool GetBoxEmpty(string key)
     {
-        return GetBox(key).Values.All(v => ReferenceEquals(v, null));
+        string name;
+        return GetBox(key, out name).Values.All(v => ReferenceEquals(v, null));
     }
 }

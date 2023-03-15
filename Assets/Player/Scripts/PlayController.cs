@@ -35,6 +35,8 @@ public class PlayController : MonoBehaviour
     public byte inventoryID = 1;
     // 物品栏
     public Inventory inventory;
+    // 背包
+    public Backpack backpack;
 
     // 销毁方块
     public GameObject destory;
@@ -45,6 +47,7 @@ public class PlayController : MonoBehaviour
         this.name = "Player";
         velocity.y = -1f;
         inventory = GameObject.Find("Inventory").GetComponent<Inventory>();
+        backpack = GameObject.Find("Backpack").GetComponent<Backpack>();
         DrawItem();
     }
 
@@ -54,7 +57,7 @@ public class PlayController : MonoBehaviour
         // 地图跟随玩家生成
         Map.instance.CreateMap(this.transform.position);
 
-        if(inventory.selectID < 10 && inventoryID == inventory.selectID)
+        if (inventory.selectID < 10 && inventoryID == inventory.selectID)
         {
             // 物品栏物品发生改变，重新绘制手部图案
             DrawItem();
@@ -64,7 +67,7 @@ public class PlayController : MonoBehaviour
         {
             return;
         }
-        
+
         // 从摄像机中心发射一条射线
         ray = cameraMove.camera.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
         Debug.DrawRay(rayPosi, ray.direction * 10, Color.red);
@@ -75,6 +78,7 @@ public class PlayController : MonoBehaviour
 
         GetNumber();
         MouseButton();
+        DetectionDrops();
     }
 
     // 处理鼠标事件
@@ -141,7 +145,7 @@ public class PlayController : MonoBehaviour
         velocity.x = dir.x * speed;
         velocity.z = dir.z * speed;
 
-        if(velocity.x != 0 || velocity.z != 0)
+        if (velocity.x != 0 || velocity.z != 0)
         {
             // 切换行走
             this.GetComponent<AnimationState>().SetWalk(true);
@@ -164,7 +168,7 @@ public class PlayController : MonoBehaviour
                 velocity.y = Mathf.Sqrt(2 * gravity * jumpHeight);
             }
 
-            if(velocity.y < -1)
+            if (velocity.y < -1)
             {
                 velocity.y = -1;
             }
@@ -173,8 +177,8 @@ public class PlayController : MonoBehaviour
         {
             velocity.y -= gravity * Time.deltaTime;
         }
-        
-        if(velocity.y == -1)
+
+        if (velocity.y == -1)
         {
             this.GetComponent<AnimationState>().SetJump(false);
         }
@@ -188,6 +192,17 @@ public class PlayController : MonoBehaviour
     public bool RayDetection(out RaycastHit hitInfo)
     {
         return Physics.Raycast(rayPosi, ray.direction * 10, out hitInfo, 10, LayerMask.GetMask("Cube"));
+    }
+
+    // 球形检测
+    public bool Sphere(out Collider[] colliders, float radius, LayerMask layerMask)
+    {
+        colliders = Physics.OverlapSphere(transform.position, radius, layerMask);
+        if (colliders.Length == 0)
+        {
+            return false;
+        }
+        return true;
     }
 
     // 生成方块
@@ -206,19 +221,21 @@ public class PlayController : MonoBehaviour
 
             // 判断选中的是否是宝箱
             string key = trans.GetComponent<Chunk>().GetBox(point - normal * 0.01f);
-            if(key != "_")
+            if (key != "_")
             {
                 // 是宝箱则打开宝箱
                 GameObject.Find("UI").GetComponent<UI>().OpenBox(key);
                 return;
             }
 
+            if (item == null) return;
             // 碰撞点向角色移动一点距离，保证方块生成位置准确
             point += normal * 0.01f;
-            if (item != null && trans.GetComponent<Chunk>().CreateBlock(point, this.transform.position, item.ID) == 2)
+            byte create = trans.GetComponent<Chunk>().CreateBlock(point, this.transform.position, item.ID);
+            if (create == 2)
             {
                 // 方块生成位置不在当前区块内，则需改变区块trans
-                Regex regex = new Regex(@"\((-?\d+),(-?\d+),(-?\d+)\)");
+                Regex regex = new(@"\((-?\d+),(-?\d+),(-?\d+)\)");
                 Match match = regex.Match(trans.name);
                 if (match.Success)
                 {
@@ -228,9 +245,9 @@ public class PlayController : MonoBehaviour
                     Vector3i posi = new Vector3i(x, y, z) + new Vector3i((normal * 16f));
                     String newName = "(" + posi.x + "," + posi.y + "," + posi.z + ")";
                     trans = GameObject.Find(newName).transform;
-                    Debug.Log(trans.name);
+                    //Debug.Log(trans.name);
                     // 在新区块生成方块
-                    trans.GetComponent<Chunk>().CreateBlock(point, this.transform.position, item.ID);
+                    create = trans.GetComponent<Chunk>().CreateBlock(point, this.transform.position, item.ID);
                 }
                 else
                 {
@@ -238,7 +255,24 @@ public class PlayController : MonoBehaviour
                 }
 
             }
-        
+            if(create == 0)
+            {
+                // 方块生成成功
+                item.count--;
+                byte backID = (byte)(inventoryID - 1);
+                if(item.count == 0)
+                {
+                    // 如果方块放置完，则在背包中删除方块
+                    backpack.SetItem(backID, null);
+                    item = null;
+                }
+                else
+                {
+                    // 否则只减少数量
+                    backpack.SetItem(backID, item);
+                }
+            }
+
         }
     }
 
@@ -352,5 +386,26 @@ public class PlayController : MonoBehaviour
         }
         this.transform.GetChild(6).GetChild(0).GetChild(1).GetComponent<CreateUI>().CreateBlockUI(BlockList.GetBlock(item.ID), true, 0.1f, Vector3.zero);
         this.transform.GetChild(3).GetChild(1).GetComponent<CreateUI>().CreateBlockUI(BlockList.GetBlock(item.ID), true, 0.1f, Vector3.zero);
+    }
+
+    // 检测掉落物
+    public void DetectionDrops()
+    {
+        Collider[] colliders;
+        if(Sphere(out colliders, 1f, LayerMask.GetMask("Drop")))
+        {
+            // 如果检测到掉落物
+            foreach(Collider collider in colliders)
+            {
+                string name = collider.name;
+                Item item = DropList.GetDrop(name);
+                if(item == null)
+                {
+                    continue;
+                }
+                DropList.Destroy(name);
+                backpack.Storage(item);
+            }
+        }
     }
 }

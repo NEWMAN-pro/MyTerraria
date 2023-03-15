@@ -30,9 +30,9 @@ public class UI : MonoBehaviour
     public void OpenBox(string key)
     {
         GameObject box = this.transform.GetChild(1).GetChild(60).gameObject;
-        box.SetActive(boxFlag);
-        box.GetComponent<Box>().items = BoxList.GetBox(key);
+        box.GetComponent<Box>().items = BoxList.GetBox(key, out box.GetComponent<Box>().boxName);
         box.GetComponent<Box>().key = key;
+        box.SetActive(boxFlag);
         if (flag)
         {
             OpenUI();
