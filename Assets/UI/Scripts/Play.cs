@@ -19,7 +19,9 @@ public class Play : MonoBehaviour
 
     public void ToScenes()
     {
-        Debug.Log("YES");
-        SceneManager.LoadScene(1);
+        // –∂‘ÿµ±«∞≥°æ∞
+        //SceneManager.UnloadSceneAsync(SceneManager.GetActiveScene().buildIndex);
+
+        SceneManager.LoadScene(1, LoadSceneMode.Single);
     }
 }

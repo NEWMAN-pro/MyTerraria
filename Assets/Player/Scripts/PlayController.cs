@@ -18,7 +18,7 @@ public class PlayController : MonoBehaviour
     public Vector3 velocity = Vector3.zero;
     // 跳跃高度
     public float jumpHeight = 1.2f;
-    // 旋转的速度。
+    // 旋转的速度
     public float rotateSpeed = 2;
     // 视线范围
     public int viewRange = 30;

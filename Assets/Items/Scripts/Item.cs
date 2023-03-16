@@ -33,6 +33,21 @@ public class Item : IComparable<Item>
         this.flag = flag;
     }
 
+    // 获取物品名称
+    public string GetName()
+    {
+        if(type == Type.Block)
+        {
+            Block block = BlockList.GetBlock(ID);
+            if(block != null)
+            {
+                return block.name;
+            }
+        }
+        return "";
+    }
+
+    // 重载比较方法
     public int CompareTo(Item other)
     {
         if(this.type == other.type)

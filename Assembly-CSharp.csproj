@@ -118,6 +118,8 @@
     <Compile Include="Assets\Items\Scripts\Drop.cs" />
     <Compile Include="Assets\LibNoise.Unity-master\Operator\Add.cs" />
     <Compile Include="Assets\LibNoise.Unity-master\Operator\Blend.cs" />
+    <Compile Include="Assets\UI\Scripts\State.cs" />
+    <Compile Include="Assets\Player\Scripts\PlayState.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\LibNoise.Unity-master\COPYING.txt" />

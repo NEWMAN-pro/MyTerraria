@@ -7,6 +7,8 @@ public class Inventory : MonoBehaviour
 {
     // 物品栏是否有物品改变
     public byte selectID = 1;
+    // 物品名字文本
+    public Text itemName;
 
     // 物品队列
     public Dictionary<byte, Item> items = new()
@@ -79,5 +81,14 @@ public class Inventory : MonoBehaviour
             key = 10;
         }
         select.anchoredPosition = new Vector2((key - 5) * 100 - 50, 0);
+        Item item = GetItem(key);
+        if(item != null)
+        {
+            itemName.text = item.GetName();
+        }
+        else
+        {
+            itemName.text = "";
+        }
     }
 }

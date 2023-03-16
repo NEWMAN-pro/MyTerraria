@@ -49,4 +49,9 @@ public class BlockList : MonoBehaviour
     {
         return blocks.ContainsKey(id) ? blocks[id] : null;
     }
+
+    private void OnDestroy()
+    {
+        blocks.Clear();
+    }
 }
