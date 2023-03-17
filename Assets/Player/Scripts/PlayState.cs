@@ -4,7 +4,10 @@ using UnityEngine;
 
 public class PlayState : MonoBehaviour
 {
-
+    // 玩家出生点
+    public Vector3 home = new(0, 25, 0);
+    // 玩家名字
+    public string playName = "";
     // 玩家血量
     public int HP = 100;
     // 最大血量
@@ -48,5 +51,11 @@ public class PlayState : MonoBehaviour
         MP = (MP + mp) <= maxMP ? (MP + mp) : maxMP;
         if (MP < 0) MP = 0;
         state.CreateUI(MP, maxMP, false);
+    }
+
+    // 设置出生点
+    public void SetHome(Vector3 posi)
+    {
+        this.home = posi;
     }
 }

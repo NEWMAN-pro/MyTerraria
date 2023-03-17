@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using System.Linq;
+using System;
 
 public class Backpack : MonoBehaviour
 {
@@ -15,6 +16,7 @@ public class Backpack : MonoBehaviour
     // 选择框
     public RectTransform select;
     // 当前选择的物品
+    [NonSerialized]
     public Item selectItem;
     // 未标记的颜色
     public Color NotFlag;
@@ -397,7 +399,7 @@ public class Backpack : MonoBehaviour
     // 存放全部
     public void Deposit()
     {
-        var items_ = items.Where(i => i.Value != null && i.Key > 9 && !i.Value.flag).ToDictionary(i => i.Key, i => i.Value);
+        var items_ = items.Where(i => i.Value != null && i.Key > 9 && i.Key != 50 && !i.Value.flag).ToDictionary(i => i.Key, i => i.Value);
         foreach(var pair in items_)
         {
             box.Storage(pair.Value);

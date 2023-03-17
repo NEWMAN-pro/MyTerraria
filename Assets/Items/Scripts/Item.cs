@@ -11,9 +11,11 @@ public enum Type : byte
     Buff = 3,
     Money = 4,
     Ammo = 5,
-    Other = 7
+    Other = 7,
+    Init = 8
 }
 
+[Serializable]
 public class Item : IComparable<Item>
 {
     // 物品ID
@@ -25,7 +27,7 @@ public class Item : IComparable<Item>
     // 是否被标记
     public bool flag;
 
-    public Item(byte ID = 0, Type type = Type.Other, int count = 0, bool flag = false)
+    public Item(byte ID = 0, Type type = Type.Init, int count = 0, bool flag = false)
     {
         this.ID = ID;
         this.type = type;
