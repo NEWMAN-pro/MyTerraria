@@ -24,6 +24,23 @@ public class PlayState : MonoBehaviour
     // 玩家状态条
     public State state;
 
+    private void Awake()
+    {
+        if (!StartUI.flag)
+        {
+            // 如果是继续游戏
+            GameData data = AccessGameAll.data;
+            this.playName = data.playerName;
+            this.maxHP = data.maxHP;
+            this.maxMP = data.maxMP;
+            this.HP = this.maxHP;
+            this.MP = this.maxMP;
+        }
+        else
+        {
+            this.playName = StartUI.playerName;
+        }
+    }
 
     // Start is called before the first frame update
     void Start()

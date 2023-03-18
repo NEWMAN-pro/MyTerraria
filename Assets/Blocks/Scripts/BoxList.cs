@@ -8,6 +8,16 @@ public class BoxList : MonoBehaviour
     public static Dictionary<string, Dictionary<byte, Item> > boxs = new Dictionary<string, Dictionary<byte, Item> >();
     public static Dictionary<string, string> boxsName = new();
 
+    private void Awake()
+    {
+        if (!StartUI.flag)
+        {
+            // 如果是继续游戏
+            boxs = AccessGameAll.data.boxs;
+            boxsName = AccessGameAll.data.boxsName;
+        }
+    }
+
     // 增加宝箱
     public static void AddBox(string key)
     {
@@ -47,5 +57,12 @@ public class BoxList : MonoBehaviour
     {
         string name;
         return GetBox(key, out name).Values.All(v => ReferenceEquals(v, null));
+    }
+
+    // 销毁脚本时
+    private void OnDestroy()
+    {
+        boxs.Clear();
+        boxsName.Clear();
     }
 }

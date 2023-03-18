@@ -46,6 +46,15 @@ public class Backpack : MonoBehaviour
                 text.name = "ItemCount";
             }
         }
+        if (!StartUI.flag)
+        {
+            // 如果是继续游戏
+            items = AccessGameAll.data.items;
+            foreach(var pair in items)
+            {
+                CreateUI(pair.Value, pair.Key, false);
+            }
+        }
 
         Item item_1 = new Item();
         item_1.type = 0;
@@ -178,7 +187,8 @@ public class Backpack : MonoBehaviour
                 this.transform.GetChild(key).GetComponent<CreateUI>().CreateBlockUI(block, true, 40, new Vector3(0, -1f, -0.01f));
             }
         }
-        if(item.count != -1) this.transform.GetChild(key).GetChild(0).GetComponent<Text>().text = item.count.ToString();
+        SetColor(key, item.flag);
+        if (item.count != -1) this.transform.GetChild(key).GetChild(0).GetComponent<Text>().text = item.count.ToString();
     }
 
     // 更改选择框
@@ -259,7 +269,7 @@ public class Backpack : MonoBehaviour
                 }
             }
             SetItem((byte)key, selectItem);
-            SetColor(key, selectItem.flag);
+            //SetColor(key, selectItem.flag);
             if(item == null || key == 50)
             {
                 // 如果该格为空，则置空选择框，当选中的是垃圾桶，翻盖其中物品

@@ -18,7 +18,7 @@ namespace Soultia.Voxel
         public static int height = 16;
 
         // 区块方块表
-        public byte[,,] blocks;
+        public byte[,,] blocks = new byte[16, 16, 16];
         // 区块位置
         public Vector3i position;
         // 地形起伏度
@@ -55,7 +55,7 @@ namespace Soultia.Voxel
 
         //当前Chunk是否正在生成中
         private bool isWorking = false;
-        private bool isFinished = false;
+        public bool isFinished = false;
 
         // 玩家信息
         public Transform player;
@@ -76,6 +76,14 @@ namespace Soultia.Voxel
                 // 将区块放置在MAP组件下
                 this.transform.transform.SetParent(Map.instance.transform);
                 //StartFunction();
+            }
+            if (isFinished)
+            {
+                // 防止加载中断出现不加载情况
+                isWorking = true;
+                mesh = new Mesh();
+                mesh.name = "Chunk";
+                StartCoroutine(CreateMesh());
             }
         }
 

@@ -1210,6 +1210,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1177481372}
+        m_TargetAssemblyTypeName: AccessGame, Assembly-CSharp
+        m_MethodName: SaveMap
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &66604373
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2822,54 +2834,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1177481372}
-        m_TargetAssemblyTypeName: AccessGame, Assembly-CSharp
-        m_MethodName: ReadRandomSeed
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 310944488}
-        m_TargetAssemblyTypeName: AccessGame, Assembly-CSharp
-        m_MethodName: ReadBackpack
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1381734051}
-        m_TargetAssemblyTypeName: AccessGame, Assembly-CSharp
-        m_MethodName: ReadBox
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1177481372}
-        m_TargetAssemblyTypeName: AccessGame, Assembly-CSharp
-        m_MethodName: ReadPlayerSate
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!114 &172557039
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3892,7 +3856,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7783cc8cbbb8a7646ab097b9419698aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AGA: {fileID: 0}
 --- !u!1 &320687911
 GameObject:
   m_ObjectHideFlags: 0
@@ -13393,6 +13356,50 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1043226951}
   m_CullTransparentMesh: 1
+--- !u!1 &1044598038
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1044598040}
+  - component: {fileID: 1044598041}
+  m_Layer: 0
+  m_Name: Init
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1044598040
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1044598038}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 960, y: 540, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1044598041
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1044598038}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0e70fbffe367ce4db9d98a814c25bf5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1053619409
 GameObject:
   m_ObjectHideFlags: 0
@@ -14483,15 +14490,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4307a0b2fcf9fec49a195b4349a85611, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  data:
-    randomSeed: 0
-    playerName: 
-    maxHP: 0
-    maxMP: 0
-  path: 
-  backPath: 
-  boxPath: 
-  boxNamePath: 
 --- !u!114 &1177481372
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14504,7 +14502,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7783cc8cbbb8a7646ab097b9419698aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AGA: {fileID: 0}
 --- !u!1 &1186002932
 GameObject:
   m_ObjectHideFlags: 0
@@ -16666,7 +16663,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7783cc8cbbb8a7646ab097b9419698aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AGA: {fileID: 0}
 --- !u!1 &1407571982
 GameObject:
   m_ObjectHideFlags: 0

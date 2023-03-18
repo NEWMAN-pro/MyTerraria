@@ -15,6 +15,9 @@ namespace Soultia.Voxel
         // 区块队列
         public Dictionary<Vector3i, GameObject> chunks = new Dictionary<Vector3i, GameObject>();
 
+        // 区块中方块信息队列
+        public Dictionary<Vector3i, byte[,,]> chunkBlocks = new();
+
         // 玩家
         public static GameObject player;
 
@@ -28,6 +31,11 @@ namespace Soultia.Voxel
         void Awake()
         {
             instance = this;
+            if (!StartUI.flag)
+            {
+                // 如果是继续游戏
+                chunkBlocks = AccessGameAll.data.map;
+            }
             chunkPrefab = Resources.Load("Prefabs/Chunk") as GameObject;
             player = Resources.Load("Prefabs/Player") as GameObject;
             player = Instantiate(player, new Vector3(0, 25, 0), Quaternion.identity);
@@ -100,7 +108,13 @@ namespace Soultia.Voxel
             }
             else
             {
-                Instantiate(chunkPrefab, pos, Quaternion.identity);
+                GameObject chunk = Instantiate(chunkPrefab, pos, Quaternion.identity);
+                if (chunkBlocks.ContainsKey(pos))
+                {
+                    // 如果存档中改区块有记录，则加载
+                    chunk.GetComponent<Chunk>().blocks = chunkBlocks[pos];
+                    chunk.GetComponent<Chunk>().isFinished = true;
+                }
             }
             yield return null;
             spawningChunk = false;

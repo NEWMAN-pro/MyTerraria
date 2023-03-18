@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 using System.Runtime.Serialization.Formatters.Binary;
+using Soultia.Util;
 
 [System.Serializable]
 public class GameData
@@ -15,85 +16,50 @@ public class GameData
     public int maxHP;
     // 玩家最大蓝量
     public int maxMP;
-}
-
-
-public class AccessGameAll : MonoBehaviour
-{
-    public GameData data = new();
     // 玩家背包
     public Dictionary<byte, Item> items;
     // 宝箱队列
     public Dictionary<string, Dictionary<byte, Item>> boxs;
     // 宝箱名字队列
     public Dictionary<string, string> boxsName;
+    // 地图信息
+    public Dictionary<Vector3i, byte[,,]> map = new(); 
+}
+
+
+public class AccessGameAll : MonoBehaviour
+{
+    public static GameData data = new();
     // 基础路径
-    public string path;
-    // 背包字典路径
-    public string backPath;
-    // 宝箱字典路径
-    public string boxPath;
-    // 宝箱名字路径
-    public string boxNamePath;
+    public static string path;
 
     private void Awake()
     {
-        path = Application.dataPath + "/Save/GameData.txt";
-        backPath = Application.dataPath + "/Save/Items.txt";
-        boxPath = Application.dataPath + "/Save/Boxs.txt";
-        boxNamePath = Application.dataPath + "/Save/BoxsName.txt";
+        path = Application.dataPath + "/Save/";
         Directory.CreateDirectory(Application.dataPath + "/Save");
     }
 
     // 保存游戏
-    public void SaveGame()
+    public static void SaveGame()
     {
-        // 存入基础文件
-        string json = JsonUtility.ToJson(data);
-        StreamWriter writer = new(path, false);
-        writer.Write(json);
-        writer.Close();
-
-        // 存入背包文件
-        BinaryFormatter formatter = new BinaryFormatter();
-        FileStream stream = new FileStream(backPath, FileMode.Create);
-        formatter.Serialize(stream, items);
-        stream.Close();
-
-        // 存入宝箱文件
-        stream = new FileStream(boxPath, FileMode.Create);
-        formatter.Serialize(stream, boxs);
-        stream.Close();
-
-        // 存入宝箱名字文件
-        stream = new FileStream(boxNamePath, FileMode.Create);
-        formatter.Serialize(stream, boxsName);
+        Debug.Log(path + StartUI.key);
+        // 保存数据
+        BinaryFormatter formatter = new();
+        FileStream stream = new(path + StartUI.key, FileMode.Create);
+        formatter.Serialize(stream, data);
         stream.Close();
     }
 
     // 读取游戏
-    public void ReadGame()
+    public static GameData ReadGame()
     {
-        // 读取基础文件
-        StreamReader reader = new(path);
-        string json = reader.ReadToEnd();
-        reader.Close();
-        data = JsonUtility.FromJson<GameData>(json);
-
-        // 读取背包文件
-        BinaryFormatter formatter = new BinaryFormatter();
-        FileStream stream = new FileStream(backPath, FileMode.Open);
-        items = (Dictionary<byte, Item>)formatter.Deserialize(stream);
+        Debug.Log(path + StartUI.key);
+        // 读取数据
+        BinaryFormatter formatter = new();
+        FileStream stream = new(path + StartUI.key, FileMode.Open);
+        data = (GameData)formatter.Deserialize(stream);
         stream.Close();
-
-        // 读取宝箱文件
-        stream = new FileStream(boxPath, FileMode.Open);
-        boxs = (Dictionary<string, Dictionary<byte, Item>>)formatter.Deserialize(stream);
-        stream.Close();
-
-        // 读取宝箱名字文件
-        stream = new FileStream(boxNamePath, FileMode.Open);
-        boxsName = (Dictionary<string, string>)formatter.Deserialize(stream);
-        stream.Close();
+        Debug.Log(data.playerName);
+        return data;
     }
 }
