@@ -59,6 +59,8 @@
     <Compile Include="Assets\LibNoise.Unity-master\Generator\Spheres.cs" />
     <Compile Include="Assets\UI\Scripts\Box.cs" />
     <Compile Include="Assets\LibNoise.Unity-master\Generator\Cylinders.cs" />
+    <Compile Include="Assets\Other\Scripts\InitGame.cs" />
+    <Compile Include="Assets\UI\Scripts\SelectArchive.cs" />
     <Compile Include="Assets\UI\Scripts\State.cs" />
     <Compile Include="Assets\LibNoise.Unity-master\Operator\Exponent.cs" />
     <Compile Include="Assets\Other\Scripts\Vector3ii.cs" />
@@ -99,6 +101,7 @@
     <Compile Include="Assets\Player\Scripts\AnimationState.cs" />
     <Compile Include="Assets\Items\Scripts\DropList.cs" />
     <Compile Include="Assets\Word\Scripts\Terrain.cs" />
+    <Compile Include="Assets\UI\Scripts\StartUI.cs" />
     <Compile Include="Assets\Other\Scripts\AccessGame.cs" />
     <Compile Include="Assets\UI\Scripts\UIScaler.cs" />
     <Compile Include="Assets\UI\Scripts\UI.cs" />
@@ -121,16 +124,15 @@
     <Compile Include="Assets\Items\Scripts\Drop.cs" />
     <Compile Include="Assets\LibNoise.Unity-master\Operator\Add.cs" />
     <Compile Include="Assets\LibNoise.Unity-master\Operator\Blend.cs" />
-    <Compile Include="Assets\UI\Scripts\StartUI.cs" />
-    <Compile Include="Assets\Other\Scripts\InitGame.cs" />
-    <Compile Include="Assets\UI\Scripts\SelectArchive.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Assets\Save\333.txt" />
     <None Include="Assets\Save\NewWorld.txt" />
     <None Include="Assets\Save\GameData.txt" />
     <None Include="Assets\LibNoise.Unity-master\COPYING.txt" />
     <None Include="Assets\Save\111.txt" />
     <None Include="Assets\LibNoise.Unity-master\COPYING.LESSER.txt" />
+    <None Include="Assets\Save\222.txt" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

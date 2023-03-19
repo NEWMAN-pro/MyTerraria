@@ -130,5 +130,10 @@ namespace Soultia.Voxel
         {
             return chunks.ContainsKey(new Vector3i(x, y, z));
         }
+
+        private void OnDestroy()
+        {
+            instance = null;
+        }
     }
 }

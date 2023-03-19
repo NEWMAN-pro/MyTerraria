@@ -23,7 +23,7 @@ public class GameData
     // 宝箱名字队列
     public Dictionary<string, string> boxsName;
     // 地图信息
-    public Dictionary<Vector3i, byte[,,]> map = new(); 
+    public Dictionary<Vector3i, byte[,,]> map = new();
 }
 
 

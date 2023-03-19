@@ -54,7 +54,7 @@ namespace Soultia.Voxel
 
 
         //当前Chunk是否正在生成中
-        private bool isWorking = false;
+        public bool isWorking = false;
         public bool isFinished = false;
 
         // 玩家信息
@@ -119,7 +119,7 @@ namespace Soultia.Voxel
         }
 
         // 构造
-        IEnumerator CreateMap()
+        public IEnumerator CreateMap()
         {
             blocks = new byte[width, height, width];
             for (int x = 0; x < Chunk.width; x++)
