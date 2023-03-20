@@ -17,7 +17,7 @@ public class PlayState : MonoBehaviour
     // ×î´óÀ¶Á¿
     public int maxMP = 100;
     // ·ÀÓù
-    public int Defenes = 0;
+    public int defenes = 0;
     // ÉËº¦
     public int damage = 10;
 
