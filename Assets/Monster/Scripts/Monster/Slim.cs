@@ -1,17 +1,25 @@
-using System.Collections;
+锘縰sing System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class Slim : Monster
 {
-    // 是否移动
+    // 鏄惁绉诲姩
     public bool moveFlag = false;
+
+    // 鐩爣
+    public GameObject player;
 
     private void Update()
     {
         if (moveFlag)
         {
-            Move();
+            base.animator.SetBool("Move", true);
+        }
+        else
+        {
+            base.animator.SetBool("Move", false);
         }
     }
 
@@ -33,17 +41,5 @@ public class Slim : Monster
     public override void Die()
     {
         base.Die();
-    }
-
-    // 开始移动
-    public void StartMove()
-    {
-        moveFlag = true;
-    }
-
-    // 结束移动
-    public void EndMove()
-    {
-        moveFlag = false;
     }
 }

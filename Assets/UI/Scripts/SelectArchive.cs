@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -7,22 +7,22 @@ using UnityEngine.EventSystems;
 
 public class SelectArchive : MonoBehaviour
 {
-    // ´æµµÎÄ¼şÂ·¾¶
+    // å­˜æ¡£æ–‡ä»¶è·¯å¾„
     public string path;
-    // ´æµµÎÄ¼şÃû³Æ¶ÓÁĞ
+    // å­˜æ¡£æ–‡ä»¶åç§°é˜Ÿåˆ—
     public List<string> archives = new();
-    // ´æµµ¿òÔ¤ÖÆÌå
+    // å­˜æ¡£æ¡†é¢„åˆ¶ä½“
     public GameObject archivePrefab;
 
     private void Awake()
     {
         path = Application.dataPath + "/Save";
         archivePrefab = Resources.Load("Prefabs/Archive") as GameObject;
-        // ³õÊ¼»¯Ê±´´½¨ÎÄ¼ş¼Ğ
+        // åˆå§‹åŒ–æ—¶åˆ›å»ºæ–‡ä»¶å¤¹
         Directory.CreateDirectory(Application.dataPath + "/Save");
     }
 
-    // ±»¼¤»îÊ±ËÑË÷ËùÓĞ´æµµÎÄ¼şÃû
+    // è¢«æ¿€æ´»æ—¶æœç´¢æ‰€æœ‰å­˜æ¡£æ–‡ä»¶å
     private void OnEnable()
     {
         Transform content = this.transform.GetChild(0).GetChild(0).GetChild(0);
@@ -35,18 +35,18 @@ public class SelectArchive : MonoBehaviour
             archive.GetComponent<RectTransform>().anchoredPosition = new(0, -150f - (archives.Count - 1) * 250f);
             archive.transform.GetChild(0).GetComponent<Text>().text = archives[^1];
             archive.name = archives[^1];
-            // °ó¶¨°´Å¥µã»÷ÊÂ¼ş
+            // ç»‘å®šæŒ‰é’®ç‚¹å‡»äº‹ä»¶
             archive.GetComponent<Button>().onClick.AddListener(() =>
             {
                 Archive();
             });
         }
-        // ĞŞ¸Ä¿ò¸ß
+        // ä¿®æ”¹æ¡†é«˜
         content.GetComponent<RectTransform>().sizeDelta = new(0f, Mathf.Max(1000f, archives.Count * 250f));
         content.GetComponent<RectTransform>().anchoredPosition = new(0, -content.GetComponent<RectTransform>().sizeDelta.y / 2 + 500);
     }
 
-    // Ñ¡Ôñ´æµµ
+    // é€‰æ‹©å­˜æ¡£
     public void Archive()
     {
         string name = EventSystem.current.currentSelectedGameObject.name;

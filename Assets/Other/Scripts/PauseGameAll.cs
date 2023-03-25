@@ -1,19 +1,19 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class PauseGameAll : MonoBehaviour
 {
-    // ÔİÍ£½Å±¾¶ÓÁĞ
+    // æš‚åœè„šæœ¬é˜Ÿåˆ—
     public List<PauseGame> pgList = new();
 
-    // Ìí¼ÓÔİÍ£½Å±¾
+    // æ·»åŠ æš‚åœè„šæœ¬
     public void Add(PauseGame pg)
     {
         pgList.Add(pg);
     }
 
-    // ÔİÍ£ËùÓĞ½Å±¾
+    // æš‚åœæ‰€æœ‰è„šæœ¬
     public void OnPauseGame()
     {
         //Time.timeScale = 0f;
@@ -23,7 +23,7 @@ public class PauseGameAll : MonoBehaviour
         }
     }
 
-    // ½â³ıËùÓĞ½Å±¾ÔİÍ£
+    // è§£é™¤æ‰€æœ‰è„šæœ¬æš‚åœ
     public void UnPauseGame()
     {
         //Time.timeScale = 1f;

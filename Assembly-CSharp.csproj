@@ -61,15 +61,19 @@
     <Compile Include="Assets\LibNoise.Unity-master\Generator\Cylinders.cs" />
     <Compile Include="Assets\Other\Scripts\InitGame.cs" />
     <Compile Include="Assets\UI\Scripts\SelectArchive.cs" />
+    <Compile Include="Assets\Other\Scripts\AStar.cs" />
     <Compile Include="Assets\UI\Scripts\State.cs" />
     <Compile Include="Assets\LibNoise.Unity-master\Operator\Exponent.cs" />
+    <Compile Include="Assets\Monster\Scripts\Monster.cs" />
     <Compile Include="Assets\Other\Scripts\Vector3ii.cs" />
     <Compile Include="Assets\LibNoise.Unity-master\Operator\Scale.cs" />
     <Compile Include="Assets\Word\Scripts\Map.cs" />
     <Compile Include="Assets\LibNoise.Unity-master\ModuleBase.cs" />
+    <Compile Include="Assets\FSMCleaSignals.cs" />
     <Compile Include="Assets\UI\Scripts\CreateUI.cs" />
     <Compile Include="Assets\LibNoise.Unity-master\Operator\Multiply.cs" />
     <Compile Include="Assets\Other\Scripts\AccessGameAll.cs" />
+    <Compile Include="Assets\Monster\Scripts\Monster\Zombie.cs" />
     <Compile Include="Assets\LibNoise.Unity-master\Generator\Perlin.cs" />
     <Compile Include="Assets\LibNoise.Unity-master\Operator\Invert.cs" />
     <Compile Include="Assets\LibNoise.Unity-master\Operator\Displace.cs" />
@@ -83,6 +87,7 @@
     <Compile Include="Assets\Other\Scripts\FrameAnimation.cs" />
     <Compile Include="Assets\LibNoise.Unity-master\Utils.cs" />
     <Compile Include="Assets\LibNoise.Unity-master\Operator\Terrace.cs" />
+    <Compile Include="Assets\Other\Scripts\Grid3.cs" />
     <Compile Include="Assets\Blocks\Scripts\Block.cs" />
     <Compile Include="Assets\LibNoise.Unity-master\Generator\Checker.cs" />
     <Compile Include="Assets\Word\Scripts\GameManager.cs" />
@@ -98,6 +103,7 @@
     <Compile Include="Assets\Player\Scripts\Wobble.cs" />
     <Compile Include="Assets\Items\Scripts\Item.cs" />
     <Compile Include="Assets\Blocks\Scripts\BoxList.cs" />
+    <Compile Include="Assets\Monster\Scripts\Monster\Slim.cs" />
     <Compile Include="Assets\Player\Scripts\AnimationState.cs" />
     <Compile Include="Assets\Items\Scripts\DropList.cs" />
     <Compile Include="Assets\Word\Scripts\Terrain.cs" />
@@ -110,6 +116,7 @@
     <Compile Include="Assets\LibNoise.Unity-master\Operator\Rotate.cs" />
     <Compile Include="Assets\LibNoise.Unity-master\Operator\Subtract.cs" />
     <Compile Include="Assets\LibNoise.Unity-master\Operator\Translate.cs" />
+    <Compile Include="Assets\Monster\Scripts\MonsterFactory.cs" />
     <Compile Include="Assets\LibNoise.Unity-master\Operator\Turbulence.cs" />
     <Compile Include="Assets\LibNoise.Unity-master\Noise2D.cs" />
     <Compile Include="Assets\LibNoise.Unity-master\Operator\Min.cs" />
@@ -124,10 +131,6 @@
     <Compile Include="Assets\Items\Scripts\Drop.cs" />
     <Compile Include="Assets\LibNoise.Unity-master\Operator\Add.cs" />
     <Compile Include="Assets\LibNoise.Unity-master\Operator\Blend.cs" />
-    <Compile Include="Assets\Monster\Scripts\Monster.cs" />
-    <Compile Include="Assets\Monster\Scripts\MonsterFactory.cs" />
-    <Compile Include="Assets\Monster\Scripts\Monster\Slim.cs" />
-    <Compile Include="Assets\Monster\Scripts\Monster\Zombie.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Save\NewWorld.txt" />

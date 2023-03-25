@@ -1,33 +1,36 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class Monster : MonoBehaviour
 {
-    // ÑªÁ¿
+    // è¡€é‡
     public int HP;
-    // ×î´óÑªÁ¿
+    // æœ€å¤§è¡€é‡
     public int maxHP;
-    // ·ÀÓù
+    // é˜²å¾¡
     public int defenes;
-    // ÉËº¦
+    // ä¼¤å®³
     public int damage;
-    // ÒÆ¶¯ËÙ¶È
+    // ç§»åŠ¨é€Ÿåº¦
     public float speed;
-    // ÌøÔ¾¸ß¶È
+    // è·³è·ƒé«˜åº¦
     public float jump;
-    // Ñ°Â·Ä¿±ê
+    // å¯»è·¯ç›®æ ‡
     public Transform traget;
+    // åŠ¨ç”»
+    public Animator animator;
 
-    // ÒÆ¶¯
+    // ç§»åŠ¨
     public virtual void Move() { }
 
-    // ¹¥»÷
+    // æ”»å‡»
     public virtual void Attack() { }
 
-    // ÊÜÉË
+    // å—ä¼¤
     public virtual void Hurt() { }
 
-    // ËÀÍö
+    // æ­»äº¡
     public virtual void Die() { }
 }

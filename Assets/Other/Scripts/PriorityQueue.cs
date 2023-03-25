@@ -151,6 +151,12 @@ namespace Soultia.Util
             return heap[0];
         }
 
+        // 查询是否有该值
+        public bool Contains(T t)
+        {
+            return heap.Contains(t);
+        }
+
         // 查询堆大小
         public int Count
         {
@@ -161,6 +167,12 @@ namespace Soultia.Util
         public bool IsEmpty
         {
             get { return heap.Count == 0; }
+        }
+
+        // 清空队列
+        public void Clear()
+        {
+            heap.Clear();
         }
     }
 }
