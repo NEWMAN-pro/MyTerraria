@@ -20,6 +20,13 @@ public class AStar : MonoBehaviour
     public bool isFind = false;
     // 是否寻路成功
     public bool FindFlag = false;
+    // 是否开始移动
+    public bool MoveFlag = false;
+
+    // 移动速度
+    public float speed = 5f;
+    // 路径点下标
+    private int index = 1;
 
     readonly int[] X = { 0, 0, 1, -1, 1, -1, 1, -1 };
     readonly int[] Z = { 1, -1, 0, 0, -1, 1, 1, -1 };
@@ -36,9 +43,9 @@ public class AStar : MonoBehaviour
         {
             if (!isFind)
             {
-                // 开始寻路，每两秒更新一次路径
-                //InvokeRepeating(nameof(FindPath), 0, 2);
-                FindPath();
+                // 开始寻路，每10秒更新一次路径
+                InvokeRepeating(nameof(FindPath), 0, 5);
+                //FindPath();
                 isFind = true;
             }
             if (!FindFlag)
@@ -49,7 +56,6 @@ public class AStar : MonoBehaviour
             else
             {
                 WalkForPath();
-                flag = false;
             }
         }
         else
@@ -66,60 +72,55 @@ public class AStar : MonoBehaviour
     // 跟着路径行走
     public void WalkForPath()
     {
-        Vector3 nowPosi = path[0];
-        for(int i = 1; i < path.Count; i++)
+        if (index == path.Count)
         {
-            //Debug.Log(path[i]);
-            //Debug.DrawLine(nowPosi, path[i], Color.blue);
-            nowPosi = path[i];
+            // 走完了所有路经
+            return;
+        }
+        Vector3 direction = (path[index] - path[index - 1]).normalized;
+        this.transform.position += direction * speed * Time.deltaTime;
+        if (Vector3.Distance(this.transform.position, path[index]) <= 0.1f)
+        {
+            index++;
         }
     }
 
     // 寻路
     public void FindPath()
     {
+        index = 1;
         openSet.Clear();
         clostSet.Clear();
 
         Vector3 startPosi = seeker.position;
         Vector3 targetPosi = target.position;
-        startPosi = NormPosi(startPosi);
-        targetPosi = NormPosi(targetPosi);
-        targetPosi.y -= 1;
+        targetPosi.y -= 0.9f;
 
         // 获取起始节点信息
         Node startNode = new(startPosi, WorldToChunkPosi(startPosi), WorldToBlockPosi(startPosi));
         Node targetNode = new(targetPosi, WorldToChunkPosi(targetPosi), WorldToBlockPosi(targetPosi));
-        Debug.Log("StartPosi: " + startNode.chunkPosi + " " + startNode.blockPosi);
-        Debug.Log("TargetPosi: " + targetNode.chunkPosi + " " + targetNode.blockPosi);
+        //Debug.Log("StartPosi: " + startNode.posi + " " + startNode.chunkPosi + " " + startNode.blockPosi);
+        //Debug.Log("TargetPosi: " + targetNode.posi + " " + targetNode.chunkPosi + " " + targetNode.blockPosi);
 
         // 起点入队列
         openSet.Enqueue(startNode);
 
-
-        int count = 0;
         // 寻路
         while(openSet.Count > 0)
         {
-            if (count++ > 100)
-            {
-                Debug.Log("0000");
-                return;
-            }
             // 获取值最小的节点
             Node node = openSet.Dequeue();
-            Debug.Log("now: " + node.chunkPosi + " " + node.blockPosi + " " + node.FCost);
+            //Debug.Log("now: " + node.chunkPosi + " " + node.blockPosi + " " + GetBlockState(node));
 
             clostSet.Add(node);
 
-            //if(node == targetNode)
             if(node.Equal(targetNode))
             {
                 // 如果到达终点
                 targetNode.parent = node.parent;
                 RetracePath(startNode, targetNode);
                 FindFlag = true;
-                Debug.Log("1");
+                //Debug.Log("1");
                 return;
             }
 
@@ -137,16 +138,24 @@ public class AStar : MonoBehaviour
                 if (Limit(newNode, targetNode))
                 {
                     // 超过寻路范围
-                    Debug.Log("11");
+                    //Debug.Log("11");
                     continue;
                 }
 
                 if (ClostSetFind(newNode))
                 {
                     // 如果该该节点已经被删除，则跳过
-                    Debug.Log("22");
+                    //Debug.Log("22");
                     continue;
                 }
+
+
+                if (openSet.heap.Find(i => i.chunkPosi == newNode.chunkPosi && i.blockPosi == newNode.blockPosi) != null)
+                {
+                    // 如果该点已在寻路队列中，则跳过
+                    continue;
+                }
+
                 int state = GetBlockState(newNode);
                 if(state == 0)
                 {
@@ -166,7 +175,7 @@ public class AStar : MonoBehaviour
                         if(GetBlockState(nextBelowNode) == 0)
                         {
                             // 如何还是空，则不能行走，跳过该点
-                            Debug.Log("33");
+                            //Debug.Log("33");
                             continue;
                         }
                         else
@@ -187,7 +196,7 @@ public class AStar : MonoBehaviour
                     if(aboveState != 0)
                     {
                         // 如果上面方块不为空，则不能走，跳过该点
-                        Debug.Log("44");
+                        //Debug.Log("44");
                         continue;
                     }
                     else
@@ -200,7 +209,7 @@ public class AStar : MonoBehaviour
                         if(GetBlockState(nextAboveNode) != 0)
                         {
                             // 如果不为空，空间不足，不可行走
-                            Debug.Log("55");
+                            //Debug.Log("55");
                             continue;
                         }
                         else
@@ -214,19 +223,19 @@ public class AStar : MonoBehaviour
                 if (Limit(newNode, targetNode))
                 {
                     // 超过寻路范围
-                    Debug.Log("11");
+                    //Debug.Log("11");
                     continue;
                 }
 
                 if (ClostSetFind(newNode))
                 {
                     // 如果该该节点已经被删除，则跳过
-                    Debug.Log("22");
+                    //Debug.Log("22");
                     continue;
                 }
 
                 int dis = node.GCost + GetDistance(node, newNode);
-                if (!openSet.Contains(newNode))
+                if (openSet.heap.Find(i => i.chunkPosi == newNode.chunkPosi && i.blockPosi == newNode.blockPosi) == null)
                 {
                     // 如果该节点不在队列中，更新信息并入队
                     newNode.GCost = dis;
@@ -239,7 +248,7 @@ public class AStar : MonoBehaviour
         }
         // 如果没找到终点
         FindFlag = false;
-        Debug.Log("2");
+        //Debug.Log("2");
         return ;
     }
 
@@ -251,10 +260,12 @@ public class AStar : MonoBehaviour
     }
 
     // 判断是否越界
-    public bool Limit(Node node1, Node node2)
+    public bool Limit(Node nodeA, Node nodeB)
     {
-        Vector3i dis = node1.chunkPosi - node2.chunkPosi;
-        if(Mathf.Abs(dis.x) > 16 || Mathf.Abs(dis.y) > 16 || Mathf.Abs(dis.z) > 16)
+        int distX = Mathf.Abs(nodeA.blockPosi.x - nodeB.blockPosi.x + nodeA.chunkPosi.x - nodeB.chunkPosi.x);
+        int distY = Mathf.Abs(nodeA.blockPosi.y - nodeB.blockPosi.y + nodeA.chunkPosi.y - nodeB.chunkPosi.y);
+        int distZ = Mathf.Abs(nodeA.blockPosi.z - nodeB.blockPosi.z + nodeA.chunkPosi.z - nodeB.chunkPosi.z);
+        if (distX > 8 || distY > 8 || distZ > 8)
         {
             return true;
         }
@@ -345,11 +356,5 @@ public class AStar : MonoBehaviour
             return 14 * distX + 10 * (distZ - distX + distY);
         }
         return 14 * distZ + 10 * (distX - distZ + distY);
-    }
-
-    // 规范化坐标
-    public Vector3 NormPosi(Vector3 posi)
-    {
-        return new(Mathf.Ceil(posi.x) + 0.5f, Mathf.Ceil(posi.y) + 0.5f, Mathf.Ceil(posi.z) + 0.5f);
     }
 }
