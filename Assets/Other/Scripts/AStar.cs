@@ -3,6 +3,75 @@ using System.Collections.Generic;
 using UnityEngine;
 using Soultia.Util;
 using Soultia.Voxel;
+using System;
+
+// 网格节点类
+public class Node : IComparable<Node>
+{
+    // 地图上的位置
+    public Vector3 posi;
+    // 区块坐标
+    public Vector3i chunkPosi;
+    // 区块中方块坐标
+    public Vector3i blockPosi;
+    // 父节点
+    public Node parent;
+    // 代价值
+    public int GCost;
+    // 启发式值
+    public int HCost;
+    // 总代价
+    public int FCost { get { return GCost + HCost; } }
+
+    public Node(Vector3 posi, Vector3i chunkPosi, Vector3i blockPosi)
+    {
+        this.posi = posi;
+        this.chunkPosi = chunkPosi;
+        this.blockPosi = blockPosi;
+    }
+
+    public Node()
+    {
+    }
+
+    // 判断是否相等
+    public bool Equal(Node other)
+    {
+        return chunkPosi == other.chunkPosi && blockPosi == other.blockPosi;
+    }
+
+    // 重载比较函数
+    public int CompareTo(Node other)
+    {
+        // 先比较FCost的大小在比较HCost的大小，从小到大排序
+        if (FCost == other.FCost)
+        {
+            if (HCost > other.HCost)
+            {
+                return 1;
+            }
+            else if (HCost < other.HCost)
+            {
+                return -1;
+            }
+            else
+            {
+                return 0;
+            }
+        }
+        else
+        {
+            if (FCost > other.FCost)
+            {
+                return 1;
+            }
+            else
+            {
+                return -1;
+            }
+        }
+    }
+}
 
 public class AStar : MonoBehaviour
 {
@@ -44,7 +113,7 @@ public class AStar : MonoBehaviour
             if (!isFind)
             {
                 // 开始寻路，每10秒更新一次路径
-                InvokeRepeating(nameof(FindPath), 0, 5);
+                InvokeRepeating(nameof(FindPath), 0, 1);
                 //FindPath();
                 isFind = true;
             }
@@ -81,6 +150,11 @@ public class AStar : MonoBehaviour
         this.transform.position += direction * speed * Time.deltaTime;
         if (Vector3.Distance(this.transform.position, path[index]) <= 0.1f)
         {
+            //if(Mathf.Abs(path[index].y - path[index + 1].y) >= 1)
+            //{
+            //    // 跳跃
+
+            //}
             index++;
         }
     }
@@ -290,7 +364,6 @@ public class AStar : MonoBehaviour
             path.Add(node.posi);
             node = node.parent;
         }
-        path.Add(startNode.posi);
         path.Reverse();
     }
 
