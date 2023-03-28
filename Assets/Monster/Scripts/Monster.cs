@@ -17,8 +17,8 @@ public class Monster : MonoBehaviour
     public float speed;
     // 跳跃高度
     public float jump;
-    // 寻路目标
-    public Transform traget;
+    // 寻路范围
+    public int range;
     // 动画
     public Animator animator;
 

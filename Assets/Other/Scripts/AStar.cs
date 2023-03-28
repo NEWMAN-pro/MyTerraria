@@ -120,7 +120,17 @@ public class AStar : MonoBehaviour
             if (!FindFlag)
             {
                 // 寻路失败
-                Debug.Log("无路可走");
+                //Debug.Log("无路可走");
+                if (path.Count >= 1)
+                {
+                    if (WalkForPath())
+                    {
+                        // 路径走完了，试着朝目标点走动
+                        Vector3 direction = (target.position - path[index - 1]).normalized;
+                        direction.y = 0;
+                        this.transform.position += speed * Time.deltaTime * direction;
+                    }
+                }
             }
             else
             {
@@ -139,15 +149,15 @@ public class AStar : MonoBehaviour
     }
 
     // 跟着路径行走
-    public void WalkForPath()
+    public bool WalkForPath()
     {
         if (index == path.Count)
         {
             // 走完了所有路经
-            return;
+            return true;
         }
         Vector3 direction = (path[index] - path[index - 1]).normalized;
-        this.transform.position += direction * speed * Time.deltaTime;
+        this.transform.position += speed * Time.deltaTime * direction;
         if (Vector3.Distance(this.transform.position, path[index]) <= 0.1f)
         {
             //if(Mathf.Abs(path[index].y - path[index + 1].y) >= 1)
@@ -157,6 +167,7 @@ public class AStar : MonoBehaviour
             //}
             index++;
         }
+        return false;
     }
 
     // 寻路
@@ -179,6 +190,9 @@ public class AStar : MonoBehaviour
         // 起点入队列
         openSet.Enqueue(startNode);
 
+        // 记录离目标点最近的位置
+        Node MinNode = startNode;
+
         // 寻路
         while(openSet.Count > 0)
         {
@@ -186,6 +200,7 @@ public class AStar : MonoBehaviour
             Node node = openSet.Dequeue();
             //Debug.Log("now: " + node.chunkPosi + " " + node.blockPosi + " " + GetBlockState(node));
 
+            MinNode = MinNode.FCost > node.FCost ? node : MinNode;
             clostSet.Add(node);
 
             if(node.Equal(targetNode))
@@ -322,6 +337,8 @@ public class AStar : MonoBehaviour
         }
         // 如果没找到终点
         FindFlag = false;
+        // 找到离目标最近的路径
+        RetracePath(startNode, MinNode);
         //Debug.Log("2");
         return ;
     }
@@ -357,13 +374,14 @@ public class AStar : MonoBehaviour
     void RetracePath(Node startNode, Node endNode)
     {
         path.Clear();
-        Node node = endNode;
+        Node node = endNode.parent;
         // 反推路径
         while (node != null && !node.Equal(startNode))
         {
             path.Add(node.posi);
             node = node.parent;
         }
+        path.Add(startNode.posi);
         path.Reverse();
     }
 

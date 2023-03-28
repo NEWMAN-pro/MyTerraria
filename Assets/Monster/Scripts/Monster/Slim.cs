@@ -8,12 +8,10 @@ public class Slim : Monster
     // 是否移动
     public bool moveFlag = false;
 
-    // 目标
-    public GameObject player;
-
     private void Update()
     {
-        if (moveFlag)
+        Vector3 velocity = this.transform.GetComponent<Rigidbody>().velocity;
+        if (velocity.magnitude != 0)
         {
             base.animator.SetBool("Move", true);
         }
@@ -21,11 +19,6 @@ public class Slim : Monster
         {
             base.animator.SetBool("Move", false);
         }
-    }
-
-    public override void Move()
-    {
-        //this.transform.position += Vector3.Scale(this.transform.forward, new Vector3(0, 0, 0.01f));
     }
 
     public override void Attack()
