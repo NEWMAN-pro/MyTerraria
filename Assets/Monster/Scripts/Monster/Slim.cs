@@ -8,10 +8,15 @@ public class Slim : Monster
     // 是否移动
     public bool moveFlag = false;
 
-    private void Start()
+    private void Awake()
     {
-        base.aStar = this.transform.GetComponent<AStar>();
-        base.target = GameObject.Find("Player").transform;
+        base.HP = 100;
+        base.maxHP = 100;
+        base.defenes = 10;
+        base.damage = 10;
+        base.speed = 5f;
+        base.range = 8;
+        base.attackRange = 1.8f;
     }
 
     private void Update()
@@ -32,16 +37,22 @@ public class Slim : Monster
     public override void Attack()
     {
         Debug.Log("Slim Attack");
+        if (Vector3.Distance(this.transform.position, target.position) <= base.attackRange)
+        {
+            target.GetComponent<PlayState>().SetHP(-base.damage);
+        }
     }
 
-    public override void Hurt()
+    public override void SetHP(int hp)
     {
-        base.Hurt();
+        base.SetHP(hp);
     }
 
     public override void Die()
     {
         base.Die();
+        Debug.Log("Slim Die");
+        base.animator.SetTrigger("Die");
     }
 
     public override void AnimatorController()

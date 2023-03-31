@@ -17,6 +17,11 @@ public class Monster : MonoBehaviour
     public float speed;
     // 跳跃高度
     public float jump;
+    // 是否死亡
+    public bool dieFlag = false;
+    // 攻击方位
+    public float attackRange;
+
     // 寻路范围
     public float range;
     // 寻路目标
@@ -26,6 +31,14 @@ public class Monster : MonoBehaviour
     // 寻路算法
     public AStar aStar;
 
+    public void Start()
+    {
+        aStar = this.transform.GetComponent<AStar>();
+        aStar.speed = speed;
+        aStar.stopRange = attackRange;
+        target = GameObject.Find("Player").transform;
+    }
+
     // 移动
     public virtual void Move() { }
 
@@ -33,10 +46,27 @@ public class Monster : MonoBehaviour
     public virtual void Attack() { }
 
     // 受伤
-    public virtual void Hurt() { }
+    public virtual void SetHP(int hp)
+    {
+        HP = (HP + hp) <= maxHP ? (HP + hp) : maxHP;
+        if (HP <= 0)
+        {
+            Die();
+            return;
+        }
+    }
 
     // 死亡
-    public virtual void Die() { }
+    public virtual void Die()
+    {
+        Debug.Log("怪物死亡");
+    }
+
+    // 销毁
+    public virtual void Destroy()
+    {
+        this.gameObject.SetActive(false);
+    }
 
     // 动画
     public virtual void AnimatorController() { }

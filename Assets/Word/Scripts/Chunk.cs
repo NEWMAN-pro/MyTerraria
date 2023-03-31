@@ -536,7 +536,7 @@ namespace Soultia.Voxel
                 return 3;
             }
             //Debug.Log("生成");
-            Debug.Log(this.transform.name + " " + chunkPosition);
+            //Debug.Log(this.transform.name + " " + chunkPosition);
             isWorking = true;
             mesh = new Mesh();
             mesh.name = "Chunk";

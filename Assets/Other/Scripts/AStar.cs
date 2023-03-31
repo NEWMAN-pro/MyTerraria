@@ -100,6 +100,8 @@ public class AStar : MonoBehaviour
     // 旋转速度
     float rotationSpeed = 500f;
 
+    // 寻路停止距离
+    public float stopRange;
     // 移动速度
     public float speed = 5f;
     // 路径点下标
@@ -180,10 +182,11 @@ public class AStar : MonoBehaviour
     // 跟着路径行走
     public bool WalkForPath()
     {
-        if (index == path.Count)
+        if (index == path.Count || Vector3.Distance(this.transform.position, target.position) < stopRange)
         {
+            // 走完了所有路经，或者走到停止距离
+            this.transform.LookAt(new Vector3(target.position.x, this.transform.position.y, target.position.z));
             AttackFlag = true;
-            // 走完了所有路经
             return true;
         }
         AttackFlag = false;
@@ -220,6 +223,7 @@ public class AStar : MonoBehaviour
         rotationDirection.x = 0f;
         rotationDirection.z = 0f;
 
+        Debug.Log(rotationDirection);
         // 旋转刚体
         rb.MoveRotation(Quaternion.Euler(rotationDirection));
     }
