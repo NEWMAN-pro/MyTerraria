@@ -18,9 +18,13 @@ public class Monster : MonoBehaviour
     // 跳跃高度
     public float jump;
     // 寻路范围
-    public int range;
+    public float range;
+    // 寻路目标
+    public Transform target;
     // 动画
     public Animator animator;
+    // 寻路算法
+    public AStar aStar;
 
     // 移动
     public virtual void Move() { }
@@ -33,4 +37,7 @@ public class Monster : MonoBehaviour
 
     // 死亡
     public virtual void Die() { }
+
+    // 动画
+    public virtual void AnimatorController() { }
 }

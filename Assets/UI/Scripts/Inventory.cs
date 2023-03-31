@@ -1,16 +1,16 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class Inventory : MonoBehaviour
 {
-    // ÎïÆ·À¸ÊÇ·ñÓĞÎïÆ·¸Ä±ä
+    // ç‰©å“æ æ˜¯å¦æœ‰ç‰©å“æ”¹å˜
     public byte selectID = 1;
-    // ÎïÆ·Ãû×ÖÎÄ±¾
+    // ç‰©å“åå­—æ–‡æœ¬
     public Text itemName;
 
-    // ÎïÆ·¶ÓÁĞ
+    // ç‰©å“é˜Ÿåˆ—
     public Dictionary<byte, Item> items = new()
     {
         { 1, null },
@@ -25,9 +25,9 @@ public class Inventory : MonoBehaviour
         { 0, null },
     };
     //public Item[] items = new Item[10];
-    // Ñ¡Ôñ¿ò
+    // é€‰æ‹©æ¡†
     public RectTransform select;
-    // ÎïÆ·ÊıÁ¿text
+    // ç‰©å“æ•°é‡text
     public GameObject textPrefab;
     public GameObject text;
 
@@ -37,13 +37,13 @@ public class Inventory : MonoBehaviour
 
     }
 
-    // »ñÈ¡ÎïÆ·
+    // è·å–ç‰©å“
     public Item GetItem(byte key)
     {
         return items.ContainsKey(key) ? items[key] : null;
     }
 
-    // ĞŞ¸ÄÎïÆ·
+    // ä¿®æ”¹ç‰©å“
     public void SetItem(byte key, Item item)
     {
         items[key] = item;
@@ -51,7 +51,7 @@ public class Inventory : MonoBehaviour
         selectID = key;
     }
 
-    // »æÖÆ
+    // ç»˜åˆ¶
     public void CreateUI(Item item, byte key)
     {
         if (item == null)
@@ -65,7 +65,7 @@ public class Inventory : MonoBehaviour
             Block block = BlockList.GetBlock(item.ID);
             if(block == null)
             {
-                Debug.Log("¸ÃÎïÆ·Îª¿Õin");
+                Debug.Log("è¯¥ç‰©å“ä¸ºç©ºin");
                 return;
             }
             this.transform.GetChild(key).GetComponent<CreateUI>().CreateBlockUI(block, true, 40, new Vector3(0, -1f, -0.01f));
@@ -73,7 +73,7 @@ public class Inventory : MonoBehaviour
         this.transform.GetChild(key).GetChild(0).GetComponent<Text>().text = item.count.ToString();
     }
 
-    // ÒÆ¶¯Ñ¡Ôñ¿ò
+    // ç§»åŠ¨é€‰æ‹©æ¡†
     public void SetSelect(byte key)
     {
         if(key == 0)

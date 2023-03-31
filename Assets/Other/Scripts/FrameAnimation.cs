@@ -1,17 +1,17 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class FrameAnimation : MonoBehaviour
 {
-    // ´æ´¢¶¯»­Ö¡µÄÎÆÀíÊı×é
+    // å­˜å‚¨åŠ¨ç”»å¸§çš„çº¹ç†æ•°ç»„
     public Sprite[] sprite;
-    // Ã¿Ãë²¥·ÅµÄÖ¡Êı
+    // æ¯ç§’æ’­æ”¾çš„å¸§æ•°
     public float fps = 10.0f;
 
     public SpriteRenderer spriteRenderer;
     private int currentFrame = 0;
-    // ÊÇ·ñ¿ªÊ¼
+    // æ˜¯å¦å¼€å§‹
     bool flag = false;
 
     void Start()
@@ -25,7 +25,7 @@ public class FrameAnimation : MonoBehaviour
         flag = true;
         float newTime = Mathf.Round(100f / time);
         if (newTime < 0) return;
-        InvokeRepeating("NextFrame", 0, newTime / fps); // Ã¿newTime/fpsÃëÇĞ»»Ò»´ÎÖ¡
+        InvokeRepeating("NextFrame", 0, newTime / fps); // æ¯newTime/fpsç§’åˆ‡æ¢ä¸€æ¬¡å¸§
     }
 
     public void Stop()
@@ -41,7 +41,7 @@ public class FrameAnimation : MonoBehaviour
     void NextFrame()
     {
         if (sprite.Length == 0) return;
-        spriteRenderer.sprite = sprite[currentFrame % sprite.Length]; // ¸üĞÂÎÆÀí
+        spriteRenderer.sprite = sprite[currentFrame % sprite.Length]; // æ›´æ–°çº¹ç†
         currentFrame++;
     }
 }

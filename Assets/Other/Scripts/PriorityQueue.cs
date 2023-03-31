@@ -1,9 +1,9 @@
-using System;
+ï»¿using System;
 using System.Collections.Generic;
 
 namespace Soultia.Util
 {
-    // ÓÃ×îĞ¡¶ÑÊµÏÖÓÅÏÈ¶ÓÁĞ
+    // ç”¨æœ€å°å †å®ç°ä¼˜å…ˆé˜Ÿåˆ—
     public class PriorityQueue<T> where T : IComparable<T>
     {
         public List<T> heap;
@@ -13,17 +13,17 @@ namespace Soultia.Util
             heap = new List<T>();
         }
 
-        // ²åÈëÔªËØ
+        // æ’å…¥å…ƒç´ 
         public void Enqueue(T item)
         {
-            // ÏÈ¼ÓÈëÄ©Î²
+            // å…ˆåŠ å…¥æœ«å°¾
             heap.Add(item);
-            // µ±Ç°½Úµã
+            // å½“å‰èŠ‚ç‚¹
             int i = heap.Count - 1;
-            // ¶ş²æÊ÷¸¸½Úµã
+            // äºŒå‰æ ‘çˆ¶èŠ‚ç‚¹
             int parent = (i - 1) / 2;
 
-            // ÕÒµ½ÔÚ¶ş²æÊ÷ÉÏµÄÕıÈ·Î»ÖÃ
+            // æ‰¾åˆ°åœ¨äºŒå‰æ ‘ä¸Šçš„æ­£ç¡®ä½ç½®
             while (i > 0 && heap[parent].CompareTo(heap[i]) > 0)
             {
                 T temp = heap[i];
@@ -35,7 +35,7 @@ namespace Soultia.Util
             }
         }
 
-        // É¾³ı¶ÓÁĞ¶¥ÔªËØ
+        // åˆ é™¤é˜Ÿåˆ—é¡¶å…ƒç´ 
         public T Dequeue()
         {
             if (heap.Count == 0)
@@ -43,12 +43,12 @@ namespace Soultia.Util
                 throw new InvalidOperationException("Queue is empty");
             }
 
-            // ½«¶Ñ¶¥ÔªËØÓë×îÓĞÒ»¸öÔªËØ½»»»£¬²¢ÇÒÉ¾³ıËü
+            // å°†å †é¡¶å…ƒç´ ä¸æœ€æœ‰ä¸€ä¸ªå…ƒç´ äº¤æ¢ï¼Œå¹¶ä¸”åˆ é™¤å®ƒ
             T item = heap[0];
             heap[0] = heap[heap.Count - 1];
             heap.RemoveAt(heap.Count - 1);
 
-            // ½«ĞÂ¶Ñ¶¥ÔªËØÓëÆä×óÓÒ¶ù×Ó±È½Ï£¬ÖØ¹¹¶Ñ
+            // å°†æ–°å †é¡¶å…ƒç´ ä¸å…¶å·¦å³å„¿å­æ¯”è¾ƒï¼Œé‡æ„å †
             int i = 0;
             while (true)
             {
@@ -57,20 +57,20 @@ namespace Soultia.Util
 
                 if (leftChild >= heap.Count)
                 {
-                    // ÕÒÍêÍ£Ö¹
+                    // æ‰¾å®Œåœæ­¢
                     break;
                 }
 
                 int minChild = leftChild;
                 if (rightChild < heap.Count && heap[rightChild].CompareTo(heap[leftChild]) < 0)
                 {
-                    // Èç¹û´æÔÚÓÒ¶ù×ÓÇÒ±È×ó¶ù×ÓĞ¡£¬¸üĞÂ×îĞ¡Öµ
+                    // å¦‚æœå­˜åœ¨å³å„¿å­ä¸”æ¯”å·¦å„¿å­å°ï¼Œæ›´æ–°æœ€å°å€¼
                     minChild = rightChild;
                 }
 
                 if (heap[i].CompareTo(heap[minChild]) > 0)
                 {
-                    // Èç¹ûµ±Ç°½Úµã±È¶ù×Ó×îĞ¡Öµ´ó£¬Ôò½»»»¶ù×ÓÓë¸¸Ç×
+                    // å¦‚æœå½“å‰èŠ‚ç‚¹æ¯”å„¿å­æœ€å°å€¼å¤§ï¼Œåˆ™äº¤æ¢å„¿å­ä¸çˆ¶äº²
                     T temp = heap[i];
                     heap[i] = heap[minChild];
                     heap[minChild] = temp;
@@ -79,7 +79,7 @@ namespace Soultia.Util
                 }
                 else
                 {
-                    // µ±Ç°½Úµã±ÈËùÓĞ¶ù×ÓĞ¡£¬ÒÑµ½ÕıÈ·Î»ÖÃ£¬½áÊøÑ­»·
+                    // å½“å‰èŠ‚ç‚¹æ¯”æ‰€æœ‰å„¿å­å°ï¼Œå·²åˆ°æ­£ç¡®ä½ç½®ï¼Œç»“æŸå¾ªç¯
                     break;
                 }
             }
@@ -87,21 +87,21 @@ namespace Soultia.Util
             return item;
         }
 
-        // É¾³ıÖ¸¶¨ÔªËØ
+        // åˆ é™¤æŒ‡å®šå…ƒç´ 
         public bool Remove(T item)
         {
-            // ÏÈÕÒµ½ÔªËØÔÚ¶ÑÖĞµÄÎ»ÖÃ
+            // å…ˆæ‰¾åˆ°å…ƒç´ åœ¨å †ä¸­çš„ä½ç½®
             int index = heap.IndexOf(item);
             if (index == -1)
             {
-                return false; // ÔªËØ²»´æÔÚ£¬·µ»Øfalse
+                return false; // å…ƒç´ ä¸å­˜åœ¨ï¼Œè¿”å›false
             }
 
-            // ½«¸ÃÔªËØÓë×îÓĞÒ»¸öÔªËØ½»»»£¬²¢ÇÒÉ¾³ıËü
+            // å°†è¯¥å…ƒç´ ä¸æœ€æœ‰ä¸€ä¸ªå…ƒç´ äº¤æ¢ï¼Œå¹¶ä¸”åˆ é™¤å®ƒ
             heap[index] = heap[heap.Count - 1];
             heap.RemoveAt(heap.Count - 1);
 
-            // ÖØ¹¹¶Ñ
+            // é‡æ„å †
             int i = index;
             while (true)
             {
@@ -110,20 +110,20 @@ namespace Soultia.Util
 
                 if (leftChild >= heap.Count)
                 {
-                    // ÕÒÍêÍ£Ö¹
+                    // æ‰¾å®Œåœæ­¢
                     break;
                 }
 
                 int minChild = leftChild;
                 if (rightChild < heap.Count && heap[rightChild].CompareTo(heap[leftChild]) < 0)
                 {
-                    // Èç¹û´æÔÚÓÒ¶ù×ÓÇÒ±È×ó¶ù×ÓĞ¡£¬¸üĞÂ×îĞ¡Öµ
+                    // å¦‚æœå­˜åœ¨å³å„¿å­ä¸”æ¯”å·¦å„¿å­å°ï¼Œæ›´æ–°æœ€å°å€¼
                     minChild = rightChild;
                 }
 
                 if (heap[i].CompareTo(heap[minChild]) > 0)
                 {
-                    // Èç¹ûµ±Ç°½Úµã±È¶ù×Ó×îĞ¡Öµ´ó£¬Ôò½»»»¶ù×ÓÓë¸¸Ç×
+                    // å¦‚æœå½“å‰èŠ‚ç‚¹æ¯”å„¿å­æœ€å°å€¼å¤§ï¼Œåˆ™äº¤æ¢å„¿å­ä¸çˆ¶äº²
                     T temp = heap[i];
                     heap[i] = heap[minChild];
                     heap[minChild] = temp;
@@ -132,15 +132,15 @@ namespace Soultia.Util
                 }
                 else
                 {
-                    // µ±Ç°½Úµã±ÈËùÓĞ¶ù×ÓĞ¡£¬ÒÑµ½ÕıÈ·Î»ÖÃ£¬½áÊøÑ­»·
+                    // å½“å‰èŠ‚ç‚¹æ¯”æ‰€æœ‰å„¿å­å°ï¼Œå·²åˆ°æ­£ç¡®ä½ç½®ï¼Œç»“æŸå¾ªç¯
                     break;
                 }
             }
-            // É¾³ı³É¹¦
+            // åˆ é™¤æˆåŠŸ
             return true;
         }
 
-        // ²éÑ¯¶Ñ¶¥ÔªËØ¼°×îĞ¡Öµ
+        // æŸ¥è¯¢å †é¡¶å…ƒç´ åŠæœ€å°å€¼
         public T Peek()
         {
             if (heap.Count == 0)
@@ -151,25 +151,25 @@ namespace Soultia.Util
             return heap[0];
         }
 
-        // ²éÑ¯ÊÇ·ñÓĞ¸ÃÖµ
+        // æŸ¥è¯¢æ˜¯å¦æœ‰è¯¥å€¼
         public bool Contains(T t)
         {
             return heap.Contains(t);
         }
 
-        // ²éÑ¯¶Ñ´óĞ¡
+        // æŸ¥è¯¢å †å¤§å°
         public int Count
         {
             get { return heap.Count; }
         }
 
-        // ÅĞ¶Ï¶ÑÊÇ·ñÎª¿Õ
+        // åˆ¤æ–­å †æ˜¯å¦ä¸ºç©º
         public bool IsEmpty
         {
             get { return heap.Count == 0; }
         }
 
-        // Çå¿Õ¶ÓÁĞ
+        // æ¸…ç©ºé˜Ÿåˆ—
         public void Clear()
         {
             heap.Clear();

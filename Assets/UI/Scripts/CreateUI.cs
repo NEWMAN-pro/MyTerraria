@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -9,28 +9,28 @@ public class CreateUI : MonoBehaviour
 {
     private Mesh mesh;
 
-    //ÃæĞèÒªµÄµã
+    //é¢éœ€è¦çš„ç‚¹
     private List<Vector3> vertices = new List<Vector3>();
-    //Éú³ÉÈı±ßÃæÊ±ÓÃµ½µÄverticesµÄindex
+    //ç”Ÿæˆä¸‰è¾¹é¢æ—¶ç”¨åˆ°çš„verticesçš„index
     private List<int> triangles = new List<int>();
 
-    //ËùÓĞµÄuvĞÅÏ¢
+    //æ‰€æœ‰çš„uvä¿¡æ¯
     private List<Vector2> uv = new List<Vector2>();
-    //uvÌùÍ¼Ã¿ĞĞÃ¿ÁĞµÄ¿í¶È(0~1)£¬ÕâÀïÎÒµÄÌùÍ¼ÊÇ32¡Á32µÄ£¬ËùÒÔÊÇ1/32
+    //uvè´´å›¾æ¯è¡Œæ¯åˆ—çš„å®½åº¦(0~1)ï¼Œè¿™é‡Œæˆ‘çš„è´´å›¾æ˜¯32Ã—32çš„ï¼Œæ‰€ä»¥æ˜¯1/32
     public static float textureOffset = 1 / 32f;
-    //ÈÃUVÉÔÎ¢ËõĞ¡Ò»µã£¬±ÜÃâ³öÏÖËüÅÔ±ßµÄÌùÍ¼
+    //è®©UVç¨å¾®ç¼©å°ä¸€ç‚¹ï¼Œé¿å…å‡ºç°å®ƒæ—è¾¹çš„è´´å›¾
     public static float shrinkSize = 0.001f;
 
-    // »æÖÆ´óĞ¡
+    // ç»˜åˆ¶å¤§å°
     public float size;
-    // »æÖÆÎ»ÖÃ
+    // ç»˜åˆ¶ä½ç½®
     public Vector3 posi;
 
-    // Ïú»Ù·½¿éÌùÍ¼ÔöÖµ
+    // é”€æ¯æ–¹å—è´´å›¾å¢å€¼
     public float add;
-    // Ã¿Ãë²¥·ÅµÄÖ¡Êı
+    // æ¯ç§’æ’­æ”¾çš„å¸§æ•°
     public float fps = 30.0f;
-    // Ïú»Ù·½¿é
+    // é”€æ¯æ–¹å—
     Block block;
 
     void Start()
@@ -40,7 +40,7 @@ public class CreateUI : MonoBehaviour
         block = BlockList.GetBlock(9);
     }
 
-    // »æÖÆ¿Õ°×
+    // ç»˜åˆ¶ç©ºç™½
     public void CreateBlank()
     {
         vertices.Clear();
@@ -51,16 +51,16 @@ public class CreateUI : MonoBehaviour
         mesh.triangles = triangles.ToArray();
         mesh.uv = uv.ToArray();
 
-        //ÖØĞÂ¼ÆËã¶¥µãºÍ·¨Ïß
+        //é‡æ–°è®¡ç®—é¡¶ç‚¹å’Œæ³•çº¿
         mesh.RecalculateBounds();
         mesh.RecalculateNormals();
 
-        //½«Éú³ÉºÃµÄÃæ¸³Öµ¸ø×é¼ş
+        //å°†ç”Ÿæˆå¥½çš„é¢èµ‹å€¼ç»™ç»„ä»¶
         GetComponent<MeshFilter>().mesh = mesh;
         this.GetComponent<MeshCollider>().sharedMesh = mesh;
     }
 
-    // »æÖÆ·½¿éUI
+    // ç»˜åˆ¶æ–¹å—UI
     public void CreateBlockUI(Block block, bool flag, float size, Vector3 posi)
     {
         vertices.Clear();
@@ -71,45 +71,45 @@ public class CreateUI : MonoBehaviour
         this.posi = posi;
         mesh = new Mesh();
 
-        // ÏÈ»æÖÆÕıÃæ
+        // å…ˆç»˜åˆ¶æ­£é¢
         AddFace(block, true);
         if (!flag)
         {
-            // ĞèÒª»æÖÆ·´ÃæÔòÔÙ»æÖÆ·´Ãæ
+            // éœ€è¦ç»˜åˆ¶åé¢åˆ™å†ç»˜åˆ¶åé¢
             AddFace(block, false);
         }
 
-        //ÎªµãºÍindex¸³Öµ
+        //ä¸ºç‚¹å’Œindexèµ‹å€¼
         mesh.vertices = vertices.ToArray();
         mesh.triangles = triangles.ToArray();
         mesh.uv = uv.ToArray();
 
-        //ÖØĞÂ¼ÆËã¶¥µãºÍ·¨Ïß
+        //é‡æ–°è®¡ç®—é¡¶ç‚¹å’Œæ³•çº¿
         mesh.RecalculateBounds();
         mesh.RecalculateNormals();
 
-        //½«Éú³ÉºÃµÄÃæ¸³Öµ¸ø×é¼ş
+        //å°†ç”Ÿæˆå¥½çš„é¢èµ‹å€¼ç»™ç»„ä»¶
         GetComponent<MeshFilter>().mesh = mesh;
         this.GetComponent<MeshCollider>().sharedMesh = mesh;
     }
 
-    // »æÖÆ·½¿éµÄUIÏÔÊ¾, flagÕı·´Ãæ
+    // ç»˜åˆ¶æ–¹å—çš„UIæ˜¾ç¤º, flagæ­£åé¢
     void AddFace(Block block, bool flag)
     {
-        //Ìí¼Ó12¸öµã
-        // ²àÃæ
+        //æ·»åŠ 12ä¸ªç‚¹
+        // ä¾§é¢
         vertices.Add((new Vector3(0, 0, 0) + posi) * size);
         vertices.Add((new Vector3(0.87f, 0.5f, 0) + posi) * size);
         vertices.Add((new Vector3(0.87f, 1.5f, 0) + posi) * size);
         vertices.Add((new Vector3(0, 1, 0) + posi) * size);
 
-        // Ç°Ãæ
+        // å‰é¢
         vertices.Add((new Vector3(-0.87f, 0.5f, 0) + posi) * size);
         vertices.Add((new Vector3(0, 0, 0) + posi) * size);
         vertices.Add((new Vector3(0, 1, 0) + posi) * size);
         vertices.Add((new Vector3(-0.87f, 1.5f, 0) + posi) * size);
 
-        // ¶¥Ãæ
+        // é¡¶é¢
         vertices.Add((new Vector3(-0.87f, 1.5f, 0) + posi) * size);
         vertices.Add((new Vector3(0, 1, 0) + posi) * size);
         vertices.Add((new Vector3(0.87f, 1.5f, 0) + posi) * size);
@@ -117,90 +117,90 @@ public class CreateUI : MonoBehaviour
 
         if (flag)
         {
-            //µÚÒ»¸öÈı½ÇÃæ
+            //ç¬¬ä¸€ä¸ªä¸‰è§’é¢
             triangles.Add(0);
             triangles.Add(3);
             triangles.Add(2);
 
-            //µÚ¶ş¸öÈı½ÇÃæ
+            //ç¬¬äºŒä¸ªä¸‰è§’é¢
             triangles.Add(2);
             triangles.Add(1);
             triangles.Add(0);
 
-            //µÚÈı¸öÈı½ÇÃæ
+            //ç¬¬ä¸‰ä¸ªä¸‰è§’é¢
             triangles.Add(4);
             triangles.Add(7);
             triangles.Add(6);
 
-            //µÚËÄ¸öÈı½ÇÃæ
+            //ç¬¬å››ä¸ªä¸‰è§’é¢
             triangles.Add(6);
             triangles.Add(5);
             triangles.Add(4);
 
-            //µÚÎå¸öÈı½ÇÃæ
+            //ç¬¬äº”ä¸ªä¸‰è§’é¢
             triangles.Add(8);
             triangles.Add(11);
             triangles.Add(10);
 
-            //µÚÁù¸öÈı½ÇÃæ
+            //ç¬¬å…­ä¸ªä¸‰è§’é¢
             triangles.Add(10);
             triangles.Add(9);
             triangles.Add(8);
         }
         else
         {
-            //µÚÒ»¸öÈı½ÇÃæ
+            //ç¬¬ä¸€ä¸ªä¸‰è§’é¢
             triangles.Add(2);
             triangles.Add(3);
             triangles.Add(0);
 
-            //µÚ¶ş¸öÈı½ÇÃæ
+            //ç¬¬äºŒä¸ªä¸‰è§’é¢
             triangles.Add(0);
             triangles.Add(1);
             triangles.Add(2);
 
-            //µÚÈı¸öÈı½ÇÃæ
+            //ç¬¬ä¸‰ä¸ªä¸‰è§’é¢
             triangles.Add(6);
             triangles.Add(7);
             triangles.Add(4);
 
-            //µÚËÄ¸öÈı½ÇÃæ
+            //ç¬¬å››ä¸ªä¸‰è§’é¢
             triangles.Add(4);
             triangles.Add(5);
             triangles.Add(6);
 
-            //µÚÎå¸öÈı½ÇÃæ
+            //ç¬¬äº”ä¸ªä¸‰è§’é¢
             triangles.Add(10);
             triangles.Add(11);
             triangles.Add(8);
 
-            //µÚÁù¸öÈı½ÇÃæ
+            //ç¬¬å…­ä¸ªä¸‰è§’é¢
             triangles.Add(8);
             triangles.Add(9);
             triangles.Add(10);
         }
 
-        //Ìí¼ÓUV×ø±êµã£¬¸úÉÏÃæ12¸öµãÑ­»·µÄË³ĞòÒ»ÖÂ
-        // ²àÃæ
+        //æ·»åŠ UVåæ ‡ç‚¹ï¼Œè·Ÿä¸Šé¢12ä¸ªç‚¹å¾ªç¯çš„é¡ºåºä¸€è‡´
+        // ä¾§é¢
         uv.Add(new Vector2(block.textureRightX * textureOffset, block.textureRightY * textureOffset) + new Vector2(shrinkSize, shrinkSize));
         uv.Add(new Vector2(block.textureRightX * textureOffset + textureOffset, block.textureRightY * textureOffset) + new Vector2(-shrinkSize, shrinkSize));
         uv.Add(new Vector2(block.textureRightX * textureOffset + textureOffset, block.textureRightY * textureOffset + textureOffset) + new Vector2(-shrinkSize, -shrinkSize));
         uv.Add(new Vector2(block.textureRightX * textureOffset, block.textureRightY * textureOffset + textureOffset) + new Vector2(shrinkSize, -shrinkSize));
 
-        // Ç°Ãæ
+        // å‰é¢
         uv.Add(new Vector2(block.textureFrontX * textureOffset, block.textureFrontY * textureOffset) + new Vector2(shrinkSize, shrinkSize));
         uv.Add(new Vector2(block.textureFrontX * textureOffset + textureOffset, block.textureFrontY * textureOffset) + new Vector2(-shrinkSize, shrinkSize));
         uv.Add(new Vector2(block.textureFrontX * textureOffset + textureOffset, block.textureFrontY * textureOffset + textureOffset) + new Vector2(-shrinkSize, -shrinkSize));
         uv.Add(new Vector2(block.textureFrontX * textureOffset, block.textureFrontY * textureOffset + textureOffset) + new Vector2(shrinkSize, -shrinkSize));
 
-        // ÉÏÃæ
+        // ä¸Šé¢
         uv.Add(new Vector2(block.textureTopX * textureOffset, block.textureTopY * textureOffset) + new Vector2(shrinkSize, shrinkSize));
         uv.Add(new Vector2(block.textureTopX * textureOffset + textureOffset, block.textureTopY * textureOffset) + new Vector2(-shrinkSize, shrinkSize));
         uv.Add(new Vector2(block.textureTopX * textureOffset + textureOffset, block.textureTopY * textureOffset + textureOffset) + new Vector2(-shrinkSize, -shrinkSize));
         uv.Add(new Vector2(block.textureTopX * textureOffset, block.textureTopY * textureOffset + textureOffset) + new Vector2(shrinkSize, -shrinkSize));
     }
 
-    // »æÖÆ·½¿éµôÂäÌùÍ¼
+    // ç»˜åˆ¶æ–¹å—æ‰è½è´´å›¾
     public void CreateBlockDrop(Block block, float size, Vector3 posi)
     {
         vertices.Clear();
@@ -218,176 +218,176 @@ public class CreateUI : MonoBehaviour
         AddTopFace(block);
         AddBottomFace(block);
 
-        //ÎªµãºÍindex¸³Öµ
+        //ä¸ºç‚¹å’Œindexèµ‹å€¼
         mesh.vertices = vertices.ToArray();
         mesh.triangles = triangles.ToArray();
         mesh.uv = uv.ToArray();
 
-        //ÖØĞÂ¼ÆËã¶¥µãºÍ·¨Ïß
+        //é‡æ–°è®¡ç®—é¡¶ç‚¹å’Œæ³•çº¿
         mesh.RecalculateBounds();
         mesh.RecalculateNormals();
 
-        //½«Éú³ÉºÃµÄÃæ¸³Öµ¸ø×é¼ş
+        //å°†ç”Ÿæˆå¥½çš„é¢èµ‹å€¼ç»™ç»„ä»¶
         GetComponent<MeshFilter>().mesh = mesh;
         this.GetComponent<MeshCollider>().sharedMesh = mesh;
     }
 
-    //Ç°Ãæ
+    //å‰é¢
     void AddFrontFace(Block block)
     {
-        //µÚÒ»¸öÈı½ÇÃæ
+        //ç¬¬ä¸€ä¸ªä¸‰è§’é¢
         triangles.Add(0 + vertices.Count);
         triangles.Add(3 + vertices.Count);
         triangles.Add(2 + vertices.Count);
 
-        //µÚ¶ş¸öÈı½ÇÃæ
+        //ç¬¬äºŒä¸ªä¸‰è§’é¢
         triangles.Add(2 + vertices.Count);
         triangles.Add(1 + vertices.Count);
         triangles.Add(0 + vertices.Count);
 
 
-        //Ìí¼Ó4¸öµã
+        //æ·»åŠ 4ä¸ªç‚¹
         vertices.Add((new Vector3(0, 0, 0) + posi) * size);
         vertices.Add((new Vector3(0, 0, 1) + posi) * size);
         vertices.Add((new Vector3(0, 1, 1) + posi) * size);
         vertices.Add((new Vector3(0, 1, 0) + posi) * size);
 
-        //Ìí¼ÓUV×ø±êµã£¬¸úÉÏÃæ4¸öµãÑ­»·µÄË³ĞòÒ»ÖÂ
+        //æ·»åŠ UVåæ ‡ç‚¹ï¼Œè·Ÿä¸Šé¢4ä¸ªç‚¹å¾ªç¯çš„é¡ºåºä¸€è‡´
         uv.Add(new Vector2(block.textureFrontX * textureOffset, block.textureFrontY * textureOffset) + new Vector2(shrinkSize, shrinkSize));
         uv.Add(new Vector2(block.textureFrontX * textureOffset + textureOffset, block.textureFrontY * textureOffset) + new Vector2(-shrinkSize, shrinkSize));
         uv.Add(new Vector2(block.textureFrontX * textureOffset + textureOffset, block.textureFrontY * textureOffset + textureOffset) + new Vector2(-shrinkSize, -shrinkSize));
         uv.Add(new Vector2(block.textureFrontX * textureOffset, block.textureFrontY * textureOffset + textureOffset) + new Vector2(shrinkSize, -shrinkSize));
     }
 
-    //±³Ãæ
+    //èƒŒé¢
     void AddBackFace(Block block)
     {
-        //µÚÒ»¸öÈı½ÇÃæ
+        //ç¬¬ä¸€ä¸ªä¸‰è§’é¢
         triangles.Add(0 + vertices.Count);
         triangles.Add(3 + vertices.Count);
         triangles.Add(2 + vertices.Count);
 
-        //µÚ¶ş¸öÈı½ÇÃæ
+        //ç¬¬äºŒä¸ªä¸‰è§’é¢
         triangles.Add(2 + vertices.Count);
         triangles.Add(1 + vertices.Count);
         triangles.Add(0 + vertices.Count);
 
 
-        //Ìí¼Ó4¸öµã
+        //æ·»åŠ 4ä¸ªç‚¹
         vertices.Add((new Vector3(-1, 0, 1) + posi) * size);
         vertices.Add((new Vector3(-1, 0, 0) + posi) * size);
         vertices.Add((new Vector3(-1, 1, 0) + posi) * size);
         vertices.Add((new Vector3(-1, 1, 1) + posi) * size);
 
-        //Ìí¼ÓUV×ø±êµã£¬¸úÉÏÃæ4¸öµãÑ­»·µÄË³ĞòÒ»ÖÂ
+        //æ·»åŠ UVåæ ‡ç‚¹ï¼Œè·Ÿä¸Šé¢4ä¸ªç‚¹å¾ªç¯çš„é¡ºåºä¸€è‡´
         uv.Add(new Vector2(block.textureBackX * textureOffset, block.textureBackY * textureOffset) + new Vector2(shrinkSize, shrinkSize));
         uv.Add(new Vector2(block.textureBackX * textureOffset + textureOffset, block.textureBackY * textureOffset) + new Vector2(-shrinkSize, shrinkSize));
         uv.Add(new Vector2(block.textureBackX * textureOffset + textureOffset, block.textureBackY * textureOffset + textureOffset) + new Vector2(-shrinkSize, -shrinkSize));
         uv.Add(new Vector2(block.textureBackX * textureOffset, block.textureBackY * textureOffset + textureOffset) + new Vector2(shrinkSize, -shrinkSize));
     }
 
-    //ÓÒÃæ
+    //å³é¢
     void AddRightFace(Block block)
     {
-        //µÚÒ»¸öÈı½ÇÃæ
+        //ç¬¬ä¸€ä¸ªä¸‰è§’é¢
         triangles.Add(0 + vertices.Count);
         triangles.Add(3 + vertices.Count);
         triangles.Add(2 + vertices.Count);
 
-        //µÚ¶ş¸öÈı½ÇÃæ
+        //ç¬¬äºŒä¸ªä¸‰è§’é¢
         triangles.Add(2 + vertices.Count);
         triangles.Add(1 + vertices.Count);
         triangles.Add(0 + vertices.Count);
 
 
-        //Ìí¼Ó4¸öµã
+        //æ·»åŠ 4ä¸ªç‚¹
         vertices.Add((new Vector3(0, 0, 1) + posi) * size);
         vertices.Add((new Vector3(-1, 0, 1) + posi) * size);
         vertices.Add((new Vector3(-1, 1, 1) + posi) * size);
         vertices.Add((new Vector3(0, 1, 1) + posi) * size);
 
-        //Ìí¼ÓUV×ø±êµã£¬¸úÉÏÃæ4¸öµãÑ­»·µÄË³ĞòÒ»ÖÂ
+        //æ·»åŠ UVåæ ‡ç‚¹ï¼Œè·Ÿä¸Šé¢4ä¸ªç‚¹å¾ªç¯çš„é¡ºåºä¸€è‡´
         uv.Add(new Vector2(block.textureRightX * textureOffset, block.textureRightY * textureOffset) + new Vector2(shrinkSize, shrinkSize));
         uv.Add(new Vector2(block.textureRightX * textureOffset + textureOffset, block.textureRightY * textureOffset) + new Vector2(-shrinkSize, shrinkSize));
         uv.Add(new Vector2(block.textureRightX * textureOffset + textureOffset, block.textureRightY * textureOffset + textureOffset) + new Vector2(-shrinkSize, -shrinkSize));
         uv.Add(new Vector2(block.textureRightX * textureOffset, block.textureRightY * textureOffset + textureOffset) + new Vector2(shrinkSize, -shrinkSize));
     }
 
-    //×óÃæ
+    //å·¦é¢
     void AddLeftFace(Block block)
     {
-        //µÚÒ»¸öÈı½ÇÃæ
+        //ç¬¬ä¸€ä¸ªä¸‰è§’é¢
         triangles.Add(0 + vertices.Count);
         triangles.Add(3 + vertices.Count);
         triangles.Add(2 + vertices.Count);
 
-        //µÚ¶ş¸öÈı½ÇÃæ
+        //ç¬¬äºŒä¸ªä¸‰è§’é¢
         triangles.Add(2 + vertices.Count);
         triangles.Add(1 + vertices.Count);
         triangles.Add(0 + vertices.Count);
 
 
-        //Ìí¼Ó4¸öµã
+        //æ·»åŠ 4ä¸ªç‚¹
         vertices.Add((new Vector3(-1, 0, 0) + posi) * size);
         vertices.Add((new Vector3(0, 0, 0) + posi) * size);
         vertices.Add((new Vector3(0, 1, 0) + posi) * size);
         vertices.Add((new Vector3(-1, 1, 0) + posi) * size);
 
-        //Ìí¼ÓUV×ø±êµã£¬¸úÉÏÃæ4¸öµãÑ­»·µÄË³ĞòÒ»ÖÂ
+        //æ·»åŠ UVåæ ‡ç‚¹ï¼Œè·Ÿä¸Šé¢4ä¸ªç‚¹å¾ªç¯çš„é¡ºåºä¸€è‡´
         uv.Add(new Vector2(block.textureLeftX * textureOffset, block.textureLeftY * textureOffset) + new Vector2(shrinkSize, shrinkSize));
         uv.Add(new Vector2(block.textureLeftX * textureOffset + textureOffset, block.textureLeftY * textureOffset) + new Vector2(-shrinkSize, shrinkSize));
         uv.Add(new Vector2(block.textureLeftX * textureOffset + textureOffset, block.textureLeftY * textureOffset + textureOffset) + new Vector2(-shrinkSize, -shrinkSize));
         uv.Add(new Vector2(block.textureLeftX * textureOffset, block.textureLeftY * textureOffset + textureOffset) + new Vector2(shrinkSize, -shrinkSize));
     }
 
-    //ÉÏÃæ
+    //ä¸Šé¢
     void AddTopFace(Block block)
     {
-        //µÚÒ»¸öÈı½ÇÃæ
+        //ç¬¬ä¸€ä¸ªä¸‰è§’é¢
         triangles.Add(1 + vertices.Count);
         triangles.Add(0 + vertices.Count);
         triangles.Add(3 + vertices.Count);
 
-        //µÚ¶ş¸öÈı½ÇÃæ
+        //ç¬¬äºŒä¸ªä¸‰è§’é¢
         triangles.Add(3 + vertices.Count);
         triangles.Add(2 + vertices.Count);
         triangles.Add(1 + vertices.Count);
 
 
-        //Ìí¼Ó4¸öµã
+        //æ·»åŠ 4ä¸ªç‚¹
         vertices.Add((new Vector3(0, 1, 0) + posi) * size);
         vertices.Add((new Vector3(0, 1, 1) + posi) * size);
         vertices.Add((new Vector3(-1, 1, 1) + posi) * size);
         vertices.Add((new Vector3(-1, 1, 0) + posi) * size);
 
-        //Ìí¼ÓUV×ø±êµã£¬¸úÉÏÃæ4¸öµãÑ­»·µÄË³ĞòÒ»ÖÂ
+        //æ·»åŠ UVåæ ‡ç‚¹ï¼Œè·Ÿä¸Šé¢4ä¸ªç‚¹å¾ªç¯çš„é¡ºåºä¸€è‡´
         uv.Add(new Vector2(block.textureTopX * textureOffset, block.textureTopY * textureOffset) + new Vector2(shrinkSize, shrinkSize));
         uv.Add(new Vector2(block.textureTopX * textureOffset + textureOffset, block.textureTopY * textureOffset) + new Vector2(-shrinkSize, shrinkSize));
         uv.Add(new Vector2(block.textureTopX * textureOffset + textureOffset, block.textureTopY * textureOffset + textureOffset) + new Vector2(-shrinkSize, -shrinkSize));
         uv.Add(new Vector2(block.textureTopX * textureOffset, block.textureTopY * textureOffset + textureOffset) + new Vector2(shrinkSize, -shrinkSize));
     }
 
-    //ÏÂÃæ
+    //ä¸‹é¢
     void AddBottomFace(Block block)
     {
-        //µÚÒ»¸öÈı½ÇÃæ
+        //ç¬¬ä¸€ä¸ªä¸‰è§’é¢
         triangles.Add(1 + vertices.Count);
         triangles.Add(0 + vertices.Count);
         triangles.Add(3 + vertices.Count);
 
-        //µÚ¶ş¸öÈı½ÇÃæ
+        //ç¬¬äºŒä¸ªä¸‰è§’é¢
         triangles.Add(3 + vertices.Count);
         triangles.Add(2 + vertices.Count);
         triangles.Add(1 + vertices.Count);
 
 
-        //Ìí¼Ó4¸öµã
+        //æ·»åŠ 4ä¸ªç‚¹
         vertices.Add((new Vector3(-1, 0, 0) + posi) * size);
         vertices.Add((new Vector3(-1, 0, 1) + posi) * size);
         vertices.Add((new Vector3(0, 0, 1) + posi) * size);
         vertices.Add((new Vector3(0, 0, 0) + posi) * size);
 
-        //Ìí¼ÓUV×ø±êµã£¬¸úÉÏÃæ4¸öµãÑ­»·µÄË³ĞòÒ»ÖÂ
+        //æ·»åŠ UVåæ ‡ç‚¹ï¼Œè·Ÿä¸Šé¢4ä¸ªç‚¹å¾ªç¯çš„é¡ºåºä¸€è‡´
         uv.Add(new Vector2(block.textureBottomX * textureOffset, block.textureBottomY * textureOffset) + new Vector2(shrinkSize, shrinkSize));
         uv.Add(new Vector2(block.textureBottomX * textureOffset + textureOffset, block.textureBottomY * textureOffset) + new Vector2(-shrinkSize, shrinkSize));
         uv.Add(new Vector2(block.textureBottomX * textureOffset + textureOffset, block.textureBottomY * textureOffset + textureOffset) + new Vector2(-shrinkSize, -shrinkSize));

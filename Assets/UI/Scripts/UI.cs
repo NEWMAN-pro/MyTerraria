@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
@@ -12,9 +12,9 @@ public class UI : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        // Òş²ØÊó±ê£¬²¢½«Êó±ê¹Ì¶¨ÔÚÖĞĞÄ
+        // éšè—é¼ æ ‡ï¼Œå¹¶å°†é¼ æ ‡å›ºå®šåœ¨ä¸­å¿ƒ
         Cursor.lockState = CursorLockMode.Locked;
-        // ³õÊ¼Òş²ØUI
+        // åˆå§‹éšè—UI
         this.transform.GetChild(1).gameObject.SetActive(false);
         this.transform.GetChild(2).gameObject.SetActive(false);
         this.transform.GetChild(3).gameObject.SetActive(false);
@@ -30,7 +30,7 @@ public class UI : MonoBehaviour
         }
     }
 
-    // ´ò¿ª±¦Ïä½çÃæ
+    // æ‰“å¼€å®ç®±ç•Œé¢
     public void OpenBox(string key)
     {
         GameObject box = this.transform.GetChild(1).GetChild(60).gameObject;
@@ -44,7 +44,7 @@ public class UI : MonoBehaviour
         boxFlag = !boxFlag;
     }
 
-    // ´ò¿ªUI£¬²»´ò¿ª±¦Ïä½çÃæ
+    // æ‰“å¼€UIï¼Œä¸æ‰“å¼€å®ç®±ç•Œé¢
     public void OpenUI()
     {
         this.transform.GetChild(1).gameObject.SetActive(flag);
@@ -52,7 +52,7 @@ public class UI : MonoBehaviour
         this.transform.GetChild(3).gameObject.SetActive(flag);
         this.transform.GetChild(4).gameObject.SetActive(flag);
         this.transform.GetChild(7).gameObject.SetActive(!flag);
-        // ¿ØÖÆÊó±êÏÔÒş
+        // æ§åˆ¶é¼ æ ‡æ˜¾éš
         if (!flag)
         {
             if (!boxFlag)
@@ -64,7 +64,7 @@ public class UI : MonoBehaviour
         }
         else
         {
-            // ½«Êó±êÏŞÖÆÔÚÓÎÏ·´°¿ÚÄÚ
+            // å°†é¼ æ ‡é™åˆ¶åœ¨æ¸¸æˆçª—å£å†…
             Cursor.lockState = CursorLockMode.Confined;
         }
         flag = !flag;
@@ -78,7 +78,7 @@ public class UI : MonoBehaviour
         }
     }
 
-    // ´ò¿ªÉèÖÃ½çÃæ
+    // æ‰“å¼€è®¾ç½®ç•Œé¢
     public void Set()
     {
         for(int i = 0; i < this.transform.childCount - 1; i++)
@@ -94,7 +94,7 @@ public class UI : MonoBehaviour
         }
     }
 
-    // ¼ÌĞøÓÎÏ·
+    // ç»§ç»­æ¸¸æˆ
     public void Continue()
     {
         this.transform.GetChild(5).gameObject.SetActive(false);
@@ -103,7 +103,7 @@ public class UI : MonoBehaviour
         OpenUI();
     }
 
-    // ·µ»ØÖ÷½çÃæ
+    // è¿”å›ä¸»ç•Œé¢
     public void Quit()
     {
         SceneManager.LoadScene(0);

@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -6,30 +6,30 @@ using System.Linq;
 
 public class Box : MonoBehaviour
 {
-    // ±¦ÏäÃû×Ö
+    // å®ç®±åå­—
     public string boxName;
-    // ±¦ÏäÃÜÔ¿
+    // å®ç®±å¯†é’¥
     public string key;
-    // ÎïÆ·¶ÓÁĞ
+    // ç‰©å“é˜Ÿåˆ—
     public Dictionary<byte, Item> items = new Dictionary<byte, Item>();
-    // ÎïÆ·ÊıÁ¿text
+    // ç‰©å“æ•°é‡text
     public GameObject textPrefab;
     public GameObject text;
-    // ±³°ü
+    // èƒŒåŒ…
     public Backpack backpack;
 
-    // ±¦ÏäÃû×ÖÊäÈë¿ò
+    // å®ç®±åå­—è¾“å…¥æ¡†
     public InputField inputField;
 
     private void OnEnable()
     {
-        // ÏÔÊ¾±¦Ïä½çÃæÊ±½«À¬»øÏäÏÂµ÷
+        // æ˜¾ç¤ºå®ç®±ç•Œé¢æ—¶å°†åƒåœ¾ç®±ä¸‹è°ƒ
         this.transform.parent.GetChild(50).GetComponent<RectTransform>().anchoredPosition = new Vector2(352, -765);
         this.transform.parent.GetChild(61).gameObject.SetActive(false);
         this.transform.parent.GetChild(62).gameObject.SetActive(false);
         foreach(var pair in items)
         {
-            // ÖØĞÂ»æÖÆ±¦ÏäÎïÆ·
+            // é‡æ–°ç»˜åˆ¶å®ç®±ç‰©å“
             CreateUI(pair.Value, pair.Key);
         }
         inputField.text = boxName;
@@ -38,7 +38,7 @@ public class Box : MonoBehaviour
 
     private void Awake()
     {
-        // ÎïÆ·ÊıÁ¿³õÊ¼»¯
+        // ç‰©å“æ•°é‡åˆå§‹åŒ–
         textPrefab = Resources.Load("Prefabs/ItemCount") as GameObject;
         for (byte i = 0; i < 50; i++)
         {
@@ -49,20 +49,20 @@ public class Box : MonoBehaviour
         backpack = this.transform.parent.GetComponent<Backpack>();
     }
 
-    // »ñÈ¡ÎïÆ·
+    // è·å–ç‰©å“
     public Item GetItem(byte key)
     {
         return items.ContainsKey(key) ? items[key] : null;
     }
 
-    // ĞŞ¸ÄÎïÆ·
+    // ä¿®æ”¹ç‰©å“
     public void SetItem(byte key, Item item)
     {
         items[key] = item;
         CreateUI(item, key);
     }
 
-    // »æÖÆ
+    // ç»˜åˆ¶
     public void CreateUI(Item item, byte key)
     {
         if (item == null)
@@ -76,7 +76,7 @@ public class Box : MonoBehaviour
             Block block = BlockList.GetBlock(item.ID);
             if (block == null)
             {
-                Debug.Log("¸ÃÎïÆ·Îª¿Õba");
+                Debug.Log("è¯¥ç‰©å“ä¸ºç©ºba");
                 return;
             }
             this.transform.GetChild(key).GetComponent<CreateUI>().CreateBlockUI(block, true, 40, new Vector3(0, -1f, -0.01f));
@@ -84,22 +84,22 @@ public class Box : MonoBehaviour
         if (item.count != -1) this.transform.GetChild(key).GetChild(0).GetComponent<Text>().text = item.count.ToString();
     }
 
-    // ¸ü¸ÄÑ¡Ôñ¿ò
+    // æ›´æ”¹é€‰æ‹©æ¡†
     public Item Select(int key, ref Item selectItem, ref RectTransform select, ref int flag)
     {
         key -= 60;
         Item item = GetItem((byte)key);
         if (Input.GetKey(KeyCode.LeftShift) && item != null && !item.flag)
         {
-            // Èç¹ûÊÇ°´ÏÂLeftShift¼ü£¬²¢ÇÒ¸ÃÎïÆ·Î´±»±ê¼Ç£¬Ôò½«¸Ã¸ñÎïÆ··ÅÈë±³°ü£¬²¢½«¸Ã¸ñÖÃ¿Õ
+            // å¦‚æœæ˜¯æŒ‰ä¸‹LeftShifté”®ï¼Œå¹¶ä¸”è¯¥ç‰©å“æœªè¢«æ ‡è®°ï¼Œåˆ™å°†è¯¥æ ¼ç‰©å“æ”¾å…¥èƒŒåŒ…ï¼Œå¹¶å°†è¯¥æ ¼ç½®ç©º
             SetItem((byte)key, null);
             flag = 1;
             return item;
         }
         if (Input.GetKey(KeyCode.LeftControl) && item != null && !item.flag)
         {
-            // Èç¹ûÊÇ°´ÏÂLeftControl¼ü£¬²¢ÇÒ¸ÃÎïÆ·Î´±»±ê¼Ç£¬Ôò½«ÎïÆ·ÒÆÖÁÀ¬»øÍ°
-            // ½«±¾¸ñÇå¿Õ
+            // å¦‚æœæ˜¯æŒ‰ä¸‹LeftControlé”®ï¼Œå¹¶ä¸”è¯¥ç‰©å“æœªè¢«æ ‡è®°ï¼Œåˆ™å°†ç‰©å“ç§»è‡³åƒåœ¾æ¡¶
+            // å°†æœ¬æ ¼æ¸…ç©º
             flag = 2;
             SetItem((byte)key, null);
             return item;
@@ -110,20 +110,20 @@ public class Box : MonoBehaviour
             SetItem((byte)key, selectItem);
             if (item == null)
             {
-                // Èç¹û¸Ã¸ñÎª¿Õ£¬ÔòÖÃ¿ÕÑ¡Ôñ¿ò
+                // å¦‚æœè¯¥æ ¼ä¸ºç©ºï¼Œåˆ™ç½®ç©ºé€‰æ‹©æ¡†
                 selectItem = null;
                 select.gameObject.SetActive(false);
             }
             else
             {
-                // ·ñÔò¸üĞÂÑ¡Ôñ¿òµÄÎïÆ·
+                // å¦åˆ™æ›´æ–°é€‰æ‹©æ¡†çš„ç‰©å“
                 selectItem = item;
                 return item;
             }
         }
         else
         {
-            // Ñ¡Ôñ¿òÃ»ÓĞÎïÆ·£¬Ôò»ñÈ¡¸Ã¸ñÎïÆ·
+            // é€‰æ‹©æ¡†æ²¡æœ‰ç‰©å“ï¼Œåˆ™è·å–è¯¥æ ¼ç‰©å“
             if (item == null)
             {
                 return null;
@@ -136,28 +136,28 @@ public class Box : MonoBehaviour
         return null;
     }
 
-    // Ò»¼üÕûÀí
+    // ä¸€é”®æ•´ç†
     public void Neaten()
     {
-        // ¶Ô×ÖµäÅÅĞò£¬ÏÈ±È½ÏtypeÔÙ±È½ÏID£¨´ÓĞ¡µ½´ó£©£¬ÔÙ±È½Ïkey£¨´ÓĞ¡µ½´ó£©
+        // å¯¹å­—å…¸æ’åºï¼Œå…ˆæ¯”è¾ƒtypeå†æ¯”è¾ƒIDï¼ˆä»å°åˆ°å¤§ï¼‰ï¼Œå†æ¯”è¾ƒkeyï¼ˆä»å°åˆ°å¤§ï¼‰
         var sortedItems_ = items.Where(i => i.Value != null)
            .OrderBy(i => i.Value.type).ThenBy(i => i.Value.ID).ThenBy(i => i.Key)
            .ToList();
         for (int i = 0; i < sortedItems_.Count; i++)
         {
-            // ½øĞĞºÏ²¢
+            // è¿›è¡Œåˆå¹¶
             var pair = sortedItems_[i];
             if (i != sortedItems_.Count - 1)
             {
                 var nextPair = sortedItems_[i + 1];
                 if (pair.Value.type == nextPair.Value.type && pair.Value.ID == nextPair.Value.ID)
                 {
-                    // Á½¸öÎïÆ·µÄ×ÜÊıÁ¿
+                    // ä¸¤ä¸ªç‰©å“çš„æ€»æ•°é‡
                     int ans = pair.Value.count + nextPair.Value.count;
                     if (ans <= 64)
                     {
                         pair.Value.count = ans;
-                        // ÊıÁ¿Îª0£¬É¾³ıÎïÆ·
+                        // æ•°é‡ä¸º0ï¼Œåˆ é™¤ç‰©å“
                         sortedItems_[i + 1].Value.count = 0;
                         SetItem(nextPair.Key, null);
                     }
@@ -169,80 +169,80 @@ public class Box : MonoBehaviour
                 }
             }
         }
-        // ¶Ô×ÖµäÅÅĞò£¬ÏÈ±È½ÏtypeÔÙ±È½ÏID
+        // å¯¹å­—å…¸æ’åºï¼Œå…ˆæ¯”è¾ƒtypeå†æ¯”è¾ƒID
         Dictionary<byte, Item> sortedItems = sortedItems_.Where(i => i.Value != null && i.Value.count != 0)
             .OrderBy(i => i.Value.type).ThenBy(i => i.Value.ID)
             .ToDictionary(i => i.Key, i => i.Value);
         byte key = 0;
         foreach (var pair in sortedItems)
         {
-            // ÏÈÇå¿Õ
+            // å…ˆæ¸…ç©º
             SetItem(pair.Key, null);
         }
         foreach (var pair in sortedItems)
         {
             while (GetItem(key) != null)
             {
-                // ÕÒµ½²»Îª¿ÕµÄ±³°ü¸ñ
+                // æ‰¾åˆ°ä¸ä¸ºç©ºçš„èƒŒåŒ…æ ¼
                 key++;
             }
-            // ÔÙÖØĞÂ»æÖÆ
+            // å†é‡æ–°ç»˜åˆ¶
             SetItem(key++, pair.Value);
         }
     }
 
-    // ´æÈëÎïÆ·
+    // å­˜å…¥ç‰©å“
     public bool Storage(Item item)
     {
         byte key;
-        // ÊÔ×ÅÑ°ÕÒÏàÍ¬µÄÎïÆ·
+        // è¯•ç€å¯»æ‰¾ç›¸åŒçš„ç‰©å“
         key = items.FirstOrDefault(x => x.Value != null && x.Value.type == item.type && x.Value.ID == item.ID).Key;
         Item item1 = GetItem(key);
         if (item1 != null && item1.type == item.type && item1.ID == item.ID && item1.count != -1)
         {
-            // Èç¹ûÕÒµ½ÏàÍ¬µÄÎïÆ·£¬²¢ÇÒÎïÆ·¿ÉÒÔºÏ²¢
+            // å¦‚æœæ‰¾åˆ°ç›¸åŒçš„ç‰©å“ï¼Œå¹¶ä¸”ç‰©å“å¯ä»¥åˆå¹¶
             int ans = item1.count + item.count;
             if (ans <= 64)
             {
-                // ºÏÆ´ºóÊıÁ¿Î´³¬ÉÏÏŞ£¬ÔòºÏ²¢
+                // åˆæ‹¼åæ•°é‡æœªè¶…ä¸Šé™ï¼Œåˆ™åˆå¹¶
                 item1.count = ans;
                 SetItem(key, item1);
                 return true;
             }
             else
             {
-                // ³¬ÉÏÏŞ£¬ÔòĞÂ´æÈëÒ»¸öÎïÆ·
+                // è¶…ä¸Šé™ï¼Œåˆ™æ–°å­˜å…¥ä¸€ä¸ªç‰©å“
                 item1.count = 64;
                 item.count = ans - 64;
                 SetItem(key, item1);
             }
         }
-        // ÕÒµ½µÚÒ»¸öÎª¿ÕµÄ¿Õ¸ñ
+        // æ‰¾åˆ°ç¬¬ä¸€ä¸ªä¸ºç©ºçš„ç©ºæ ¼
         key = items.FirstOrDefault(x => x.Value == null).Key;
         if(GetItem(key) != null)
         {
-            // Èç¹ûµ±Ç°¶ÓÁĞÃ»ÕÒµ½¿Õ¸ñ
-            // Ïä×Ó·ÅÂúÁË
+            // å¦‚æœå½“å‰é˜Ÿåˆ—æ²¡æ‰¾åˆ°ç©ºæ ¼
+            // ç®±å­æ”¾æ»¡äº†
             return false;
         }
         SetItem(key, item);
         return true;
     }
 
-    // ÖØÃüÃû
+    // é‡å‘½å
     public void SetName()
     {
         inputField.interactable = true;
     }
 
-    // ÊäÈë½áÊø
+    // è¾“å…¥ç»“æŸ
     public void EndInput()
     {
         boxName = inputField.text;
         inputField.interactable = false;
     }
 
-    // Ç¿¶áÈ«²¿
+    // å¼ºå¤ºå…¨éƒ¨
     public void Snatch()
     {
 
@@ -256,12 +256,12 @@ public class Box : MonoBehaviour
         }
     }
 
-    // ²¹»õ
+    // è¡¥è´§
     public void Replenishment()
     {
-        // ÕÒµ½±³°üÓë±¦ÏäÖĞÏàÍ¬µÄÎïÆ·£¬ÇÒÎ´±»±ê¼Ç
+        // æ‰¾åˆ°èƒŒåŒ…ä¸å®ç®±ä¸­ç›¸åŒçš„ç‰©å“ï¼Œä¸”æœªè¢«æ ‡è®°
         var items1 = items.Where(i => i.Value != null && !i.Value.flag).ToDictionary(i => i.Key, i => i.Value);
-        // À¬»øÍ°ÖĞÎïÆ·²»²ÎÓëÆ¥Åä
+        // åƒåœ¾æ¡¶ä¸­ç‰©å“ä¸å‚ä¸åŒ¹é…
         var items2 = backpack.items.Where(i => i.Key != 50).ToDictionary(i => i.Key, i => i.Value);
         var commonItems = items1.Values.Intersect(items2.Values, new ItemEqualityComparer()).ToList();
         var commonItemsWithKeys = items1.Where(pair => commonItems.Contains(pair.Value)).ToDictionary(pair => pair.Key, pair => pair.Value);
@@ -274,11 +274,11 @@ public class Box : MonoBehaviour
 
     private void OnDisable()
     {
-        // Òş²Ø±¦Ïä½çÃæÊ±½«À¬»øÏä¹éÎ»
+        // éšè—å®ç®±ç•Œé¢æ—¶å°†åƒåœ¾ç®±å½’ä½
         this.transform.parent.GetChild(50).GetComponent<RectTransform>().anchoredPosition = new Vector2(352, -262.57f);
         this.transform.parent.GetChild(61).gameObject.SetActive(true);
         this.transform.parent.GetChild(62).gameObject.SetActive(true);
-        // Òş²ØÊ±Çå¿Õ¶ÓÁĞ
+        // éšè—æ—¶æ¸…ç©ºé˜Ÿåˆ—
         BoxList.SetBox(key, items, boxName);
         foreach(var pair in items)
         {

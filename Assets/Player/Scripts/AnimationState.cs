@@ -1,22 +1,22 @@
-using System.Collections;
+锘縰sing System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class AnimationState : MonoBehaviour
 {
-    // 动画
+    // 鍔ㄧ敾
     public Animator animator;
 
-    // 单次攻击
+    // 鍗曟鏀诲嚮
     public void SetAttackOne()
     {
         animator.SetTrigger("Attack");
-        // 设置遮罩
+        // 璁剧疆閬僵
         animator.SetLayerWeight(2, 1);
         animator.SetLayerWeight(1, 0);
     }
 
-    // 持续攻击
+    // 鎸佺画鏀诲嚮
     public void SetAttack(bool attack)
     {
         animator.SetBool("Attacking", attack);
@@ -24,7 +24,7 @@ public class AnimationState : MonoBehaviour
         animator.SetLayerWeight(1, 0);
     }
 
-    // 单词挥动
+    // 鍗曡瘝鎸ュ姩
     public void SetExcavateOne()
     {
         animator.SetTrigger("Excavate");
@@ -32,7 +32,7 @@ public class AnimationState : MonoBehaviour
         animator.SetLayerWeight(2, 0);
     }
 
-    // 持续挥动
+    // 鎸佺画鎸ュ姩
     public void SetExcavate(bool excavate)
     {
         animator.SetBool("Excavateing", excavate);
@@ -40,13 +40,13 @@ public class AnimationState : MonoBehaviour
         animator.SetLayerWeight(2, 0);
     }
 
-    // 移动
+    // 绉诲姩
     public void SetWalk(bool walk)
     {
         animator.SetBool("Walk", walk);
     }
 
-    // 跳跃
+    // 璺宠穬
     public void SetJump(bool jump)
     {
         animator.SetBool("Jump", jump);

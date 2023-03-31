@@ -1,13 +1,13 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 
 public class PauseGame : MonoBehaviour
 {
-    // ÊÇ·ñÔİÍ£
+    // æ˜¯å¦æš‚åœ
     public bool pause = false;
 
     private void Start()
     {
-        // ¼ÓÔØ¸Ã½Å±¾Ê±£¬½«½Å±¾Ôö¼Ó½ø×ÜÔİÍ£½Å±¾
+        // åŠ è½½è¯¥è„šæœ¬æ—¶ï¼Œå°†è„šæœ¬å¢åŠ è¿›æ€»æš‚åœè„šæœ¬
         GameObject.Find("Map").GetComponent<PauseGameAll>().Add(this);
     }
 

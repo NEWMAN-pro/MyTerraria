@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
@@ -12,54 +12,54 @@ public class BoxList : MonoBehaviour
     {
         if (!StartUI.flag)
         {
-            // Èç¹ûÊÇ¼ÌĞøÓÎÏ·
+            // å¦‚æœæ˜¯ç»§ç»­æ¸¸æˆ
             boxs = AccessGameAll.data.boxs;
             boxsName = AccessGameAll.data.boxsName;
         }
     }
 
-    // Ôö¼Ó±¦Ïä
+    // å¢åŠ å®ç®±
     public static void AddBox(string key)
     {
-        // ³õÊ¼»¯50¸ö¿Õ¸ñ
+        // åˆå§‹åŒ–50ä¸ªç©ºæ ¼
         Dictionary<byte, Item> items = new();
         for(byte i = 0; i < 50; i++)
         {
             items[i] = null;
         }
         boxs.Add(key, items);
-        boxsName.Add(key, "±¦Ïä");
+        boxsName.Add(key, "å®ç®±");
     }
 
-    // É¾³ı±¦Ïä
+    // åˆ é™¤å®ç®±
     public static void DelectBox(string key)
     {
         boxs.Remove(key);
         boxsName.Remove(key);
     }
 
-    // »ñÈ¡±¦Ïä
+    // è·å–å®ç®±
     public static Dictionary<byte, Item> GetBox(string key, out string name)
     {
         name = boxsName.ContainsKey(key) ? boxsName[key] : "";
         return boxs.ContainsKey(key) ? boxs[key] : null;
     }
 
-    // ĞŞ¸Ä±¦Ïä
+    // ä¿®æ”¹å®ç®±
     public static void SetBox(string key, Dictionary<byte, Item> items, string name)
     {
         boxs[key] = items;
         boxsName[key] = name;
     }
 
-    // ÅĞ¶Ï±¦ÏäÊÇ·ñÎª¿Õ
+    // åˆ¤æ–­å®ç®±æ˜¯å¦ä¸ºç©º
     public static bool GetBoxEmpty(string key)
     {
         string name;
         return GetBox(key, out name).Values.All(v => ReferenceEquals(v, null));
     }
 
-    // Ïú»Ù½Å±¾Ê±
+    // é”€æ¯è„šæœ¬æ—¶
     private void OnDestroy()
     {
         boxs.Clear();

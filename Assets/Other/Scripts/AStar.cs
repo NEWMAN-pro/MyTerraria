@@ -73,6 +73,9 @@ public class Node : IComparable<Node>
     }
 }
 
+[RequireComponent(typeof(BoxCollider))]
+[RequireComponent(typeof(Rigidbody))]
+[RequireComponent(typeof(PauseGame))]
 public class AStar : MonoBehaviour
 {
     // 寻路起点和终点
@@ -89,8 +92,13 @@ public class AStar : MonoBehaviour
     public bool isFind = false;
     // 是否寻路成功
     public bool FindFlag = false;
-    // 是否开始移动
-    public bool MoveFlag = false;
+    // 是否进入攻击范围
+    public bool AttackFlag = false;
+
+    // 刚体
+    public Rigidbody rb;
+    // 旋转速度
+    float rotationSpeed = 500f;
 
     // 移动速度
     public float speed = 5f;
@@ -103,11 +111,16 @@ public class AStar : MonoBehaviour
     private void Awake()
     {
         seeker = this.transform;
+        rb = this.transform.GetComponent<Rigidbody>();
         //target = GameObject.Find("Player").transform;
     }
 
     private void Update()
     {
+        if (this.transform.GetComponent<PauseGame>().pause)
+        {
+            return;
+        }
         if (flag)
         {
             if (!isFind)
@@ -117,6 +130,29 @@ public class AStar : MonoBehaviour
                 //FindPath();
                 isFind = true;
             }
+            
+        }
+        else
+        {
+            if (isFind)
+            {
+                // 停止寻路
+                CancelInvoke();
+                isFind = false;
+                FindFlag = false;
+                AttackFlag = false;
+            }
+        }
+    }
+
+    private void FixedUpdate()
+    {
+        if (this.transform.GetComponent<PauseGame>().pause)
+        {
+            return;
+        }
+        if (flag)
+        {
             if (!FindFlag)
             {
                 // 寻路失败
@@ -126,24 +162,17 @@ public class AStar : MonoBehaviour
                     if (WalkForPath())
                     {
                         // 路径走完了，试着朝目标点走动
+                        AttackFlag = false;
                         Vector3 direction = (target.position - path[index - 1]).normalized;
                         direction.y = 0;
-                        this.transform.position += speed * Time.deltaTime * direction;
+                        this.transform.position += speed * Time.fixedDeltaTime * direction;
+                        Rotation(direction);
                     }
                 }
             }
             else
             {
                 WalkForPath();
-            }
-        }
-        else
-        {
-            if (isFind)
-            {
-                // 停止寻路
-                CancelInvoke();
-                isFind = false;
             }
         }
     }
@@ -153,11 +182,14 @@ public class AStar : MonoBehaviour
     {
         if (index == path.Count)
         {
+            AttackFlag = true;
             // 走完了所有路经
             return true;
         }
+        AttackFlag = false;
         Vector3 direction = (path[index] - path[index - 1]).normalized;
-        this.transform.position += speed * Time.deltaTime * direction;
+        Rotation(direction);
+
         if (Vector3.Distance(this.transform.position, path[index]) <= 0.1f)
         {
             //if(Mathf.Abs(path[index].y - path[index + 1].y) >= 1)
@@ -168,6 +200,28 @@ public class AStar : MonoBehaviour
             index++;
         }
         return false;
+    }
+
+    // 旋转
+    public void Rotation(Vector3 direction)
+    {
+        Quaternion targetRotation = Quaternion.LookRotation(direction);
+        Vector3 nextPosi = this.transform.position + speed * Time.fixedDeltaTime * direction;
+        rb.MovePosition(nextPosi);
+        // 计算旋转角度
+        float angle = Quaternion.Angle(transform.rotation, targetRotation);
+
+        // 根据角度差计算旋转速度
+        float rotationAmount = Mathf.Min(rotationSpeed * Time.fixedDeltaTime, angle);
+
+        // 计算旋转方向
+        Vector3 rotationDirection = Quaternion.RotateTowards(transform.rotation, targetRotation, rotationAmount).eulerAngles;
+        // 限制旋转到y轴（防止翻转）
+        rotationDirection.x = 0f;
+        rotationDirection.z = 0f;
+
+        // 旋转刚体
+        rb.MoveRotation(Quaternion.Euler(rotationDirection));
     }
 
     // 寻路

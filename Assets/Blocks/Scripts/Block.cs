@@ -1,7 +1,7 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 
 /// <summary>
-/// ·½¿éµÄ·½Ïò
+/// æ–¹å—çš„æ–¹å‘
 /// </summary>
 public enum BlockDirection : byte
 {
@@ -14,74 +14,74 @@ public enum BlockDirection : byte
 }
 
 /// <summary>
-/// ·½¿é¶ÔÏó£¬´æ´¢·½¿éµÄËùÓĞĞÅÏ¢
+/// æ–¹å—å¯¹è±¡ï¼Œå­˜å‚¨æ–¹å—çš„æ‰€æœ‰ä¿¡æ¯
 /// </summary>
 public class Block : Item
 {
-    // ·½¿éµÄID
+    // æ–¹å—çš„ID
     public byte id;
 
-    // ·½¿éµÄÃû×Ö
+    // æ–¹å—çš„åå­—
     public string name;
 
-    // ·½¿éÏú»ÙÊ±¼ä
+    // æ–¹å—é”€æ¯æ—¶é—´
     public float destroyTime;
 
-    // ·½Ïò£¨Ö¸µÄÊÇÇ°ÃæËùÃæ³¯µÄ·½Ïò£©
+    // æ–¹å‘ï¼ˆæŒ‡çš„æ˜¯å‰é¢æ‰€é¢æœçš„æ–¹å‘ï¼‰
     public BlockDirection direction = BlockDirection.Front;
 
-    // ÊÇ·ñÊÇÍ¸Ã÷·½¿é
+    // æ˜¯å¦æ˜¯é€æ˜æ–¹å—
     public bool lucency = false;
 
-    //Ç°ÃæÌùÍ¼µÄ×ø±ê
+    //å‰é¢è´´å›¾çš„åæ ‡
     public byte textureFrontX;
     public byte textureFrontY;
 
-    // ºóÃæÌùÍ¼µÄ×ø±ê
+    // åé¢è´´å›¾çš„åæ ‡
     public byte textureBackX;
     public byte textureBackY;
 
-    // ÓÒÃæÌùÍ¼µÄ×ø±ê
+    // å³é¢è´´å›¾çš„åæ ‡
     public byte textureRightX;
     public byte textureRightY;
 
-    // ×óÃæÌùÍ¼µÄ×ø±ê
+    // å·¦é¢è´´å›¾çš„åæ ‡
     public byte textureLeftX;
     public byte textureLeftY;
 
-    // ÉÏÃæÌùÍ¼µÄ×ø±ê
+    // ä¸Šé¢è´´å›¾çš„åæ ‡
     public byte textureTopX;
     public byte textureTopY;
 
-    // ÏÂÃæÌùÍ¼µÄ×ø±ê
+    // ä¸‹é¢è´´å›¾çš„åæ ‡
     public byte textureBottomX;
     public byte textureBottomY;
 
-    // ¶¼ÊÇAÃæµÄ·½¿é
+    // éƒ½æ˜¯Aé¢çš„æ–¹å—
     public Block(byte id, string name, float destroyTime, byte textureX, byte textureY)
         : this(id, name, destroyTime, textureX, textureY, textureX, textureY, textureX, textureY, textureX, textureY, textureX, textureY, textureX, textureY)
     {
     }
 
-    // ÉÏÃæÊÇA£¬ÆäËûÃæÊÇBµÄ·½¿é
+    // ä¸Šé¢æ˜¯Aï¼Œå…¶ä»–é¢æ˜¯Bçš„æ–¹å—
     public Block(byte id, string name, float destroyTime, byte textureX, byte textureY, byte textureTopX, byte textureTopY)
         : this(id, name, destroyTime, textureX, textureY, textureX, textureY, textureX, textureY, textureX, textureY, textureTopX, textureTopY, textureX, textureY)
     {
     }
 
-    // ÉÏÃæÊÇA£¬ÏÂÃæÊÇB£¬ÆäËûÃæÊÇCµÄ·½¿é
+    // ä¸Šé¢æ˜¯Aï¼Œä¸‹é¢æ˜¯Bï¼Œå…¶ä»–é¢æ˜¯Cçš„æ–¹å—
     public Block(byte id, string name, float destroyTime, byte textureX, byte textureY, byte textureTopX, byte textureTopY, byte textureBottomX, byte textureBottomY)
         : this(id, name, destroyTime, textureX, textureY, textureX, textureY, textureX, textureY, textureX, textureY, textureTopX, textureTopY, textureBottomX, textureBottomY)
     {
     }
 
-    // ÉÏÃæÊÇA£¬ÏÂÃæÊÇB£¬Ç°ÃæÊÇC£¬ÆäËûÃæÊÇDµÄ·½¿é
+    // ä¸Šé¢æ˜¯Aï¼Œä¸‹é¢æ˜¯Bï¼Œå‰é¢æ˜¯Cï¼Œå…¶ä»–é¢æ˜¯Dçš„æ–¹å—
     public Block(byte id, string name, float destroyTime, byte textureFrontX, byte textureFrontY, byte textureX, byte textureY, byte textureTopX, byte textureTopY, byte textureBottomX, byte textureBottomY)
         : this(id, name, destroyTime, textureFrontX, textureFrontY, textureX, textureY, textureX, textureY, textureX, textureY, textureTopX, textureTopY, textureBottomX, textureBottomY)
     {
     }
 
-    // ÉÏÏÂ×óÓÒÇ°ºóÃæ¶¼²»Ò»ÑùµÄ·½¿é
+    // ä¸Šä¸‹å·¦å³å‰åé¢éƒ½ä¸ä¸€æ ·çš„æ–¹å—
     public Block(byte id, string name, float destroyTime, byte textureFrontX, byte textureFrontY, byte textureBackX, byte textureBackY, byte textureRightX, byte textureRightY,
         byte textureLeftX, byte textureLeftY, byte textureTopX, byte textureTopY, byte textureBottomX, byte textureBottomY)
     {

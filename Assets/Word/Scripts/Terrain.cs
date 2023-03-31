@@ -1,18 +1,18 @@
-using LibNoise;
+ï»¿using LibNoise;
 using LibNoise.Generator;
 using Soultia.Util;
 using UnityEngine;
 
 public class Terrain : MonoBehaviour
 {
-    //Í¨¹ı·½¿éµÄÊÀ½ç×ø±ê»ñÈ¡ËüµÄ·½¿éÀàĞÍ
+    //é€šè¿‡æ–¹å—çš„ä¸–ç•Œåæ ‡è·å–å®ƒçš„æ–¹å—ç±»å‹
     public static byte GetTerrainBlock(Vector3i worldPosition, float fluctuation)
     {
-        //LibNoiseÔëÒô¶ÔÏó
+        //LibNoiseå™ªéŸ³å¯¹è±¡
         Perlin noise = new Perlin(1f, 1f, 1f, 8, GameManager.randomSeed, QualityMode.High);
-        //ÎªËæ»úÊıÖ¸¶¨ÖÖ×Ó£¬ÕâÑùÃ¿´ÎËæ»úµÄ¶¼ÊÇÍ¬ÑùµÄÖµ
+        //ä¸ºéšæœºæ•°æŒ‡å®šç§å­ï¼Œè¿™æ ·æ¯æ¬¡éšæœºçš„éƒ½æ˜¯åŒæ ·çš„å€¼
         Random.InitState(GameManager.randomSeed);
-        //ÒòÎª°ØÁÖÔëÒôÔÚ(0,0)µãÊÇÉÏÏÂ×óÓÒ¶Ô³ÆµÄ£¬ËùÒÔÎÒÃÇÉèÖÃÒ»¸öºÜÔ¶ºÜÔ¶µÄµØ·½×÷ÎªĞÂµÄ(0,0)µã
+        //å› ä¸ºæŸæ—å™ªéŸ³åœ¨(0,0)ç‚¹æ˜¯ä¸Šä¸‹å·¦å³å¯¹ç§°çš„ï¼Œæ‰€ä»¥æˆ‘ä»¬è®¾ç½®ä¸€ä¸ªå¾ˆè¿œå¾ˆè¿œçš„åœ°æ–¹ä½œä¸ºæ–°çš„(0,0)ç‚¹
         Vector3 offset = new Vector3(Random.value * 100000, Random.value * 100000, Random.value * 100000);
 
         float noiseX = Mathf.Abs((worldPosition.x + offset.x) / 20);
@@ -25,12 +25,12 @@ public class Terrain : MonoBehaviour
 
         if(noiseValue > 2 * fluctuation)
         {
-            // Ê¯¿é
+            // çŸ³å—
             return 2;
         }
         else if (noiseValue > fluctuation)
         {
-            // Äà¿é
+            // æ³¥å—
             return 1;
         }
 

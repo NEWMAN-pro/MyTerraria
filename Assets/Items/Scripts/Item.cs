@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
@@ -18,13 +18,13 @@ public enum Type : byte
 [Serializable]
 public class Item : IComparable<Item>
 {
-    // ÎïÆ·ID
+    // ç‰©å“ID
     public byte ID;
-    // ÎïÆ·ÀàĞÍ
+    // ç‰©å“ç±»å‹
     public Type type;
-    // ÎïÆ·ÊıÁ¿
+    // ç‰©å“æ•°é‡
     public int count;
-    // ÊÇ·ñ±»±ê¼Ç
+    // æ˜¯å¦è¢«æ ‡è®°
     public bool flag;
 
     public Item(byte ID = 0, Type type = Type.Init, int count = 0, bool flag = false)
@@ -35,7 +35,7 @@ public class Item : IComparable<Item>
         this.flag = flag;
     }
 
-    // »ñÈ¡ÎïÆ·Ãû³Æ
+    // è·å–ç‰©å“åç§°
     public string GetName()
     {
         if(type == Type.Block)
@@ -49,7 +49,7 @@ public class Item : IComparable<Item>
         return "";
     }
 
-    // ÖØÔØ±È½Ï·½·¨
+    // é‡è½½æ¯”è¾ƒæ–¹æ³•
     public int CompareTo(Item other)
     {
         if(this.type == other.type)

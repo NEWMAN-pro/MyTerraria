@@ -1,8 +1,8 @@
-using System.Collections.Generic;
+ï»¿using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
-/// ´æ´¢ËùÓĞµÄBlock¶ÔÏóµÄĞÅÏ¢
+/// å­˜å‚¨æ‰€æœ‰çš„Blockå¯¹è±¡çš„ä¿¡æ¯
 /// </summary>
 public class BlockList : MonoBehaviour
 {
@@ -10,41 +10,41 @@ public class BlockList : MonoBehaviour
 
     void Awake()
     {
-        // ÍÁ¿é
+        // åœŸå—
         Block dirt = new Block(1, "Dirt", 2, 2, 31);
         blocks.Add(dirt.id, dirt);
 
-        // ²İ¿ì
+        // è‰å¿«
         Block grass = new Block(2, "Grass", 2, 3, 31, 0, 31, 2, 31);
         blocks.Add(grass.id, grass);
 
-        // Ê¯¿é
+        // çŸ³å—
         Block stone = new Block(3, "Stone", 4, 1, 31);
         blocks.Add(stone.id, stone);
 
-        // É³×Ó
+        // æ²™å­
         Block sand = new Block(4, "Sand", 1, 2, 30);
         blocks.Add(sand.id, sand);
 
-        // »ùÑÒ
+        // åŸºå²©
         Block bedrock = new Block(5, "Bedrock", -1, 3, 18);
         blocks.Add(bedrock.id, bedrock);
 
-        // Ê÷¸É
+        // æ ‘å¹²
         Block trunk = new Block(6, "Trunk", 3, 4, 24, 4, 25, 4, 25);
         blocks.Add(trunk.id, trunk);
 
-        // Ê÷Ò¶
+        // æ ‘å¶
         Block leaf = new Block(7, "Leaf", 0.5f, 4, 29);
         leaf.lucency = true;
         blocks.Add(leaf.id, leaf);
 
-        // ±¦Ïä
+        // å®ç®±
         Block box = new Block(8, "Box", 2, 11, 30, 10, 30, 11, 27, 9, 30);
         blocks.Add(box.id, box);
     }
 
-    // ÅĞ¶ÏÊÇ·ñ´æÔÚ¸Ã·½¿é
+    // åˆ¤æ–­æ˜¯å¦å­˜åœ¨è¯¥æ–¹å—
     public static Block GetBlock(byte id)
     {
         return blocks.ContainsKey(id) ? blocks[id] : null;

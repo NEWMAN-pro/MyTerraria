@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -6,11 +6,11 @@ using UnityEngine.SceneManagement;
 
 public class StartUI : MonoBehaviour
 {
-    // ´æµµÃû×Ö
+    // å­˜æ¡£åå­—
     public static string key = "";
-    // ½ÇÉ«Ãû×Ö
+    // è§’è‰²åå­—
     public static string playerName = "";
-    // ÊÇ·ñÊÇĞÂÓÎÏ·
+    // æ˜¯å¦æ˜¯æ–°æ¸¸æˆ
     public static bool flag = true;
 
     // Start is called before the first frame update
@@ -25,27 +25,27 @@ public class StartUI : MonoBehaviour
 
     }
 
-    // Ìø×ªÒ³Ãæ
+    // è·³è½¬é¡µé¢
     public static void ToScenes()
     {
         SceneManager.LoadScene(1);
     }
 
-    // ĞÂÓÎÏ·
+    // æ–°æ¸¸æˆ
     public void NewGame()
     {
         this.transform.GetChild(0).gameObject.SetActive(false);
         this.transform.GetChild(2).gameObject.SetActive(true);
     }
 
-    // ¼ÌĞøÓÎÏ·
+    // ç»§ç»­æ¸¸æˆ
     public void Continue()
     {
         this.transform.GetChild(0).gameObject.SetActive(false);
         this.transform.GetChild(1).gameObject.SetActive(true);
     }
 
-    // ´´½¨ÊÀ½ç
+    // åˆ›å»ºä¸–ç•Œ
     public void CreateWorld()
     {
         playerName = GameObject.Find("InputPlayerName").GetComponent<InputField>().text;

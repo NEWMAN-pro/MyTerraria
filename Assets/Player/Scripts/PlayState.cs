@@ -1,34 +1,34 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayState : MonoBehaviour
 {
-    // Íæ¼Ò³öÉúµã
+    // ç©å®¶å‡ºç”Ÿç‚¹
     public Vector3 home = new(0, 25, 0);
-    // Íæ¼ÒÃû×Ö
+    // ç©å®¶åå­—
     public string playName = "";
-    // Íæ¼ÒÑªÁ¿
+    // ç©å®¶è¡€é‡
     public int HP = 100;
-    // ×î´óÑªÁ¿
+    // æœ€å¤§è¡€é‡
     public int maxHP = 100;
-    // Íæ¼ÒÀ¶Á¿
+    // ç©å®¶è“é‡
     public int MP = 100;
-    // ×î´óÀ¶Á¿
+    // æœ€å¤§è“é‡
     public int maxMP = 100;
-    // ·ÀÓù
+    // é˜²å¾¡
     public int defenes = 0;
-    // ÉËº¦
+    // ä¼¤å®³
     public int damage = 10;
 
-    // Íæ¼Ò×´Ì¬Ìõ
+    // ç©å®¶çŠ¶æ€æ¡
     public State state;
 
     private void Awake()
     {
         if (!StartUI.flag)
         {
-            // Èç¹ûÊÇ¼ÌĞøÓÎÏ·
+            // å¦‚æœæ˜¯ç»§ç»­æ¸¸æˆ
             GameData data = AccessGameAll.data;
             this.playName = data.playerName;
             this.maxHP = data.maxHP;
@@ -50,19 +50,19 @@ public class PlayState : MonoBehaviour
         state.CreateUI(MP, maxMP, false);
     }
 
-    // ÑªÁ¿±ä»¯
+    // è¡€é‡å˜åŒ–
     public void SetHP(int hp)
     {
         HP = (HP + hp) <= maxHP ? (HP + hp) : maxHP;
         if(HP <= 0)
         {
-            Debug.Log("Íæ¼ÒËÀÍö");
+            Debug.Log("ç©å®¶æ­»äº¡");
             return;
         }
         state.CreateUI(HP, maxHP, true);
     }
 
-    // À¶Á¿±ä»¯
+    // è“é‡å˜åŒ–
     public void SetMP(int mp)
     {
         MP = (MP + mp) <= maxMP ? (MP + mp) : maxMP;
@@ -70,7 +70,7 @@ public class PlayState : MonoBehaviour
         state.CreateUI(MP, maxMP, false);
     }
 
-    // ÉèÖÃ³öÉúµã
+    // è®¾ç½®å‡ºç”Ÿç‚¹
     public void SetHome(Vector3 posi)
     {
         this.home = posi;

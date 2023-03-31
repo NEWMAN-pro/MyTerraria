@@ -1,25 +1,25 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class CameraMove : MonoBehaviour
 {
 
-    // Ïà»ú
+    // ç›¸æœº
     public new Camera camera;
-    // ÉãÏñÍ·Óë½ÇÉ«µÄ¾àÀë
+    // æ‘„åƒå¤´ä¸è§’è‰²çš„è·ç¦»
     public float distance = 10;
-    public float scrollspeed = 1;//À­½üÊÓÒ°ËÙ¶È
-    public float rotateSpeed = 2;//ÉãÏñ»úĞı×ªµÄËÙ¶È¡£
-    // ÉãÏñÍ·Óë½ÇÉ«µÄ¹Ì¶¨½Ç¶È
+    public float scrollspeed = 1;//æ‹‰è¿‘è§†é‡é€Ÿåº¦
+    public float rotateSpeed = 2;//æ‘„åƒæœºæ—‹è½¬çš„é€Ÿåº¦ã€‚
+    // æ‘„åƒå¤´ä¸è§’è‰²çš„å›ºå®šè§’åº¦
     public float fixedAngle = 30;
-    // ÉãÏñÍ·Óë½ÇÉ«µÄµ±Ç°½Ç¶È
+    // æ‘„åƒå¤´ä¸è§’è‰²çš„å½“å‰è§’åº¦
     public Vector3 nowAngle = new Vector3(30, 0, 0);
-    // ÉèÖÃÕÚÕÖ
+    // è®¾ç½®é®ç½©
     int maskFirst;
     int maskThird;
 
-    // ½ÇÉ«
+    // è§’è‰²
     public Transform player;
 
     private void Start()
@@ -29,21 +29,21 @@ public class CameraMove : MonoBehaviour
         maskThird = 1 << LayerMask.NameToLayer("Third");
     }
 
-    // »ù´¡ÉãÏñ»úÒÆ¶¯£¬´¹Ö±Ğı×ª
+    // åŸºç¡€æ‘„åƒæœºç§»åŠ¨ï¼Œå‚ç›´æ—‹è½¬
     public void BaseCameraMove(Transform trans)
     {
         Vector3 originalPos = trans.position;
         Quaternion originalRotation = trans.rotation;
-        trans.RotateAround(player.position, trans.right, -rotateSpeed * Input.GetAxis("Mouse Y"));//Ó°ÏìµÄÊôĞÔÓĞÁ½¸ö£¬position£¬rotation£»
+        trans.RotateAround(player.position, trans.right, -rotateSpeed * Input.GetAxis("Mouse Y"));//å½±å“çš„å±æ€§æœ‰ä¸¤ä¸ªï¼Œpositionï¼Œrotationï¼›
 
-        // ÏŞÖÆÉãÏñ»ú´¹Ö±»¬¶¯µÄ¾àÀë£»
+        // é™åˆ¶æ‘„åƒæœºå‚ç›´æ»‘åŠ¨çš„è·ç¦»ï¼›
         float xx = trans.eulerAngles.x;
         float zz = trans.eulerAngles.z;
         if (zz != 0f)
         {
             trans.eulerAngles = new Vector3(xx, trans.eulerAngles.y, 0);
         }
-        if (xx > 85 && xx < 275)    //µ±³¬³ö·¶Î§Ö®ºó£¬ÎÒÃÇ½«ÊôĞÔ¹éÎ»Ô­À´µÄ£¬¾ÍÊÇÈÃĞı×ªÎŞĞ§£»
+        if (xx > 85 && xx < 275)    //å½“è¶…å‡ºèŒƒå›´ä¹‹åï¼Œæˆ‘ä»¬å°†å±æ€§å½’ä½åŸæ¥çš„ï¼Œå°±æ˜¯è®©æ—‹è½¬æ— æ•ˆï¼›
         {
             trans.position = originalPos;
             trans.rotation = originalRotation;
@@ -51,15 +51,15 @@ public class CameraMove : MonoBehaviour
         nowAngle = trans.eulerAngles;
     }
 
-    // µÚÈıÈË³Æ
+    // ç¬¬ä¸‰äººç§°
     public void ThirdPerson(Vector3 rayPosi, Ray ray)
     {
         BaseCameraMove(player.transform);
-        // ·ÅÖÃÉãÏñ»ú´©Ä£
+        // æ”¾ç½®æ‘„åƒæœºç©¿æ¨¡
         RaycastHit hitInfo;
         if(Physics.Raycast(rayPosi, -ray.direction * 10, out hitInfo, 10, LayerMask.GetMask("Cube")))
         {
-            // »ñÈ¡Åö×²µã×ø±ê
+            // è·å–ç¢°æ’ç‚¹åæ ‡
             Vector3 point = hitInfo.point;
             distance = Vector3.Distance(point, rayPosi);
         }
@@ -67,14 +67,14 @@ public class CameraMove : MonoBehaviour
         {
             distance = 10;
         }
-        //distance -= Input.GetAxis("Mouse ScrollWheel") * scrollspeed;   //À­½üÊÓÒ°
+        //distance -= Input.GetAxis("Mouse ScrollWheel") * scrollspeed;   //æ‹‰è¿‘è§†é‡
         //if (Mathf.Abs(distance) < 1 || Mathf.Abs(distance) > 10)
         //{
-        //    // Èç¹û³¬³ö·¶Î§£¬Ôò»Ø¹ö
+        //    // å¦‚æœè¶…å‡ºèŒƒå›´ï¼Œåˆ™å›æ»š
         //    distance += Input.GetAxis("Mouse ScrollWheel") * scrollspeed;
         //}
 
-        // ¼ÆËãÉãÏñ»ú×ø±ê
+        // è®¡ç®—æ‘„åƒæœºåæ ‡
         float dis = distance / (Mathf.Pow(player.forward.x, 2f) + Mathf.Pow(player.forward.y, 2f) + Mathf.Pow(player.forward.z, 2f));
         float x = -player.forward.x * dis + player.position.x;
         float y = -player.forward.y * dis + player.position.y;
@@ -85,18 +85,18 @@ public class CameraMove : MonoBehaviour
 
     }
 
-    // µÚÒ»ÈË³ÆÉãÏñÍ·ÒÆ¶¯
+    // ç¬¬ä¸€äººç§°æ‘„åƒå¤´ç§»åŠ¨
     public void FirstPerson()
     {
         BaseCameraMove(player.transform);
 
-        // ×óÓÒĞı×ª
-        // ÉãÏñ»ú¸úËæÍ·²¿Ğı×ª
+        // å·¦å³æ—‹è½¬
+        // æ‘„åƒæœºè·Ÿéšå¤´éƒ¨æ—‹è½¬
         camera.transform.rotation = player.rotation;
         camera.transform.position = player.position + new Vector3(0, -0.1f, 0);
     }
 
-    // ¸ü¸ÄÕÚÕÖ
+    // æ›´æ”¹é®ç½©
     public void SetMash()
     {
         camera.cullingMask ^= maskFirst;

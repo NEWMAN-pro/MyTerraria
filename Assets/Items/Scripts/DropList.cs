@@ -1,4 +1,4 @@
-using System;
+ï»¿using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,21 +6,21 @@ using Soultia.Util;
 
 public class DropList : MonoBehaviour
 {
-    // µôÂäÎïÉÏÏŞ
+    // æ‰è½ç‰©ä¸Šé™
     public static int maxDrop = 1000;
-    // µôÂäÎï¶ÔÏó¶ÓÁĞ
+    // æ‰è½ç‰©å¯¹è±¡é˜Ÿåˆ—
     public static GameObject[] dropGBs = new GameObject[maxDrop];
-    // µôÂäÎïÀà¶ÓÁĞ
+    // æ‰è½ç‰©ç±»é˜Ÿåˆ—
     public static Drop[] dropList = new Drop[maxDrop];
-    // µôÂäÎï¶ÓÁĞ
+    // æ‰è½ç‰©é˜Ÿåˆ—
     public static PriorityQueue<Drop> drops = new();
-    // µôÂäÎï´æÔÚÊ±ÏŞ s
+    // æ‰è½ç‰©å­˜åœ¨æ—¶é™ s
     public float maxTime = 60;
 
     private void Start()
     {
         GameObject gameObject = Resources.Load("Prefabs/Drop") as GameObject;
-        // ³õÊ¼»¯¶ÔÏó¶ÓÁĞ
+        // åˆå§‹åŒ–å¯¹è±¡é˜Ÿåˆ—
         for (int i = 0; i < maxDrop; i++)
         {
             GameObject newGB = Instantiate(gameObject, Vector3.zero, Quaternion.identity);
@@ -40,32 +40,32 @@ public class DropList : MonoBehaviour
             drop.time += time;
         }
 
-        // ½«³¬Ê±µÄµôÂäÎïÉ¾³ı
+        // å°†è¶…æ—¶çš„æ‰è½ç‰©åˆ é™¤
         if(drops.Peek().time >= maxTime)
         {
             Destroy(drops.Peek().id.ToString());
         }
     }
 
-    // »ñÈ¡µôÂäÎï
+    // è·å–æ‰è½ç‰©
     public static Item GetDrop(string name)
     {
         int id = int.Parse(name);
         Drop drop = dropList[id];
         if (!dropGBs[drop.id].activeSelf)
         {
-            Debug.Log("²»´æÔÚ¸ÃÎïÆ·");
+            Debug.Log("ä¸å­˜åœ¨è¯¥ç‰©å“");
             return null;
         }
         return drop.item;
     }
 
-    // Ôö¼ÓµôÂäÎï
+    // å¢åŠ æ‰è½ç‰©
     public static void AddDrop(Item item, Vector3 posi)
     {
         if(drops.Count >= maxDrop)
         {
-            // µ½´ïÉÏÏŞ£¬É¾³ı¶Ñ¶¥
+            // åˆ°è¾¾ä¸Šé™ï¼Œåˆ é™¤å †é¡¶
             Destroy(drops.Peek().id.ToString());
         }
         int id = GetGB();
@@ -75,21 +75,21 @@ public class DropList : MonoBehaviour
         drops.Enqueue(drop);
     }
 
-    // É¾³ıµôÂäÎï
+    // åˆ é™¤æ‰è½ç‰©
     public static void Destroy(string name)
     {
         int id = int.Parse(name);
         Drop drop = dropList[id];
         if (!drops.Remove(drop))
         {
-            Debug.Log("²»´æÔÚ¸ÃÎïÆ·");
+            Debug.Log("ä¸å­˜åœ¨è¯¥ç‰©å“");
             return;
         }
         dropGBs[drop.id].SetActive(false);
         CreateDrop(drop.item, drop.id, true, Vector3.zero);
     }
 
-    // ÕÒµ½¶ÔÏó¶ÓÁĞµÚÒ»¸öÎª¿ÕµÄÖµ
+    // æ‰¾åˆ°å¯¹è±¡é˜Ÿåˆ—ç¬¬ä¸€ä¸ªä¸ºç©ºçš„å€¼
     public static int GetGB()
     {
         for(int i = 0; i < maxDrop; i++)
@@ -97,27 +97,27 @@ public class DropList : MonoBehaviour
             if (!dropGBs[i].activeSelf)
             {
                 dropGBs[i].SetActive(true);
-                // ÕÒµ½·µ»Ø
+                // æ‰¾åˆ°è¿”å›
                 return i;
             }
         }
-        // Ã»ÓĞ·µ»Ø-1
+        // æ²¡æœ‰è¿”å›-1
         return -1;
     }
 
-    // »æÖÆµôÂäÎï
+    // ç»˜åˆ¶æ‰è½ç‰©
     public static void CreateDrop(Item item, int id, bool flag, Vector3 posi)
     {
         dropGBs[id].transform.position = posi;
         if (flag)
         {
-            // Èç¹ûÊÇÉ¾³ı£¬½«ÌùÍ¼ÖÃ¿Õ
+            // å¦‚æœæ˜¯åˆ é™¤ï¼Œå°†è´´å›¾ç½®ç©º
             dropGBs[id].GetComponent<CreateUI>().CreateBlank();
             return;
         }
         if(item.type == Type.Block)
         {
-            // Èç¹ûÊÇ·½¿é
+            // å¦‚æœæ˜¯æ–¹å—
             Block block = BlockList.GetBlock(item.ID);
             dropGBs[id].GetComponent<CreateUI>().CreateBlockDrop(block, 0.3f, new Vector3(0.15f, -0.15f, -0.15f));
         }

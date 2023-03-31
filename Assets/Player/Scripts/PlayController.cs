@@ -1,4 +1,4 @@
-using System;
+ï»¿using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,35 +10,35 @@ public class PlayController : MonoBehaviour
 {
     public CameraMove cameraMove;
     public CharacterController characterController;
-    // ÒÆ¶¯ËÙ¶È
+    // ç§»åŠ¨é€Ÿåº¦
     public float speed;
-    // ÖØÁ¦
+    // é‡åŠ›
     public float gravity = 9.8f;
-    // ËÙ¶ÈÏòÁ¿
+    // é€Ÿåº¦å‘é‡
     public Vector3 velocity = Vector3.zero;
-    // ÌøÔ¾¸ß¶È
+    // è·³è·ƒé«˜åº¦
     public float jumpHeight = 1.2f;
-    // Ğı×ªµÄËÙ¶È
+    // æ—‹è½¬çš„é€Ÿåº¦
     public float rotateSpeed = 2;
-    // ÊÓÏß·¶Î§
+    // è§†çº¿èŒƒå›´
     public int viewRange = 30;
-    // ÊÓ½Ç
+    // è§†è§’
     public bool person = true;
-    // ÉÏ´ÎÑ¡ÔñµÄ·½¿é
+    // ä¸Šæ¬¡é€‰æ‹©çš„æ–¹å—
     public Transform LastTrans;
-    // ÉäÏß
+    // å°„çº¿
     Ray ray;
-    // ÉäÏß·¢Éäµã
+    // å°„çº¿å‘å°„ç‚¹
     public Vector3 rayPosi;
-    // µ±Ç°Ñ¡ÔñµÄÎïÆ·ID
+    // å½“å‰é€‰æ‹©çš„ç‰©å“ID
     public Item item;
     public byte inventoryID = 1;
-    // ÎïÆ·À¸
+    // ç‰©å“æ 
     public Inventory inventory;
-    // ±³°ü
+    // èƒŒåŒ…
     public Backpack backpack;
 
-    // Ïú»Ù·½¿é
+    // é”€æ¯æ–¹å—
     public GameObject destory;
 
     // Start is called before the first frame update
@@ -54,12 +54,12 @@ public class PlayController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // µØÍ¼¸úËæÍæ¼ÒÉú³É
+        // åœ°å›¾è·Ÿéšç©å®¶ç”Ÿæˆ
         Map.instance.CreateMap(this.transform.position);
 
         if (inventory.selectID < 10 && inventoryID == inventory.selectID)
         {
-            // ÎïÆ·À¸ÎïÆ··¢Éú¸Ä±ä£¬ÖØĞÂ»æÖÆÊÖ²¿Í¼°¸
+            // ç‰©å“æ ç‰©å“å‘ç”Ÿæ”¹å˜ï¼Œé‡æ–°ç»˜åˆ¶æ‰‹éƒ¨å›¾æ¡ˆ
             DrawItem();
             inventory.selectID = 10;
         }
@@ -68,9 +68,9 @@ public class PlayController : MonoBehaviour
             return;
         }
 
-        // ´ÓÉãÏñ»úÖĞĞÄ·¢ÉäÒ»ÌõÉäÏß
+        // ä»æ‘„åƒæœºä¸­å¿ƒå‘å°„ä¸€æ¡å°„çº¿
         ray = cameraMove.camera.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
-        Debug.DrawRay(rayPosi, ray.direction * 10, Color.red);
+        //Debug.DrawRay(rayPosi, ray.direction * 10, Color.red);
         Person();
         MoveUpdate();
         HeightUpdate();
@@ -81,34 +81,34 @@ public class PlayController : MonoBehaviour
         DetectionDrops();
     }
 
-    // ´¦ÀíÊó±êÊÂ¼ş
+    // å¤„ç†é¼ æ ‡äº‹ä»¶
     public void MouseButton()
     {
         if (Input.GetMouseButtonDown(1))
         {
-            // ·ÅÖÃ·½¿é
+            // æ”¾ç½®æ–¹å—
             CreateBlock();
-            // µ¥»÷¶¯»­
+            // å•å‡»åŠ¨ç”»
             this.GetComponent<AnimationState>().SetExcavateOne();
         }
         if (Input.GetMouseButton(0))
         {
-            // ÇĞ»»³ÖĞø¹¥»÷¶¯»­
+            // åˆ‡æ¢æŒç»­æ”»å‡»åŠ¨ç”»
             this.GetComponent<AnimationState>().SetExcavate(true);
             DestroyBlock();
         }
         else
         {
-            // Í£Ö¹³ÖĞø¹¥»÷¶¯»­
+            // åœæ­¢æŒç»­æ”»å‡»åŠ¨ç”»
             this.GetComponent<AnimationState>().SetExcavate(false);
-            // Í£Ö¹Ïú»Ù¶¯»­
+            // åœæ­¢é”€æ¯åŠ¨ç”»
             StopDestory();
-            // Í£Ö¹Ïú»Ù£¬ÖÃ¿Õ
+            // åœæ­¢é”€æ¯ï¼Œç½®ç©º
             LastTrans = null;
         }
     }
 
-    // ÊÓ½Ç¸üĞÂ
+    // è§†è§’æ›´æ–°
     public void Person()
     {
         if (Input.GetKeyDown(KeyCode.P))
@@ -118,26 +118,26 @@ public class PlayController : MonoBehaviour
         }
         if (person)
         {
-            // µÚÒ»ÈË³Æ
+            // ç¬¬ä¸€äººç§°
             cameraMove.FirstPerson();
             rayPosi = ray.origin;
         }
         else
         {
-            // µÚÈıÈË³Æ
+            // ç¬¬ä¸‰äººç§°
             rayPosi = transform.position + new Vector3(0, 0.7f, 0);
             cameraMove.ThirdPerson(rayPosi, ray);
         }
     }
 
-    // ÒÆ¶¯¸üĞÂº¯Êı
+    // ç§»åŠ¨æ›´æ–°å‡½æ•°
     public void MoveUpdate()
     {
-        // Ğı×ª
+        // æ—‹è½¬
         transform.RotateAround(this.transform.position, this.transform.up, rotateSpeed * Input.GetAxis("Mouse X"));
-        // ×óÓÒ
+        // å·¦å³
         float h = Input.GetAxis("Horizontal");
-        // ÉÏÏÂ
+        // ä¸Šä¸‹
         float v = Input.GetAxis("Vertical");
 
         //Vector3 dir = Vector3.right * h + Vector3.forward * v;
@@ -147,22 +147,22 @@ public class PlayController : MonoBehaviour
 
         if (velocity.x != 0 || velocity.z != 0)
         {
-            // ÇĞ»»ĞĞ×ß
+            // åˆ‡æ¢è¡Œèµ°
             this.GetComponent<AnimationState>().SetWalk(true);
         }
         else
         {
-            //  Í£Ö¹ĞĞ×ß
+            //  åœæ­¢è¡Œèµ°
             this.GetComponent<AnimationState>().SetWalk(false);
         }
     }
 
-    // ¸ß¶È¸üĞÂº¯Êı
+    // é«˜åº¦æ›´æ–°å‡½æ•°
     public void HeightUpdate()
     {
         if (characterController.isGrounded)
         {
-            // Ö»ÓĞ½ÇÉ«ÔÚµØÃæ²ÅÄÜÌøÔ¾
+            // åªæœ‰è§’è‰²åœ¨åœ°é¢æ‰èƒ½è·³è·ƒ
             if (Input.GetButtonDown("Jump"))
             {
                 velocity.y = Mathf.Sqrt(2 * gravity * jumpHeight);
@@ -188,13 +188,13 @@ public class PlayController : MonoBehaviour
         }
     }
 
-    // ÉäÏß¼ì²â
+    // å°„çº¿æ£€æµ‹
     public bool RayDetection(out RaycastHit hitInfo)
     {
         return Physics.Raycast(rayPosi, ray.direction * 10, out hitInfo, 10, LayerMask.GetMask("Cube"));
     }
 
-    // ÇòĞÎ¼ì²â
+    // çƒå½¢æ£€æµ‹
     public bool Sphere(out Collider[] colliders, float radius, LayerMask layerMask)
     {
         colliders = Physics.OverlapSphere(transform.position, radius, layerMask);
@@ -205,36 +205,36 @@ public class PlayController : MonoBehaviour
         return true;
     }
 
-    // Éú³É·½¿é
+    // ç”Ÿæˆæ–¹å—
     public void CreateBlock()
     {
         RaycastHit hitInfo;
         bool hit = RayDetection(out hitInfo);
         if (hit)
         {
-            // »ñÈ¡Åö×²µã×ø±ê
+            // è·å–ç¢°æ’ç‚¹åæ ‡
             Vector3 point = hitInfo.point;
-            // »ñÈ¡¶Ô·½µÃTransform×é¼ş
+            // è·å–å¯¹æ–¹å¾—Transformç»„ä»¶
             Transform trans = hitInfo.transform;
-            // »ñÈ¡Åö×²µãµÄ·¨ÏòÁ¿
+            // è·å–ç¢°æ’ç‚¹çš„æ³•å‘é‡
             Vector3 normal = hitInfo.normal;
 
-            // ÅĞ¶ÏÑ¡ÖĞµÄÊÇ·ñÊÇ±¦Ïä
+            // åˆ¤æ–­é€‰ä¸­çš„æ˜¯å¦æ˜¯å®ç®±
             string key = trans.GetComponent<Chunk>().GetBox(point - normal * 0.01f);
             if (key != "_")
             {
-                // ÊÇ±¦ÏäÔò´ò¿ª±¦Ïä
+                // æ˜¯å®ç®±åˆ™æ‰“å¼€å®ç®±
                 GameObject.Find("UI").GetComponent<UI>().OpenBox(key);
                 return;
             }
 
             if (item == null) return;
-            // Åö×²µãÏò½ÇÉ«ÒÆ¶¯Ò»µã¾àÀë£¬±£Ö¤·½¿éÉú³ÉÎ»ÖÃ×¼È·
+            // ç¢°æ’ç‚¹å‘è§’è‰²ç§»åŠ¨ä¸€ç‚¹è·ç¦»ï¼Œä¿è¯æ–¹å—ç”Ÿæˆä½ç½®å‡†ç¡®
             point += normal * 0.01f;
             byte create = trans.GetComponent<Chunk>().CreateBlock(point, this.transform.position, item.ID);
             if (create == 2)
             {
-                // ·½¿éÉú³ÉÎ»ÖÃ²»ÔÚµ±Ç°Çø¿éÄÚ£¬ÔòĞè¸Ä±äÇø¿étrans
+                // æ–¹å—ç”Ÿæˆä½ç½®ä¸åœ¨å½“å‰åŒºå—å†…ï¼Œåˆ™éœ€æ”¹å˜åŒºå—trans
                 Regex regex = new(@"\((-?\d+),(-?\d+),(-?\d+)\)");
                 Match match = regex.Match(trans.name);
                 if (match.Success)
@@ -246,7 +246,7 @@ public class PlayController : MonoBehaviour
                     String newName = "(" + posi.x + "," + posi.y + "," + posi.z + ")";
                     trans = GameObject.Find(newName).transform;
                     //Debug.Log(trans.name);
-                    // ÔÚĞÂÇø¿éÉú³É·½¿é
+                    // åœ¨æ–°åŒºå—ç”Ÿæˆæ–¹å—
                     create = trans.GetComponent<Chunk>().CreateBlock(point, this.transform.position, item.ID);
                 }
                 else
@@ -257,18 +257,18 @@ public class PlayController : MonoBehaviour
             }
             if(create == 0)
             {
-                // ·½¿éÉú³É³É¹¦
+                // æ–¹å—ç”ŸæˆæˆåŠŸ
                 item.count--;
                 byte backID = (byte)(inventoryID - 1);
                 if(item.count == 0)
                 {
-                    // Èç¹û·½¿é·ÅÖÃÍê£¬ÔòÔÚ±³°üÖĞÉ¾³ı·½¿é
+                    // å¦‚æœæ–¹å—æ”¾ç½®å®Œï¼Œåˆ™åœ¨èƒŒåŒ…ä¸­åˆ é™¤æ–¹å—
                     backpack.SetItem(backID, null);
                     item = null;
                 }
                 else
                 {
-                    // ·ñÔòÖ»¼õÉÙÊıÁ¿
+                    // å¦åˆ™åªå‡å°‘æ•°é‡
                     backpack.SetItem(backID, item);
                 }
             }
@@ -276,54 +276,54 @@ public class PlayController : MonoBehaviour
         }
     }
 
-    // Ïú»Ù·½¿é
+    // é”€æ¯æ–¹å—
     public void DestroyBlock()
     {
         RaycastHit hitInfo;
         bool hit = RayDetection(out hitInfo);
         if (hit)
         {
-            // »ñÈ¡Åö×²µã×ø±ê
+            // è·å–ç¢°æ’ç‚¹åæ ‡
             Vector3 point = hitInfo.point;
-            // »ñÈ¡¶Ô·½µÃTransform×é¼ş
+            // è·å–å¯¹æ–¹å¾—Transformç»„ä»¶
             Transform trans = hitInfo.transform;
-            // »ñÈ¡Åö×²µãµÄ·¨ÏòÁ¿
+            // è·å–ç¢°æ’ç‚¹çš„æ³•å‘é‡
             Vector3 normal = hitInfo.normal;
 
-            // Åö×²µãÏò½ÇÉ«Ô¶ÒÆÒ»µã¾àÀë£¬±£Ö¤Ïú»ÙµÄ·½¿éÎ»ÖÃ×¼È·
+            // ç¢°æ’ç‚¹å‘è§’è‰²è¿œç§»ä¸€ç‚¹è·ç¦»ï¼Œä¿è¯é”€æ¯çš„æ–¹å—ä½ç½®å‡†ç¡®
             point -= normal * 0.01f;
 
-            // Èç¹ûÓëÉÏ´ÎÑ¡ÔñµÄÇø¿é²»Í¬£¬Ôò¸üĞÂ
+            // å¦‚æœä¸ä¸Šæ¬¡é€‰æ‹©çš„åŒºå—ä¸åŒï¼Œåˆ™æ›´æ–°
             if(trans != LastTrans)
             {
                 LastTrans = trans;
                 trans.GetComponent<Chunk>().SetDestroyTime(point);
-                // ÖØÖÃÏú»Ù¶¯»­
+                // é‡ç½®é”€æ¯åŠ¨ç”»
                 StopDestory();
             }
 
             byte flag = trans.GetComponent<Chunk>().DestroyBlock(point);
             if (flag == 0)
             {
-                // Ïú»Ù³É¹¦£¬ÖÃ¿Õ
+                // é”€æ¯æˆåŠŸï¼Œç½®ç©º
                 LastTrans = null;
-                // Í£Ö¹Ïú»Ù¶¯»­
+                // åœæ­¢é”€æ¯åŠ¨ç”»
                 StopDestory();
             }
             else if(flag == 3)
             {
-                // Ïú»ÙÖĞ£¬»æÖÆÏú»Ù·½¿é
+                // é”€æ¯ä¸­ï¼Œç»˜åˆ¶é”€æ¯æ–¹å—
                 CreateDestory(trans, point);
             }
             else if(flag == 4)
             {
-                // ¸ü»»·½¿é£¬ÖØÖÃ¶¯»­
+                // æ›´æ¢æ–¹å—ï¼Œé‡ç½®åŠ¨ç”»
                 StopDestory();
             }
         }
     }
 
-    // ÆôÓÃ»æÖÆ´İ»Ù·½¿é
+    // å¯ç”¨ç»˜åˆ¶æ‘§æ¯æ–¹å—
     public void CreateDestory(Transform trans, Vector3 point)
     {
         Vector3 posi = Vector3.zero;
@@ -336,7 +336,7 @@ public class PlayController : MonoBehaviour
         }
     }
 
-    // Í£Ö¹»æÖÆ´İ»Ù·½¿é
+    // åœæ­¢ç»˜åˆ¶æ‘§æ¯æ–¹å—
     public void StopDestory()
     {
         for(int i = 0; i < 6; i++)
@@ -345,10 +345,10 @@ public class PlayController : MonoBehaviour
         }
     }
 
-    // ¸ü¸ÄÑ¡ÔñµÄÎïÆ·
+    // æ›´æ”¹é€‰æ‹©çš„ç‰©å“
     public void GetNumber()
     {
-        // Êó±êÖĞ¼ü¹ö¶¯ÇĞ»»
+        // é¼ æ ‡ä¸­é”®æ»šåŠ¨åˆ‡æ¢
         if (Input.GetAxis("Mouse ScrollWheel") < 0)
         {
             inventoryID = (byte)(inventoryID == 9 ? (byte)0 : inventoryID + (byte)1);
@@ -361,7 +361,7 @@ public class PlayController : MonoBehaviour
             DrawItem();
             return;
         }
-        // Êı×Ö¼üÇĞ»»
+        // æ•°å­—é”®åˆ‡æ¢
         for(byte i = 0; i <= 9; i++)
         {
             if(Input.GetKey(KeyCode.Alpha0 + i))
@@ -373,7 +373,7 @@ public class PlayController : MonoBehaviour
         }
     }
 
-    // »æÖÆÊÖ²¿Í¼°¸
+    // ç»˜åˆ¶æ‰‹éƒ¨å›¾æ¡ˆ
     public void DrawItem()
     {
         item = inventory.GetItem(inventoryID);
@@ -388,13 +388,13 @@ public class PlayController : MonoBehaviour
         this.transform.GetChild(3).GetChild(1).GetComponent<CreateUI>().CreateBlockUI(BlockList.GetBlock(item.ID), true, 0.1f, Vector3.zero);
     }
 
-    // ¼ì²âµôÂäÎï
+    // æ£€æµ‹æ‰è½ç‰©
     public void DetectionDrops()
     {
         Collider[] colliders;
         if(Sphere(out colliders, 1f, LayerMask.GetMask("Drop")))
         {
-            // Èç¹û¼ì²âµ½µôÂäÎï
+            // å¦‚æœæ£€æµ‹åˆ°æ‰è½ç‰©
             foreach(Collider collider in colliders)
             {
                 string name = collider.name;

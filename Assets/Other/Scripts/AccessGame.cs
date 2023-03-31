@@ -1,4 +1,4 @@
-using System.Collections;
+锘縰sing System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Soultia.Util;
@@ -7,13 +7,13 @@ using Soultia.Voxel;
 public class AccessGame : MonoBehaviour
 {
 
-    // 保存地图种子
+    // 淇濆瓨鍦板浘绉嶅瓙
     public void SaveRandomSeed()
     {
         AccessGameAll.data.randomSeed = GameManager.randomSeed;
     }
 
-    // 保存玩家信息
+    // 淇濆瓨鐜╁淇℃伅
     public void SavePlayerSate()
     {
         PlayState play = GameObject.Find("Player").GetComponent<PlayState>();
@@ -22,20 +22,20 @@ public class AccessGame : MonoBehaviour
         AccessGameAll.data.maxMP = play.maxMP;
     }
 
-    // 保存玩家背包
+    // 淇濆瓨鐜╁鑳屽寘
     public void SaveBackpack()
     {
         AccessGameAll.data.items = this.GetComponent<Backpack>().items;
     }
 
-    // 保存宝箱队列
+    // 淇濆瓨瀹濈闃熷垪
     public void SaveBox()
     {
         AccessGameAll.data.boxs = BoxList.boxs;
         AccessGameAll.data.boxsName = BoxList.boxsName;
     }
 
-    // 保存世界信息
+    // 淇濆瓨涓栫晫淇℃伅
     public void SaveMap()
     {
         Dictionary<Vector3i, GameObject> chunks = Map.instance.chunks;

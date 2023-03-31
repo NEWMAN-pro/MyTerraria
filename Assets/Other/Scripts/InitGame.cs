@@ -1,4 +1,4 @@
-using System.Collections;
+Ôªøusing System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -9,7 +9,7 @@ public class InitGame : MonoBehaviour
     {
         if(!StartUI.flag)
         {
-            // ∑Ò‘Úº”‘ÿ¥Êµµ
+            // Âê¶ÂàôÂä†ËΩΩÂ≠òÊ°£
             AccessGameAll.ReadGame();
         }
     }

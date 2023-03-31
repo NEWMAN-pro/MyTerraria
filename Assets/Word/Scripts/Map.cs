@@ -1,4 +1,4 @@
-using Soultia.Util;
+ï»¿using Soultia.Util;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,23 +9,23 @@ namespace Soultia.Voxel
     {
         public static Map instance;
 
-        // Çø¿é
+        // åŒºå—
         public static GameObject chunkPrefab;
 
-        // Çø¿é¶ÓÁĞ
+        // åŒºå—é˜Ÿåˆ—
         public Dictionary<Vector3i, GameObject> chunks = new Dictionary<Vector3i, GameObject>();
 
-        // Çø¿éÖĞ·½¿éĞÅÏ¢¶ÓÁĞ
+        // åŒºå—ä¸­æ–¹å—ä¿¡æ¯é˜Ÿåˆ—
         public Dictionary<Vector3i, byte[,,]> chunkBlocks = new();
 
-        // Íæ¼Ò
+        // ç©å®¶
         public static GameObject player;
 
-        // Ïú»Ù·½¿é
+        // é”€æ¯æ–¹å—
         public static GameObject destory;
 
 
-        //µ±Ç°ÊÇ·ñÕıÔÚÉú³ÉChunk
+        //å½“å‰æ˜¯å¦æ­£åœ¨ç”ŸæˆChunk
         private bool spawningChunk = false;
 
         void Awake()
@@ -33,7 +33,7 @@ namespace Soultia.Voxel
             instance = this;
             if (!StartUI.flag)
             {
-                // Èç¹ûÊÇ¼ÌĞøÓÎÏ·
+                // å¦‚æœæ˜¯ç»§ç»­æ¸¸æˆ
                 chunkBlocks = AccessGameAll.data.map;
             }
             chunkPrefab = Resources.Load("Prefabs/Chunk") as GameObject;
@@ -50,21 +50,21 @@ namespace Soultia.Voxel
 
         }
 
-        // »Ö¸´ÓÎÏ·
+        // æ¢å¤æ¸¸æˆ
         IEnumerator SetTrue()
         {
             yield return new WaitForSeconds(5);
             this.transform.GetComponent<PauseGameAll>().UnPauseGame();
         }
 
-        // ËæÍæ¼ÒÉú³ÉµØÍ¼
+        // éšç©å®¶ç”Ÿæˆåœ°å›¾
         public void CreateMap(Vector3 position)
         {
             for (float x = position.x - Chunk.width * 3; x <= position.x + Chunk.width * 3; x += Chunk.width)
             {
                 for (float y = position.y - Chunk.height * 3; y <= position.y + Chunk.height * 3; y += Chunk.height)
                 {
-                    //YÖáÉÏÊÇÔÊĞí×î´ó16¸öChunk£¬·½¿é¸ß¶È×î´óÊÇ256
+                    //Yè½´ä¸Šæ˜¯å…è®¸æœ€å¤§16ä¸ªChunkï¼Œæ–¹å—é«˜åº¦æœ€å¤§æ˜¯256
                     if (y <= Chunk.height * 16 && y >= -Chunk.height * 8)
                     {
                         for (float z = position.z - Chunk.width * 3; z <= position.z + Chunk.width * 3; z += Chunk.width)
@@ -80,7 +80,7 @@ namespace Soultia.Voxel
                             {
                                 if(!chunks[new Vector3i(xx, yy, zz)].activeSelf)
                                 {
-                                    // Èç¹ûÇø¿é¶ÔÏóÒÑÉú³ÉÇÒ´¦ÓÚÎ´¼¤»î×´Ì¬£¬Ôò¼¤»îÇø¿é
+                                    // å¦‚æœåŒºå—å¯¹è±¡å·²ç”Ÿæˆä¸”å¤„äºæœªæ¿€æ´»çŠ¶æ€ï¼Œåˆ™æ¿€æ´»åŒºå—
                                     CreateChunk(new Vector3i(xx, yy, zz), true);
                                 }
                             }
@@ -90,7 +90,7 @@ namespace Soultia.Voxel
             }
         }
 
-        //Éú³ÉChunk
+        //ç”ŸæˆChunk
         public void CreateChunk(Vector3i pos, bool flag)
         {
             if (spawningChunk) return;
@@ -103,7 +103,7 @@ namespace Soultia.Voxel
             spawningChunk = true;
             if (flag)
             {
-                // ÒÑ´æÔÚµÄÇø¿éÖ±½ÓÏÔÊ¾³öÀ´¼´¿É
+                // å·²å­˜åœ¨çš„åŒºå—ç›´æ¥æ˜¾ç¤ºå‡ºæ¥å³å¯
                 chunks[pos].SetActive(true);
             }
             else
@@ -111,7 +111,7 @@ namespace Soultia.Voxel
                 GameObject chunk = Instantiate(chunkPrefab, pos, Quaternion.identity);
                 if (chunkBlocks.ContainsKey(pos))
                 {
-                    // Èç¹û´æµµÖĞ¸ÄÇø¿éÓĞ¼ÇÂ¼£¬Ôò¼ÓÔØ
+                    // å¦‚æœå­˜æ¡£ä¸­æ”¹åŒºå—æœ‰è®°å½•ï¼Œåˆ™åŠ è½½
                     chunk.GetComponent<Chunk>().blocks = chunkBlocks[pos];
                     chunk.GetComponent<Chunk>().isFinished = true;
                 }
@@ -120,12 +120,12 @@ namespace Soultia.Voxel
             spawningChunk = false;
         }
 
-        //Í¨¹ıChunkµÄ×ø±êÀ´ÅĞ¶ÏËüÊÇ·ñ´æÔÚ
+        //é€šè¿‡Chunkçš„åæ ‡æ¥åˆ¤æ–­å®ƒæ˜¯å¦å­˜åœ¨
         public bool ChunkExists(Vector3i worldPosition)
         {
             return this.ChunkExists(worldPosition.x, worldPosition.y, worldPosition.z);
         }
-        //Í¨¹ıChunkµÄ×ø±êÀ´ÅĞ¶ÏËüÊÇ·ñ´æÔÚ
+        //é€šè¿‡Chunkçš„åæ ‡æ¥åˆ¤æ–­å®ƒæ˜¯å¦å­˜åœ¨
         public bool ChunkExists(int x, int y, int z)
         {
             return chunks.ContainsKey(new Vector3i(x, y, z));

@@ -8,16 +8,24 @@ public class Slim : Monster
     // 是否移动
     public bool moveFlag = false;
 
+    private void Start()
+    {
+        base.aStar = this.transform.GetComponent<AStar>();
+        base.target = GameObject.Find("Player").transform;
+    }
+
     private void Update()
     {
-        Vector3 velocity = this.transform.GetComponent<Rigidbody>().velocity;
-        if (velocity.magnitude != 0)
+        AnimatorController();
+        if(Vector3.Distance(base.target.position, this.transform.position) <= base.range)
         {
-            base.animator.SetBool("Move", true);
+            // 进入寻路距离，开始寻路
+            base.aStar.target = base.target;
+            base.aStar.flag = true;
         }
         else
         {
-            base.animator.SetBool("Move", false);
+            base.aStar.flag = false;
         }
     }
 
@@ -34,5 +42,28 @@ public class Slim : Monster
     public override void Die()
     {
         base.Die();
+    }
+
+    public override void AnimatorController()
+    {
+        bool AttackFlag = base.aStar.AttackFlag;
+        if (AttackFlag)
+        {
+            base.animator.SetBool("Attack", true);
+            base.animator.SetBool("Move", false);
+        }
+        else
+        {
+            base.animator.SetBool("Attack", false);
+            bool MoveFlag = base.aStar.flag;
+            if (MoveFlag)
+            {
+                base.animator.SetBool("Move", true);
+            }
+            else
+            {
+                base.animator.SetBool("Move", false);
+            }
+        }
     }
 }

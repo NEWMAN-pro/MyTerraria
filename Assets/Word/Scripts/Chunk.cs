@@ -1,4 +1,4 @@
-using System;
+ï»¿using System;
 using Soultia.Util;
 using System.Collections;
 using System.Collections.Generic;
@@ -12,52 +12,52 @@ namespace Soultia.Voxel
     [RequireComponent(typeof(MeshCollider))]
     public class Chunk : MonoBehaviour
     {
-        // Çø¿éµÄ¿í
+        // åŒºå—çš„å®½
         public static int width = 16;
-        // Çø¿éµÄ¸ß
+        // åŒºå—çš„é«˜
         public static int height = 16;
 
-        // Çø¿é·½¿é±í
+        // åŒºå—æ–¹å—è¡¨
         public byte[,,] blocks = new byte[16, 16, 16];
-        // Çø¿éÎ»ÖÃ
+        // åŒºå—ä½ç½®
         public Vector3i position;
-        // µØĞÎÆğ·ü¶È
+        // åœ°å½¢èµ·ä¼åº¦
         public float fluctuation = 4f;
 
-        // ÉÏ´ÎÑ¡ÔñÏú»ÙµÄ·½¿é
+        // ä¸Šæ¬¡é€‰æ‹©é”€æ¯çš„æ–¹å—
         private Vector3i lastBlock = Vector3i.back;
-        // ·½¿éÏú»ÙÊ±¼ä
+        // æ–¹å—é”€æ¯æ—¶é—´
         private float destroyTime;
-        // ·½¿éÑªÁ¿
+        // æ–¹å—è¡€é‡
         private float blockHP;
-        // ÊÇ·ñÏú»Ù
+        // æ˜¯å¦é”€æ¯
         //public bool destroy = false;
 
-        // Ëæ»úÊıÖÖ×Ó
+        // éšæœºæ•°ç§å­
         public int seed = 1234;
-        // Ê÷Ä¾ÊèÃÜ¶È
+        // æ ‘æœ¨ç–å¯†åº¦
         public int treeDensity = 10;
 
         private Mesh mesh;
 
-        //ÃæĞèÒªµÄµã
+        //é¢éœ€è¦çš„ç‚¹
         private List<Vector3> vertices = new List<Vector3>();
-        //Éú³ÉÈı±ßÃæÊ±ÓÃµ½µÄverticesµÄindex
+        //ç”Ÿæˆä¸‰è¾¹é¢æ—¶ç”¨åˆ°çš„verticesçš„index
         private List<int> triangles = new List<int>();
 
-        //ËùÓĞµÄuvĞÅÏ¢
+        //æ‰€æœ‰çš„uvä¿¡æ¯
         private List<Vector2> uv = new List<Vector2>();
-        //uvÌùÍ¼Ã¿ĞĞÃ¿ÁĞµÄ¿í¶È(0~1)£¬ÕâÀïÎÒµÄÌùÍ¼ÊÇ32¡Á32µÄ£¬ËùÒÔÊÇ1/32
+        //uvè´´å›¾æ¯è¡Œæ¯åˆ—çš„å®½åº¦(0~1)ï¼Œè¿™é‡Œæˆ‘çš„è´´å›¾æ˜¯32Ã—32çš„ï¼Œæ‰€ä»¥æ˜¯1/32
         public static float textureOffset = 1 / 32f;
-        //ÈÃUVÉÔÎ¢ËõĞ¡Ò»µã£¬±ÜÃâ³öÏÖËüÅÔ±ßµÄÌùÍ¼
+        //è®©UVç¨å¾®ç¼©å°ä¸€ç‚¹ï¼Œé¿å…å‡ºç°å®ƒæ—è¾¹çš„è´´å›¾
         public static float shrinkSize = 0.001f;
 
 
-        //µ±Ç°ChunkÊÇ·ñÕıÔÚÉú³ÉÖĞ
+        //å½“å‰Chunkæ˜¯å¦æ­£åœ¨ç”Ÿæˆä¸­
         public bool isWorking = false;
         public bool isFinished = false;
 
-        // Íæ¼ÒĞÅÏ¢
+        // ç©å®¶ä¿¡æ¯
         public Transform player;
 
         void Start()
@@ -66,20 +66,20 @@ namespace Soultia.Voxel
             position = new Vector3i(this.transform.position);
             if (Map.instance.ChunkExists(position))
             {
-                Debug.Log("´Ë·½¿éÒÑ´æÔÚ" + position);
+                Debug.Log("æ­¤æ–¹å—å·²å­˜åœ¨" + position);
                 Destroy(this);
             }
             else
             {
                 Map.instance.chunks.Add(position, this.gameObject);
                 this.name = "(" + position.x + "," + position.y + "," + position.z + ")";
-                // ½«Çø¿é·ÅÖÃÔÚMAP×é¼şÏÂ
+                // å°†åŒºå—æ”¾ç½®åœ¨MAPç»„ä»¶ä¸‹
                 this.transform.transform.SetParent(Map.instance.transform);
                 //StartFunction();
             }
             if (isFinished)
             {
-                // ·ÀÖ¹¼ÓÔØÖĞ¶Ï³öÏÖ²»¼ÓÔØÇé¿ö
+                // é˜²æ­¢åŠ è½½ä¸­æ–­å‡ºç°ä¸åŠ è½½æƒ…å†µ
                 isWorking = true;
                 mesh = new Mesh();
                 mesh.name = "Chunk";
@@ -91,7 +91,7 @@ namespace Soultia.Voxel
         {
             if(isFinished)
             {
-                // ·ÀÖ¹¼ÓÔØÖĞ¶Ï³öÏÖ²»¼ÓÔØÇé¿ö
+                // é˜²æ­¢åŠ è½½ä¸­æ–­å‡ºç°ä¸åŠ è½½æƒ…å†µ
                 isWorking = true;
                 mesh = new Mesh();
                 mesh.name = "Chunk";
@@ -118,7 +118,7 @@ namespace Soultia.Voxel
             StartCoroutine(CreateMap());
         }
 
-        // ¹¹Ôì
+        // æ„é€ 
         public IEnumerator CreateMap()
         {
             blocks = new byte[width, height, width];
@@ -132,37 +132,37 @@ namespace Soultia.Voxel
                         {
                             if(position.x <= 48 && position.x >= -48 && position.z <= 48 && position.z >= -48)
                             {
-                                // ³õÊ¼ÎªÆ½Ô­
+                                // åˆå§‹ä¸ºå¹³åŸ
                                 fluctuation = 4f;
                             }
                             else
                             {
-                                // ÀëÖĞĞÄµãÔ½Ô¶µÄÇøÓò£¬µØĞÎÆğ·üÔ½´ó
+                                // ç¦»ä¸­å¿ƒç‚¹è¶Šè¿œçš„åŒºåŸŸï¼Œåœ°å½¢èµ·ä¼è¶Šå¤§
                                 fluctuation = Math.Max(0.5f, 4f - (Math.Abs(Vector2.Distance(new Vector2(position.x, position.z), Vector2.zero)) - 48) / 128);
                             }
                             byte blockid = Terrain.GetTerrainBlock(new Vector3i(x, y, z) + position, fluctuation);
                             byte upBlockid = Terrain.GetTerrainBlock(new Vector3i(x, y + 1, z) + position, fluctuation);
                             if (position.y == 0 && y == 0 && upBlockid == 0)
                             {
-                                // µÍÍİ¿Õ¶´ÓÃ²İ·½¿éÌî²¹
+                                // ä½æ´¼ç©ºæ´ç”¨è‰æ–¹å—å¡«è¡¥
                                 blocks[x, y, z] = 2;
                             }
                             else if (blockid == 2)
                             {
                                 if (upBlockid == 0)
                                 {
-                                    // Èç¹û·½¿éÉÏ²ãÃ»ÓĞ·½¿é£¬ÔòÓÃ²İ·½¿é
+                                    // å¦‚æœæ–¹å—ä¸Šå±‚æ²¡æœ‰æ–¹å—ï¼Œåˆ™ç”¨è‰æ–¹å—
                                     blocks[x, y, z] = 2;
                                 }
                                 else
                                 {
-                                    // ·ñÔòÓÃÊ¯¿é
+                                    // å¦åˆ™ç”¨çŸ³å—
                                     blocks[x, y, z] = 3;
                                 }
                             }
                             else if (blockid == 1 && upBlockid == 0)
                             {
-                                // ±í²ã²İ·½¿é
+                                // è¡¨å±‚è‰æ–¹å—
                                 blocks[x, y, z] = 2;
                                 CreateTree(x, y, z);
                             }
@@ -175,12 +175,12 @@ namespace Soultia.Voxel
                         {
                             if(position.y <= -128 && y <= 8)
                             {
-                                // ×îµ×²ãÉú³É»ùÑÒ
+                                // æœ€åº•å±‚ç”ŸæˆåŸºå²©
                                 blocks[x, y, z] = 5;
                             }
                             else
                             {
-                                // µ×²ãÈ«Éú³ÉÊ¯Í·
+                                // åº•å±‚å…¨ç”ŸæˆçŸ³å¤´
                                 blocks[x, y, z] = 3;
                                 //int voidFlag = Random(10);
                                 //if (voidFlag == 0)
@@ -197,21 +197,21 @@ namespace Soultia.Voxel
             StartCoroutine(CreateMesh());
         }
 
-        // »æÖÆ
+        // ç»˜åˆ¶
         IEnumerator CreateMesh()
         {
             vertices.Clear();
             triangles.Clear();
             uv.Clear();
 
-            //°ÑËùÓĞÃæµÄµãºÍÃæµÄË÷ÒıÌí¼Ó½øÈ¥
+            //æŠŠæ‰€æœ‰é¢çš„ç‚¹å’Œé¢çš„ç´¢å¼•æ·»åŠ è¿›å»
             for (int x = 0; x < Chunk.width; x++)
             {
                 for (int y = 0; y < Chunk.height; y++)
                 {
                     for (int z = 0; z < Chunk.width; z++)
                     {
-                        //»ñÈ¡µ±Ç°×ø±êµÄBlock¶ÔÏó
+                        //è·å–å½“å‰åæ ‡çš„Blockå¯¹è±¡
                         Block block = BlockList.GetBlock(this.blocks[x, y, z]);
                         if (block == null) continue;
 
@@ -244,7 +244,7 @@ namespace Soultia.Voxel
             }
 
 
-            //ÎªµãºÍindex¸³Öµ
+            //ä¸ºç‚¹å’Œindexèµ‹å€¼
             mesh.vertices = vertices.ToArray();
             mesh.triangles = triangles.ToArray();
             if(mesh.vertices.Length == uv.Count)
@@ -252,11 +252,11 @@ namespace Soultia.Voxel
                 mesh.uv = uv.ToArray();
             }
 
-            //ÖØĞÂ¼ÆËã¶¥µãºÍ·¨Ïß
+            //é‡æ–°è®¡ç®—é¡¶ç‚¹å’Œæ³•çº¿
             mesh.RecalculateBounds();
             mesh.RecalculateNormals();
 
-            //½«Éú³ÉºÃµÄÃæ¸³Öµ¸ø×é¼ş
+            //å°†ç”Ÿæˆå¥½çš„é¢èµ‹å€¼ç»™ç»„ä»¶
             this.GetComponent<MeshFilter>().mesh = mesh;
             this.GetComponent<MeshCollider>().sharedMesh = mesh;
 
@@ -264,7 +264,7 @@ namespace Soultia.Voxel
             isWorking = false;
         }
 
-        //´Ë×ø±ê·½¿éÊÇ·ñÍ¸Ã÷£¬ChunkÖĞµÄ¾Ö²¿×ø±ê
+        //æ­¤åæ ‡æ–¹å—æ˜¯å¦é€æ˜ï¼ŒChunkä¸­çš„å±€éƒ¨åæ ‡
         public bool IsBlockTransparent(int x, int y, int z)
         {
             if (x >= width || y >= height || z >= width || x < 0 || y < 0 || z < 0)
@@ -273,12 +273,12 @@ namespace Soultia.Voxel
             }
             else
             {
-                //Èç¹ûµ±Ç°·½¿éµÄidÊÇ0£¬ÄÇµÄÈ·ÊÇÍ¸Ã÷µÄ
+                //å¦‚æœå½“å‰æ–¹å—çš„idæ˜¯0ï¼Œé‚£çš„ç¡®æ˜¯é€æ˜çš„
                 return this.blocks[x, y, z] == 0 || BlockList.GetBlock(this.blocks[x, y, z]).lucency;
             }
         }
 
-        // Èç¹û¸ÃÇø¿éÀëÍæ¼Ò¹ıÔ¶£¬ÔòÒş²Ø
+        // å¦‚æœè¯¥åŒºå—ç¦»ç©å®¶è¿‡è¿œï¼Œåˆ™éšè—
         public void SetFalse()
         {
             if(Math.Abs(this.position.x - player.position.x) > width * 4 || Math.Abs(this.position.y - player.position.y) > width * 4 || Math.Abs(this.position.z - player.position.z) > width * 4){
@@ -286,7 +286,7 @@ namespace Soultia.Voxel
             }
         }
 
-        // Éú³ÉÒ»¿ÃÊ÷
+        // ç”Ÿæˆä¸€æ£µæ ‘
         public void CreateTree(int x, int y, int z)
         {
             int treeFlag = Random(treeDensity, 1);
@@ -298,17 +298,17 @@ namespace Soultia.Voxel
                     {
                         if(blocks[x - 1 + i, y, z - 1 + j] == 6)
                         {
-                            // Èç¹û¾Å¹¬¸ñÀàÓĞÒ»¿ÅÊ÷Ôò²»Éú³É
+                            // å¦‚æœä¹å®«æ ¼ç±»æœ‰ä¸€é¢—æ ‘åˆ™ä¸ç”Ÿæˆ
                             return;
                         }
                     }
                 }
-                // Éú³ÉÊ÷¸É
+                // ç”Ÿæˆæ ‘å¹²
                 for (int i = 1; i <= 5; i++)
                 {
                     blocks[x, y + i, z] = 6;
                 }
-                // Éú³ÉÊ÷Ò¶
+                // ç”Ÿæˆæ ‘å¶
                 blocks[x, y + 6, z] = 7;
                 for (int i = 0; i < 5; i++)
                 {
@@ -320,7 +320,7 @@ namespace Soultia.Voxel
                             {
                                 if (i == 4 || j == 4 || i == 0 || j == 0)
                                 {
-                                    // Ëæ»úÉú³É×îÍâÈ¦µÄÊ÷Ò¶
+                                    // éšæœºç”Ÿæˆæœ€å¤–åœˆçš„æ ‘å¶
                                     int leaf = Random(5, i + j + i * j * ii + ii);
                                     if (leaf == 0 || leaf == 1)
                                     {
@@ -335,207 +335,207 @@ namespace Soultia.Voxel
             }
         }
 
-        //Ç°Ãæ
+        //å‰é¢
         void AddFrontFace(int x, int y, int z, Block block)
         {
-            //µÚÒ»¸öÈı½ÇÃæ
+            //ç¬¬ä¸€ä¸ªä¸‰è§’é¢
             triangles.Add(0 + vertices.Count);
             triangles.Add(3 + vertices.Count);
             triangles.Add(2 + vertices.Count);
 
-            //µÚ¶ş¸öÈı½ÇÃæ
+            //ç¬¬äºŒä¸ªä¸‰è§’é¢
             triangles.Add(2 + vertices.Count);
             triangles.Add(1 + vertices.Count);
             triangles.Add(0 + vertices.Count);
 
 
-            //Ìí¼Ó4¸öµã
+            //æ·»åŠ 4ä¸ªç‚¹
             vertices.Add(new Vector3(0 + x, 0 + y, 0 + z));
             vertices.Add(new Vector3(0 + x, 0 + y, 1 + z));
             vertices.Add(new Vector3(0 + x, 1 + y, 1 + z));
             vertices.Add(new Vector3(0 + x, 1 + y, 0 + z));
 
-            //Ìí¼ÓUV×ø±êµã£¬¸úÉÏÃæ4¸öµãÑ­»·µÄË³ĞòÒ»ÖÂ
+            //æ·»åŠ UVåæ ‡ç‚¹ï¼Œè·Ÿä¸Šé¢4ä¸ªç‚¹å¾ªç¯çš„é¡ºåºä¸€è‡´
             uv.Add(new Vector2(block.textureFrontX * textureOffset, block.textureFrontY * textureOffset) + new Vector2(shrinkSize, shrinkSize));
             uv.Add(new Vector2(block.textureFrontX * textureOffset + textureOffset, block.textureFrontY * textureOffset) + new Vector2(-shrinkSize, shrinkSize));
             uv.Add(new Vector2(block.textureFrontX * textureOffset + textureOffset, block.textureFrontY * textureOffset + textureOffset) + new Vector2(-shrinkSize, -shrinkSize));
             uv.Add(new Vector2(block.textureFrontX * textureOffset, block.textureFrontY * textureOffset + textureOffset) + new Vector2(shrinkSize, -shrinkSize));
         }
 
-        //±³Ãæ
+        //èƒŒé¢
         void AddBackFace(int x, int y, int z, Block block)
         {
-            //µÚÒ»¸öÈı½ÇÃæ
+            //ç¬¬ä¸€ä¸ªä¸‰è§’é¢
             triangles.Add(0 + vertices.Count);
             triangles.Add(3 + vertices.Count);
             triangles.Add(2 + vertices.Count);
 
-            //µÚ¶ş¸öÈı½ÇÃæ
+            //ç¬¬äºŒä¸ªä¸‰è§’é¢
             triangles.Add(2 + vertices.Count);
             triangles.Add(1 + vertices.Count);
             triangles.Add(0 + vertices.Count);
 
 
-            //Ìí¼Ó4¸öµã
+            //æ·»åŠ 4ä¸ªç‚¹
             vertices.Add(new Vector3(-1 + x, 0 + y, 1 + z));
             vertices.Add(new Vector3(-1 + x, 0 + y, 0 + z));
             vertices.Add(new Vector3(-1 + x, 1 + y, 0 + z));
             vertices.Add(new Vector3(-1 + x, 1 + y, 1 + z));
 
-            //Ìí¼ÓUV×ø±êµã£¬¸úÉÏÃæ4¸öµãÑ­»·µÄË³ĞòÒ»ÖÂ
+            //æ·»åŠ UVåæ ‡ç‚¹ï¼Œè·Ÿä¸Šé¢4ä¸ªç‚¹å¾ªç¯çš„é¡ºåºä¸€è‡´
             uv.Add(new Vector2(block.textureBackX * textureOffset, block.textureBackY * textureOffset) + new Vector2(shrinkSize, shrinkSize));
             uv.Add(new Vector2(block.textureBackX * textureOffset + textureOffset, block.textureBackY * textureOffset) + new Vector2(-shrinkSize, shrinkSize));
             uv.Add(new Vector2(block.textureBackX * textureOffset + textureOffset, block.textureBackY * textureOffset + textureOffset) + new Vector2(-shrinkSize, -shrinkSize));
             uv.Add(new Vector2(block.textureBackX * textureOffset, block.textureBackY * textureOffset + textureOffset) + new Vector2(shrinkSize, -shrinkSize));
         }
 
-        //ÓÒÃæ
+        //å³é¢
         void AddRightFace(int x, int y, int z, Block block)
         {
-            //µÚÒ»¸öÈı½ÇÃæ
+            //ç¬¬ä¸€ä¸ªä¸‰è§’é¢
             triangles.Add(0 + vertices.Count);
             triangles.Add(3 + vertices.Count);
             triangles.Add(2 + vertices.Count);
 
-            //µÚ¶ş¸öÈı½ÇÃæ
+            //ç¬¬äºŒä¸ªä¸‰è§’é¢
             triangles.Add(2 + vertices.Count);
             triangles.Add(1 + vertices.Count);
             triangles.Add(0 + vertices.Count);
 
 
-            //Ìí¼Ó4¸öµã
+            //æ·»åŠ 4ä¸ªç‚¹
             vertices.Add(new Vector3(0 + x, 0 + y, 1 + z));
             vertices.Add(new Vector3(-1 + x, 0 + y, 1 + z));
             vertices.Add(new Vector3(-1 + x, 1 + y, 1 + z));
             vertices.Add(new Vector3(0 + x, 1 + y, 1 + z));
 
-            //Ìí¼ÓUV×ø±êµã£¬¸úÉÏÃæ4¸öµãÑ­»·µÄË³ĞòÒ»ÖÂ
+            //æ·»åŠ UVåæ ‡ç‚¹ï¼Œè·Ÿä¸Šé¢4ä¸ªç‚¹å¾ªç¯çš„é¡ºåºä¸€è‡´
             uv.Add(new Vector2(block.textureRightX * textureOffset, block.textureRightY * textureOffset) + new Vector2(shrinkSize, shrinkSize));
             uv.Add(new Vector2(block.textureRightX * textureOffset + textureOffset, block.textureRightY * textureOffset) + new Vector2(-shrinkSize, shrinkSize));
             uv.Add(new Vector2(block.textureRightX * textureOffset + textureOffset, block.textureRightY * textureOffset + textureOffset) + new Vector2(-shrinkSize, -shrinkSize));
             uv.Add(new Vector2(block.textureRightX * textureOffset, block.textureRightY * textureOffset + textureOffset) + new Vector2(shrinkSize, -shrinkSize));
         }
 
-        //×óÃæ
+        //å·¦é¢
         void AddLeftFace(int x, int y, int z, Block block)
         {
-            //µÚÒ»¸öÈı½ÇÃæ
+            //ç¬¬ä¸€ä¸ªä¸‰è§’é¢
             triangles.Add(0 + vertices.Count);
             triangles.Add(3 + vertices.Count);
             triangles.Add(2 + vertices.Count);
 
-            //µÚ¶ş¸öÈı½ÇÃæ
+            //ç¬¬äºŒä¸ªä¸‰è§’é¢
             triangles.Add(2 + vertices.Count);
             triangles.Add(1 + vertices.Count);
             triangles.Add(0 + vertices.Count);
 
 
-            //Ìí¼Ó4¸öµã
+            //æ·»åŠ 4ä¸ªç‚¹
             vertices.Add(new Vector3(-1 + x, 0 + y, 0 + z));
             vertices.Add(new Vector3(0 + x, 0 + y, 0 + z));
             vertices.Add(new Vector3(0 + x, 1 + y, 0 + z));
             vertices.Add(new Vector3(-1 + x, 1 + y, 0 + z));
 
-            //Ìí¼ÓUV×ø±êµã£¬¸úÉÏÃæ4¸öµãÑ­»·µÄË³ĞòÒ»ÖÂ
+            //æ·»åŠ UVåæ ‡ç‚¹ï¼Œè·Ÿä¸Šé¢4ä¸ªç‚¹å¾ªç¯çš„é¡ºåºä¸€è‡´
             uv.Add(new Vector2(block.textureLeftX * textureOffset, block.textureLeftY * textureOffset) + new Vector2(shrinkSize, shrinkSize));
             uv.Add(new Vector2(block.textureLeftX * textureOffset + textureOffset, block.textureLeftY * textureOffset) + new Vector2(-shrinkSize, shrinkSize));
             uv.Add(new Vector2(block.textureLeftX * textureOffset + textureOffset, block.textureLeftY * textureOffset + textureOffset) + new Vector2(-shrinkSize, -shrinkSize));
             uv.Add(new Vector2(block.textureLeftX * textureOffset, block.textureLeftY * textureOffset + textureOffset) + new Vector2(shrinkSize, -shrinkSize));
         }
 
-        //ÉÏÃæ
+        //ä¸Šé¢
         void AddTopFace(int x, int y, int z, Block block)
         {
-            //µÚÒ»¸öÈı½ÇÃæ
+            //ç¬¬ä¸€ä¸ªä¸‰è§’é¢
             triangles.Add(1 + vertices.Count);
             triangles.Add(0 + vertices.Count);
             triangles.Add(3 + vertices.Count);
 
-            //µÚ¶ş¸öÈı½ÇÃæ
+            //ç¬¬äºŒä¸ªä¸‰è§’é¢
             triangles.Add(3 + vertices.Count);
             triangles.Add(2 + vertices.Count);
             triangles.Add(1 + vertices.Count);
 
 
-            //Ìí¼Ó4¸öµã
+            //æ·»åŠ 4ä¸ªç‚¹
             vertices.Add(new Vector3(0 + x, 1 + y, 0 + z));
             vertices.Add(new Vector3(0 + x, 1 + y, 1 + z));
             vertices.Add(new Vector3(-1 + x, 1 + y, 1 + z));
             vertices.Add(new Vector3(-1 + x, 1 + y, 0 + z));
 
-            //Ìí¼ÓUV×ø±êµã£¬¸úÉÏÃæ4¸öµãÑ­»·µÄË³ĞòÒ»ÖÂ
+            //æ·»åŠ UVåæ ‡ç‚¹ï¼Œè·Ÿä¸Šé¢4ä¸ªç‚¹å¾ªç¯çš„é¡ºåºä¸€è‡´
             uv.Add(new Vector2(block.textureTopX * textureOffset, block.textureTopY * textureOffset) + new Vector2(shrinkSize, shrinkSize));
             uv.Add(new Vector2(block.textureTopX * textureOffset + textureOffset, block.textureTopY * textureOffset) + new Vector2(-shrinkSize, shrinkSize));
             uv.Add(new Vector2(block.textureTopX * textureOffset + textureOffset, block.textureTopY * textureOffset + textureOffset) + new Vector2(-shrinkSize, -shrinkSize));
             uv.Add(new Vector2(block.textureTopX * textureOffset, block.textureTopY * textureOffset + textureOffset) + new Vector2(shrinkSize, -shrinkSize));
         }
 
-        //ÏÂÃæ
+        //ä¸‹é¢
         void AddBottomFace(int x, int y, int z, Block block)
         {
-            //µÚÒ»¸öÈı½ÇÃæ
+            //ç¬¬ä¸€ä¸ªä¸‰è§’é¢
             triangles.Add(1 + vertices.Count);
             triangles.Add(0 + vertices.Count);
             triangles.Add(3 + vertices.Count);
 
-            //µÚ¶ş¸öÈı½ÇÃæ
+            //ç¬¬äºŒä¸ªä¸‰è§’é¢
             triangles.Add(3 + vertices.Count);
             triangles.Add(2 + vertices.Count);
             triangles.Add(1 + vertices.Count);
 
 
-            //Ìí¼Ó4¸öµã
+            //æ·»åŠ 4ä¸ªç‚¹
             vertices.Add(new Vector3(-1 + x, 0 + y, 0 + z));
             vertices.Add(new Vector3(-1 + x, 0 + y, 1 + z));
             vertices.Add(new Vector3(0 + x, 0 + y, 1 + z));
             vertices.Add(new Vector3(0 + x, 0 + y, 0 + z));
 
-            //Ìí¼ÓUV×ø±êµã£¬¸úÉÏÃæ4¸öµãÑ­»·µÄË³ĞòÒ»ÖÂ
+            //æ·»åŠ UVåæ ‡ç‚¹ï¼Œè·Ÿä¸Šé¢4ä¸ªç‚¹å¾ªç¯çš„é¡ºåºä¸€è‡´
             uv.Add(new Vector2(block.textureBottomX * textureOffset, block.textureBottomY * textureOffset) + new Vector2(shrinkSize, shrinkSize));
             uv.Add(new Vector2(block.textureBottomX * textureOffset + textureOffset, block.textureBottomY * textureOffset) + new Vector2(-shrinkSize, shrinkSize));
             uv.Add(new Vector2(block.textureBottomX * textureOffset + textureOffset, block.textureBottomY * textureOffset + textureOffset) + new Vector2(-shrinkSize, -shrinkSize));
             uv.Add(new Vector2(block.textureBottomX * textureOffset, block.textureBottomY * textureOffset + textureOffset) + new Vector2(shrinkSize, -shrinkSize));
         }
 
-        // ÊÀ½ç×ø±ê×ªÇø¿é×ø±ê
+        // ä¸–ç•Œåæ ‡è½¬åŒºå—åæ ‡
         public Vector3i WorldTransferChunk(Vector3 position)
         {
             return new Vector3i(position) - this.position - new Vector3i(-1, 0, 0);
         }
 
-        // Çø¿é×ø±ê×ªÊÀ½ç×ø±ê
+        // åŒºå—åæ ‡è½¬ä¸–ç•Œåæ ‡
         public Vector3 ChunkTransferWorld(Vector3i position)
         {
             return position.ToVector3() + new Vector3(-0.5f, 0.5f, 0.5f) + this.position;
         }
 
-        // Éú³É·½¿é
+        // ç”Ÿæˆæ–¹å—
         public byte CreateBlock(Vector3 position, Vector3 playPosition, byte blockID)
         {
             Vector3i chunkPosition = WorldTransferChunk(position);
             Vector3 wordPosition = ChunkTransferWorld(chunkPosition);
 
-            // Èç¹ûÓë½ÇÉ«ÖØºÏ£¬Ôò²»Éú³É
+            // å¦‚æœä¸è§’è‰²é‡åˆï¼Œåˆ™ä¸ç”Ÿæˆ
             if(Math.Abs(wordPosition.x - playPosition.x) < 0.5f && Math.Abs(wordPosition.y - playPosition.y) < 1f && Math.Abs(wordPosition.z - playPosition.z) < 0.5f)
             {
-                Debug.Log("CÓë½ÇÉ«ÖØºÏ");
+                Debug.Log("Cä¸è§’è‰²é‡åˆ");
                 return 1;
             }
 
-            // Èç¹û³¬¹ıÇø¿é½çÏŞ£¬Ôò²»Éú³É
+            // å¦‚æœè¶…è¿‡åŒºå—ç•Œé™ï¼Œåˆ™ä¸ç”Ÿæˆ
             if(chunkPosition.x >= Chunk.width || chunkPosition.y >= Chunk.height || chunkPosition.z >= Chunk.width || chunkPosition.x < 0 || chunkPosition.y < 0 || chunkPosition.z < 0)
             {
-                Debug.Log("CÔ½½ç");
+                Debug.Log("Cè¶Šç•Œ");
                 return 2;
             }
 
-            // ¸ÃÎ»ÖÃÒÑÓĞ·½¿é
+            // è¯¥ä½ç½®å·²æœ‰æ–¹å—
             if (blocks[chunkPosition.x, chunkPosition.y, chunkPosition.z] != 0)
             {
-                Debug.Log("C¸ÃÎ»ÖÃÒÑÓĞ·½¿é");
+                Debug.Log("Cè¯¥ä½ç½®å·²æœ‰æ–¹å—");
                 return 3;
             }
-            //Debug.Log("Éú³É");
+            //Debug.Log("ç”Ÿæˆ");
             Debug.Log(this.transform.name + " " + chunkPosition);
             isWorking = true;
             mesh = new Mesh();
@@ -543,7 +543,7 @@ namespace Soultia.Voxel
             blocks[chunkPosition.x, chunkPosition.y, chunkPosition.z] = blockID;
             if(blockID == 8)
             {
-                // Èç¹ûÊÇ±¦Ïä£¬¼ÓÈë±¦Ïä¶ÓÁĞ£¬keyÎªÇø¿é×ø±ê¼Ó·½¿é×ø±ê
+                // å¦‚æœæ˜¯å®ç®±ï¼ŒåŠ å…¥å®ç®±é˜Ÿåˆ—ï¼Œkeyä¸ºåŒºå—åæ ‡åŠ æ–¹å—åæ ‡
                 string key = this.transform.name + chunkPosition.ToString();
                 BoxList.AddBox(key);
             }
@@ -551,33 +551,33 @@ namespace Soultia.Voxel
             return 0;
         }
 
-        // Ïú»Ù·½¿é
+        // é”€æ¯æ–¹å—
         public byte DestroyBlock(Vector3 position)
         {
             Vector3i chunkPosition = WorldTransferChunk(position);
 
-            // Èç¹û³¬¹ıÇø¿é½çÏŞ
+            // å¦‚æœè¶…è¿‡åŒºå—ç•Œé™
             if (chunkPosition.x >= Chunk.width || chunkPosition.y >= Chunk.height || chunkPosition.z >= Chunk.width || chunkPosition.x < 0 || chunkPosition.y < 0 || chunkPosition.z < 0)
             {
-                Debug.Log("DÔ½½ç");
+                Debug.Log("Dè¶Šç•Œ");
                 return 1;
             }
 
-            // ¸ÃÎ»ÖÃÃ»ÓĞ·½¿é
+            // è¯¥ä½ç½®æ²¡æœ‰æ–¹å—
             if (blocks[chunkPosition.x, chunkPosition.y, chunkPosition.z] == 0)
             {
-                Debug.Log("D¸ÃÎ»ÖÃÃ»ÓĞ·½¿é");
+                Debug.Log("Dè¯¥ä½ç½®æ²¡æœ‰æ–¹å—");
                 return 2;
             }
 
-            // Èç¹û¸ÃÎ»ÖÃÊÇ±¦ÏäÇÒ±¦Ïä²»Îª¿Õ
+            // å¦‚æœè¯¥ä½ç½®æ˜¯å®ç®±ä¸”å®ç®±ä¸ä¸ºç©º
             if(blocks[chunkPosition.x, chunkPosition.y, chunkPosition.z] == 8 && !BoxList.GetBoxEmpty(this.transform.name + chunkPosition.ToString()))
             {
-                Debug.Log("D¸Ã±¦Ïä²»Îª¿Õ");
+                Debug.Log("Dè¯¥å®ç®±ä¸ä¸ºç©º");
                 return 4;
             }
 
-            // Èç¹û·½¿é¸Ä±ä£¬Ôò¸üĞÂĞÅÏ¢
+            // å¦‚æœæ–¹å—æ”¹å˜ï¼Œåˆ™æ›´æ–°ä¿¡æ¯
             if(chunkPosition != lastBlock)
             {
                 lastBlock = chunkPosition;
@@ -587,17 +587,17 @@ namespace Soultia.Voxel
             isWorking = true;
             mesh = new Mesh();
             mesh.name = "Chunk";
-            // ÅĞ¶ÏÊÇ·ñÏú»Ù¹»Ê±¼ä
+            // åˆ¤æ–­æ˜¯å¦é”€æ¯å¤Ÿæ—¶é—´
             if(blockHP <= 100)
             {
-                // ²»¹»Ôò¸üĞÂÊ±¼ä
+                // ä¸å¤Ÿåˆ™æ›´æ–°æ—¶é—´
                 blockHP += Time.deltaTime * destroyTime;
                 return 3;
             }
-            //Debug.Log("Ïú»Ù");
+            //Debug.Log("é”€æ¯");
             if(blocks[chunkPosition.x, chunkPosition.y, chunkPosition.z] == 8)
             {
-                // Èç¹ûÏú»ÙµÄ·½¿éÊÇ±¦Ïä£¬Ôò½«¸Ã±¦Ïä´Ó±¦ÏäÁĞ±íÖĞÒÆ³ı
+                // å¦‚æœé”€æ¯çš„æ–¹å—æ˜¯å®ç®±ï¼Œåˆ™å°†è¯¥å®ç®±ä»å®ç®±åˆ—è¡¨ä¸­ç§»é™¤
                 BoxList.DelectBox(this.transform.name + chunkPosition.ToString());
             }
             CreateDrop(chunkPosition);
@@ -606,7 +606,7 @@ namespace Soultia.Voxel
             return 0;
         }
 
-        // »æÖÆµôÂäÎï
+        // ç»˜åˆ¶æ‰è½ç‰©
         public void CreateDrop(Vector3i chunkPosition)
         {
             Block block = BlockList.GetBlock(this.blocks[chunkPosition.x, chunkPosition.y, chunkPosition.z]);
@@ -614,7 +614,7 @@ namespace Soultia.Voxel
             DropList.AddDrop(item, ChunkTransferWorld(chunkPosition));
         }
 
-        // »æÖÆÏú»Ù·½¿é
+        // ç»˜åˆ¶é”€æ¯æ–¹å—
         public void CreateDestroy(Vector3 point, ref float time, ref Vector3 wordPosition)
         {
             Vector3i chunkPosition = WorldTransferChunk(point);
@@ -622,7 +622,7 @@ namespace Soultia.Voxel
             time = destroyTime;
         }
 
-        // Ë¢ĞÂÊ±¼ä
+        // åˆ·æ–°æ—¶é—´
         public void SetDestroyTime(Vector3 position)
         {
             Vector3i chunkPosition = WorldTransferChunk(position);
@@ -633,7 +633,7 @@ namespace Soultia.Voxel
             blockHP = 0;
         }
 
-        // ÅĞ¶Ïµ±Ç°Î»ÖÃÊÇ·ñÊÇ±¦Ïä
+        // åˆ¤æ–­å½“å‰ä½ç½®æ˜¯å¦æ˜¯å®ç®±
         public string GetBox(Vector3 position)
         {
             Vector3i chunkPosition = WorldTransferChunk(position);
@@ -644,7 +644,7 @@ namespace Soultia.Voxel
             return "_";
         }
 
-        // Éú³ÉËæ»úÊı
+        // ç”Ÿæˆéšæœºæ•°
         public int Random(int max, int increment)
         {
             System.Random rand = new System.Random(seed);

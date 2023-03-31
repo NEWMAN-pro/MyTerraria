@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
@@ -18,7 +18,7 @@ public class Drop : IComparable<Drop>
 
     public int CompareTo(Drop other)
     {
-        // °´Ê±¼ä´Ó´óµ½Ð¡ÅÅÐò
+        // æŒ‰æ—¶é—´ä»Žå¤§åˆ°å°æŽ’åº
         if (this.time > other.time)
         {
             return -1;

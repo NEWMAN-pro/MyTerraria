@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -7,28 +7,28 @@ using System;
 
 public class Backpack : MonoBehaviour
 {
-    // ÎïÆ·¶ÓÁĞ
+    // ç‰©å“é˜Ÿåˆ—
     public Dictionary<byte, Item> items = new();
-    // ÎïÆ·À¸
+    // ç‰©å“æ 
     public Inventory inventory;
-    // ±¦Ïä
+    // å®ç®±
     public Box box;
-    // Ñ¡Ôñ¿ò
+    // é€‰æ‹©æ¡†
     public RectTransform select;
-    // µ±Ç°Ñ¡ÔñµÄÎïÆ·
+    // å½“å‰é€‰æ‹©çš„ç‰©å“
     [NonSerialized]
     public Item selectItem;
-    // Î´±ê¼ÇµÄÑÕÉ«
+    // æœªæ ‡è®°çš„é¢œè‰²
     public Color NotFlag;
-    // ±ê¼ÇµÄÑÕÉ«
+    // æ ‡è®°çš„é¢œè‰²
     public Color FlagColor;
-    // ÎïÆ·ÊıÁ¿text
+    // ç‰©å“æ•°é‡text
     public GameObject textPrefab;
     public GameObject text;
 
     private void Awake()
     {
-        // ÎïÆ·ÊıÁ¿³õÊ¼»¯
+        // ç‰©å“æ•°é‡åˆå§‹åŒ–
         textPrefab = Resources.Load("Prefabs/ItemCount") as GameObject;
         for (byte i = 0; i < 60; i++)
         {
@@ -37,7 +37,7 @@ public class Backpack : MonoBehaviour
             text.name = "ItemCount";
             if (i > 50 && i < 59)
             {
-                // Èç¹ûÊÇ½ğ±Ò¸ñ»òÕßµ¯Ò©¸ñ£¬Ôòµ÷ÕûÎÄ±¾¿òÎ»ÖÃ
+                // å¦‚æœæ˜¯é‡‘å¸æ ¼æˆ–è€…å¼¹è¯æ ¼ï¼Œåˆ™è°ƒæ•´æ–‡æœ¬æ¡†ä½ç½®
                 text.GetComponent<RectTransform>().anchoredPosition = new Vector3(20f, -15f, -0.4f);
             }
             if(i < 10)
@@ -48,7 +48,7 @@ public class Backpack : MonoBehaviour
         }
         if (!StartUI.flag)
         {
-            // Èç¹ûÊÇ¼ÌĞøÓÎÏ·
+            // å¦‚æœæ˜¯ç»§ç»­æ¸¸æˆ
             items = AccessGameAll.data.items;
             foreach(var pair in items)
             {
@@ -126,26 +126,26 @@ public class Backpack : MonoBehaviour
     {
         if(selectItem != null)
         {
-            // ÈÃÑ¡Ôñ¿òËæÊó±êÒÆ¶¯
+            // è®©é€‰æ‹©æ¡†éšé¼ æ ‡ç§»åŠ¨
             select.anchoredPosition = (((Vector2)Input.mousePosition - new Vector2(Screen.width, Screen.height) / 2f) * 1920f / (float)Screen.width - this.transform.GetComponent<RectTransform>().anchoredPosition) * 1.25f;
         }
 
     }
 
-    // »ñÈ¡ÎïÆ·
+    // è·å–ç‰©å“
     public Item GetItem(byte key)
     {
         return items.ContainsKey(key) ? items[key] : null;
     }
 
-    // ĞŞ¸ÄÎïÆ·
+    // ä¿®æ”¹ç‰©å“
     public void SetItem(byte key, Item item)
     {
         items[key] = item;
         CreateUI(item, key, false);
         if(key <= 9)
         {
-            // Í¬²½¸üĞÂÎïÆ·À¸
+            // åŒæ­¥æ›´æ–°ç‰©å“æ 
             byte newKey = (byte)(key + 1);
             if(newKey == 10)
             {
@@ -155,7 +155,7 @@ public class Backpack : MonoBehaviour
         }
     }
 
-    // »æÖÆ
+    // ç»˜åˆ¶
     public void CreateUI(Item item, byte key, bool selectFlag)
     {
         if(item == null)
@@ -173,7 +173,7 @@ public class Backpack : MonoBehaviour
             Block block = BlockList.GetBlock(item.ID);
             if (block == null)
             {
-                Debug.Log("¸ÃÎïÆ·Îª¿Õba");
+                Debug.Log("è¯¥ç‰©å“ä¸ºç©ºba");
                 return;
             }
             if (selectFlag)
@@ -191,7 +191,7 @@ public class Backpack : MonoBehaviour
         if (item.count != -1) this.transform.GetChild(key).GetChild(0).GetComponent<Text>().text = item.count.ToString();
     }
 
-    // ¸ü¸ÄÑ¡Ôñ¿ò
+    // æ›´æ”¹é€‰æ‹©æ¡†
     public void Select(int key)
     {
         if(key >= 60)
@@ -202,17 +202,17 @@ public class Backpack : MonoBehaviour
             {
                 if (flag == 1)
                 {
-                    // Èç¹ûÊÇ´æÈëÎïÆ·
+                    // å¦‚æœæ˜¯å­˜å…¥ç‰©å“
                     Storage(item_);
                 }
                 else if(flag == 2)
                 {
-                    // Èç¹ûÊÇÉ¾³ıÎïÆ·
+                    // å¦‚æœæ˜¯åˆ é™¤ç‰©å“
                     SetItem(50, item_);
                 }
                 else
                 {
-                    // Ñ¡Ôñ¿ò»ñÈ¡±³°üÖĞµÄÎïÆ·
+                    // é€‰æ‹©æ¡†è·å–èƒŒåŒ…ä¸­çš„ç‰©å“
                     CreateUI(item_, (byte)key, true);
                 }
             }
@@ -221,7 +221,7 @@ public class Backpack : MonoBehaviour
         Item item = GetItem((byte)key);
         if (Input.GetKey(KeyCode.LeftAlt) && item != null && key < 50)
         {
-            // Èç¹ûÊÇ°´ÏÂLeftAlt¼ü£¬Ôò±ê¼ÇÎïÆ·
+            // å¦‚æœæ˜¯æŒ‰ä¸‹LeftAlté”®ï¼Œåˆ™æ ‡è®°ç‰©å“
             item.flag = !item.flag;
             SetItem((byte)key, item);
             SetColor(key, item.flag);
@@ -229,25 +229,25 @@ public class Backpack : MonoBehaviour
         }
         if(Input.GetKey(KeyCode.LeftControl) && item != null && !item.flag && key != 50)
         {
-            // Èç¹ûÊÇ°´ÏÂLeftControl¼ü£¬²¢ÇÒ¸ÃÎïÆ·Î´±»±ê¼Ç£¬ÇÒ¸Ã¸ñ²»ÊÇÀ¬»øÍ°£¬Ôò½«ÎïÆ·ÒÆÖÁÀ¬»øÍ°
+            // å¦‚æœæ˜¯æŒ‰ä¸‹LeftControlé”®ï¼Œå¹¶ä¸”è¯¥ç‰©å“æœªè¢«æ ‡è®°ï¼Œä¸”è¯¥æ ¼ä¸æ˜¯åƒåœ¾æ¡¶ï¼Œåˆ™å°†ç‰©å“ç§»è‡³åƒåœ¾æ¡¶
             SetItem(50, item);
-            // ½«±¾¸ñÇå¿Õ
+            // å°†æœ¬æ ¼æ¸…ç©º
             SetItem((byte)key, null);
             return;
         }
         if(Input.GetKey(KeyCode.LeftShift) && item != null && !item.flag && !GameObject.Find("UI").GetComponent<UI>().boxFlag)
         {
-            // Èç¹ûÊÇ°´ÏÂLeftShift¼ü²¢ÇÒ´ò¿ªÁË±¦Ïä½çÃæ£¬²¢ÇÒ¸ÃÎïÆ·Î´±»±ê¼Ç£¬Ôò½«¸Ã¸ñÎïÆ·´æÈë±³°ü
+            // å¦‚æœæ˜¯æŒ‰ä¸‹LeftShifté”®å¹¶ä¸”æ‰“å¼€äº†å®ç®±ç•Œé¢ï¼Œå¹¶ä¸”è¯¥ç‰©å“æœªè¢«æ ‡è®°ï¼Œåˆ™å°†è¯¥æ ¼ç‰©å“å­˜å…¥èƒŒåŒ…
             if (box.Storage(item))
             {
-                // Èç¹û·ÅÈë³É¹¦£¬½«±¾¸ñÇå¿Õ
+                // å¦‚æœæ”¾å…¥æˆåŠŸï¼Œå°†æœ¬æ ¼æ¸…ç©º
                 SetItem((byte)key, null);
             }
             return;
         }
         if (selectItem != null)
         {
-            // ½«Ñ¡Ôñ¿òÖĞµÄÎïÌåÎïÆ··Åµ½¸Ã¸ñ
+            // å°†é€‰æ‹©æ¡†ä¸­çš„ç‰©ä½“ç‰©å“æ”¾åˆ°è¯¥æ ¼
             if(key == 50)
             {
                 selectItem.flag = false;
@@ -256,7 +256,7 @@ public class Backpack : MonoBehaviour
             {
                 if(selectItem.type != Type.Money)
                 {
-                    // Èç¹ûÎïÆ·ÀàĞÍ²»ÊÇ½ğÇ®Ôò²»ÄÜ·ÅÈëÇ®±Ò¸ñ
+                    // å¦‚æœç‰©å“ç±»å‹ä¸æ˜¯é‡‘é’±åˆ™ä¸èƒ½æ”¾å…¥é’±å¸æ ¼
                     return;
                 }
             }
@@ -264,7 +264,7 @@ public class Backpack : MonoBehaviour
             {
                 if(selectItem.type != Type.Ammo)
                 {
-                    // Èç¹ûÎïÆ·ÀàĞÍ²»ÊÇµ¯Ò©Ôò²»ÄÜ·ÅÈëµ¯Ò©¸ñ
+                    // å¦‚æœç‰©å“ç±»å‹ä¸æ˜¯å¼¹è¯åˆ™ä¸èƒ½æ”¾å…¥å¼¹è¯æ ¼
                     return;
                 }
             }
@@ -272,20 +272,20 @@ public class Backpack : MonoBehaviour
             //SetColor(key, selectItem.flag);
             if(item == null || key == 50)
             {
-                // Èç¹û¸Ã¸ñÎª¿Õ£¬ÔòÖÃ¿ÕÑ¡Ôñ¿ò£¬µ±Ñ¡ÖĞµÄÊÇÀ¬»øÍ°£¬·­¸ÇÆäÖĞÎïÆ·
+                // å¦‚æœè¯¥æ ¼ä¸ºç©ºï¼Œåˆ™ç½®ç©ºé€‰æ‹©æ¡†ï¼Œå½“é€‰ä¸­çš„æ˜¯åƒåœ¾æ¡¶ï¼Œç¿»ç›–å…¶ä¸­ç‰©å“
                 selectItem = null;
                 select.gameObject.SetActive(false);
             }
             else
             {
-                // ·ñÔò¸üĞÂÑ¡Ôñ¿òµÄÎïÆ·
+                // å¦åˆ™æ›´æ–°é€‰æ‹©æ¡†çš„ç‰©å“
                 CreateUI(item, (byte)key, true);
                 selectItem = item;
             }
         }
         else
         {
-            // Ñ¡Ôñ¿òÃ»ÓĞÎïÆ·£¬Ôò»ñÈ¡¸Ã¸ñÎïÆ·
+            // é€‰æ‹©æ¡†æ²¡æœ‰ç‰©å“ï¼Œåˆ™è·å–è¯¥æ ¼ç‰©å“
             if (item == null)
             {
                 return;
@@ -298,28 +298,28 @@ public class Backpack : MonoBehaviour
         }
     }
 
-    // Ò»¼üÕûÀí
+    // ä¸€é”®æ•´ç†
     public void Neaten()
     {
-        // ¶Ô×ÖµäÅÅĞò£¬ÏÈ±È½ÏtypeÔÙ±È½ÏID£¨´ÓĞ¡µ½´ó£©£¬ÔÙ±È½Ïflag£¨trueÅÅÇ°£©£¬ÔÙ±È½Ïkey£¨´ÓĞ¡µ½´ó£©
+        // å¯¹å­—å…¸æ’åºï¼Œå…ˆæ¯”è¾ƒtypeå†æ¯”è¾ƒIDï¼ˆä»å°åˆ°å¤§ï¼‰ï¼Œå†æ¯”è¾ƒflagï¼ˆtrueæ’å‰ï¼‰ï¼Œå†æ¯”è¾ƒkeyï¼ˆä»å°åˆ°å¤§ï¼‰
         var sortedItems_ = items.Where(i => i.Value != null)
            .OrderBy(i => i.Value.type).ThenBy(i => i.Value.ID).ThenByDescending(i => i.Value.flag).ThenBy(i => i.Key)
            .ToList();
         for(int i = 0; i < sortedItems_.Count; i++)
         {
-            // ½øĞĞºÏ²¢
+            // è¿›è¡Œåˆå¹¶
             var pair = sortedItems_[i];
             if (i != sortedItems_.Count - 1)
             {
                 var nextPair = sortedItems_[i + 1];
                 if (pair.Value.type == nextPair.Value.type && pair.Value.ID == nextPair.Value.ID)
                 {
-                    // Á½¸öÎïÆ·µÄ×ÜÊıÁ¿
+                    // ä¸¤ä¸ªç‰©å“çš„æ€»æ•°é‡
                     int ans = pair.Value.count + nextPair.Value.count;
                     if (ans <= 64)
                     {
                         pair.Value.count = ans;
-                        // ÊıÁ¿Îª0£¬É¾³ıÎïÆ·
+                        // æ•°é‡ä¸º0ï¼Œåˆ é™¤ç‰©å“
                         sortedItems_[i + 1].Value.count = 0;
                         SetItem(nextPair.Key, null);
                     }
@@ -330,83 +330,83 @@ public class Backpack : MonoBehaviour
                     }
                 }
             }
-            // ½«ÎïÆ·À¸Óë±»±ê¼ÇµÄÎïÆ·ÖØĞÂ»æÖÆ
+            // å°†ç‰©å“æ ä¸è¢«æ ‡è®°çš„ç‰©å“é‡æ–°ç»˜åˆ¶
             if(pair.Key < 10 || pair.Value.flag)
             {
                 if(pair.Value.count == 0)
                 {
-                    // ÊıÁ¿Îª0£¬²»»æÖÆ
+                    // æ•°é‡ä¸º0ï¼Œä¸ç»˜åˆ¶
                     continue;
                 }
                 SetItem(pair.Key, pair.Value);
             }
         }
-        // ½«ÎïÆ·À¸Óë±»±ê¼ÇµÄÎïÆ·ÒÔ¼°ÊıÁ¿Îª0µÄÎïÆ·ÌŞ³ı
+        // å°†ç‰©å“æ ä¸è¢«æ ‡è®°çš„ç‰©å“ä»¥åŠæ•°é‡ä¸º0çš„ç‰©å“å‰”é™¤
         var sortedItems = sortedItems_.Where(i => i.Value != null && i.Value.count != 0 && i.Key > 9 && !i.Value.flag)
             .ToDictionary(i => i.Key, i => i.Value);
         byte key = 10;
         foreach (var pair in sortedItems)
         {
-            // ÏÈÇå¿Õ
+            // å…ˆæ¸…ç©º
             SetItem(pair.Key, null);
         }
         foreach (var pair in sortedItems)
         {
             while(GetItem(key) != null)
             {
-                // ÕÒµ½²»Îª¿ÕµÄ±³°ü¸ñ
+                // æ‰¾åˆ°ä¸ä¸ºç©ºçš„èƒŒåŒ…æ ¼
                 key++;
             }
-            // ÔÙÖØĞÂ»æÖÆ
+            // å†é‡æ–°ç»˜åˆ¶
             SetItem(key++, pair.Value);
         }
     }
 
-    // ¸ü¸ÄÎïÆ·¸ñÑÕÉ«
+    // æ›´æ”¹ç‰©å“æ ¼é¢œè‰²
     public void SetColor(int key, bool flag)
     {
         this.transform.GetChild(key).GetComponent<Image>().color = flag ? FlagColor : NotFlag;
     }
 
-    // ´æÈëÎïÆ·
+    // å­˜å…¥ç‰©å“
     public bool Storage(Item item)
     {
         byte key;
-        // ÊÔ×ÅÑ°ÕÒÏàÍ¬µÄÎïÆ·
+        // è¯•ç€å¯»æ‰¾ç›¸åŒçš„ç‰©å“
         key = items.FirstOrDefault(x => x.Value != null && x.Value.type == item.type && x.Value.ID == item.ID).Key;
         Item item1 = GetItem(key);
         if(item1 != null && item1.type == item.type && item1.ID == item.ID && item1.count != -1)
         {
-            // Èç¹ûÕÒµ½ÏàÍ¬µÄÎïÆ·£¬²¢ÇÒÎïÆ·¿ÉÒÔºÏ²¢
+            // å¦‚æœæ‰¾åˆ°ç›¸åŒçš„ç‰©å“ï¼Œå¹¶ä¸”ç‰©å“å¯ä»¥åˆå¹¶
             int ans = item1.count + item.count;
             if(ans <= 64)
             {
-                // ºÏÆ´ºóÊıÁ¿Î´³¬ÉÏÏŞ£¬ÔòºÏ²¢
+                // åˆæ‹¼åæ•°é‡æœªè¶…ä¸Šé™ï¼Œåˆ™åˆå¹¶
                 item1.count = ans;
                 SetItem(key, item1);
                 return true;
             }
             else
             {
-                // ³¬ÉÏÏŞ£¬ÔòĞÂ´æÈëÒ»¸öÎïÆ·
+                // è¶…ä¸Šé™ï¼Œåˆ™æ–°å­˜å…¥ä¸€ä¸ªç‰©å“
                 item1.count = 64;
                 item.count = ans - 64;
                 SetItem(key, item1);
             }
         }
-        // ÕÒµ½µÚÒ»¸öÎª¿ÕµÄ¿Õ¸ñ
+        // æ‰¾åˆ°ç¬¬ä¸€ä¸ªä¸ºç©ºçš„ç©ºæ ¼
         key = items.FirstOrDefault(x => x.Value == null).Key;
         if (GetItem(key) != null)
         {
-            // Èç¹ûµ±Ç°¶ÓÁĞÃ»ÕÒµ½¿Õ¸ñ
-            // ±³°ü·ÅÂúÁË
+            // å¦‚æœå½“å‰é˜Ÿåˆ—æ²¡æ‰¾åˆ°ç©ºæ ¼
+            // èƒŒåŒ…æ”¾æ»¡äº†
             return false;
         }
         SetItem(key, item);
         return true;
     }
 
-    // ´æ·ÅÈ«²¿
+    // å­˜æ”¾å…¨éƒ¨
     public void Deposit()
     {
         var items_ = items.Where(i => i.Value != null && i.Key > 9 && i.Key != 50 && !i.Value.flag).ToDictionary(i => i.Key, i => i.Value);
@@ -420,11 +420,11 @@ public class Backpack : MonoBehaviour
         }
     }
 
-    // ¿ìËÙ¶Ñµş
+    // å¿«é€Ÿå †å 
     public void Stack()
     {
-        // ÕÒµ½±³°üÓë±¦ÏäÖĞÏàÍ¬µÄÎïÆ·£¬ÇÒÎ´±»±ê¼Ç
-        // À¬»øÍ°ÖĞÎïÆ·²»²ÎÓëÆ¥Åä
+        // æ‰¾åˆ°èƒŒåŒ…ä¸å®ç®±ä¸­ç›¸åŒçš„ç‰©å“ï¼Œä¸”æœªè¢«æ ‡è®°
+        // åƒåœ¾æ¡¶ä¸­ç‰©å“ä¸å‚ä¸åŒ¹é…
         var items_ = items.Where(i => i.Key != 50 && i.Value != null && !i.Value.flag).ToDictionary(i => i.Key, i => i.Value);
         var commonItems = items_.Values.Intersect(box.items.Values, new ItemEqualityComparer()).ToList();
         var commonItemsWithKeys = items_.Where(pair => commonItems.Contains(pair.Value)).ToDictionary(pair => pair.Key, pair => pair.Value);
@@ -435,12 +435,12 @@ public class Backpack : MonoBehaviour
         }
     }
 
-    // ½Å±¾½áÊøÊ±
+    // è„šæœ¬ç»“æŸæ—¶
     private void OnDisable()
     {
         if(selectItem != null)
         {
-            // Èç¹ûÔÚÑ¡Ôñ¿òÎ´Çå¿ÕµÄÇé¿öÏÂÍË³ö£¬ÔòÕÒµ½±³°üÖĞµÚÒ»¸öÎª¿ÕµÄ¸ñ×Ó£¬½«Ñ¡Ôñ¿òÖĞµÄÎïÌå·ÅÈë²¢Çå¿ÕÑ¡Ôñ¿ò
+            // å¦‚æœåœ¨é€‰æ‹©æ¡†æœªæ¸…ç©ºçš„æƒ…å†µä¸‹é€€å‡ºï¼Œåˆ™æ‰¾åˆ°èƒŒåŒ…ä¸­ç¬¬ä¸€ä¸ªä¸ºç©ºçš„æ ¼å­ï¼Œå°†é€‰æ‹©æ¡†ä¸­çš„ç‰©ä½“æ”¾å…¥å¹¶æ¸…ç©ºé€‰æ‹©æ¡†
             Storage(selectItem);
             selectItem = null;
             select.gameObject.SetActive(false);
@@ -448,7 +448,7 @@ public class Backpack : MonoBehaviour
     }
 }
 
-// ×Ô¶¨Òå±È½ÏÆ÷
+// è‡ªå®šä¹‰æ¯”è¾ƒå™¨
 public class ItemEqualityComparer : IEqualityComparer<Item>
 {
     public bool Equals(Item x, Item y)

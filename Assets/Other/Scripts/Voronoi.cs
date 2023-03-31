@@ -1,8 +1,8 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 /// <summary>
-/// »ùÓÚBowyer-WatsonËã·¨ 
+/// åŸºäºBowyer-Watsonç®—æ³• 
 /// </summary>
 public class Voronoi : MonoBehaviour
 {
@@ -10,12 +10,12 @@ public class Voronoi : MonoBehaviour
 
     public int featurePointNum = 50;
 
-    private List<Vector2> featurePoints;//´æ´¢ÌØÕ÷µã
-    private List<Edge> trianglesEdgeList;//delaunayÈı½ÇÍø¸ñ±ß
-    private List<Edge> voronoiEdges;//ÅµÒÁÍ¼Íø¸ñ±ß
-    List<Triangle> allTriangles;//delaunayÈı½ÇĞÎ
+    private List<Vector2> featurePoints;//å­˜å‚¨ç‰¹å¾ç‚¹
+    private List<Edge> trianglesEdgeList;//delaunayä¸‰è§’ç½‘æ ¼è¾¹
+    private List<Edge> voronoiEdges;//è¯ºä¼Šå›¾ç½‘æ ¼è¾¹
+    List<Triangle> allTriangles;//delaunayä¸‰è§’å½¢
 
-    //³õÊ¼³¬¼¶Èı½ÇĞÎµÄ¶¥µã
+    //åˆå§‹è¶…çº§ä¸‰è§’å½¢çš„é¡¶ç‚¹
     private Vector2 pointA;
     private Vector2 pointB;
     private Vector2 pointC;
@@ -39,7 +39,7 @@ public class Voronoi : MonoBehaviour
         minY = featurePoints[0].y;
         maxX = minX;
         maxY = minY;
-        //Ê×ÏÈ¸ù¾İÀëÉ¢µãµÄ×ø±êĞÅÏ¢È·¶¨Ò»¸ö¾ØĞÎ¿ò
+        //é¦–å…ˆæ ¹æ®ç¦»æ•£ç‚¹çš„åæ ‡ä¿¡æ¯ç¡®å®šä¸€ä¸ªçŸ©å½¢æ¡†
         for (int i = 0; i < featurePoints.Count; i++)
         {
             if (featurePoints[i].x < minX) minX = featurePoints[i].x;
@@ -47,7 +47,7 @@ public class Voronoi : MonoBehaviour
             if (featurePoints[i].x > maxX) maxX = featurePoints[i].x;
             if (featurePoints[i].y > maxY) maxY = featurePoints[i].y;
         }
-        //¸ù¾İ¾ØĞÎµÄĞÅÏ¢¹¹½¨Ò»¸ö³¬¼¶Èı½ÇĞÎÄÜ¹»°üº¬ËùÓĞµÄÀëÉ¢µã
+        //æ ¹æ®çŸ©å½¢çš„ä¿¡æ¯æ„å»ºä¸€ä¸ªè¶…çº§ä¸‰è§’å½¢èƒ½å¤ŸåŒ…å«æ‰€æœ‰çš„ç¦»æ•£ç‚¹
         dx = maxX - minX;
         dy = maxY - minY;
         deltaMax = Mathf.Max(dx, dy);
@@ -57,7 +57,7 @@ public class Voronoi : MonoBehaviour
         pointB = new Vector2(midX, midY + 20 * deltaMax);
         pointC = new Vector2(midX + 20 * deltaMax, midY - 20 * deltaMax);
         Triangle tri = new Triangle(pointA, pointB, pointC);
-        //½«Õâ¸öÈı½ÇĞÎ×÷Îª³õÊ¼Èı½ÇĞÎ¼ÓÈë¼¯ºÏ
+        //å°†è¿™ä¸ªä¸‰è§’å½¢ä½œä¸ºåˆå§‹ä¸‰è§’å½¢åŠ å…¥é›†åˆ
         allTriangles.Add(tri);
         SetDelaunayTriangle(allTriangles, featurePoints);
         returnEdgesofTriangleList(allTriangles, out trianglesEdgeList);
@@ -73,21 +73,21 @@ public class Voronoi : MonoBehaviour
         GL.LoadOrtho();
 
         GL.Begin(GL.LINES);
-        //»­µÂÀÍÄÚÈı½ÇĞÎÍø¸ñ
+        //ç”»å¾·åŠ³å†…ä¸‰è§’å½¢ç½‘æ ¼
         GL.Color(Color.red);
         for (int i = 0; i < trianglesEdgeList.Count; i++)
         {
             GL.Vertex3(trianglesEdgeList[i]._a.x / Screen.width, trianglesEdgeList[i]._a.y / Screen.height, 0);
             GL.Vertex3(trianglesEdgeList[i]._b.x / Screen.width, trianglesEdgeList[i]._b.y / Screen.height, 0);
         }
-        //»­ÌØÕ÷µã
+        //ç”»ç‰¹å¾ç‚¹
         GL.Color(Color.white);
         for (int i = 0; i < featurePoints.Count; i++)
         {
             GL.Vertex3(featurePoints[i].x / Screen.width, featurePoints[i].y / Screen.height, 0);
             GL.Vertex3((featurePoints[i].x + 3) / Screen.width, (featurePoints[i].y + 3) / Screen.height, 0);
         }
-        //»­ÅµÒÁÍ¼
+        //ç”»è¯ºä¼Šå›¾
         //GL.Color(Color.blue);
         //for (int i = 0; i < voronoiEdges.Count; i++)
         //{
@@ -98,14 +98,14 @@ public class Voronoi : MonoBehaviour
         GL.PopMatrix();
     }
     /// <summary>
-    /// ¸ù¾İµÂÀÍÄÚÈı½ÇÍø¸ñµÃµ½ÅµÒÁÍ¼
+    /// æ ¹æ®å¾·åŠ³å†…ä¸‰è§’ç½‘æ ¼å¾—åˆ°è¯ºä¼Šå›¾
     /// </summary>
     private List<Edge> SetVoronoi(List<Triangle> allTriangle)
     {
         List<Edge> voronoiEdgeList = new List<Edge>();
         for (int i = 0; i < allTriangle.Count; i++)
         {
-            List<Edge> neighborEdgeList = new List<Edge>();//Èı½ÇĞÎÁÚ½Ó±ß¼¯ºÏ
+            List<Edge> neighborEdgeList = new List<Edge>();//ä¸‰è§’å½¢é‚»æ¥è¾¹é›†åˆ
             for (int j = 0; j < allTriangle.Count; j++)
             {
                 if (j != i)
@@ -114,14 +114,14 @@ public class Voronoi : MonoBehaviour
                     if (neighborEdge != null)
                     {
                         neighborEdgeList.Add(neighborEdge);
-                        //¹¹Ôìvoronoi±ß
+                        //æ„é€ voronoiè¾¹
                         Edge voronoiEdge = new Edge(allTriangle[i].center, allTriangle[j].center);
                         if (!voronoiEdgeList.Contains(voronoiEdge))
                             voronoiEdgeList.Add(voronoiEdge);
                     }
                 }
             }
-            //×îÍâÃæµÄÈı½ÇĞÎ£¬voronoi±ßĞèÒªÉäÏß
+            //æœ€å¤–é¢çš„ä¸‰è§’å½¢ï¼Œvoronoiè¾¹éœ€è¦å°„çº¿
             //if (neighborEdgeList.Count == 2)
             //{
             //    Vector2 midPoint = Vector2.zero;
@@ -153,7 +153,7 @@ public class Voronoi : MonoBehaviour
     }
 
     /// <summary>
-    /// ¹¹½¨µÂÀÍÄÚÈı½ÇĞÎÍø
+    /// æ„å»ºå¾·åŠ³å†…ä¸‰è§’å½¢ç½‘
     /// </summary>
     /// <param name="triangles"></param>
     /// <param name="points"></param>
@@ -162,39 +162,39 @@ public class Voronoi : MonoBehaviour
         for (int i = 0; i < points.Count; i++)
         {
             List<Triangle> tempTriList = new List<Triangle>();
-            //¿½±´ËùÓĞµÄÈı½ÇĞÎ
+            //æ‹·è´æ‰€æœ‰çš„ä¸‰è§’å½¢
             for (int j = 0; j < allTriangle.Count; j++)
             {
                 tempTriList.Add(allTriangle[j]);
             }
-            //ÊÜÓ°ÏìµÄÈı½ÇĞÎÁ´±í
+            //å—å½±å“çš„ä¸‰è§’å½¢é“¾è¡¨
             List<Triangle> influencedTriangle = new List<Triangle>();
-            //ĞÂĞÎ³ÉµÄÈı½ÇĞÎÁ´±í
+            //æ–°å½¢æˆçš„ä¸‰è§’å½¢é“¾è¡¨
             List<Triangle> newTriangle = new List<Triangle>();
-            //ÊÜÓ°ÏìµÄ¹«¹²±ß
+            //å—å½±å“çš„å…¬å…±è¾¹
             List<Edge> commonEdges = new List<Edge>();
             for (int j = 0; j < tempTriList.Count; j++)
             {
-                double lengthToCenter = EuclidianDistance(tempTriList[j].center, points[i]);//µãµ½µ±Ç°Èı½ÇĞÎÍâ½ÓÔ²ĞÄµÄ¾àÀë
+                double lengthToCenter = EuclidianDistance(tempTriList[j].center, points[i]);//ç‚¹åˆ°å½“å‰ä¸‰è§’å½¢å¤–æ¥åœ†å¿ƒçš„è·ç¦»
                 if (lengthToCenter <= tempTriList[j].radius)
                 {
-                    influencedTriangle.Add(tempTriList[j]);//Ìí¼Óµ½ÊÜÓ°ÏìÁĞ±íÖĞ
-                    allTriangle.Remove(tempTriList[j]);//ÒÆ³ıµ±Ç°Èı½ÇĞÎ
+                    influencedTriangle.Add(tempTriList[j]);//æ·»åŠ åˆ°å—å½±å“åˆ—è¡¨ä¸­
+                    allTriangle.Remove(tempTriList[j]);//ç§»é™¤å½“å‰ä¸‰è§’å½¢
                 }
             }
-            //±éÀúÊÜÓ°ÏìÈı½ÇĞÎ,µÃµ½Èı½ÇĞÎ±ß
+            //éå†å—å½±å“ä¸‰è§’å½¢,å¾—åˆ°ä¸‰è§’å½¢è¾¹
             for (int j = 0; j < influencedTriangle.Count; j++)
             {
                 commonEdges.Add(new Edge(influencedTriangle[j].m_Point1, influencedTriangle[j].m_Point2));
                 commonEdges.Add(new Edge(influencedTriangle[j].m_Point1, influencedTriangle[j].m_Point3));
                 commonEdges.Add(new Edge(influencedTriangle[j].m_Point2, influencedTriangle[j].m_Point3));
             }
-            //½«ÊÜÓ°ÏìµÄÈı½ÇĞÎÖĞµÄ¹«¹²±ßËùÔÚµÄĞÂÈı½ÇĞÎÉ¾µô
+            //å°†å—å½±å“çš„ä¸‰è§’å½¢ä¸­çš„å…¬å…±è¾¹æ‰€åœ¨çš„æ–°ä¸‰è§’å½¢åˆ æ‰
             if (commonEdges.Count > 0)
             {
                 remmoveEdges(commonEdges);
             }
-            //½«ÓÅ»¯ºóµÄÈı½ÇĞÎÌí¼Óµ½Èı½ÇĞÎÍøÖĞ
+            //å°†ä¼˜åŒ–åçš„ä¸‰è§’å½¢æ·»åŠ åˆ°ä¸‰è§’å½¢ç½‘ä¸­
             for (int j = 0; j < commonEdges.Count; j++)
             {
                 allTriangle.Add(new Triangle(commonEdges[j]._a, commonEdges[j]._b, points[i]));
@@ -202,7 +202,7 @@ public class Voronoi : MonoBehaviour
         }
     }
     /// <summary>
-    /// ¼ÆËãµãµ½Ô²ĞÄµÄ¾àÀë
+    /// è®¡ç®—ç‚¹åˆ°åœ†å¿ƒçš„è·ç¦»
     /// </summary>
     /// <param name="p"></param>
     /// <param name="p2"></param>
@@ -212,7 +212,7 @@ public class Voronoi : MonoBehaviour
         return Mathf.Sqrt(Mathf.Abs((p.x - p2.x)) * Mathf.Abs((p.x - p2.x)) + Mathf.Abs((p.y - p2.y)) * Mathf.Abs((p.y - p2.y)));
     }
 
-    //ÕÒ³öÁ½¸öÈı½ÇĞÎµÄ¹«¹²±ß
+    //æ‰¾å‡ºä¸¤ä¸ªä¸‰è§’å½¢çš„å…¬å…±è¾¹
     public Edge findCommonEdge(Triangle chgTri1, Triangle chgTri2)
     {
         Edge edge;
@@ -236,19 +236,19 @@ public class Voronoi : MonoBehaviour
         }
         return null;
     }
-    //ÕÒ³öÏß¶ÎÖĞµã
+    //æ‰¾å‡ºçº¿æ®µä¸­ç‚¹
     public Vector2 findMidPoint(Vector2 a, Vector2 b)
     {
         return new Vector2((a.x + b.x) / 2.0f, (a.y + b.y) / 2.0f);
     }
-    //ÅĞ¶ÏÁ½µãÊÇ·ñÏàÍ¬
+    //åˆ¤æ–­ä¸¤ç‚¹æ˜¯å¦ç›¸åŒ
     public bool PointIsEqual(Vector2 a, Vector2 b)
     {
         if (a.x == b.x && a.y == b.y)
             return true;
         return false;
     }
-    //¸ù¾İÁ½µãÇóÒÔµÚÒ»¸öµãÎªÆğµãµÄÉäÏß±ß
+    //æ ¹æ®ä¸¤ç‚¹æ±‚ä»¥ç¬¬ä¸€ä¸ªç‚¹ä¸ºèµ·ç‚¹çš„å°„çº¿è¾¹
     public Edge produceRayEdge(Vector2 start, Vector2 direction, bool IsCenterOut, bool IsObtuseAngle)
     {
         Vector2 end = Vector2.zero;
@@ -267,7 +267,7 @@ public class Voronoi : MonoBehaviour
         longEdge = new Edge(start, end);
         return longEdge;
     }
-    //ÅĞ¶ÏµãÊÇ·ñÔÚ±ßÉÏ
+    //åˆ¤æ–­ç‚¹æ˜¯å¦åœ¨è¾¹ä¸Š
     public bool isPointOnEdge(Edge edge, Vector2 Point)
     {
         if (edge == null) return false;
@@ -275,11 +275,11 @@ public class Voronoi : MonoBehaviour
             return true;
         return false;
     }
-    //ÒÆ³ı¹«¹²±ß
+    //ç§»é™¤å…¬å…±è¾¹
     public void remmoveEdges(List<Edge> edges)
     {
         List<Edge> tmpEdges = new List<Edge>();
-        //¿½±´ËùÓĞÈı½ÇĞÎ
+        //æ‹·è´æ‰€æœ‰ä¸‰è§’å½¢
         for (int i = 0; i < edges.Count; i++)
         {
             tmpEdges.Add(edges[i]);
@@ -311,7 +311,7 @@ public class Voronoi : MonoBehaviour
         return false;
     }
 
-    //ÅĞ¶ÏµãÊÇ·ñÔÚÈı½ÇĞÎÍâ½ÓÔ²µÄÄÚ²¿
+    //åˆ¤æ–­ç‚¹æ˜¯å¦åœ¨ä¸‰è§’å½¢å¤–æ¥åœ†çš„å†…éƒ¨
     private bool isInCircle(Triangle triangle, Vector2 Point)
     {
         double lengthToCenter;
@@ -322,7 +322,7 @@ public class Voronoi : MonoBehaviour
         }
         return false;
     }
-    //¸ù¾İÈı½ÇĞÎÁ´±í·µ»ØÈı½ÇĞÎËùÓĞµÄ±ß
+    //æ ¹æ®ä¸‰è§’å½¢é“¾è¡¨è¿”å›ä¸‰è§’å½¢æ‰€æœ‰çš„è¾¹
     private void returnEdgesofTriangleList(List<Triangle> allTriangle, out List<Edge> edges)
     {
         List<Edge> commonEdges = new List<Edge>();
@@ -331,7 +331,7 @@ public class Voronoi : MonoBehaviour
         {
             tempTri.Add(allTriangle[i]);
         }
-        //É¾³ıÓë³¬¼¶Èı½ÇĞÎÏà¹ØµÄÈı½ÇĞÎ
+        //åˆ é™¤ä¸è¶…çº§ä¸‰è§’å½¢ç›¸å…³çš„ä¸‰è§’å½¢
         //for (int i = 0; i < tempTri.Count; i++)
         //{
         //    if (PointIsEqual(tempTri[i].m_Point1, pointA) || PointIsEqual(tempTri[i].m_Point1, pointB) || PointIsEqual(tempTri[i].m_Point1, pointC))
@@ -352,7 +352,7 @@ public class Voronoi : MonoBehaviour
         edges = commonEdges;
     }
     /// <summary>
-    /// Éú³ÉÌØÕ÷µã
+    /// ç”Ÿæˆç‰¹å¾ç‚¹
     /// </summary>
     private void SetPoints()
     {
@@ -389,9 +389,9 @@ public class Triangle
     public Vector2 center;
     public double radius;
     public List<Triangle> adjoinTriangle;
-    //ÓÃÀ´¹¹½¨ÅµÒÁÍ¼ÍâÎ§Èı½ÇĞÎµÄÉäÏß±ß(Ç°ÌáÊÇµÂÀÍÄÚÈı½ÇĞÎÍø¸ñÈ¥³ıÁËºÍ³¬¼¶Èı½ÇĞÎÏà¹ØµÄÈı½ÇĞÎ)
-    public bool IsCenterOut;//¸ù¾İ±ßµÄ´óĞ¡¹ØÏµ£¬ÅĞ¶ÏÍâ½ÓÔ²Ô²ĞÄÔÚÈı½ÇĞÎµÄÎ»ÖÃ
-    public Edge longEdge;//¼ÇÂ¼×î³¤±ß
+    //ç”¨æ¥æ„å»ºè¯ºä¼Šå›¾å¤–å›´ä¸‰è§’å½¢çš„å°„çº¿è¾¹(å‰ææ˜¯å¾·åŠ³å†…ä¸‰è§’å½¢ç½‘æ ¼å»é™¤äº†å’Œè¶…çº§ä¸‰è§’å½¢ç›¸å…³çš„ä¸‰è§’å½¢)
+    public bool IsCenterOut;//æ ¹æ®è¾¹çš„å¤§å°å…³ç³»ï¼Œåˆ¤æ–­å¤–æ¥åœ†åœ†å¿ƒåœ¨ä¸‰è§’å½¢çš„ä½ç½®
+    public Edge longEdge;//è®°å½•æœ€é•¿è¾¹
 
     public Triangle(Vector2 point1, Vector2 point2, Vector2 point3)
     {

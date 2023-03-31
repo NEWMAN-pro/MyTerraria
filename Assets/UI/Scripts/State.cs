@@ -1,13 +1,13 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class State : MonoBehaviour
 {
-    // ÑªÌõÔ¤ÖÆÌå
+    // è¡€æ¡é¢„åˆ¶ä½“
     public GameObject HPPrefab;
-    // À¶ÌõÔ¤ÖÆÌå
+    // è“æ¡é¢„åˆ¶ä½“
     public GameObject MPPrefab;
 
     // Start is called before the first frame update
@@ -17,11 +17,11 @@ public class State : MonoBehaviour
         MPPrefab = Resources.Load("Prefabs/MP") as GameObject;
     }
 
-    // »æÖÆÑªÌõ»òÀ¶Ìõ
+    // ç»˜åˆ¶è¡€æ¡æˆ–è“æ¡
     public void CreateUI(int num, int maxNum, bool flag)
     {
         GameObject prefab = flag ? HPPrefab : MPPrefab;
-        // ¼ÆËã°®ĞÄ¸öÊı
+        // è®¡ç®—çˆ±å¿ƒä¸ªæ•°
         int size = (int)Mathf.Ceil(num / 10);
         for(int i = 0; i < size; i++)
         {

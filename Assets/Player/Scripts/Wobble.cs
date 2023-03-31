@@ -1,11 +1,11 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Wobble : MonoBehaviour
 {
-    private float angle = 0.0f; // µ±Ç°°Ú¶¯½Ç¶È
-    public bool direction = true; // µ±Ç°°Ú¶¯·½Ïò£¨trueÎªÕı·½Ïò£¬falseÎª·´·½Ïò£©
+    private float angle = 0.0f; // å½“å‰æ‘†åŠ¨è§’åº¦
+    public bool direction = true; // å½“å‰æ‘†åŠ¨æ–¹å‘ï¼ˆtrueä¸ºæ­£æ–¹å‘ï¼Œfalseä¸ºåæ–¹å‘ï¼‰
 
     // Start is called before the first frame update
     void Start()
@@ -19,13 +19,13 @@ public class Wobble : MonoBehaviour
 
     }
 
-    // transÎïÌåÈÆ¹ıµãpointµÄaxis°Ú¶¯£¬ËÙ¶ÈÎªspeed, ×î´ó½Ç¶ÈÎªrange
+    // transç‰©ä½“ç»•è¿‡ç‚¹pointçš„axisæ‘†åŠ¨ï¼Œé€Ÿåº¦ä¸ºspeed, æœ€å¤§è§’åº¦ä¸ºrange
     public void Move(float speed, float min, float max, Transform trans, Vector3 point, Vector3 axis)
     {
-        // ¸ù¾İ°Ú¶¯ËÙ¶ÈºÍ·½Ïò¸üĞÂ°Ú¶¯½Ç¶È
+        // æ ¹æ®æ‘†åŠ¨é€Ÿåº¦å’Œæ–¹å‘æ›´æ–°æ‘†åŠ¨è§’åº¦
         angle += (direction ? 1 : -1) * speed * Time.deltaTime;
 
-        // ÅĞ¶ÏÊÇ·ñ³¬³ö°Ú¶¯·¶Î§£¬³¬³öÔò¸Ä±ä·½Ïò
+        // åˆ¤æ–­æ˜¯å¦è¶…å‡ºæ‘†åŠ¨èŒƒå›´ï¼Œè¶…å‡ºåˆ™æ”¹å˜æ–¹å‘
         if(angle < min || angle > max)
         {
             direction = !direction;
@@ -36,7 +36,7 @@ public class Wobble : MonoBehaviour
         trans.RotateAround(point, axis, (direction ? 1 : -1) * speed * Time.deltaTime);
     }
 
-    // ¸´Î» 
+    // å¤ä½ 
     public void Recovery(Transform trans, Vector3 angle_)
     {
         trans.localRotation = Quaternion.Euler(angle_.x, angle_.y, angle_.z);

@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
@@ -8,21 +8,21 @@ using Soultia.Util;
 [System.Serializable]
 public class GameData
 {
-    // µØÍ¼ÖÖ×Ó
+    // åœ°å›¾ç§å­
     public int randomSeed;
-    // Íæ¼ÒÃû×Ö
+    // ç©å®¶åå­—
     public string playerName;
-    // Íæ¼Ò×î´óÉúÃüÖµ
+    // ç©å®¶æœ€å¤§ç”Ÿå‘½å€¼
     public int maxHP;
-    // Íæ¼Ò×î´óÀ¶Á¿
+    // ç©å®¶æœ€å¤§è“é‡
     public int maxMP;
-    // Íæ¼Ò±³°ü
+    // ç©å®¶èƒŒåŒ…
     public Dictionary<byte, Item> items;
-    // ±¦Ïä¶ÓÁĞ
+    // å®ç®±é˜Ÿåˆ—
     public Dictionary<string, Dictionary<byte, Item>> boxs;
-    // ±¦ÏäÃû×Ö¶ÓÁĞ
+    // å®ç®±åå­—é˜Ÿåˆ—
     public Dictionary<string, string> boxsName;
-    // µØÍ¼ĞÅÏ¢
+    // åœ°å›¾ä¿¡æ¯
     public Dictionary<Vector3i, byte[,,]> map = new();
 }
 
@@ -30,7 +30,7 @@ public class GameData
 public class AccessGameAll : MonoBehaviour
 {
     public static GameData data = new();
-    // »ù´¡Â·¾¶
+    // åŸºç¡€è·¯å¾„
     public static string path;
 
     private void Awake()
@@ -39,22 +39,22 @@ public class AccessGameAll : MonoBehaviour
         Directory.CreateDirectory(Application.dataPath + "/Save");
     }
 
-    // ±£´æÓÎÏ·
+    // ä¿å­˜æ¸¸æˆ
     public static void SaveGame()
     {
         Debug.Log(path + StartUI.key);
-        // ±£´æÊı¾İ
+        // ä¿å­˜æ•°æ®
         BinaryFormatter formatter = new();
         FileStream stream = new(path + StartUI.key, FileMode.Create);
         formatter.Serialize(stream, data);
         stream.Close();
     }
 
-    // ¶ÁÈ¡ÓÎÏ·
+    // è¯»å–æ¸¸æˆ
     public static GameData ReadGame()
     {
         Debug.Log(path + StartUI.key);
-        // ¶ÁÈ¡Êı¾İ
+        // è¯»å–æ•°æ®
         BinaryFormatter formatter = new();
         FileStream stream = new(path + StartUI.key, FileMode.Open);
         data = (GameData)formatter.Deserialize(stream);

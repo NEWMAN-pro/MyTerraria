@@ -1,4 +1,4 @@
-using System;
+ï»¿using System;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -9,14 +9,14 @@ public class GameManager : MonoBehaviour
     {
         if (StartUI.flag)
         {
-            // Èç¹ûÊÇĞÂÓÎÏ·£¬ÔòËæ»úÉú³ÉÖÖ×Ó
-            //ÈÃÄ¬ÈÏµÄËæ»úÊıÖÖ×ÓÎªµ±Ç°µÄÊ±¼ä´Á
+            // å¦‚æœæ˜¯æ–°æ¸¸æˆï¼Œåˆ™éšæœºç”Ÿæˆç§å­
+            //è®©é»˜è®¤çš„éšæœºæ•°ç§å­ä¸ºå½“å‰çš„æ—¶é—´æˆ³
             TimeSpan timeSpan = DateTime.UtcNow - new DateTime(1970, 1, 1, 0, 0, 0, 0);
             randomSeed = (int)timeSpan.TotalSeconds;
         }
         else
         {
-            // Èç¹ûÊÇ¼ÌĞøÓÎÏ·£¬Ôò»ñµÃÖ®Ç°ÖÖ×Ó
+            // å¦‚æœæ˜¯ç»§ç»­æ¸¸æˆï¼Œåˆ™è·å¾—ä¹‹å‰ç§å­
             randomSeed = AccessGameAll.data.randomSeed;
         }
     }

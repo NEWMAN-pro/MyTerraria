@@ -1,4 +1,4 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 using UnityEngine.UI;
 
 public class UIScaler : MonoBehaviour
@@ -12,7 +12,7 @@ public class UIScaler : MonoBehaviour
 
     void Start()
     {
-        // »ñÈ¡Ä¿±êUIµÄRectTransform×é¼ş
+        // è·å–ç›®æ ‡UIçš„RectTransformç»„ä»¶
         rectTransform = GetComponent<RectTransform>();
         posi = rectTransform.anchoredPosition;
         flag = posi.y > 0 ? 1f : -1f;
@@ -20,7 +20,7 @@ public class UIScaler : MonoBehaviour
 
     void Update()
     {
-        // UI×ø±êËæÆÁÄ»³¤¿í±ä»¯¶ø±ä»¯
+        // UIåæ ‡éšå±å¹•é•¿å®½å˜åŒ–è€Œå˜åŒ–
         Vector2 newPosi = new Vector2(posi.x, posi.y - flag * (height - Screen.height / (float)Screen.width * width) / 2.0f);
         this.rectTransform.anchoredPosition = newPosi;
     }
