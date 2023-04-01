@@ -223,7 +223,6 @@ public class AStar : MonoBehaviour
         rotationDirection.x = 0f;
         rotationDirection.z = 0f;
 
-        Debug.Log(rotationDirection);
         // 旋转刚体
         rb.MoveRotation(Quaternion.Euler(rotationDirection));
     }

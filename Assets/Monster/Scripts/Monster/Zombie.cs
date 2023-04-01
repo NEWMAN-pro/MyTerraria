@@ -58,10 +58,12 @@ public class Zombie : Monster
         {
             base.animator.SetBool("Attack", true);
             base.animator.SetBool("Move", false);
+            base.animator.SetLayerWeight(1, 1);
         }
         else
         {
             base.animator.SetBool("Attack", false);
+            base.animator.SetLayerWeight(1, 0);
             bool MoveFlag = base.aStar.flag;
             if (MoveFlag)
             {
