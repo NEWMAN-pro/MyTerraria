@@ -10,24 +10,56 @@ public class State : MonoBehaviour
     // 蓝条预制体
     public GameObject MPPrefab;
 
+    // 血条队列
+    List<GameObject> HPList = new();
+    // 蓝条队列
+    List<GameObject> MPList = new();
+
     // Start is called before the first frame update
     void Start()
     {
         HPPrefab = Resources.Load("Prefabs/HP") as GameObject;
         MPPrefab = Resources.Load("Prefabs/MP") as GameObject;
+        for(int i = 0; i < 10; i++)
+        {
+            GameObject hp = Instantiate(HPPrefab);
+            hp.transform.SetParent(this.transform);
+            hp.GetComponent<RectTransform>().anchoredPosition = new Vector2(-270f + i * 60, -30);
+            HPList.Add(hp);
+            GameObject mp = Instantiate(MPPrefab);
+            mp.transform.SetParent(this.transform);
+            mp.GetComponent<RectTransform>().anchoredPosition = new Vector2(-270f + i * 60, 30);
+            MPList.Add(mp);
+
+        }
     }
 
     // 绘制血条或蓝条
     public void CreateUI(int num, int maxNum, bool flag)
     {
-        GameObject prefab = flag ? HPPrefab : MPPrefab;
         // 计算爱心个数
-        int size = (int)Mathf.Ceil(num / 10);
+        int size = (int)Mathf.Ceil(num / (maxNum / 10));
+        for(int i = 9; i >= size; i--)
+        {
+            if (flag)
+            {
+                HPList[i].SetActive(false);
+            }
+            else
+            {
+                MPList[i].SetActive(false);
+            }
+        }
         for(int i = 0; i < size; i++)
         {
-            GameObject pp = Instantiate(prefab);
-            pp.transform.SetParent(this.transform);
-            pp.GetComponent<RectTransform>().anchoredPosition = new Vector2(-270f + i * 60, flag ? -30 : 30);
+            if (flag)
+            {
+                HPList[i].SetActive(true);
+            }
+            else
+            {
+                MPList[i].SetActive(true);
+            }
         }
         this.transform.GetChild(flag ? 0 : 1).GetComponent<Text>().text = num.ToString() + " / " + maxNum.ToString();
     }

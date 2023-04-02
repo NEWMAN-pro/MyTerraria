@@ -54,12 +54,12 @@ public class PlayState : MonoBehaviour
     public void SetHP(int hp)
     {
         HP = (HP + hp) <= maxHP ? (HP + hp) : maxHP;
+        if(HP >= 0) state.CreateUI(HP, maxHP, true);
         if(HP <= 0)
         {
             Debug.Log("玩家死亡");
             return;
         }
-        state.CreateUI(HP, maxHP, true);
     }
 
     // 蓝量变化

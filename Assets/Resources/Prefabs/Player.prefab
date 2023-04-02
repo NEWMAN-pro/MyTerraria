@@ -327,6 +327,7 @@ GameObject:
   - component: {fileID: -5794820300191843523}
   - component: {fileID: 1657106437030452193}
   - component: {fileID: -1759339157419000623}
+  - component: {fileID: -4762274721272389091}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -502,7 +503,7 @@ MonoBehaviour:
   maxHP: 100
   MP: 100
   maxMP: 100
-  Defenes: 0
+  defenes: 0
   damage: 10
   state: {fileID: 0}
 --- !u!114 &-1759339157419000623
@@ -517,7 +518,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7783cc8cbbb8a7646ab097b9419698aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AGA: {fileID: 0}
+--- !u!114 &-4762274721272389091
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 404249903216374246}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5303f7316434ba940aa936a2ae3b72b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxCount: 30
+  count: 0
+  intervalTime: 3
 --- !u!1 &404249903829823553
 GameObject:
   m_ObjectHideFlags: 0

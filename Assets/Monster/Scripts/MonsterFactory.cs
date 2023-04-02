@@ -2,15 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum MonsterType
+{
+    Slim,
+    Zombie,
+    Skeleton,
+    Bat
+}
+
 public class MonsterFactory
 {
-    public enum MonsterType
-    {
-        Slim,
-        Zombie,
-        Skeleton,
-        Bat
-    }
 
     public Monster CreateMonster(MonsterType type)
     {
