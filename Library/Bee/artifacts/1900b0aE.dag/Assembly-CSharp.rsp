@@ -358,6 +358,8 @@
 "Assets/Items/Scripts/Drop.cs"
 "Assets/Items/Scripts/DropList.cs"
 "Assets/Items/Scripts/Item.cs"
+"Assets/Items/Scripts/Weapon.cs"
+"Assets/Items/Scripts/WeaponList.cs"
 "Assets/LibNoise.Unity-master/Generator/Billow.cs"
 "Assets/LibNoise.Unity-master/Generator/Checker.cs"
 "Assets/LibNoise.Unity-master/Generator/Const.cs"

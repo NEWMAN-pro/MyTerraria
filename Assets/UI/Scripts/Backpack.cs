@@ -119,6 +119,13 @@ public class Backpack : MonoBehaviour
         items[8] = item_9;
         inventory.SetItem(9, item_9);
         CreateUI(item_9, 8, false);
+        Item item_10 = new Item();
+        item_10.type = Type.Weapon;
+        item_10.ID = 1;
+        item_10.count = -1;
+        items[9] = item_10;
+        inventory.SetItem(0, item_10);
+        CreateUI(item_10, 9, false);
     }
 
     // Update is called once per frame
@@ -185,6 +192,22 @@ public class Backpack : MonoBehaviour
             else
             {
                 this.transform.GetChild(key).GetComponent<CreateUI>().CreateBlockUI(block, true, 40, new Vector3(0, -1f, -0.01f));
+            }
+        }
+        else if(item.type == Type.Weapon)
+        {
+            Weapon weapon = WeaponList.GetWeapon(item.ID);
+            if(weapon != null)
+            {
+                if (selectFlag)
+                {
+                    select.GetComponent<CreateUI>().CreateWeaponUI(weapon, 40, new Vector3(0, -1f, -0.01f));
+                    return;
+                }
+                else
+                {
+                    this.transform.GetChild(key).GetComponent<CreateUI>().CreateWeaponUI(weapon, 40, new Vector3(0, -1f, -0.01f));
+                }
             }
         }
         SetColor(key, item.flag);
@@ -293,6 +316,7 @@ public class Backpack : MonoBehaviour
             select.gameObject.SetActive(true);
             CreateUI(item, (byte)key, true);
             selectItem = item;
+            Debug.Log(item.type);
             SetItem((byte)key, null);
             SetColor(key, false);
         }

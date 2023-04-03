@@ -38,6 +38,10 @@ public class PlayController : MonoBehaviour
     // 背包
     public Backpack backpack;
 
+    // 手部物品对象
+    GameObject handItem;
+    GameObject handItem_;
+
     // 销毁方块
     public GameObject destory;
 
@@ -376,16 +380,38 @@ public class PlayController : MonoBehaviour
     // 绘制手部图案
     public void DrawItem()
     {
+        Destroy(handItem);
+        Destroy(handItem_);
         item = inventory.GetItem(inventoryID);
         inventory.SetSelect(inventoryID);
+        this.transform.GetChild(6).GetChild(0).GetChild(1).GetComponent<CreateUI>().CreateBlank();
+        this.transform.GetChild(3).GetChild(1).GetComponent<CreateUI>().CreateBlank();
         if (item == null)
         {
-            this.transform.GetChild(6).GetChild(0).GetChild(1).GetComponent<CreateUI>().CreateBlank();
-            this.transform.GetChild(3).GetChild(1).GetComponent<CreateUI>().CreateBlank();
             return;
         }
-        this.transform.GetChild(6).GetChild(0).GetChild(1).GetComponent<CreateUI>().CreateBlockUI(BlockList.GetBlock(item.ID), true, 0.1f, Vector3.zero);
-        this.transform.GetChild(3).GetChild(1).GetComponent<CreateUI>().CreateBlockUI(BlockList.GetBlock(item.ID), true, 0.1f, Vector3.zero);
+        if (item.type == Type.Block)
+        {
+            // 如果是方块
+            this.transform.GetChild(6).GetChild(0).GetChild(1).GetComponent<CreateUI>().CreateBlockUI(BlockList.GetBlock(item.ID), true, 0.1f, Vector3.zero);
+            this.transform.GetChild(3).GetChild(1).GetComponent<CreateUI>().CreateBlockUI(BlockList.GetBlock(item.ID), true, 0.1f, Vector3.zero);
+        }
+        else if(item.type == Type.Weapon)
+        {
+            // 如果是武器
+            // 加载武器模型
+            GameObject weaponPrefab = Resources.Load("Prefabs/Weapons/" + item.GetName()) as GameObject;
+            handItem = Instantiate(weaponPrefab, Vector3.zero, Quaternion.identity, this.transform.GetChild(6).GetChild(0).GetChild(1));
+            handItem.transform.localPosition = new(0, -0.1f, 0);
+            handItem.transform.localRotation = Quaternion.identity;
+            handItem.layer = LayerMask.NameToLayer("First");
+            handItem.transform.GetChild(0).gameObject.layer = LayerMask.NameToLayer("First");
+            handItem_ = Instantiate(weaponPrefab, Vector3.zero, Quaternion.identity, this.transform.GetChild(3).GetChild(1));
+            handItem_.transform.localPosition = new(0, -0.1f, 0);
+            handItem_.transform.localRotation = Quaternion.identity;
+            handItem_.layer = LayerMask.NameToLayer("Third");
+            handItem_.transform.GetChild(0).gameObject.layer = LayerMask.NameToLayer("Third");
+        }
     }
 
     // 检测掉落物

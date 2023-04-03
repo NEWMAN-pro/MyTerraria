@@ -60,6 +60,60 @@ public class CreateUI : MonoBehaviour
         this.GetComponent<MeshCollider>().sharedMesh = mesh;
     }
 
+    // 绘制武器UI
+    public void CreateWeaponUI(Weapon weapon, float size, Vector3 posi)
+    {
+        vertices.Clear();
+        triangles.Clear();
+        uv.Clear();
+
+        this.size = size;
+        this.posi = posi;
+        mesh = new Mesh();
+
+        // 先绘制正面
+        AddWeaponFace(weapon);
+
+        //为点和index赋值
+        mesh.vertices = vertices.ToArray();
+        mesh.triangles = triangles.ToArray();
+        mesh.uv = uv.ToArray();
+
+        //重新计算顶点和法线
+        mesh.RecalculateBounds();
+        mesh.RecalculateNormals();
+
+        //将生成好的面赋值给组件
+        GetComponent<MeshFilter>().mesh = mesh;
+        this.GetComponent<MeshCollider>().sharedMesh = mesh;
+    }
+
+    void AddWeaponFace(Weapon weapon)
+    {
+        //第一个三角面
+        triangles.Add(0 + vertices.Count);
+        triangles.Add(3 + vertices.Count);
+        triangles.Add(2 + vertices.Count);
+
+        //第二个三角面
+        triangles.Add(2 + vertices.Count);
+        triangles.Add(1 + vertices.Count);
+        triangles.Add(0 + vertices.Count);
+
+
+        //添加4个点
+        vertices.Add((new Vector3(0, 0, 0) + posi) * size);
+        vertices.Add((new Vector3(0, 0, 1) + posi) * size);
+        vertices.Add((new Vector3(0, 1, 1) + posi) * size);
+        vertices.Add((new Vector3(0, 1, 0) + posi) * size);
+
+        //添加UV坐标点，跟上面4个点循环的顺序一致
+        uv.Add(new Vector2(weapon.u * textureOffset, weapon.v * textureOffset) + new Vector2(shrinkSize, shrinkSize));
+        uv.Add(new Vector2(weapon.u * textureOffset + textureOffset, weapon.v * textureOffset) + new Vector2(-shrinkSize, shrinkSize));
+        uv.Add(new Vector2(weapon.u * textureOffset + textureOffset, weapon.v * textureOffset + textureOffset) + new Vector2(-shrinkSize, -shrinkSize));
+        uv.Add(new Vector2(weapon.u * textureOffset, weapon.v * textureOffset + textureOffset) + new Vector2(shrinkSize, -shrinkSize));
+    }
+
     // 绘制方块UI
     public void CreateBlockUI(Block block, bool flag, float size, Vector3 posi)
     {

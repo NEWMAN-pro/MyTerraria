@@ -15,6 +15,9 @@ public enum Type : byte
     Init = 8
 }
 
+/// <summary>
+/// 物品总类
+/// </summary>
 [Serializable]
 public class Item : IComparable<Item>
 {
@@ -44,6 +47,14 @@ public class Item : IComparable<Item>
             if(block != null)
             {
                 return block.name;
+            }
+        }
+        else if(type == Type.Weapon)
+        {
+            Weapon weapon = WeaponList.GetWeapon(ID);
+            if(weapon != null)
+            {
+                return weapon.name;
             }
         }
         return "";

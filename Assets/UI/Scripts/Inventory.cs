@@ -70,7 +70,7 @@ public class Inventory : MonoBehaviour
             }
             this.transform.GetChild(key).GetComponent<CreateUI>().CreateBlockUI(block, true, 40, new Vector3(0, -1f, -0.01f));
         }
-        this.transform.GetChild(key).GetChild(0).GetComponent<Text>().text = item.count.ToString();
+        if(item.count != -1) this.transform.GetChild(key).GetChild(0).GetComponent<Text>().text = item.count.ToString();
     }
 
     // 移动选择框
