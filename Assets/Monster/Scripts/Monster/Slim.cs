@@ -19,8 +19,9 @@ public class Slim : Monster
         base.attackRange = 1.8f;
     }
 
-    private void Update()
+    public override void Update()
     {
+        base.Update();
         AnimatorController();
         if(Vector3.Distance(base.target.position, this.transform.position) <= base.range)
         {

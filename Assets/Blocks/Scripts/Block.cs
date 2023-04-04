@@ -18,12 +18,6 @@ public enum BlockDirection : byte
 /// </summary>
 public class Block : Item
 {
-    // 方块的ID
-    public byte id;
-
-    // 方块的名字
-    public string name;
-
     // 方块销毁时间
     public float destroyTime;
 

@@ -90,10 +90,13 @@ public class PlayController : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(1))
         {
-            // 放置方块
-            CreateBlock();
-            // 单击动画
-            this.GetComponent<AnimationState>().SetExcavateOne();
+            if (item.type == Type.Block)
+            {
+                // 放置方块
+                CreateBlock();
+                // 单击动画
+                this.GetComponent<AnimationState>().SetExcavateOne();
+            }
         }
         if (Input.GetMouseButton(0))
         {

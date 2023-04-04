@@ -30,6 +30,11 @@ public class Item : IComparable<Item>
     // 是否被标记
     public bool flag;
 
+    // 细化id
+    public byte id;
+    // 物品名字
+    public string name;
+
     public Item(byte ID = 0, Type type = Type.Init, int count = 0, bool flag = false)
     {
         this.ID = ID;

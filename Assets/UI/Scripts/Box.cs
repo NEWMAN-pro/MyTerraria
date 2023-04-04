@@ -15,6 +15,9 @@ public class Box : MonoBehaviour
     // 物品数量text
     public GameObject textPrefab;
     public GameObject text;
+    // 物品图标
+    public GameObject iconPrefab;
+    public GameObject icon;
     // 背包
     public Backpack backpack;
 
@@ -40,10 +43,14 @@ public class Box : MonoBehaviour
     {
         // 物品数量初始化
         textPrefab = Resources.Load("Prefabs/ItemCount") as GameObject;
+        // 物品图标初始化
+        iconPrefab = Resources.Load("Prefabs/Icon") as GameObject;
         for (byte i = 0; i < 50; i++)
         {
             items[i] = null;
             text = Instantiate(textPrefab, this.transform.GetChild(i));
+            icon = Instantiate(iconPrefab, this.transform.GetChild(i));
+            icon.name = "Icon";
             text.name = "ItemCount";
         }
         backpack = this.transform.parent.GetComponent<Backpack>();
@@ -65,10 +72,11 @@ public class Box : MonoBehaviour
     // 绘制
     public void CreateUI(Item item, byte key)
     {
+        this.transform.GetChild(key).GetComponent<CreateUI>().HideUI();
+        this.transform.GetChild(key).GetChild(0).GetComponent<Text>().text = "";
         if (item == null)
         {
             this.transform.GetChild(key).GetComponent<CreateUI>().CreateBlank();
-            this.transform.GetChild(key).GetChild(0).GetComponent<Text>().text = "";
             return;
         }
         if (item.type == Type.Block)
@@ -80,6 +88,14 @@ public class Box : MonoBehaviour
                 return;
             }
             this.transform.GetChild(key).GetComponent<CreateUI>().CreateBlockUI(block, true, 40, new Vector3(0, -1f, -0.01f));
+        }
+        else if(item.type == Type.Weapon)
+        {
+            Weapon weapon = WeaponList.GetWeapon(item.ID);
+            if(weapon != null)
+            {
+                this.transform.GetChild(key).GetComponent<CreateUI>().CreateWeaponUI(weapon.icon);
+            }
         }
         if (item.count != -1) this.transform.GetChild(key).GetChild(0).GetComponent<Text>().text = item.count.ToString();
     }
@@ -108,6 +124,8 @@ public class Box : MonoBehaviour
         {
             selectItem.flag = false;
             SetItem((byte)key, selectItem);
+            // 先清空选择框中的物品
+            select.transform.GetComponent<CreateUI>().HideUI();
             if (item == null)
             {
                 // 如果该格为空，则置空选择框

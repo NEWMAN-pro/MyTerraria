@@ -19,10 +19,6 @@ public enum WeaponType
 /// </summary>
 public class Weapon : Item
 {
-     // 物体ID
-    public byte id;
-    // 武器名字
-    public string name;
     // 武器类型
     public WeaponType weaponType;
     // 武器攻击范围
@@ -33,17 +29,13 @@ public class Weapon : Item
     public int mana;
 
     // 武器贴图
-    public Material material;
-    // 武器图标uv坐标
-    public byte u, v;
+    public Sprite icon;
 
-    public Weapon(byte id, string name, WeaponType weaponType, byte u, byte v, float range, int ATK, int mana)
+    public Weapon(byte id, string name, WeaponType weaponType, float range, int ATK, int mana)
     {
         this.id = id;
         this.name = name;
         this.weaponType = weaponType;
-        this.u = u;
-        this.v = v;
         this.range = range;
         this.ATK = ATK;
         this.mana = mana;

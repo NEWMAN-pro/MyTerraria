@@ -9,6 +9,10 @@ public class Inventory : MonoBehaviour
     public byte selectID = 1;
     // 物品名字文本
     public Text itemName;
+    // 选择框颜色
+    public Color FlagColor;
+    // 正常颜色
+    public Color NotFlag;
 
     // 物品队列
     public Dictionary<byte, Item> items = new()
@@ -24,9 +28,6 @@ public class Inventory : MonoBehaviour
         { 9, null },
         { 0, null },
     };
-    //public Item[] items = new Item[10];
-    // 选择框
-    public RectTransform select;
     // 物品数量text
     public GameObject textPrefab;
     public GameObject text;
@@ -54,6 +55,8 @@ public class Inventory : MonoBehaviour
     // 绘制
     public void CreateUI(Item item, byte key)
     {
+        this.transform.GetChild(key).GetComponent<CreateUI>().HideUI();
+        this.transform.GetChild(key).GetChild(0).GetComponent<Text>().text = "";
         if (item == null)
         {
             this.transform.GetChild(key).GetComponent<CreateUI>().CreateBlank();
@@ -70,17 +73,29 @@ public class Inventory : MonoBehaviour
             }
             this.transform.GetChild(key).GetComponent<CreateUI>().CreateBlockUI(block, true, 40, new Vector3(0, -1f, -0.01f));
         }
-        if(item.count != -1) this.transform.GetChild(key).GetChild(0).GetComponent<Text>().text = item.count.ToString();
+        else if (item.type == Type.Weapon)
+        {
+            Weapon weapon = WeaponList.GetWeapon(item.ID);
+            if (weapon != null)
+            {
+                this.transform.GetChild(key).GetComponent<CreateUI>().CreateWeaponUI(weapon.icon);
+            }
+        }
+        if (item.count != -1) this.transform.GetChild(key).GetChild(0).GetComponent<Text>().text = item.count.ToString();
     }
 
     // 移动选择框
     public void SetSelect(byte key)
     {
-        if(key == 0)
+        for(byte i = 0; i < 10; i++)
         {
-            key = 10;
+            if(i == key)
+            {
+                continue;
+            }
+            this.transform.GetChild(i).GetComponent<Image>().color = NotFlag;
         }
-        select.anchoredPosition = new Vector2((key - 5) * 100 - 50, 0);
+        this.transform.GetChild(key).GetComponent<Image>().color = FlagColor;
         Item item = GetItem(key);
         if(item != null)
         {

@@ -25,24 +25,35 @@ public class Backpack : MonoBehaviour
     // 物品数量text
     public GameObject textPrefab;
     public GameObject text;
+    // 物品图标
+    public GameObject iconPrefab;
+    public GameObject icon;
 
     private void Awake()
     {
         // 物品数量初始化
         textPrefab = Resources.Load("Prefabs/ItemCount") as GameObject;
+        // 物品图标初始化
+        iconPrefab = Resources.Load("Prefabs/Icon") as GameObject;
         for (byte i = 0; i < 60; i++)
         {
             items[i] = null;
             text = Instantiate(textPrefab, this.transform.GetChild(i));
+            icon = Instantiate(iconPrefab, this.transform.GetChild(i));
+            icon.name = "Icon";
             text.name = "ItemCount";
             if (i > 50 && i < 59)
             {
                 // 如果是金币格或者弹药格，则调整文本框位置
                 text.GetComponent<RectTransform>().anchoredPosition = new Vector3(20f, -15f, -0.4f);
+                // 调整图标大小
+                icon.GetComponent<RectTransform>().sizeDelta = new(60, 60);
             }
             if(i < 10)
             {
                 text = Instantiate(textPrefab, inventory.transform.GetChild(i));
+                icon = Instantiate(iconPrefab, inventory.transform.GetChild(i));
+                icon.name = "Icon";
                 text.name = "ItemCount";
             }
         }
@@ -126,6 +137,12 @@ public class Backpack : MonoBehaviour
         items[9] = item_10;
         inventory.SetItem(0, item_10);
         CreateUI(item_10, 9, false);
+        Item item_11 = new Item();
+        item_11.type = Type.Weapon;
+        item_11.ID = 2;
+        item_11.count = -1;
+        items[10] = item_11;
+        CreateUI(item_11, 10, false);
     }
 
     // Update is called once per frame
@@ -165,13 +182,17 @@ public class Backpack : MonoBehaviour
     // 绘制
     public void CreateUI(Item item, byte key, bool selectFlag)
     {
+        if (!selectFlag)
+        {
+            this.transform.GetChild(key).GetComponent<CreateUI>().HideUI();
+            this.transform.GetChild(key).GetChild(0).GetComponent<Text>().text = "";
+        }
         if(item == null)
         {
             this.transform.GetChild(key).GetComponent<CreateUI>().CreateBlank();
-            this.transform.GetChild(key).GetChild(0).GetComponent<Text>().text = "";
             if (selectFlag)
             {
-                if (item.count != -1) select.GetChild(0).GetComponent<Text>().text = "";
+                select.GetChild(0).GetComponent<Text>().text = "";
             }
             return;
         }
@@ -201,12 +222,12 @@ public class Backpack : MonoBehaviour
             {
                 if (selectFlag)
                 {
-                    select.GetComponent<CreateUI>().CreateWeaponUI(weapon, 40, new Vector3(0, -1f, -0.01f));
+                    select.GetComponent<CreateUI>().CreateWeaponUI(weapon.icon);
                     return;
                 }
                 else
                 {
-                    this.transform.GetChild(key).GetComponent<CreateUI>().CreateWeaponUI(weapon, 40, new Vector3(0, -1f, -0.01f));
+                    this.transform.GetChild(key).GetComponent<CreateUI>().CreateWeaponUI(weapon.icon);
                 }
             }
         }
@@ -293,7 +314,9 @@ public class Backpack : MonoBehaviour
             }
             SetItem((byte)key, selectItem);
             //SetColor(key, selectItem.flag);
-            if(item == null || key == 50)
+            // 先清空选择框中的物品
+            CreateUI(null, 59, false);
+            if (item == null || key == 50)
             {
                 // 如果该格为空，则置空选择框，当选中的是垃圾桶，翻盖其中物品
                 selectItem = null;
@@ -316,7 +339,6 @@ public class Backpack : MonoBehaviour
             select.gameObject.SetActive(true);
             CreateUI(item, (byte)key, true);
             selectItem = item;
-            Debug.Log(item.type);
             SetItem((byte)key, null);
             SetColor(key, false);
         }

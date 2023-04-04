@@ -39,6 +39,15 @@ public class Monster : MonoBehaviour
         target = GameObject.Find("Player").transform;
     }
 
+    public virtual void Update()
+    {
+        // 超距离后触发销毁
+        if(Vector3.Distance(this.transform.position, target.position) > 48)
+        {
+            Destroy();
+        }
+    }
+
     // 移动
     public virtual void Move() { }
 
