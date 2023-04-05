@@ -8,7 +8,7 @@ public class AnimationState : MonoBehaviour
     public Animator animator;
 
     // 单次攻击
-    public void SetAttackOne()
+    public void SetSwordAttackOne()
     {
         animator.SetTrigger("Attack");
         // 设置遮罩
@@ -17,7 +17,7 @@ public class AnimationState : MonoBehaviour
     }
 
     // 持续攻击
-    public void SetAttack(bool attack)
+    public void SetSwordAttack(bool attack)
     {
         animator.SetBool("Attacking", attack);
         animator.SetLayerWeight(2, 1);

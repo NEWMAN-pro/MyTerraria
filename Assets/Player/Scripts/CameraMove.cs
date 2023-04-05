@@ -8,7 +8,7 @@ public class CameraMove : MonoBehaviour
     // 相机
     public new Camera camera;
     // 摄像头与角色的距离
-    public float distance = 10;
+    public float distance = 5;
     public float scrollspeed = 1;//拉近视野速度
     public float rotateSpeed = 2;//摄像机旋转的速度。
     // 摄像头与角色的固定角度
@@ -57,7 +57,7 @@ public class CameraMove : MonoBehaviour
         BaseCameraMove(player.transform);
         // 放置摄像机穿模
         RaycastHit hitInfo;
-        if(Physics.Raycast(rayPosi, -ray.direction * 10, out hitInfo, 10, LayerMask.GetMask("Cube")))
+        if(Physics.Raycast(rayPosi, -ray.direction * 10, out hitInfo, 5, LayerMask.GetMask("Cube")))
         {
             // 获取碰撞点坐标
             Vector3 point = hitInfo.point;
@@ -65,7 +65,7 @@ public class CameraMove : MonoBehaviour
         }
         else
         {
-            distance = 10;
+            distance = 5;
         }
         //distance -= Input.GetAxis("Mouse ScrollWheel") * scrollspeed;   //拉近视野
         //if (Mathf.Abs(distance) < 1 || Mathf.Abs(distance) > 10)

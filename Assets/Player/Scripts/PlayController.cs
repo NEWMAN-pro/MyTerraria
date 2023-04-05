@@ -38,6 +38,9 @@ public class PlayController : MonoBehaviour
     // 背包
     public Backpack backpack;
 
+    // 鼠标按下时间
+    public float downTime = 0;
+
     // 手部物品对象
     GameObject handItem;
     GameObject handItem_;
@@ -90,28 +93,47 @@ public class PlayController : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(1))
         {
-            if (item.type == Type.Block)
+            // 放置方块
+            if (CreateBlock())
             {
-                // 放置方块
-                CreateBlock();
                 // 单击动画
                 this.GetComponent<AnimationState>().SetExcavateOne();
             }
         }
+        if (Input.GetMouseButtonDown(0))
+        {
+            downTime = 0;
+        }
         if (Input.GetMouseButton(0))
         {
-            // 切换持续攻击动画
-            this.GetComponent<AnimationState>().SetExcavate(true);
-            DestroyBlock();
+            if (downTime < 0.1f)
+            {
+                downTime += Time.deltaTime;
+            }
+            else
+            {
+                // 切换持续攻击动画
+                this.GetComponent<AnimationState>().SetExcavate(true);
+                DestroyBlock();
+            }
         }
-        else
+        else if(Input.GetMouseButtonUp(0))
         {
-            // 停止持续攻击动画
-            this.GetComponent<AnimationState>().SetExcavate(false);
-            // 停止销毁动画
-            StopDestory();
-            // 停止销毁，置空
-            LastTrans = null;
+            if (downTime <= 0.1f)
+            {
+                // 右键单击，播放攻击动画
+                this.GetComponent<AnimationState>().SetSwordAttackOne();
+            }
+            else
+            {
+                // 停止持续攻击动画
+                this.GetComponent<AnimationState>().SetExcavate(false);
+                // 停止销毁动画
+                StopDestory();
+                // 停止销毁，置空
+                LastTrans = null;
+            }
+            downTime = 0;
         }
     }
 
@@ -170,7 +192,7 @@ public class PlayController : MonoBehaviour
         if (characterController.isGrounded)
         {
             // 只有角色在地面才能跳跃
-            if (Input.GetButtonDown("Jump"))
+            if (Input.GetButton("Jump"))
             {
                 velocity.y = Mathf.Sqrt(2 * gravity * jumpHeight);
             }
@@ -213,10 +235,9 @@ public class PlayController : MonoBehaviour
     }
 
     // 生成方块
-    public void CreateBlock()
+    public bool CreateBlock()
     {
-        RaycastHit hitInfo;
-        bool hit = RayDetection(out hitInfo);
+        bool hit = RayDetection(out RaycastHit hitInfo);
         if (hit)
         {
             // 获取碰撞点坐标
@@ -232,10 +253,10 @@ public class PlayController : MonoBehaviour
             {
                 // 是宝箱则打开宝箱
                 GameObject.Find("UI").GetComponent<UI>().OpenBox(key);
-                return;
+                return false;
             }
 
-            if (item == null) return;
+            if (item == null || item.type != Type.Block) return false;
             // 碰撞点向角色移动一点距离，保证方块生成位置准确
             point += normal * 0.01f;
             byte create = trans.GetComponent<Chunk>().CreateBlock(point, this.transform.position, item.ID);
@@ -279,8 +300,9 @@ public class PlayController : MonoBehaviour
                     backpack.SetItem(backID, item);
                 }
             }
-
+            return true;
         }
+        return false;
     }
 
     // 销毁方块
@@ -391,13 +413,19 @@ public class PlayController : MonoBehaviour
         this.transform.GetChild(3).GetChild(1).GetComponent<CreateUI>().CreateBlank();
         if (item == null)
         {
+            this.transform.GetChild(6).GetChild(0).GetChild(0).gameObject.SetActive(true);
+            this.transform.GetChild(6).GetChild(0).GetChild(1).gameObject.SetActive(false);
             return;
         }
+        this.transform.GetChild(6).GetChild(0).GetChild(1).gameObject.SetActive(true);
+        this.transform.GetChild(6).GetChild(0).GetChild(0).gameObject.SetActive(false);
         if (item.type == Type.Block)
         {
             // 如果是方块
-            this.transform.GetChild(6).GetChild(0).GetChild(1).GetComponent<CreateUI>().CreateBlockUI(BlockList.GetBlock(item.ID), true, 0.1f, Vector3.zero);
-            this.transform.GetChild(3).GetChild(1).GetComponent<CreateUI>().CreateBlockUI(BlockList.GetBlock(item.ID), true, 0.1f, Vector3.zero);
+            //this.transform.GetChild(6).GetChild(0).GetChild(1).GetComponent<CreateUI>().CreateBlockUI(BlockList.GetBlock(item.ID), true, 0.1f, Vector3.zero);
+            //this.transform.GetChild(3).GetChild(1).GetComponent<CreateUI>().CreateBlockUI(BlockList.GetBlock(item.ID), true, 0.1f, Vector3.zero);
+            this.transform.GetChild(6).GetChild(0).GetChild(1).GetComponent<CreateUI>().CreateBlockDrop(BlockList.GetBlock(item.ID), 0.3f, new Vector3(1f, -1f, 0));
+            this.transform.GetChild(3).GetChild(1).GetComponent<CreateUI>().CreateBlockDrop(BlockList.GetBlock(item.ID), 0.3f, Vector3.zero);
         }
         else if(item.type == Type.Weapon)
         {
@@ -407,6 +435,7 @@ public class PlayController : MonoBehaviour
             handItem = Instantiate(weaponPrefab, Vector3.zero, Quaternion.identity, this.transform.GetChild(6).GetChild(0).GetChild(1));
             handItem.transform.localPosition = new(0, -0.1f, 0);
             handItem.transform.localRotation = Quaternion.identity;
+            handItem.transform.localEulerAngles = new(-15, -45, 0);
             handItem.layer = LayerMask.NameToLayer("First");
             handItem.transform.GetChild(0).gameObject.layer = LayerMask.NameToLayer("First");
             handItem_ = Instantiate(weaponPrefab, Vector3.zero, Quaternion.identity, this.transform.GetChild(3).GetChild(1));
