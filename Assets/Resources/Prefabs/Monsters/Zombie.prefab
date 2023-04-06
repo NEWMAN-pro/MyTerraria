@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 317462339926664200}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: HumanShape
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -48,7 +48,7 @@ GameObject:
   - component: {fileID: 9192510711631700287}
   - component: {fileID: 8785189062058449661}
   - component: {fileID: 1155734062257264591}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: HandL
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -131,7 +131,7 @@ GameObject:
   - component: {fileID: 85521614723233546}
   - component: {fileID: 7495721339782910674}
   - component: {fileID: 1969823261883255318}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -218,7 +218,7 @@ GameObject:
   - component: {fileID: 4571236944713931478}
   - component: {fileID: 4571236944713931477}
   - component: {fileID: 4571236944713931476}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Zombie
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -360,7 +360,7 @@ GameObject:
   - component: {fileID: 6176602752637343832}
   - component: {fileID: 2884620159231031644}
   - component: {fileID: 9130893753854117227}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -443,7 +443,7 @@ GameObject:
   - component: {fileID: 411624163085135629}
   - component: {fileID: 5129748667148622062}
   - component: {fileID: 3549984575939743956}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: LegL
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -526,7 +526,7 @@ GameObject:
   - component: {fileID: 3032704748826184835}
   - component: {fileID: 7250543233473440459}
   - component: {fileID: 6286228852321038401}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: HandR
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -609,7 +609,7 @@ GameObject:
   - component: {fileID: 7761856037907787939}
   - component: {fileID: 8062721629176454580}
   - component: {fileID: 6550876230196855698}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: LegR
   m_TagString: Untagged
   m_Icon: {fileID: 0}

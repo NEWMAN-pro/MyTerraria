@@ -71,8 +71,21 @@ public class Monster : MonoBehaviour
         Debug.Log("怪物死亡");
     }
 
+    // 受击
+    public virtual void Hit(int hp, Vector3 direction, float repel)
+    {
+        // 受击方向上受到一个200N的力
+        this.GetComponent<Rigidbody>().AddForce(200 * repel * direction);
+        SetHP(-hp);
+    }
+
     // 销毁
     public virtual void Destroy()
+    {
+        this.transform.GetChild(0).gameObject.SetActive(false);
+    }
+
+    public virtual void DDestroy()
     {
         this.gameObject.SetActive(false);
     }

@@ -230,12 +230,15 @@ public class CreateUI : MonoBehaviour
         this.posi = posi;
         mesh = new Mesh();
 
-        AddFrontFace(block);
-        AddBackFace(block);
-        AddRightFace(block);
-        AddLeftFace(block);
-        AddTopFace(block);
-        AddBottomFace(block);
+        if (block != null)
+        {
+            AddFrontFace(block);
+            AddBackFace(block);
+            AddRightFace(block);
+            AddLeftFace(block);
+            AddTopFace(block);
+            AddBottomFace(block);
+        }
 
         //为点和index赋值
         mesh.vertices = vertices.ToArray();

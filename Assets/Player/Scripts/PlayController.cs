@@ -39,7 +39,7 @@ public class PlayController : MonoBehaviour
     public Backpack backpack;
 
     // 鼠标按下时间
-    public float downTime = 0;
+    public bool dectoryFlag = false;
 
     // 手部物品对象
     GameObject handItem;
@@ -96,44 +96,50 @@ public class PlayController : MonoBehaviour
             // 放置方块
             if (CreateBlock())
             {
-                // 单击动画
+                // 放置动画
                 this.GetComponent<AnimationState>().SetExcavateOne();
             }
         }
         if (Input.GetMouseButtonDown(0))
         {
-            downTime = 0;
+            int layer = CheckLayer();
+            if(layer != LayerMask.NameToLayer("Cube"))
+            {
+                // 攻击动画
+                this.GetComponent<AnimationState>().SetSwordAttackOne();
+            }
+            dectoryFlag = false;
         }
         if (Input.GetMouseButton(0))
         {
-            if (downTime < 0.1f)
+            if (DestroyBlock())
             {
-                downTime += Time.deltaTime;
-            }
-            else
-            {
-                // 切换持续攻击动画
+                // 切换持续挖掘动画
                 this.GetComponent<AnimationState>().SetExcavate(true);
-                DestroyBlock();
-            }
-        }
-        else if(Input.GetMouseButtonUp(0))
-        {
-            if (downTime <= 0.1f)
-            {
-                // 右键单击，播放攻击动画
-                this.GetComponent<AnimationState>().SetSwordAttackOne();
+                dectoryFlag = true;
             }
             else
             {
-                // 停止持续攻击动画
+                // 停止持续挖掘动画
                 this.GetComponent<AnimationState>().SetExcavate(false);
                 // 停止销毁动画
                 StopDestory();
                 // 停止销毁，置空
                 LastTrans = null;
+                dectoryFlag = false;
             }
-            downTime = 0;
+        }
+        else if(Input.GetMouseButtonUp(0))
+        {
+            if(dectoryFlag) { 
+                // 停止持续挖掘动画
+                this.GetComponent<AnimationState>().SetExcavate(false);
+                // 停止销毁动画
+                StopDestory();
+                // 停止销毁，置空
+                LastTrans = null;
+                dectoryFlag = false;
+            }
         }
     }
 
@@ -149,12 +155,12 @@ public class PlayController : MonoBehaviour
         {
             // 第一人称
             cameraMove.FirstPerson();
-            rayPosi = ray.origin;
+            rayPosi = ray.origin + ray.direction * 0.01f;
         }
         else
         {
             // 第三人称
-            rayPosi = transform.position + new Vector3(0, 0.7f, 0);
+            rayPosi = transform.position + new Vector3(0, 0.7f, 0) + ray.direction * 0.2f;
             cameraMove.ThirdPerson(rayPosi, ray);
         }
     }
@@ -220,7 +226,10 @@ public class PlayController : MonoBehaviour
     // 射线检测
     public bool RayDetection(out RaycastHit hitInfo)
     {
-        return Physics.Raycast(rayPosi, ray.direction * 10, out hitInfo, 10, LayerMask.GetMask("Cube"));
+        // 忽略玩家
+        int layerMask = (1 << LayerMask.NameToLayer("First")) | (1 << LayerMask.NameToLayer("Third"));
+        layerMask = ~layerMask;
+        return Physics.Raycast(rayPosi, ray.direction * 10, out hitInfo, 5, layerMask);
     }
 
     // 球形检测
@@ -232,6 +241,17 @@ public class PlayController : MonoBehaviour
             return false;
         }
         return true;
+    }
+
+    // 检测层级
+    public int CheckLayer()
+    {
+        bool hit = RayDetection(out RaycastHit hitInfo);
+        if (hit)
+        {
+            return hitInfo.transform.gameObject.layer;
+        }
+        return -1;
     }
 
     // 生成方块
@@ -246,6 +266,12 @@ public class PlayController : MonoBehaviour
             Transform trans = hitInfo.transform;
             // 获取碰撞点的法向量
             Vector3 normal = hitInfo.normal;
+
+            if(trans.gameObject.layer != LayerMask.NameToLayer("Cube"))
+            {
+                // 如果目标不是方块，则不执行放置
+                return false;
+            }
 
             // 判断选中的是否是宝箱
             string key = trans.GetComponent<Chunk>().GetBox(point - normal * 0.01f);
@@ -306,7 +332,7 @@ public class PlayController : MonoBehaviour
     }
 
     // 销毁方块
-    public void DestroyBlock()
+    public bool DestroyBlock()
     {
         RaycastHit hitInfo;
         bool hit = RayDetection(out hitInfo);
@@ -318,6 +344,12 @@ public class PlayController : MonoBehaviour
             Transform trans = hitInfo.transform;
             // 获取碰撞点的法向量
             Vector3 normal = hitInfo.normal;
+
+            if (trans.gameObject.layer != LayerMask.NameToLayer("Cube"))
+            {
+                // 如果目标不是方块，则不执行销毁
+                return false;
+            }
 
             // 碰撞点向角色远移一点距离，保证销毁的方块位置准确
             point -= normal * 0.01f;
@@ -349,7 +381,9 @@ public class PlayController : MonoBehaviour
                 // 更换方块，重置动画
                 StopDestory();
             }
+            return true;
         }
+        return false;
     }
 
     // 启用绘制摧毁方块
@@ -443,6 +477,36 @@ public class PlayController : MonoBehaviour
             handItem_.transform.localRotation = Quaternion.identity;
             handItem_.layer = LayerMask.NameToLayer("Third");
             handItem_.transform.GetChild(0).gameObject.layer = LayerMask.NameToLayer("Third");
+        }
+    }
+
+    // 单个打击怪物
+    public void AttackMonster()
+    {
+        bool hit = RayDetection(out RaycastHit hitInfo);
+        if (hit)
+        {
+            // 获取怪物信息
+            Transform monster = hitInfo.transform;
+
+            if(monster.gameObject.layer != LayerMask.NameToLayer("Monster"))
+            {
+                // 如果不是怪物，则不触发攻击效果
+                return;
+            }
+            if(Vector3.Distance(monster.position, this.transform.position) > 5)
+            {
+                // 如果超出攻击范围，则不触发攻击效果
+                return;
+            }
+            // 获取方向
+            Vector3 direction = -hitInfo.normal.normalized;
+            direction.y = 1;
+
+            Debug.Log(monster.name);
+
+            // 扣除怪物血量
+            monster.GetComponent<Monster>().Hit(this.transform.GetComponent<PlayState>().damage, direction, 1);
         }
     }
 

@@ -36,8 +36,15 @@ public class AnimationState : MonoBehaviour
     public void SetExcavate(bool excavate)
     {
         animator.SetBool("Excavateing", excavate);
-        animator.SetLayerWeight(1, 1);
-        animator.SetLayerWeight(2, 0);
+        if (excavate)
+        {
+            animator.SetLayerWeight(1, 1);
+            animator.SetLayerWeight(2, 0);
+        }
+        else
+        {
+            animator.SetLayerWeight(1, 0);
+        }
     }
 
     // 移动

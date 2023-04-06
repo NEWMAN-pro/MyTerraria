@@ -30231,7 +30231,7 @@ MonoBehaviour:
   inventoryID: 1
   inventory: {fileID: 0}
   backpack: {fileID: 0}
-  downTime: 0
+  dectoryFlag: 0
   destory: {fileID: 0}
 --- !u!1 &4124326130846800120
 GameObject:

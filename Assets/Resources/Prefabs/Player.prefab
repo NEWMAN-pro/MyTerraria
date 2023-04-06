@@ -421,7 +421,7 @@ MonoBehaviour:
   inventoryID: 1
   inventory: {fileID: 0}
   backpack: {fileID: 0}
-  downTime: 0
+  dectoryFlag: 0
   destory: {fileID: 0}
 --- !u!114 &295391558186620235
 MonoBehaviour:
@@ -1226,7 +1226,7 @@ Camera:
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 727
+    m_Bits: 1751
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0

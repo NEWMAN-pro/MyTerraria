@@ -19,6 +19,17 @@ public class Slim : Monster
         base.attackRange = 1.8f;
     }
 
+    private void OnEnable()
+    {
+        base.HP = 100;
+        base.maxHP = 100;
+        base.defenes = 10;
+        base.damage = 10;
+        base.speed = 5f;
+        base.range = 8;
+        base.attackRange = 1.8f;
+    }
+
     public override void Update()
     {
         base.Update();

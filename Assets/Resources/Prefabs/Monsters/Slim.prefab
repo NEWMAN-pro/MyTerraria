@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1107588319940510032}
   - component: {fileID: 1107588319940510039}
   - component: {fileID: 1107588319940510038}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Slim
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -98,7 +98,7 @@ GameObject:
   - component: {fileID: 4321190374213941327}
   - component: {fileID: 7085650247892422104}
   - component: {fileID: 7085650247892422111}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Slim
   m_TagString: Untagged
   m_Icon: {fileID: 0}
