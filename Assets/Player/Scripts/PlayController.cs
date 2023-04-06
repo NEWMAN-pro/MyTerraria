@@ -155,12 +155,12 @@ public class PlayController : MonoBehaviour
         {
             // 第一人称
             cameraMove.FirstPerson();
-            rayPosi = ray.origin + ray.direction * 0.01f;
+            rayPosi = ray.origin;
         }
         else
         {
             // 第三人称
-            rayPosi = transform.position + new Vector3(0, 0.7f, 0) + ray.direction * 0.2f;
+            rayPosi = transform.position + new Vector3(0, 0.7f, 0);
             cameraMove.ThirdPerson(rayPosi, ray);
         }
     }

@@ -44,7 +44,7 @@ public class Monster : MonoBehaviour
         // 超距离后触发销毁
         if(Vector3.Distance(this.transform.position, target.position) > 48)
         {
-            Destroy();
+            DDestroy();
         }
     }
 
