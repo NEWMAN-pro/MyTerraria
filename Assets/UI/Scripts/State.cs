@@ -38,7 +38,7 @@ public class State : MonoBehaviour
     public void CreateUI(int num, int maxNum, bool flag)
     {
         // 计算爱心个数
-        int size = (int)Mathf.Ceil(num / (maxNum / 10));
+        int size = (int)Mathf.Ceil(num / (maxNum / 10f));
         for(int i = 9; i >= size; i--)
         {
             if (flag)

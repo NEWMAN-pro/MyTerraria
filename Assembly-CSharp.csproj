@@ -135,6 +135,8 @@
     <Compile Include="Assets\Items\Scripts\Drop.cs" />
     <Compile Include="Assets\LibNoise.Unity-master\Operator\Add.cs" />
     <Compile Include="Assets\LibNoise.Unity-master\Operator\Blend.cs" />
+    <Compile Include="Assets\Items\Scripts\DanmuList.cs" />
+    <Compile Include="Assets\Items\Scripts\Danmu.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Save\NewWorld.txt" />

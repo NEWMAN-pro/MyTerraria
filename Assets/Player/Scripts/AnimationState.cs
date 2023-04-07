@@ -16,10 +16,10 @@ public class AnimationState : MonoBehaviour
         animator.SetLayerWeight(1, 0);
     }
 
-    // 持续攻击
-    public void SetSwordAttack(bool attack)
+    // 法杖攻击
+    public void SetScepterAttack()
     {
-        animator.SetBool("Attacking", attack);
+        animator.SetTrigger("Scepter");
         animator.SetLayerWeight(2, 1);
         animator.SetLayerWeight(1, 0);
     }

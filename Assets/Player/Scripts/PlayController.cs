@@ -105,8 +105,16 @@ public class PlayController : MonoBehaviour
             int layer = CheckLayer();
             if(layer != LayerMask.NameToLayer("Cube"))
             {
-                // 攻击动画
-                this.GetComponent<AnimationState>().SetSwordAttackOne();
+                if (item.type == Type.Weapon && WeaponList.GetWeapon(item.ID).weaponType == WeaponType.Scepter)
+                {
+                    // 如果是法杖，则出发法杖攻击动画
+                    this.GetComponent<AnimationState>().SetScepterAttack();
+                }
+                else
+                {
+                    // 攻击动画
+                    this.GetComponent<AnimationState>().SetSwordAttackOne();
+                }
             }
             dectoryFlag = false;
         }
@@ -480,7 +488,7 @@ public class PlayController : MonoBehaviour
         }
     }
 
-    // 单个打击怪物
+    // 近战单个打击怪物
     public void AttackMonster()
     {
         bool hit = RayDetection(out RaycastHit hitInfo);
@@ -503,10 +511,30 @@ public class PlayController : MonoBehaviour
             Vector3 direction = -hitInfo.normal.normalized;
             direction.y = 1;
 
-            Debug.Log(monster.name);
+            int damage = WeaponList.GetWeapon(item.ID).ATK;
 
             // 扣除怪物血量
-            monster.GetComponent<Monster>().Hit(this.transform.GetComponent<PlayState>().damage, direction, 1);
+            monster.GetComponent<Monster>().Hit(damage, direction, 1);
+        }
+    }
+
+    // 法杖攻击
+    public void ScepterAttack()
+    {
+        // 扣除蓝量
+        int mp = WeaponList.GetWeapon(item.ID).mana;
+        if (this.GetComponent<PlayState>().SetMP(-mp))
+        {
+            // 发射法球
+            int damage = WeaponList.GetWeapon(item.ID).ATK;
+            GameObject danmu = DanmuList.ActivateDanmu(DanmuType.NormalBall);
+            if(danmu == null)
+            {
+                return;
+            }
+            Debug.Log("发射法球");
+            danmu.transform.SetPositionAndRotation(handItem.transform.position + 0.3f * handItem.transform.up, this.transform.GetChild(0).rotation);
+            danmu.GetComponent<Danmu>().damge = damage;
         }
     }
 

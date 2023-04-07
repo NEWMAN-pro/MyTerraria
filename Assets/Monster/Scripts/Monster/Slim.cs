@@ -48,7 +48,6 @@ public class Slim : Monster
 
     public override void Attack()
     {
-        Debug.Log("Slim Attack");
         if (Vector3.Distance(this.transform.position, target.position) <= base.attackRange)
         {
             target.GetComponent<PlayState>().SetHP(-base.damage);

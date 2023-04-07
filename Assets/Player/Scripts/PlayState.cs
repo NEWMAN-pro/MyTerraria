@@ -63,11 +63,16 @@ public class PlayState : MonoBehaviour
     }
 
     // 蓝量变化
-    public void SetMP(int mp)
+    public bool SetMP(int mp)
     {
+        if(MP + mp < 0)
+        {
+            return false;
+        }
         MP = (MP + mp) <= maxMP ? (MP + mp) : maxMP;
         if (MP < 0) MP = 0;
         state.CreateUI(MP, maxMP, false);
+        return true;
     }
 
     // 设置出生点

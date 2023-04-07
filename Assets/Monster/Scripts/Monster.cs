@@ -41,6 +41,10 @@ public class Monster : MonoBehaviour
 
     public virtual void Update()
     {
+        if (this.transform.GetComponent<PauseGame>().pause)
+        {
+            return;
+        }
         // 超距离后触发销毁
         if(Vector3.Distance(this.transform.position, target.position) > 48)
         {

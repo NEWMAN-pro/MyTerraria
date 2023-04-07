@@ -45,7 +45,6 @@ public class Zombie : Monster
 
     public override void Attack()
     {
-        Debug.Log("Zombie Attack");
         if (Vector3.Distance(this.transform.position, target.position) <= base.attackRange)
         {
             target.GetComponent<PlayState>().SetHP(-base.damage);

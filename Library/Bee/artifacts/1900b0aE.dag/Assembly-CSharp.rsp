@@ -355,6 +355,8 @@
 "Assets/Blocks/Scripts/BlockList.cs"
 "Assets/Blocks/Scripts/BoxList.cs"
 "Assets/FSMCleaSignals.cs"
+"Assets/Items/Scripts/Danmu.cs"
+"Assets/Items/Scripts/DanmuList.cs"
 "Assets/Items/Scripts/Drop.cs"
 "Assets/Items/Scripts/DropList.cs"
 "Assets/Items/Scripts/Item.cs"
