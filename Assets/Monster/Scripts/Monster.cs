@@ -21,6 +21,8 @@ public class Monster : MonoBehaviour
     public bool dieFlag = false;
     // 攻击方位
     public float attackRange;
+    // 受击时间
+    public float hitTime = 0f;
 
     // 寻路范围
     public float range;
@@ -50,6 +52,7 @@ public class Monster : MonoBehaviour
         {
             DDestroy();
         }
+        hitTime -= Time.deltaTime;
     }
 
     // 移动
@@ -67,6 +70,8 @@ public class Monster : MonoBehaviour
             Die();
             return;
         }
+        animator.SetTrigger("Hit");
+        hitTime = 0.5f;
     }
 
     // 死亡
@@ -78,6 +83,10 @@ public class Monster : MonoBehaviour
     // 受击
     public virtual void Hit(int hp, Vector3 direction, float repel)
     {
+        if(hitTime > 0)
+        {
+            return;
+        }
         // 受击方向上受到一个200N的力
         this.GetComponent<Rigidbody>().AddForce(200 * repel * direction);
         SetHP(-hp);
@@ -92,6 +101,7 @@ public class Monster : MonoBehaviour
     public virtual void DDestroy()
     {
         this.gameObject.SetActive(false);
+        CreateMonster.count--;
     }
 
     // 动画

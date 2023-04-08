@@ -98,6 +98,7 @@
     <Compile Include="Assets\Player\Scripts\CameraMove.cs" />
     <Compile Include="Assets\Other\Scripts\Voronoi.cs" />
     <Compile Include="Assets\LibNoise.Unity-master\Generator\Const.cs" />
+    <Compile Include="Assets\Items\Scripts\DanmuList.cs" />
     <Compile Include="Assets\LibNoise.Unity-master\Operator\Power.cs" />
     <Compile Include="Assets\Other\Scripts\PriorityQueue.cs" />
     <Compile Include="Assets\Player\Scripts\PlayState.cs" />
@@ -119,6 +120,7 @@
     <Compile Include="Assets\LibNoise.Unity-master\Operator\Subtract.cs" />
     <Compile Include="Assets\Monster\Scripts\CreateMonster.cs" />
     <Compile Include="Assets\LibNoise.Unity-master\Operator\Translate.cs" />
+    <Compile Include="Assets\Items\Scripts\Danmu.cs" />
     <Compile Include="Assets\Monster\Scripts\MonsterFactory.cs" />
     <Compile Include="Assets\LibNoise.Unity-master\Operator\Turbulence.cs" />
     <Compile Include="Assets\LibNoise.Unity-master\Noise2D.cs" />
@@ -135,8 +137,6 @@
     <Compile Include="Assets\Items\Scripts\Drop.cs" />
     <Compile Include="Assets\LibNoise.Unity-master\Operator\Add.cs" />
     <Compile Include="Assets\LibNoise.Unity-master\Operator\Blend.cs" />
-    <Compile Include="Assets\Items\Scripts\DanmuList.cs" />
-    <Compile Include="Assets\Items\Scripts\Danmu.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Save\NewWorld.txt" />

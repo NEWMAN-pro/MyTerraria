@@ -48,6 +48,11 @@ public class PlayState : MonoBehaviour
         state = GameObject.Find("UI").transform.GetChild(6).GetComponent<State>();
         state.CreateUI(HP, maxHP, true);
         state.CreateUI(MP, maxMP, false);
+        InvokeRepeating(nameof(RecoverMP), 0, 1);
+    }
+
+    private void Update()
+    {
     }
 
     // 血量变化
@@ -73,6 +78,13 @@ public class PlayState : MonoBehaviour
         if (MP < 0) MP = 0;
         state.CreateUI(MP, maxMP, false);
         return true;
+    }
+
+    // 恢复蓝量
+    public void RecoverMP()
+    {
+        int mp = Mathf.Max(1, (int)Mathf.Ceil(MP * 0.03f));
+        SetMP(mp);
     }
 
     // 设置出生点

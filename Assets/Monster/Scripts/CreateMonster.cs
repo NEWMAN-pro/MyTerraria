@@ -6,28 +6,39 @@ using Soultia.Util;
 public class CreateMonster : MonoBehaviour
 {
     // 怪物最大数量
-    public int maxCount = 10;
+    public int maxCount = 30;
     // 怪物计数器
-    public int count = 0;
+    public static int count = 0;
     // 怪物生成间隔
     public float intervalTime = 3;
+    // 是否在生成
+    public bool createFlag = false;
 
     GameObject monster;
 
     private void Awake()
     {
-        StartCreateMonster();
+    }
+
+    private void Update()
+    {
+        if(!createFlag && count < maxCount)
+        {
+            StartCreateMonster();
+        }
     }
 
     // 开启怪物生成
     public void StartCreateMonster()
     {
+        createFlag = true;
         InvokeRepeating(nameof(Create), 5, intervalTime);
     }
 
     // 关闭怪物生成
     public void StopCreateMonster()
     {
+        createFlag = false;
         CancelInvoke(); 
     }
 

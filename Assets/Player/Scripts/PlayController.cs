@@ -532,8 +532,7 @@ public class PlayController : MonoBehaviour
             {
                 return;
             }
-            Debug.Log("发射法球");
-            danmu.transform.SetPositionAndRotation(handItem.transform.position + 0.3f * handItem.transform.up, this.transform.GetChild(0).rotation);
+            danmu.transform.SetPositionAndRotation(this.transform.GetChild(0).transform.position + new Vector3(0, -0.1f, 0), this.transform.GetChild(0).rotation);
             danmu.GetComponent<Danmu>().damge = damage;
         }
     }
