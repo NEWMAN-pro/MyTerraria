@@ -70,7 +70,6 @@ public class Monster : MonoBehaviour
             Die();
             return;
         }
-        animator.SetTrigger("Hit");
         hitTime = 0.5f;
     }
 
@@ -89,7 +88,8 @@ public class Monster : MonoBehaviour
         }
         // 受击方向上受到一个200N的力
         this.GetComponent<Rigidbody>().AddForce(200 * repel * direction);
-        SetHP(-hp);
+        animator.SetTrigger("Hit");
+        SetHP(defenes - hp);
     }
 
     // 销毁

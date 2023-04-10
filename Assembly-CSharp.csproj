@@ -137,6 +137,8 @@
     <Compile Include="Assets\Items\Scripts\Drop.cs" />
     <Compile Include="Assets\LibNoise.Unity-master\Operator\Add.cs" />
     <Compile Include="Assets\LibNoise.Unity-master\Operator\Blend.cs" />
+    <Compile Include="Assets\UI\Scripts\Make.cs" />
+    <Compile Include="Assets\Other\Scripts\ButtonClick.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Save\NewWorld.txt" />

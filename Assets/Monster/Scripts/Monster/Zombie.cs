@@ -8,7 +8,7 @@ public class Zombie : Monster
     {
         base.HP = 100;
         base.maxHP = 100;
-        base.defenes = 10;
+        base.defenes = 2;
         base.damage = 10;
         base.speed = 5f;
         base.range = 8;
@@ -19,7 +19,7 @@ public class Zombie : Monster
     {
         base.HP = 100;
         base.maxHP = 100;
-        base.defenes = 10;
+        base.defenes = 2;
         base.damage = 10;
         base.speed = 5f;
         base.range = 8;

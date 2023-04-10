@@ -10,10 +10,10 @@ public class Slim : Monster
 
     private void Awake()
     {
-        base.HP = 100;
-        base.maxHP = 100;
-        base.defenes = 10;
-        base.damage = 10;
+        base.HP = 50;
+        base.maxHP = 50;
+        base.defenes = 1;
+        base.damage = 5;
         base.speed = 5f;
         base.range = 8;
         base.attackRange = 1.8f;
@@ -21,10 +21,10 @@ public class Slim : Monster
 
     private void OnEnable()
     {
-        base.HP = 100;
-        base.maxHP = 100;
-        base.defenes = 10;
-        base.damage = 10;
+        base.HP = 50;
+        base.maxHP = 50;
+        base.defenes = 1;
+        base.damage = 5;
         base.speed = 5f;
         base.range = 8;
         base.attackRange = 1.8f;
