@@ -109,6 +109,7 @@
     <Compile Include="Assets\Monster\Scripts\Monster\Slim.cs" />
     <Compile Include="Assets\Player\Scripts\AnimationState.cs" />
     <Compile Include="Assets\Items\Scripts\DropList.cs" />
+    <Compile Include="Assets\Other\Scripts\ButtonClick.cs" />
     <Compile Include="Assets\Word\Scripts\Terrain.cs" />
     <Compile Include="Assets\UI\Scripts\StartUI.cs" />
     <Compile Include="Assets\Other\Scripts\AccessGame.cs" />
@@ -133,12 +134,11 @@
     <Compile Include="Assets\LibNoise.Unity-master\Operator\Abs.cs" />
     <Compile Include="Assets\Blocks\Scripts\BlockList.cs" />
     <Compile Include="Assets\LibNoise.Unity-master\Operator\Clamp.cs" />
+    <Compile Include="Assets\UI\Scripts\Make.cs" />
     <Compile Include="Assets\LibNoise.Unity-master\Generator\Voronoi.cs" />
     <Compile Include="Assets\Items\Scripts\Drop.cs" />
     <Compile Include="Assets\LibNoise.Unity-master\Operator\Add.cs" />
     <Compile Include="Assets\LibNoise.Unity-master\Operator\Blend.cs" />
-    <Compile Include="Assets\UI\Scripts\Make.cs" />
-    <Compile Include="Assets\Other\Scripts\ButtonClick.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Save\NewWorld.txt" />

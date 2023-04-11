@@ -56,7 +56,7 @@ public class Danmu : MonoBehaviour
         if (other.gameObject.layer == LayerMask.NameToLayer("Monster"))
         {
             // 如果时碰到怪物，则扣除怪物血量
-            other.gameObject.GetComponent<Monster>().SetHP(-damge);
+            other.gameObject.GetComponent<Monster>().Hit(damge, Vector3.zero, 0);
         }
         // 销毁弹幕
         Dectory();

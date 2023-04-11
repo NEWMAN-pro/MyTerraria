@@ -81,7 +81,7 @@ public class Box : MonoBehaviour
         }
         if (item.type == Type.Block)
         {
-            Block block = BlockList.GetBlock(item.ID);
+            Block block = BlockList.GetBlock(item.id);
             if (block == null)
             {
                 Debug.Log("该物品为空ba");
@@ -91,7 +91,7 @@ public class Box : MonoBehaviour
         }
         else if(item.type == Type.Weapon)
         {
-            Weapon weapon = WeaponList.GetWeapon(item.ID);
+            Weapon weapon = WeaponList.GetWeapon(item.id);
             if(weapon != null)
             {
                 this.transform.GetChild(key).GetComponent<CreateUI>().CreateWeaponUI(weapon.icon);
@@ -212,29 +212,25 @@ public class Box : MonoBehaviour
     // 存入物品
     public bool Storage(Item item)
     {
-        byte key;
-        // 试着寻找相同的物品
-        key = items.FirstOrDefault(x => x.Value != null && x.Value.type == item.type && x.Value.ID == item.ID).Key;
-        Item item1 = GetItem(key);
-        if (item1 != null && item1.type == item.type && item1.ID == item.ID && item1.count != -1)
+        var result = items.Where(x => x.Value != null && x.Value.ID == item.ID).ToList();
+        foreach (var pair in result)
         {
-            // 如果找到相同的物品，并且物品可以合并
-            int ans = item1.count + item.count;
-            if (ans <= 64)
+            Item item_ = pair.Value;
+            int ans = item_.count + item.count;
+            item_.count = Mathf.Min(64, ans);
+            SetItem(pair.Key, item_);
+            ans -= 64;
+            if (ans > 0)
             {
-                // 合拼后数量未超上限，则合并
-                item1.count = ans;
-                SetItem(key, item1);
-                return true;
+                item.count = ans;
             }
             else
             {
-                // 超上限，则新存入一个物品
-                item1.count = 64;
-                item.count = ans - 64;
-                SetItem(key, item1);
+                // 将所有物品存入，则退出
+                return true;
             }
         }
+        byte key;
         // 找到第一个为空的空格
         key = items.FirstOrDefault(x => x.Value == null).Key;
         if(GetItem(key) != null)

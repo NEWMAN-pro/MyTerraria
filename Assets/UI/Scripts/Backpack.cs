@@ -67,82 +67,47 @@ public class Backpack : MonoBehaviour
             }
         }
 
-        Item item_1 = new Item();
-        item_1.type = 0;
-        item_1.ID = 3;
-        item_1.count = 60;
-        items[0] = item_1;
-        inventory.SetItem(1, item_1);
-        CreateUI(item_1, 0, false);
-        Item item_2 = new Item();
-        item_2.type = 0;
-        item_2.ID = 1;
-        item_2.count = 1;
-        items[1] = item_2;
-        inventory.SetItem(2, item_2);
-        CreateUI(item_2, 1, false);
-        Item item_3 = new Item();
-        item_3.type = 0;
-        item_3.ID = 2;
-        item_3.count = 1;
-        items[2] = item_3;
-        inventory.SetItem(3, item_3);
-        CreateUI(item_3, 2, false);
-        Item item_4 = new Item();
-        item_4.type = 0;
-        item_4.ID = 4;
-        item_4.count = 1;
-        items[3] = item_4;
-        inventory.SetItem(4, item_4);
-        CreateUI(item_4, 3, false);
-        Item item_5 = new Item();
-        item_5.type = 0;
-        item_5.ID = 5;
-        item_5.count = 1;
-        items[4] = item_5;
-        inventory.SetItem(5, item_5);
-        CreateUI(item_5, 4, false);
-        Item item_6 = new Item();
-        item_6.type = 0;
-        item_6.ID = 6;
-        item_6.count = 1;
-        items[5] = item_6;
-        inventory.SetItem(6, item_6);
-        CreateUI(item_6, 5, false);
-        Item item_7 = new Item();
-        item_7.type = 0;
-        item_7.ID = 7;
-        item_7.count = 1;
-        items[6] = item_7;
-        inventory.SetItem(7, item_7);
-        CreateUI(item_7, 6, false);
-        Item item_8 = new Item();
-        item_8.type = 0;
-        item_8.ID = 8;
-        item_8.count = 10;
-        items[7] = item_8;
-        inventory.SetItem(8, item_8);
-        CreateUI(item_8, 7, false);
-        Item item_9 = new Item();
-        item_9.type = 0;
-        item_9.ID = 3;
-        item_9.count = 10;
-        items[8] = item_9;
-        inventory.SetItem(9, item_9);
-        CreateUI(item_9, 8, false);
-        Item item_10 = new Item();
-        item_10.type = Type.Weapon;
-        item_10.ID = 1;
-        item_10.count = -1;
-        items[9] = item_10;
-        inventory.SetItem(0, item_10);
-        CreateUI(item_10, 9, false);
-        Item item_11 = new Item();
-        item_11.type = Type.Weapon;
-        item_11.ID = 2;
-        item_11.count = -1;
-        items[10] = item_11;
-        CreateUI(item_11, 10, false);
+        items[0] = new(BlockList.GetBlock(3));
+        items[0].count = 60;
+        inventory.SetItem(1, items[0]);
+        CreateUI(items[0], 0, false);
+        items[1] = new(BlockList.GetBlock(1));
+        items[1].count = 60;
+        inventory.SetItem(2, items[1]);
+        CreateUI(items[1], 1, false);
+        items[2] = new(BlockList.GetBlock(2));
+        items[2].count = 60;
+        inventory.SetItem(3, items[2]);
+        CreateUI(items[2], 2, false);
+        items[3] = new(BlockList.GetBlock(4));
+        items[3].count = 60;
+        inventory.SetItem(4, items[3]);
+        CreateUI(items[3], 3, false);
+        items[4] = new(BlockList.GetBlock(5));
+        items[4].count = 60;
+        inventory.SetItem(5, items[4]);
+        CreateUI(items[4], 4, false);
+        items[5] = new(BlockList.GetBlock(6));
+        items[5].count = 60;
+        inventory.SetItem(6, items[5]);
+        CreateUI(items[5], 5, false);
+        items[6] = new(BlockList.GetBlock(7));
+        items[6].count = 60;
+        inventory.SetItem(7, items[6]);
+        CreateUI(items[6], 6, false);
+        items[7] = new(BlockList.GetBlock(8));
+        items[7].count = 60;
+        inventory.SetItem(8, items[7]);
+        CreateUI(items[7], 7, false);
+        items[8] = new(BlockList.GetBlock(3));
+        items[8].count = 60;
+        inventory.SetItem(9, items[8]);
+        CreateUI(items[8], 8, false);
+        items[9] = new(WeaponList.GetWeapon(1));
+        inventory.SetItem(0, items[9]);
+        CreateUI(items[9], 9, false);
+        items[10] = new(WeaponList.GetWeapon(2));
+        CreateUI(items[10], 10, false);
     }
 
     // Update is called once per frame
@@ -198,7 +163,7 @@ public class Backpack : MonoBehaviour
         }
         if (item.type == Type.Block)
         {
-            Block block = BlockList.GetBlock(item.ID);
+            Block block = BlockList.GetBlock(item.id);
             if (block == null)
             {
                 Debug.Log("该物品为空ba");
@@ -217,7 +182,7 @@ public class Backpack : MonoBehaviour
         }
         else if(item.type == Type.Weapon)
         {
-            Weapon weapon = WeaponList.GetWeapon(item.ID);
+            Weapon weapon = WeaponList.GetWeapon(item.id);
             if(weapon != null)
             {
                 if (selectFlag)
@@ -417,29 +382,27 @@ public class Backpack : MonoBehaviour
     // 存入物品
     public bool Storage(Item item)
     {
-        byte key;
-        // 试着寻找相同的物品
-        key = items.FirstOrDefault(x => x.Value != null && x.Value.type == item.type && x.Value.ID == item.ID).Key;
-        Item item1 = GetItem(key);
-        if(item1 != null && item1.type == item.type && item1.ID == item.ID && item1.count != -1)
+        // 找出所有同类物品
+        var result = items.Where(x => x.Value != null && x.Value.ID == item.ID).ToList();
+        foreach(var pair in result)
         {
-            // 如果找到相同的物品，并且物品可以合并
-            int ans = item1.count + item.count;
-            if(ans <= 64)
+            Debug.Log(pair.Key + " " + pair.Value.count);
+            Item item_ = pair.Value;
+            int ans = item_.count + item.count;
+            item_.count = Math.Min(64, ans);
+            SetItem(pair.Key, item_);
+            ans -= 64;
+            if(ans > 0)
             {
-                // 合拼后数量未超上限，则合并
-                item1.count = ans;
-                SetItem(key, item1);
-                return true;
+                item.count = ans;
             }
             else
             {
-                // 超上限，则新存入一个物品
-                item1.count = 64;
-                item.count = ans - 64;
-                SetItem(key, item1);
+                // 将所有物品存入，则退出
+                return true;
             }
         }
+        byte key;
         // 找到第一个为空的空格
         key = items.FirstOrDefault(x => x.Value == null).Key;
         if (GetItem(key) != null)

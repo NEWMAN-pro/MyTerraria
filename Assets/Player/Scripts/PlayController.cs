@@ -103,9 +103,9 @@ public class PlayController : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             int layer = CheckLayer();
-            if(layer != LayerMask.NameToLayer("Cube"))
+            if(item != null && layer != LayerMask.NameToLayer("Cube"))
             {
-                if (item.type == Type.Weapon && WeaponList.GetWeapon(item.ID).weaponType == WeaponType.Scepter)
+                if (item.type == Type.Weapon && WeaponList.GetWeapon(item.id).weaponType == WeaponType.Scepter)
                 {
                     // 如果是法杖，则出发法杖攻击动画
                     this.GetComponent<AnimationState>().SetScepterAttack();
@@ -293,7 +293,7 @@ public class PlayController : MonoBehaviour
             if (item == null || item.type != Type.Block) return false;
             // 碰撞点向角色移动一点距离，保证方块生成位置准确
             point += normal * 0.01f;
-            byte create = trans.GetComponent<Chunk>().CreateBlock(point, this.transform.position, item.ID);
+            byte create = trans.GetComponent<Chunk>().CreateBlock(point, this.transform.position, item.id);
             if (create == 2)
             {
                 // 方块生成位置不在当前区块内，则需改变区块trans
@@ -309,7 +309,7 @@ public class PlayController : MonoBehaviour
                     trans = GameObject.Find(newName).transform;
                     //Debug.Log(trans.name);
                     // 在新区块生成方块
-                    create = trans.GetComponent<Chunk>().CreateBlock(point, this.transform.position, item.ID);
+                    create = trans.GetComponent<Chunk>().CreateBlock(point, this.transform.position, item.id);
                 }
                 else
                 {
@@ -466,8 +466,8 @@ public class PlayController : MonoBehaviour
             // 如果是方块
             //this.transform.GetChild(6).GetChild(0).GetChild(1).GetComponent<CreateUI>().CreateBlockUI(BlockList.GetBlock(item.ID), true, 0.1f, Vector3.zero);
             //this.transform.GetChild(3).GetChild(1).GetComponent<CreateUI>().CreateBlockUI(BlockList.GetBlock(item.ID), true, 0.1f, Vector3.zero);
-            this.transform.GetChild(6).GetChild(0).GetChild(1).GetComponent<CreateUI>().CreateBlockDrop(BlockList.GetBlock(item.ID), 0.3f, new Vector3(1f, -1f, 0));
-            this.transform.GetChild(3).GetChild(1).GetComponent<CreateUI>().CreateBlockDrop(BlockList.GetBlock(item.ID), 0.3f, Vector3.zero);
+            this.transform.GetChild(6).GetChild(0).GetChild(1).GetComponent<CreateUI>().CreateBlockDrop(BlockList.GetBlock(item.id), 0.3f, new Vector3(1f, -1f, 0));
+            this.transform.GetChild(3).GetChild(1).GetComponent<CreateUI>().CreateBlockDrop(BlockList.GetBlock(item.id), 0.3f, Vector3.zero);
         }
         else if(item.type == Type.Weapon)
         {
@@ -511,7 +511,7 @@ public class PlayController : MonoBehaviour
             Vector3 direction = -hitInfo.normal.normalized;
             direction.y = 1;
 
-            int damage = WeaponList.GetWeapon(item.ID).ATK;
+            int damage = WeaponList.GetWeapon(item.id).ATK;
 
             // 扣除怪物血量
             monster.GetComponent<Monster>().Hit(damage, direction, 1);
@@ -522,11 +522,11 @@ public class PlayController : MonoBehaviour
     public void ScepterAttack()
     {
         // 扣除蓝量
-        int mp = WeaponList.GetWeapon(item.ID).mana;
+        int mp = WeaponList.GetWeapon(item.id).mana;
         if (this.GetComponent<PlayState>().SetMP(-mp))
         {
             // 发射法球
-            int damage = WeaponList.GetWeapon(item.ID).ATK;
+            int damage = WeaponList.GetWeapon(item.id).ATK;
             GameObject danmu = DanmuList.ActivateDanmu(DanmuType.NormalBall);
             if(danmu == null)
             {

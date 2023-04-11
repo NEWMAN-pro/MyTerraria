@@ -28,9 +28,6 @@ public class Inventory : MonoBehaviour
         { 9, null },
         { 0, null },
     };
-    // 物品数量text
-    public GameObject textPrefab;
-    public GameObject text;
 
     // Update is called once per frame
     void Update()
@@ -65,7 +62,7 @@ public class Inventory : MonoBehaviour
         }
         if (item.type == Type.Block)
         {
-            Block block = BlockList.GetBlock(item.ID);
+            Block block = BlockList.GetBlock(item.id);
             if(block == null)
             {
                 Debug.Log("该物品为空in");
@@ -75,7 +72,7 @@ public class Inventory : MonoBehaviour
         }
         else if (item.type == Type.Weapon)
         {
-            Weapon weapon = WeaponList.GetWeapon(item.ID);
+            Weapon weapon = WeaponList.GetWeapon(item.id);
             if (weapon != null)
             {
                 this.transform.GetChild(key).GetComponent<CreateUI>().CreateWeaponUI(weapon.icon);

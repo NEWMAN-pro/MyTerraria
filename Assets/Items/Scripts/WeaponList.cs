@@ -23,6 +23,13 @@ public class WeaponList : MonoBehaviour
         Weapon scepter = new(2, "Scepter", WeaponType.Scepter, 10, 10, 5);
         scepter.icon = iconList[1];
         weapons.Add(scepter.id, scepter);
+
+        foreach(var pair in weapons)
+        {
+            pair.Value.ID = Item.Count++;
+            pair.Value.type = Type.Weapon;
+            pair.Value.count = -1;
+        }
     }
 
     // 判断是否存在该武器

@@ -118,7 +118,7 @@ public class DropList : MonoBehaviour
         if(item.type == Type.Block)
         {
             // 如果是方块
-            Block block = BlockList.GetBlock(item.ID);
+            Block block = BlockList.GetBlock(item.id);
             dropGBs[id].GetComponent<CreateUI>().CreateBlockDrop(block, 0.3f, new Vector3(0.15f, -0.15f, -0.15f));
         }
     }

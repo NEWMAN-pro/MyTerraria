@@ -610,7 +610,8 @@ namespace Soultia.Voxel
         public void CreateDrop(Vector3i chunkPosition)
         {
             Block block = BlockList.GetBlock(this.blocks[chunkPosition.x, chunkPosition.y, chunkPosition.z]);
-            Item item = new(block.id, Type.Block, 1);
+            Item item = new(block);
+            item.count = 1;
             DropList.AddDrop(item, ChunkTransferWorld(chunkPosition));
         }
 
