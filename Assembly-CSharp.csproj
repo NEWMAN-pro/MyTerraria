@@ -109,7 +109,7 @@
     <Compile Include="Assets\Monster\Scripts\Monster\Slim.cs" />
     <Compile Include="Assets\Player\Scripts\AnimationState.cs" />
     <Compile Include="Assets\Items\Scripts\DropList.cs" />
-    <Compile Include="Assets\Other\Scripts\ButtonClick.cs" />
+    <Compile Include="Assets\UI\Scripts\ButtonClick.cs" />
     <Compile Include="Assets\Word\Scripts\Terrain.cs" />
     <Compile Include="Assets\UI\Scripts\StartUI.cs" />
     <Compile Include="Assets\Other\Scripts\AccessGame.cs" />

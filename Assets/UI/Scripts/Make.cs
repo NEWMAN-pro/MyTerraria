@@ -11,6 +11,8 @@ public class Make : MonoBehaviour
     public Dictionary<byte, Item> synthesis = new();
     // 材料队列
     public Dictionary<byte, Item> materials = new();
+    // 显示的合成物队列
+    public List<int> showItems = new();
     // 所选材料
     public int material = -1;
     // 滚动视图框
@@ -36,6 +38,7 @@ public class Make : MonoBehaviour
             itemBox.SetActive(false);
             CreateUI(item, cnt, this.transform.GetChild(2).GetChild(0).GetChild(0));
             cnt++;
+            showItems.Add(item.ID);
         }
         foreach (var pair in WeaponList.weapons)
         {
@@ -47,6 +50,7 @@ public class Make : MonoBehaviour
             itemBox.SetActive(false);
             CreateUI(item, cnt, this.transform.GetChild(2).GetChild(0).GetChild(0));
             cnt++;
+            showItems.Add(item.ID);
         }
     }
 
@@ -56,22 +60,55 @@ public class Make : MonoBehaviour
         CreateSynthesis();
     }
 
+    // 按物品类型查找
+    public void TypeQuery(string type)
+    {
+        // 先找出所有合成物
+        CreateSynthesis();
+        Show(false);
+
+        Type type_ = Type.Other;
+        if(type == "Weapons")
+        {
+            type_ = Type.Weapon;
+        }
+        else if(type == "Blocks")
+        {
+            type_ = Type.Block;
+        }
+        else if(type == "ALL")
+        {
+            Show(true);
+            return;
+        }
+        // 找出所有已显示的物品
+        var result = synthesis.Where(pair => showItems.Contains(pair.Key)).ToList();
+        // 找出所有与所选择的类型相同的物品
+        var result2 = result.Where(pair => pair.Value.type == type_).ToList();
+        showItems.Clear();
+        foreach(var pair in result2)
+        {
+            showItems.Add(pair.Key);
+        }
+        Show(true);
+    }
+
     // 根据所选材料生成合成物
     public void CreateSynthesis()
     {
         int cnt = Item.Count;
-        for(int i = 0; i < cnt; i++)
-        {
-            content.GetChild(i).gameObject.SetActive(false);
-        }
+
+        // 先将Show列表中的物品取消显示
+        Show(false);
+        showItems.Clear();
+
         if(material == -1)
         {
             // 没有所选材料，则将所有物品加载
             for(int i = 0; i < cnt; i++)
             {
-                content.GetChild(i).gameObject.SetActive(true);
+                showItems.Add(i);
             }
-            content.GetComponent<RectTransform>().sizeDelta = new(0, (cnt / 8 + 1) * 100);
         }
         else
         {
@@ -86,12 +123,23 @@ public class Make : MonoBehaviour
                 if(item.Value != null)
                 {
                     // 显示出来
-                    content.GetChild(item.Key).gameObject.SetActive(true);
+                    showItems.Add(item.Key);
                 }
             }
             // 将自己也显示出来
-            content.GetChild(material).gameObject.SetActive(true);
+            showItems.Add(material);
         }
+        Show(true);
+    }
+
+    // 将显示列表中的物品显示
+    public void Show(bool flag)
+    {
+        foreach(var id in showItems)
+        {
+            content.GetChild(id).gameObject.SetActive(flag);
+        }
+        content.GetComponent<RectTransform>().sizeDelta = new(0, (showItems.Count / 8 + 1) * 100);
     }
 
     // 更改所选材料
