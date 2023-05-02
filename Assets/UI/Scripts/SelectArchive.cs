@@ -25,6 +25,7 @@ public class SelectArchive : MonoBehaviour
     // 被激活时搜索所有存档文件名
     private void OnEnable()
     {
+        archives.Clear();
         Transform content = this.transform.GetChild(0).GetChild(0).GetChild(0);
         string[] files = Directory.GetFiles(path, "*.txt");
         foreach(string file in files)

@@ -15,6 +15,7 @@ public class BoxList : MonoBehaviour
             // 如果是继续游戏
             boxs = AccessGameAll.data.boxs;
             boxsName = AccessGameAll.data.boxsName;
+            Debug.Log(boxs.Count);
         }
     }
 
@@ -62,7 +63,10 @@ public class BoxList : MonoBehaviour
     // 销毁脚本时
     private void OnDestroy()
     {
-        boxs.Clear();
-        boxsName.Clear();
+        if(boxs.Count != 0)
+        {
+            boxs.Clear();
+            boxsName.Clear();
+        }
     }
 }

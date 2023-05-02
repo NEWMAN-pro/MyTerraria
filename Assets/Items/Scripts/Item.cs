@@ -114,6 +114,7 @@ public class Item : IComparable<Item>
 /// <summary>
 /// 合成物类
 /// </summary>
+[Serializable]
 public class ItemMaterial
 {
     // 合成物id

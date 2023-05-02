@@ -14,6 +14,10 @@ public class WeaponList : MonoBehaviour
 
     private void Awake()
     {
+        if(weapons.Count != 0)
+        {
+            return;
+        }
         // 铁剑
         Weapon ironSword = new(1, "IronSword", WeaponType.Sword, 2, 10, 0);
         ironSword.icon = iconList[0];
@@ -40,6 +44,6 @@ public class WeaponList : MonoBehaviour
 
     private void OnDestroy()
     {
-        weapons.Clear();
+        //weapons.Clear();
     }
 }

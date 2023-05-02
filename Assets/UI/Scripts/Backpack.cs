@@ -65,6 +65,7 @@ public class Backpack : MonoBehaviour
             {
                 CreateUI(pair.Value, pair.Key, false);
             }
+            return;
         }
 
         items[0] = new(BlockList.GetBlock(3));

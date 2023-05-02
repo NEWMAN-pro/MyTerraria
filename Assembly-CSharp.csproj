@@ -144,7 +144,9 @@
     <None Include="Assets\Save\NewWorld.txt" />
     <None Include="Assets\Save\GameData.txt" />
     <None Include="Assets\LibNoise.Unity-master\COPYING.txt" />
+    <None Include="Assets\Save\222.txt" />
     <None Include="Assets\LibNoise.Unity-master\COPYING.LESSER.txt" />
+    <None Include="Assets\Save\111.txt" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

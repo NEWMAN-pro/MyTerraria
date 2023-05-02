@@ -68,15 +68,15 @@ public class Make : MonoBehaviour
         Show(false);
 
         Type type_ = Type.Other;
-        if(type == "Weapons")
+        if (type == "Weapons")
         {
             type_ = Type.Weapon;
         }
-        else if(type == "Blocks")
+        else if (type == "Blocks")
         {
             type_ = Type.Block;
         }
-        else if(type == "ALL")
+        else if (type == "ALL")
         {
             Show(true);
             return;
@@ -86,7 +86,7 @@ public class Make : MonoBehaviour
         // 找出所有与所选择的类型相同的物品
         var result2 = result.Where(pair => pair.Value.type == type_).ToList();
         showItems.Clear();
-        foreach(var pair in result2)
+        foreach (var pair in result2)
         {
             showItems.Add(pair.Key);
         }
@@ -102,10 +102,10 @@ public class Make : MonoBehaviour
         Show(false);
         showItems.Clear();
 
-        if(material == -1)
+        if (material == -1)
         {
             // 没有所选材料，则将所有物品加载
-            for(int i = 0; i < cnt; i++)
+            for (int i = 0; i < cnt; i++)
             {
                 showItems.Add(i);
             }
@@ -116,11 +116,11 @@ public class Make : MonoBehaviour
             var query = from item in BlockList.blocks.Values.Cast<Item>().Concat(WeaponList.weapons.Values)
                         where item.materials.Any(m => m.id == material)
                         select item;
-            foreach(var pair in query)
+            foreach (var pair in query)
             {
                 // 找出对应ID的物品
                 var item = synthesis.FirstOrDefault(item_ => item_.Value.ID == pair.ID);
-                if(item.Value != null)
+                if (item.Value != null)
                 {
                     // 显示出来
                     showItems.Add(item.Key);
@@ -135,7 +135,7 @@ public class Make : MonoBehaviour
     // 将显示列表中的物品显示
     public void Show(bool flag)
     {
-        foreach(var id in showItems)
+        foreach (var id in showItems)
         {
             content.GetChild(id).gameObject.SetActive(flag);
         }
@@ -159,26 +159,26 @@ public class Make : MonoBehaviour
     {
         trans.GetChild(key).GetComponent<CreateUI>().HideUI();
         trans.GetChild(key).GetChild(0).GetComponent<Text>().text = "";
-        if(item == null)
+        if (item == null)
         {
             trans.GetChild(key).GetComponent<CreateUI>().CreateBlank();
             return;
         }
-        if(item.type == Type.Block)
+        if (item.type == Type.Block)
         {
             // 如果是绘制方块图标
             Block block = BlockList.GetBlock(item.id);
-            if(block == null)
+            if (block == null)
             {
                 return;
             }
             trans.GetChild(key).GetComponent<CreateUI>().CreateBlockUI(block, true, 40, new Vector3(0, -1f, -0.01f));
         }
-        else if(item.type == Type.Weapon)
+        else if (item.type == Type.Weapon)
         {
             // 如果是绘制武器图标
             Weapon weapon = WeaponList.GetWeapon(item.id);
-            if(weapon != null)
+            if (weapon != null)
             {
                 trans.GetChild(key).GetComponent<CreateUI>().CreateWeaponUI(weapon.icon);
             }

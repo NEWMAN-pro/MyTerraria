@@ -16,7 +16,7 @@ public class StartUI : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -52,5 +52,15 @@ public class StartUI : MonoBehaviour
         key = GameObject.Find("InputWorldName").GetComponent<InputField>().text + ".txt";
         flag = true;
         ToScenes();
+    }
+
+    // 返回主界面
+    public void Back()
+    {
+        this.transform.GetChild(0).gameObject.SetActive(true);
+        this.transform.GetChild(1).gameObject.SetActive(false);
+        this.transform.GetChild(2).gameObject.SetActive(false);
+        this.transform.GetChild(2).GetChild(1).gameObject.GetComponent<InputField>().text = "";
+        this.transform.GetChild(2).GetChild(3).gameObject.GetComponent<InputField>().text = "";
     }
 }

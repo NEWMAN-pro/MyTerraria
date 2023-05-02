@@ -8,8 +8,15 @@ public class BlockList : MonoBehaviour
 {
     public static Dictionary<byte, Block> blocks = new Dictionary<byte, Block>();
 
+    // 将类的构造函数设为私有，防止外部创建新的实例
+    private BlockList() { }
+
     void Awake()
     {
+        if(blocks.Count != 0)
+        {
+            return;
+        }
         // 土块
         Block dirt = new(1, "Dirt", 2, 2, 31);
         dirt.ID = Item.Count++;
@@ -73,6 +80,6 @@ public class BlockList : MonoBehaviour
 
     private void OnDestroy()
     {
-        blocks.Clear();
+        //blocks.Clear();
     }
 }
