@@ -15,7 +15,6 @@ public class BoxList : MonoBehaviour
             // 如果是继续游戏
             boxs = AccessGameAll.data.boxs;
             boxsName = AccessGameAll.data.boxsName;
-            Debug.Log(boxs.Count);
         }
     }
 

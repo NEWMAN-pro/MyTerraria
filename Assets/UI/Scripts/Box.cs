@@ -33,6 +33,7 @@ public class Box : MonoBehaviour
         foreach(var pair in items)
         {
             // 重新绘制宝箱物品
+            if (pair.Value == null) continue;
             CreateUI(pair.Value, pair.Key);
         }
         inputField.text = boxName;
@@ -45,15 +46,18 @@ public class Box : MonoBehaviour
         textPrefab = Resources.Load("Prefabs/ItemCount") as GameObject;
         // 物品图标初始化
         iconPrefab = Resources.Load("Prefabs/Icon") as GameObject;
+        backpack = this.transform.parent.GetComponent<Backpack>();
+
+        bool flag_ = (items.Count != 0);
         for (byte i = 0; i < 50; i++)
         {
-            items[i] = null;
             text = Instantiate(textPrefab, this.transform.GetChild(i));
             icon = Instantiate(iconPrefab, this.transform.GetChild(i));
+            if (flag_) continue;
+            items[i] = null;
             icon.name = "Icon";
             text.name = "ItemCount";
         }
-        backpack = this.transform.parent.GetComponent<Backpack>();
     }
 
     // 获取物品

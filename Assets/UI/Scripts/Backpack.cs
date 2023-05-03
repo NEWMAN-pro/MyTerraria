@@ -60,10 +60,9 @@ public class Backpack : MonoBehaviour
         if (!StartUI.flag)
         {
             // 如果是继续游戏
-            items = AccessGameAll.data.items;
-            foreach(var pair in items)
+            foreach(var pair in AccessGameAll.data.items)
             {
-                CreateUI(pair.Value, pair.Key, false);
+                SetItem(pair.Key, pair.Value);
             }
             return;
         }
