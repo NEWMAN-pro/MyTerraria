@@ -21,7 +21,8 @@ public class Make : MonoBehaviour
     public Transform backpack;
     // 物品框预制体
     public GameObject itemPrefab;
-    //public GameObject item;
+    // 材料框数量
+    public int materialCount;
 
     private void Awake()
     {
