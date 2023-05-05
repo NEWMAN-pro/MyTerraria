@@ -60,6 +60,15 @@ public class Item : IComparable<Item>
         this.materials = weapon.materials;
     }
 
+    public Item Clone()
+    {
+        Item item = new Item(ID, type, count, flag);
+        item.id = id;
+        item.name = name;
+        item.materials = materials;
+        return item;
+    }
+
     // 获取物品名称
     public string GetName()
     {

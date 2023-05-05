@@ -280,7 +280,7 @@ public class Box : MonoBehaviour
         // 找到背包与宝箱中相同的物品，且未被标记
         var items1 = items.Where(i => i.Value != null && !i.Value.flag).ToDictionary(i => i.Key, i => i.Value);
         // 垃圾桶中物品不参与匹配
-        var items2 = backpack.items.Where(i => i.Key != 50).ToDictionary(i => i.Key, i => i.Value);
+        var items2 = Backpack.items.Where(i => i.Key != 50).ToDictionary(i => i.Key, i => i.Value);
         var commonItems = items1.Values.Intersect(items2.Values, new ItemEqualityComparer()).ToList();
         var commonItemsWithKeys = items1.Where(pair => commonItems.Contains(pair.Value)).ToDictionary(pair => pair.Key, pair => pair.Value);
         foreach (var pair in commonItemsWithKeys)

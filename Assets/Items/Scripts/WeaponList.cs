@@ -21,16 +21,19 @@ public class WeaponList : MonoBehaviour
         // 铁剑
         Weapon ironSword = new(1, "IronSword", WeaponType.Sword, 2, 10, 0);
         ironSword.icon = iconList[0];
+        ironSword.ID = Item.Count++;
+        ironSword.materials.Add(new(BlockList.GetBlock(9).ID, -1, 1));
+        ironSword.materials.Add(new(BlockList.GetBlock(3).ID, -1, 2));
         weapons.Add(ironSword.id, ironSword);
 
         // 法杖
         Weapon scepter = new(2, "Scepter", WeaponType.Scepter, 10, 10, 5);
         scepter.icon = iconList[1];
+        scepter.ID = Item.Count++;
         weapons.Add(scepter.id, scepter);
 
         foreach(var pair in weapons)
         {
-            pair.Value.ID = Item.Count++;
             pair.Value.type = Type.Weapon;
             pair.Value.count = -1;
         }

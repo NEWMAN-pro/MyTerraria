@@ -23,6 +23,12 @@ public class Make : MonoBehaviour
     public GameObject itemPrefab;
     // 材料框数量
     public int materialCount;
+    // 被标记的物品
+    public int itemFlag = -1;
+    // 未标记的颜色
+    public Color NotFlag;
+    // 标记的颜色
+    public Color FlagColor;
 
     private void Awake()
     {
@@ -149,8 +155,10 @@ public class Make : MonoBehaviour
         if (backpack.GetChild(59).gameObject.activeSelf)
         {
             // 如果选择框处于激活状态，则获取选择框物品
-            Item selectItem = backpack.GetComponent<Backpack>().selectItem;
+            Item selectItem = backpack.GetComponent<Backpack>().selectItem.Clone();
+            selectItem.count = -1;
             material = selectItem.ID;
+            CreateUI(selectItem, 0, this.transform);
             CreateSynthesis();
         }
     }
@@ -174,6 +182,7 @@ public class Make : MonoBehaviour
                 return;
             }
             trans.GetChild(key).GetComponent<CreateUI>().CreateBlockUI(block, true, 40, new Vector3(0, -1f, -0.01f));
+            if (item.count != -1) trans.GetChild(key).GetChild(0).GetComponent<Text>().text = item.count.ToString();
         }
         else if (item.type == Type.Weapon)
         {
@@ -184,5 +193,11 @@ public class Make : MonoBehaviour
                 trans.GetChild(key).GetComponent<CreateUI>().CreateWeaponUI(weapon.icon);
             }
         }
+    }
+
+    // 更改物品格颜色
+    public void SetColor(int key, bool flag)
+    {
+        this.transform.GetChild(2).GetChild(0).GetChild(0).GetChild(key).GetComponent<Image>().color = flag ? FlagColor : NotFlag;
     }
 }

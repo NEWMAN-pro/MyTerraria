@@ -8,7 +8,7 @@ using System;
 public class Backpack : MonoBehaviour
 {
     // 物品队列
-    public Dictionary<byte, Item> items = new();
+    public static Dictionary<byte, Item> items = new();
     // 物品栏
     public Inventory inventory;
     // 宝箱
@@ -382,24 +382,27 @@ public class Backpack : MonoBehaviour
     // 存入物品
     public bool Storage(Item item)
     {
-        // 找出所有同类物品
-        var result = items.Where(x => x.Value != null && x.Value.ID == item.ID).ToList();
-        foreach(var pair in result)
+        if (item.count != -1)
         {
-            Debug.Log(pair.Key + " " + pair.Value.count);
-            Item item_ = pair.Value;
-            int ans = item_.count + item.count;
-            item_.count = Math.Min(64, ans);
-            SetItem(pair.Key, item_);
-            ans -= 64;
-            if(ans > 0)
+            // 找出所有同类物品
+            var result = items.Where(x => x.Value != null && x.Value.ID == item.ID).ToList();
+            foreach (var pair in result)
             {
-                item.count = ans;
-            }
-            else
-            {
-                // 将所有物品存入，则退出
-                return true;
+                //Debug.Log(pair.Key + " " + pair.Value.count);
+                Item item_ = pair.Value;
+                int ans = item_.count + item.count;
+                item_.count = Math.Min(64, ans);
+                SetItem(pair.Key, item_);
+                ans -= 64;
+                if (ans > 0)
+                {
+                    item.count = ans;
+                }
+                else
+                {
+                    // 将所有物品存入，则退出
+                    return true;
+                }
             }
         }
         byte key;

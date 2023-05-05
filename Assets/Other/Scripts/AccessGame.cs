@@ -25,7 +25,7 @@ public class AccessGame : MonoBehaviour
     // 保存玩家背包
     public void SaveBackpack()
     {
-        AccessGameAll.data.items = this.GetComponent<Backpack>().items;
+        AccessGameAll.data.items = Backpack.items;
     }
 
     // 保存宝箱队列
