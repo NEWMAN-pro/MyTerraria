@@ -107,6 +107,7 @@
     <Compile Include="Assets\Items\Scripts\Item.cs" />
     <Compile Include="Assets\Blocks\Scripts\BoxList.cs" />
     <Compile Include="Assets\Monster\Scripts\Monster\Slim.cs" />
+    <Compile Include="Assets\UI\Scripts\MessagePopup.cs" />
     <Compile Include="Assets\Player\Scripts\AnimationState.cs" />
     <Compile Include="Assets\Items\Scripts\DropList.cs" />
     <Compile Include="Assets\UI\Scripts\ButtonClick.cs" />

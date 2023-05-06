@@ -1,0 +1,721 @@
+{ "pid": 0, "tid": -1, "ph": "M", "name": "process_name", "args": { "name": "BeeDriver" } },
+{ "pid": 0, "tid": -1, "ph": "M", "name": "process_sort_index", "args": { "sort_index": "-2" } },
+{ "pid": 0, "tid": 1, "ph": "M", "name": "thread_name", "args": { "name": "" } },
+{ "pid": 0, "tid": 1, "ts": 1683351428512722, "dur": 1083785, "ph": "X", "name": "Build ScriptAssemblies", "args": {} },
+{ "pid": 0, "tid": 1, "ts": 1683351428514047, "dur": 35486, "ph": "X", "name": "WriteBuildProgramData", "args": {} },
+{ "pid": 0, "tid": 1, "ts": 1683351428549761, "dur": 67763, "ph": "X", "name": "Run Backend", "args": {} },
+{ "pid": 0, "tid": 1, "ts": 1683351428617549, "dur": 460911, "ph": "X", "name": "BuildProgram", "args": {} },
+{ "pid": 0, "tid": 1, "ts": 1683351429078462, "dur": 507858, "ph": "X", "name": "Run Backend", "args": {} },
+{ "pid": 0, "tid": 1, "ts": 1683351429586336, "dur": 10171, "ph": "X", "name": "Finish", "args": {} },
+{ "pid": 0, "tid": 1, "ts": 1683351440712480, "dur": 1559442, "ph": "X", "name": "Build Player", "args": {} },
+{ "pid": 0, "tid": 1, "ts": 1683351440712894, "dur": 5627, "ph": "X", "name": "WriteBuildProgramData", "args": {} },
+{ "pid": 0, "tid": 1, "ts": 1683351440718523, "dur": 50469, "ph": "X", "name": "Run Backend", "args": {} },
+{ "pid": 0, "tid": 1, "ts": 1683351440768994, "dur": 389809, "ph": "X", "name": "BuildProgram", "args": {} },
+{ "pid": 0, "tid": 1, "ts": 1683351441158806, "dur": 1100806, "ph": "X", "name": "Run Backend", "args": {} },
+{ "pid": 0, "tid": 1, "ts": 1683351442259613, "dur": 12308, "ph": "X", "name": "Finish", "args": {} },
+{ "pid": 0, "tid": 1, "ts": 1683351442273255, "dur": 33, "ph": "X", "name": "", "args": {} },
+{ "cat":"", "pid":12345, "tid":0, "ts":0, "ph":"M", "name":"process_name", "args": { "name":"bee_backend" } }
+,{ "pid":12345, "tid":0, "ts":1683351440757301, "dur":2684, "ph":"X", "name": "DriverInitData",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1683351440759999, "dur":172, "ph":"X", "name": "Tundra",  "args": { "detail":"RemoveStaleOutputs" }}
+,{ "pid":12345, "tid":0, "ts":1683351440760203, "dur":28, "ph":"X", "name": "Tundra",  "args": { "detail":"PrepareNodes" }}
+,{ "pid":12345, "tid":0, "ts":1683351440760233, "dur":470, "ph":"X", "name": "Tundra",  "args": { "detail":"BuildQueueInit" }}
+,{ "pid":12345, "tid":0, "ts":1683351440760741, "dur":1035, "ph":"X", "name": "EnqueueRequestedNodes",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1683351440761776, "dur":0, "ph":"X", "name": "SortWorkingStack",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1683351440762208, "dur":112, "ph":"X", "name": "JoinBuildThread",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1683351440762320, "dur":75, "ph":"X", "name": "ThreadStateDestroy",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1683351440762395, "dur":4, "ph":"X", "name": "JoinBuildThread",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1683351440762399, "dur":8, "ph":"X", "name": "ThreadStateDestroy",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1683351440762407, "dur":2, "ph":"X", "name": "JoinBuildThread",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1683351440762409, "dur":6, "ph":"X", "name": "ThreadStateDestroy",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1683351440762415, "dur":2, "ph":"X", "name": "JoinBuildThread",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1683351440762417, "dur":6, "ph":"X", "name": "ThreadStateDestroy",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1683351440762423, "dur":3, "ph":"X", "name": "JoinBuildThread",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1683351440762426, "dur":6, "ph":"X", "name": "ThreadStateDestroy",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1683351440762432, "dur":31, "ph":"X", "name": "JoinBuildThread",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1683351440762463, "dur":6, "ph":"X", "name": "ThreadStateDestroy",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1683351440762469, "dur":2, "ph":"X", "name": "JoinBuildThread",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1683351440762471, "dur":6, "ph":"X", "name": "ThreadStateDestroy",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1683351440762477, "dur":2, "ph":"X", "name": "JoinBuildThread",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1683351440762479, "dur":7, "ph":"X", "name": "ThreadStateDestroy",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1683351440762486, "dur":0, "ph":"X", "name": "SharedResourceDestroy",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1683351440762486, "dur":1, "ph":"X", "name": "BuildQueueDestroyTail",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1683351440762504, "dur":2334, "ph":"X", "name": "Tundra",  "args": { "detail":"Write AllBuiltNodes" }}
+,{ "pid":12345, "tid":1, "ts":1683351440761499, "dur":284, "ph":"X", "name": "FirstLock",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1683351440761786, "dur":415, "ph":"X", "name": "CheckDagSignatures",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1683351440761609, "dur":182, "ph":"X", "name": "FirstLock",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1683351440761791, "dur":445, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1683351440761693, "dur":106, "ph":"X", "name": "FirstLock",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1683351440761800, "dur":431, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1683351440761807, "dur":0, "ph":"X", "name": "FirstLock",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1683351440761807, "dur":408, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1683351440761851, "dur":0, "ph":"X", "name": "FirstLock",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1683351440761851, "dur":374, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":6, "ts":1683351440761937, "dur":1, "ph":"X", "name": "FirstLock",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":6, "ts":1683351440761938, "dur":280, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":7, "ts":1683351440761979, "dur":1, "ph":"X", "name": "FirstLock",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":7, "ts":1683351440761980, "dur":230, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":8, "ts":1683351440762066, "dur":0, "ph":"X", "name": "FirstLock",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":8, "ts":1683351440762066, "dur":149, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1683351440767980, "dur":1006, "ph":"X", "name": "ProfilerWriteOutput" }
+,{ "pid": 0, "tid": 1, "ts": 1683351442273512, "dur": 736, "ph": "X", "name": "backend_profiler0.traceevents", "args": {} },
+{ "pid": 35942, "tid": -1, "ph": "M", "name": "process_name", "args": { "name": "netcorerun.dll" } },
+{ "pid": 35942, "tid": -1, "ph": "M", "name": "process_sort_index", "args": { "sort_index": "-1" } },
+{ "pid": 35942, "tid": 1, "ph": "M", "name": "thread_name", "args": { "name": "" } },
+{ "pid": 35942, "tid": 1, "ts": 1683351440884088, "dur": 258480, "ph": "X", "name": "BuildProgram", "args": {} },
+{ "pid": 35942, "tid": 1, "ts": 1683351440885085, "dur": 47771, "ph": "X", "name": "BuildProgramContextConstructor", "args": {} },
+{ "pid": 35942, "tid": 1, "ts": 1683351441126686, "dur": 3315, "ph": "X", "name": "OutputData.Write", "args": {} },
+{ "pid": 35942, "tid": 1, "ts": 1683351441130005, "dur": 12556, "ph": "X", "name": "Backend.Write", "args": {} },
+{ "pid": 35942, "tid": 1, "ts": 1683351441130671, "dur": 9429, "ph": "X", "name": "JsonToString", "args": {} },
+{ "pid": 35942, "tid": 1, "ts": 1683351441147361, "dur": 1286, "ph": "X", "name": "", "args": {} },
+{ "pid": 35942, "tid": 1, "ts": 1683351441146446, "dur": 2223, "ph": "X", "name": "Write chrome-trace events", "args": {} },
+{ "pid": 0, "tid": 1, "ts": 1683351442274474, "dur": 581, "ph": "X", "name": "buildprogram0.traceevents", "args": {} },
+{ "cat":"", "pid":12345, "tid":0, "ts":0, "ph":"M", "name":"process_name", "args": { "name":"bee_backend" } }
+,{ "pid":12345, "tid":0, "ts":1683351441207056, "dur":2280, "ph":"X", "name": "DriverInitData",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1683351441209342, "dur":96, "ph":"X", "name": "Tundra",  "args": { "detail":"RemoveStaleOutputs" }}
+,{ "pid":12345, "tid":0, "ts":1683351441209451, "dur":20, "ph":"X", "name": "Tundra",  "args": { "detail":"PrepareNodes" }}
+,{ "pid":12345, "tid":0, "ts":1683351441209472, "dur":339, "ph":"X", "name": "Tundra",  "args": { "detail":"BuildQueueInit" }}
+,{ "pid":12345, "tid":0, "ts":1683351441209837, "dur":655, "ph":"X", "name": "EnqueueRequestedNodes",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1683351441210492, "dur":1, "ph":"X", "name": "SortWorkingStack",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1683351442240522, "dur":309, "ph":"X", "name": "JoinBuildThread",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1683351442240831, "dur":11, "ph":"X", "name": "ThreadStateDestroy",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1683351442240842, "dur":3, "ph":"X", "name": "JoinBuildThread",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1683351442240845, "dur":10, "ph":"X", "name": "ThreadStateDestroy",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1683351442240855, "dur":2, "ph":"X", "name": "JoinBuildThread",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1683351442240857, "dur":6, "ph":"X", "name": "ThreadStateDestroy",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1683351442240863, "dur":2, "ph":"X", "name": "JoinBuildThread",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1683351442240865, "dur":6, "ph":"X", "name": "ThreadStateDestroy",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1683351442240871, "dur":2, "ph":"X", "name": "JoinBuildThread",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1683351442240873, "dur":6, "ph":"X", "name": "ThreadStateDestroy",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1683351442240879, "dur":2, "ph":"X", "name": "JoinBuildThread",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1683351442240881, "dur":6, "ph":"X", "name": "ThreadStateDestroy",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1683351442240887, "dur":2, "ph":"X", "name": "JoinBuildThread",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1683351442240889, "dur":6, "ph":"X", "name": "ThreadStateDestroy",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1683351442240895, "dur":2, "ph":"X", "name": "JoinBuildThread",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1683351442240897, "dur":5, "ph":"X", "name": "ThreadStateDestroy",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1683351442240902, "dur":0, "ph":"X", "name": "SharedResourceDestroy",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1683351442240920, "dur":1, "ph":"X", "name": "BuildQueueDestroyTail",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1683351442240934, "dur":2479, "ph":"X", "name": "Tundra",  "args": { "detail":"Write AllBuiltNodes" }}
+,{ "pid":12345, "tid":1, "ts":1683351441210736, "dur":1, "ph":"X", "name": "FirstLock",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1683351441210737, "dur":5038, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1683351441215784, "dur":69, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles E://MyTerraria/MonoBleedingEdge/etc/mono/mconfig/config.xml" }}
+,{ "pid":12345, "tid":1, "ts":1683351441215853, "dur":77, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1683351441215933, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1683351441222052, "dur":2341, "ph":"X", "name": "CopyFiles",  "args": { "detail":"E://MyTerraria/MonoBleedingEdge/etc/mono/mconfig/config.xml" }}
+,{ "pid":12345, "tid":1, "ts":1683351441224410, "dur":20, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles E://MyTerraria/MonoBleedingEdge/etc/mono/2.0/settings.map" }}
+,{ "pid":12345, "tid":1, "ts":1683351441224430, "dur":24, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1683351441224461, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1683351441225048, "dur":2334, "ph":"X", "name": "CopyFiles",  "args": { "detail":"E://MyTerraria/MonoBleedingEdge/etc/mono/2.0/settings.map" }}
+,{ "pid":12345, "tid":1, "ts":1683351441227398, "dur":16, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles E://MyTerraria/MyTerraria.exe" }}
+,{ "pid":12345, "tid":1, "ts":1683351441227414, "dur":20, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1683351441227437, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1683351441227441, "dur":2269, "ph":"X", "name": "CopyFiles",  "args": { "detail":"E://MyTerraria/MyTerraria.exe" }}
+,{ "pid":12345, "tid":1, "ts":1683351441229726, "dur":19, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles E://MyTerraria/MyTerraria_Data/Managed/UnityEngine.VRModule.dll" }}
+,{ "pid":12345, "tid":1, "ts":1683351441229746, "dur":22, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1683351441229775, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1683351441229796, "dur":18146, "ph":"X", "name": "CopyFiles",  "args": { "detail":"E://MyTerraria/MyTerraria_Data/Managed/UnityEngine.VRModule.dll" }}
+,{ "pid":12345, "tid":1, "ts":1683351441247954, "dur":12, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles E://MyTerraria/MyTerraria_Data/Managed/UnityEngine.VideoModule.dll" }}
+,{ "pid":12345, "tid":1, "ts":1683351441247966, "dur":18, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1683351441247987, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1683351441247991, "dur":104629, "ph":"X", "name": "CopyFiles",  "args": { "detail":"E://MyTerraria/MyTerraria_Data/Managed/UnityEngine.VideoModule.dll" }}
+,{ "pid":12345, "tid":1, "ts":1683351441352632, "dur":17, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles E://MyTerraria/MyTerraria_Data/Managed/UnityEngine.UnityWebRequestWWWModule.dll" }}
+,{ "pid":12345, "tid":1, "ts":1683351441352649, "dur":78, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1683351441352730, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1683351441352735, "dur":3238, "ph":"X", "name": "CopyFiles",  "args": { "detail":"E://MyTerraria/MyTerraria_Data/Managed/UnityEngine.UnityWebRequestWWWModule.dll" }}
+,{ "pid":12345, "tid":1, "ts":1683351441355984, "dur":12, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles E://MyTerraria/MyTerraria_Data/Managed/UnityEngine.UnityWebRequestAssetBundleModule.dll" }}
+,{ "pid":12345, "tid":1, "ts":1683351441355996, "dur":88, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1683351441356089, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1683351441356094, "dur":2053, "ph":"X", "name": "CopyFiles",  "args": { "detail":"E://MyTerraria/MyTerraria_Data/Managed/UnityEngine.UnityWebRequestAssetBundleModule.dll" }}
+,{ "pid":12345, "tid":1, "ts":1683351441358158, "dur":15, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles E://MyTerraria/MyTerraria_Data/Managed/UnityEngine.UnityAnalyticsModule.dll" }}
+,{ "pid":12345, "tid":1, "ts":1683351441358173, "dur":18, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1683351441358193, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1683351441358197, "dur":1974, "ph":"X", "name": "CopyFiles",  "args": { "detail":"E://MyTerraria/MyTerraria_Data/Managed/UnityEngine.UnityAnalyticsModule.dll" }}
+,{ "pid":12345, "tid":1, "ts":1683351441360180, "dur":10, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles E://MyTerraria/MyTerraria_Data/Managed/UnityEngine.UIModule.dll" }}
+,{ "pid":12345, "tid":1, "ts":1683351441360190, "dur":15, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1683351441360208, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1683351441360211, "dur":1346, "ph":"X", "name": "CopyFiles",  "args": { "detail":"E://MyTerraria/MyTerraria_Data/Managed/UnityEngine.UIModule.dll" }}
+,{ "pid":12345, "tid":1, "ts":1683351441361567, "dur":9, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles E://MyTerraria/MyTerraria_Data/Managed/UnityEngine.TLSModule.dll" }}
+,{ "pid":12345, "tid":1, "ts":1683351441361576, "dur":27, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1683351441361606, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1683351441361609, "dur":2490, "ph":"X", "name": "CopyFiles",  "args": { "detail":"E://MyTerraria/MyTerraria_Data/Managed/UnityEngine.TLSModule.dll" }}
+,{ "pid":12345, "tid":1, "ts":1683351441364109, "dur":10, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles E://MyTerraria/MyTerraria_Data/Managed/UnityEngine.TextCoreTextEngineModule.dll" }}
+,{ "pid":12345, "tid":1, "ts":1683351441364119, "dur":28, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1683351441364150, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1683351441364153, "dur":64266, "ph":"X", "name": "CopyFiles",  "args": { "detail":"E://MyTerraria/MyTerraria_Data/Managed/UnityEngine.TextCoreTextEngineModule.dll" }}
+,{ "pid":12345, "tid":1, "ts":1683351441428429, "dur":9, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles E://MyTerraria/MyTerraria_Data/Managed/UnityEngine.SubsystemsModule.dll" }}
+,{ "pid":12345, "tid":1, "ts":1683351441428438, "dur":80, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1683351441428522, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1683351441428527, "dur":2915, "ph":"X", "name": "CopyFiles",  "args": { "detail":"E://MyTerraria/MyTerraria_Data/Managed/UnityEngine.SubsystemsModule.dll" }}
+,{ "pid":12345, "tid":1, "ts":1683351441431452, "dur":13, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles E://MyTerraria/MyTerraria_Data/Managed/UnityEngine.SpriteShapeModule.dll" }}
+,{ "pid":12345, "tid":1, "ts":1683351441431466, "dur":21, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1683351441431492, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1683351441431496, "dur":1983, "ph":"X", "name": "CopyFiles",  "args": { "detail":"E://MyTerraria/MyTerraria_Data/Managed/UnityEngine.SpriteShapeModule.dll" }}
+,{ "pid":12345, "tid":1, "ts":1683351441433491, "dur":14, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles E://MyTerraria/MyTerraria_Data/Managed/UnityEngine.ScreenCaptureModule.dll" }}
+,{ "pid":12345, "tid":1, "ts":1683351441433506, "dur":17, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1683351441433526, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1683351441433530, "dur":2056, "ph":"X", "name": "CopyFiles",  "args": { "detail":"E://MyTerraria/MyTerraria_Data/Managed/UnityEngine.ScreenCaptureModule.dll" }}
+,{ "pid":12345, "tid":1, "ts":1683351441435596, "dur":13, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles E://MyTerraria/MyTerraria_Data/Managed/UnityEngine.Physics2DModule.dll" }}
+,{ "pid":12345, "tid":1, "ts":1683351441435609, "dur":24, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1683351441435637, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1683351441435640, "dur":73627, "ph":"X", "name": "CopyFiles",  "args": { "detail":"E://MyTerraria/MyTerraria_Data/Managed/UnityEngine.Physics2DModule.dll" }}
+,{ "pid":12345, "tid":1, "ts":1683351441509278, "dur":12, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles E://MyTerraria/MyTerraria_Data/Managed/UnityEngine.JSONSerializeModule.dll" }}
+,{ "pid":12345, "tid":1, "ts":1683351441509291, "dur":72, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1683351441509367, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1683351441509370, "dur":2841, "ph":"X", "name": "CopyFiles",  "args": { "detail":"E://MyTerraria/MyTerraria_Data/Managed/UnityEngine.JSONSerializeModule.dll" }}
+,{ "pid":12345, "tid":1, "ts":1683351441512230, "dur":18, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles E://MyTerraria/MyTerraria_Data/Managed/UnityEngine.HotReloadModule.dll" }}
+,{ "pid":12345, "tid":1, "ts":1683351441512248, "dur":25, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1683351441512320, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1683351441512325, "dur":5792, "ph":"X", "name": "CopyFiles",  "args": { "detail":"E://MyTerraria/MyTerraria_Data/Managed/UnityEngine.HotReloadModule.dll" }}
+,{ "pid":12345, "tid":1, "ts":1683351441518128, "dur":10, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles E://MyTerraria/MyTerraria_Data/Managed/UnityEngine.dll" }}
+,{ "pid":12345, "tid":1, "ts":1683351441518138, "dur":19, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1683351441518159, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1683351441518163, "dur":86892, "ph":"X", "name": "CopyFiles",  "args": { "detail":"E://MyTerraria/MyTerraria_Data/Managed/UnityEngine.dll" }}
+,{ "pid":12345, "tid":1, "ts":1683351441605070, "dur":15, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles E://MyTerraria/MyTerraria_Data/Managed/UnityEngine.ClusterRendererModule.dll" }}
+,{ "pid":12345, "tid":1, "ts":1683351441605086, "dur":23, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1683351441605113, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1683351441605118, "dur":2424, "ph":"X", "name": "CopyFiles",  "args": { "detail":"E://MyTerraria/MyTerraria_Data/Managed/UnityEngine.ClusterRendererModule.dll" }}
+,{ "pid":12345, "tid":1, "ts":1683351441607557, "dur":24, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles E://MyTerraria/MyTerraria_Data/Managed/UnityEngine.AudioModule.dll" }}
+,{ "pid":12345, "tid":1, "ts":1683351441607582, "dur":103, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1683351441607690, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1683351441607694, "dur":3859, "ph":"X", "name": "CopyFiles",  "args": { "detail":"E://MyTerraria/MyTerraria_Data/Managed/UnityEngine.AudioModule.dll" }}
+,{ "pid":12345, "tid":1, "ts":1683351441611563, "dur":10, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles E://MyTerraria/MyTerraria_Data/Managed/UnityEngine.AIModule.dll" }}
+,{ "pid":12345, "tid":1, "ts":1683351441611573, "dur":18, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1683351441611630, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1683351441611633, "dur":505561, "ph":"X", "name": "CopyFiles",  "args": { "detail":"E://MyTerraria/MyTerraria_Data/Managed/UnityEngine.AIModule.dll" }}
+,{ "pid":12345, "tid":1, "ts":1683351442117213, "dur":709, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles E://MyTerraria/MyTerraria_Data/Managed/Unity.TextMeshPro.dll" }}
+,{ "pid":12345, "tid":1, "ts":1683351442117922, "dur":40, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1683351442117969, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1683351442117975, "dur":5931, "ph":"X", "name": "CopyFiles",  "args": { "detail":"E://MyTerraria/MyTerraria_Data/Managed/Unity.TextMeshPro.dll" }}
+,{ "pid":12345, "tid":1, "ts":1683351442123923, "dur":412, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles E://MyTerraria/MyTerraria_Data/Managed/Unity.Services.Core.Environments.Internal.dll" }}
+,{ "pid":12345, "tid":1, "ts":1683351442124335, "dur":105, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1683351442124445, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1683351442124449, "dur":4863, "ph":"X", "name": "CopyFiles",  "args": { "detail":"E://MyTerraria/MyTerraria_Data/Managed/Unity.Services.Core.Environments.Internal.dll" }}
+,{ "pid":12345, "tid":1, "ts":1683351442129329, "dur":15, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles E://MyTerraria/MyTerraria_Data/Managed/System.ServiceModel.Internals.dll" }}
+,{ "pid":12345, "tid":1, "ts":1683351442129344, "dur":28, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1683351442129380, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1683351442129387, "dur":4547, "ph":"X", "name": "CopyFiles",  "args": { "detail":"E://MyTerraria/MyTerraria_Data/Managed/System.ServiceModel.Internals.dll" }}
+,{ "pid":12345, "tid":1, "ts":1683351442133945, "dur":10, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles E://MyTerraria/MyTerraria_Data/Managed/System.IO.Compression.dll" }}
+,{ "pid":12345, "tid":1, "ts":1683351442133955, "dur":51, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1683351442134014, "dur":6, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1683351442134026, "dur":4660, "ph":"X", "name": "CopyFiles",  "args": { "detail":"E://MyTerraria/MyTerraria_Data/Managed/System.IO.Compression.dll" }}
+,{ "pid":12345, "tid":1, "ts":1683351442138702, "dur":14, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles E://MyTerraria/MyTerraria_Data/Managed/System.Configuration.dll" }}
+,{ "pid":12345, "tid":1, "ts":1683351442138716, "dur":33, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1683351442138798, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1683351442138802, "dur":3704, "ph":"X", "name": "CopyFiles",  "args": { "detail":"E://MyTerraria/MyTerraria_Data/Managed/System.Configuration.dll" }}
+,{ "pid":12345, "tid":1, "ts":1683351442142528, "dur":483, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles E://MyTerraria/MyTerraria_Data/Managed/Assembly-CSharp.dll" }}
+,{ "pid":12345, "tid":1, "ts":1683351442143028, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1683351442143034, "dur":3038, "ph":"X", "name": "CopyFiles",  "args": { "detail":"E://MyTerraria/MyTerraria_Data/Managed/Assembly-CSharp.dll" }}
+,{ "pid":12345, "tid":1, "ts":1683351442146088, "dur":446, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles E://MyTerraria/MyTerraria_Data/ScriptingAssemblies.json" }}
+,{ "pid":12345, "tid":1, "ts":1683351442146535, "dur":38, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1683351442146579, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1683351442146586, "dur":4474, "ph":"X", "name": "CopyFiles",  "args": { "detail":"E://MyTerraria/MyTerraria_Data/ScriptingAssemblies.json" }}
+,{ "pid":12345, "tid":1, "ts":1683351442151079, "dur":15, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles E://MyTerraria/MyTerraria_Data/globalgamemanagers.assets" }}
+,{ "pid":12345, "tid":1, "ts":1683351442151099, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1683351442151103, "dur":4502, "ph":"X", "name": "CopyFiles",  "args": { "detail":"E://MyTerraria/MyTerraria_Data/globalgamemanagers.assets" }}
+,{ "pid":12345, "tid":1, "ts":1683351442155623, "dur":84884, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1683351441210568, "dur":0, "ph":"X", "name": "FirstLock",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1683351441210568, "dur":5201, "ph":"X", "name": "CheckDagSignatures",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1683351441215784, "dur":2, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"WriteText Library/Bee/artifacts/WinPlayerBuildProgram/Data/app.info" }}
+,{ "pid":12345, "tid":2, "ts":1683351441215786, "dur":22, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1683351441215813, "dur":2, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles E://MyTerraria/MyTerraria_Data/app.info" }}
+,{ "pid":12345, "tid":2, "ts":1683351441215815, "dur":27, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1683351441215847, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1683351441217351, "dur":3540, "ph":"X", "name": "CopyFiles",  "args": { "detail":"E://MyTerraria/MyTerraria_Data/app.info" }}
+,{ "pid":12345, "tid":2, "ts":1683351441220893, "dur":18, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles E://MyTerraria/MonoBleedingEdge/etc/mono/4.0/web.config" }}
+,{ "pid":12345, "tid":2, "ts":1683351441220912, "dur":47, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1683351441220967, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1683351441221673, "dur":1981, "ph":"X", "name": "CopyFiles",  "args": { "detail":"E://MyTerraria/MonoBleedingEdge/etc/mono/4.0/web.config" }}
+,{ "pid":12345, "tid":2, "ts":1683351441223672, "dur":29, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles E://MyTerraria/MonoBleedingEdge/etc/mono/4.0/machine.config" }}
+,{ "pid":12345, "tid":2, "ts":1683351441223702, "dur":62, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1683351441223771, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1683351441223779, "dur":2297, "ph":"X", "name": "CopyFiles",  "args": { "detail":"E://MyTerraria/MonoBleedingEdge/etc/mono/4.0/machine.config" }}
+,{ "pid":12345, "tid":2, "ts":1683351441226094, "dur":375, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles E://MyTerraria/MonoBleedingEdge/etc/mono/config" }}
+,{ "pid":12345, "tid":2, "ts":1683351441226469, "dur":34, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1683351441226508, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1683351441226514, "dur":1991, "ph":"X", "name": "CopyFiles",  "args": { "detail":"E://MyTerraria/MonoBleedingEdge/etc/mono/config" }}
+,{ "pid":12345, "tid":2, "ts":1683351441228524, "dur":17, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles E://MyTerraria/MyTerraria_Data/Managed/UnityEngine.WindModule.dll" }}
+,{ "pid":12345, "tid":2, "ts":1683351441228541, "dur":86, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1683351441228635, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1683351441229486, "dur":18490, "ph":"X", "name": "CopyFiles",  "args": { "detail":"E://MyTerraria/MyTerraria_Data/Managed/UnityEngine.WindModule.dll" }}
+,{ "pid":12345, "tid":2, "ts":1683351441247990, "dur":10, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles E://MyTerraria/MyTerraria_Data/Managed/UnityEngine.VFXModule.dll" }}
+,{ "pid":12345, "tid":2, "ts":1683351441248001, "dur":16, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1683351441248019, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1683351441248023, "dur":105205, "ph":"X", "name": "CopyFiles",  "args": { "detail":"E://MyTerraria/MyTerraria_Data/Managed/UnityEngine.VFXModule.dll" }}
+,{ "pid":12345, "tid":2, "ts":1683351441353251, "dur":26, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles E://MyTerraria/MyTerraria_Data/Managed/UnityEngine.UnityWebRequestAudioModule.dll" }}
+,{ "pid":12345, "tid":2, "ts":1683351441353278, "dur":29, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1683351441353313, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1683351441353319, "dur":4429, "ph":"X", "name": "CopyFiles",  "args": { "detail":"E://MyTerraria/MyTerraria_Data/Managed/UnityEngine.UnityWebRequestAudioModule.dll" }}
+,{ "pid":12345, "tid":2, "ts":1683351441357764, "dur":12, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles E://MyTerraria/MyTerraria_Data/Managed/UnityEngine.UnityConnectModule.dll" }}
+,{ "pid":12345, "tid":2, "ts":1683351441357776, "dur":25, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1683351441357842, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1683351441357847, "dur":2460, "ph":"X", "name": "CopyFiles",  "args": { "detail":"E://MyTerraria/MyTerraria_Data/Managed/UnityEngine.UnityConnectModule.dll" }}
+,{ "pid":12345, "tid":2, "ts":1683351441360324, "dur":17, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles E://MyTerraria/MyTerraria_Data/Managed/UnityEngine.UIElementsNativeModule.dll" }}
+,{ "pid":12345, "tid":2, "ts":1683351441360341, "dur":27, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1683351441360374, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1683351441360380, "dur":2387, "ph":"X", "name": "CopyFiles",  "args": { "detail":"E://MyTerraria/MyTerraria_Data/Managed/UnityEngine.UIElementsNativeModule.dll" }}
+,{ "pid":12345, "tid":2, "ts":1683351441362784, "dur":14, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles E://MyTerraria/MyTerraria_Data/Managed/UnityEngine.TilemapModule.dll" }}
+,{ "pid":12345, "tid":2, "ts":1683351441362798, "dur":22, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1683351441362824, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1683351441362828, "dur":65477, "ph":"X", "name": "CopyFiles",  "args": { "detail":"E://MyTerraria/MyTerraria_Data/Managed/UnityEngine.TilemapModule.dll" }}
+,{ "pid":12345, "tid":2, "ts":1683351441428323, "dur":16, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles E://MyTerraria/MyTerraria_Data/Managed/UnityEngine.TerrainModule.dll" }}
+,{ "pid":12345, "tid":2, "ts":1683351441428339, "dur":35, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1683351441428377, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1683351441428381, "dur":3584, "ph":"X", "name": "CopyFiles",  "args": { "detail":"E://MyTerraria/MyTerraria_Data/Managed/UnityEngine.TerrainModule.dll" }}
+,{ "pid":12345, "tid":2, "ts":1683351441431981, "dur":16, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles E://MyTerraria/MyTerraria_Data/Managed/UnityEngine.SpriteMaskModule.dll" }}
+,{ "pid":12345, "tid":2, "ts":1683351441431997, "dur":28, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1683351441432031, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1683351441432037, "dur":2266, "ph":"X", "name": "CopyFiles",  "args": { "detail":"E://MyTerraria/MyTerraria_Data/Managed/UnityEngine.SpriteMaskModule.dll" }}
+,{ "pid":12345, "tid":2, "ts":1683351441434317, "dur":14, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles E://MyTerraria/MyTerraria_Data/Managed/UnityEngine.PhysicsModule.dll" }}
+,{ "pid":12345, "tid":2, "ts":1683351441434331, "dur":22, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1683351441434360, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1683351441434365, "dur":72844, "ph":"X", "name": "CopyFiles",  "args": { "detail":"E://MyTerraria/MyTerraria_Data/Managed/UnityEngine.PhysicsModule.dll" }}
+,{ "pid":12345, "tid":2, "ts":1683351441507222, "dur":18, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles E://MyTerraria/MyTerraria_Data/Managed/UnityEngine.LocalizationModule.dll" }}
+,{ "pid":12345, "tid":2, "ts":1683351441507240, "dur":17, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1683351441507260, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1683351441507297, "dur":4538, "ph":"X", "name": "CopyFiles",  "args": { "detail":"E://MyTerraria/MyTerraria_Data/Managed/UnityEngine.LocalizationModule.dll" }}
+,{ "pid":12345, "tid":2, "ts":1683351441511846, "dur":10, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles E://MyTerraria/MyTerraria_Data/Managed/UnityEngine.IMGUIModule.dll" }}
+,{ "pid":12345, "tid":2, "ts":1683351441511856, "dur":157, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1683351441512017, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1683351441512020, "dur":5840, "ph":"X", "name": "CopyFiles",  "args": { "detail":"E://MyTerraria/MyTerraria_Data/Managed/UnityEngine.IMGUIModule.dll" }}
+,{ "pid":12345, "tid":2, "ts":1683351441517876, "dur":17, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles E://MyTerraria/MyTerraria_Data/Managed/UnityEngine.GameCenterModule.dll" }}
+,{ "pid":12345, "tid":2, "ts":1683351441517894, "dur":36, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1683351441517935, "dur":6, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1683351441517947, "dur":87028, "ph":"X", "name": "CopyFiles",  "args": { "detail":"E://MyTerraria/MyTerraria_Data/Managed/UnityEngine.GameCenterModule.dll" }}
+,{ "pid":12345, "tid":2, "ts":1683351441604986, "dur":9, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles E://MyTerraria/MyTerraria_Data/Managed/UnityEngine.CoreModule.dll" }}
+,{ "pid":12345, "tid":2, "ts":1683351441604996, "dur":17, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1683351441605016, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1683351441605019, "dur":2786, "ph":"X", "name": "CopyFiles",  "args": { "detail":"E://MyTerraria/MyTerraria_Data/Managed/UnityEngine.CoreModule.dll" }}
+,{ "pid":12345, "tid":2, "ts":1683351441607820, "dur":14, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles E://MyTerraria/MyTerraria_Data/Managed/UnityEngine.AssetBundleModule.dll" }}
+,{ "pid":12345, "tid":2, "ts":1683351441607834, "dur":24, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1683351441607862, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1683351441607867, "dur":3888, "ph":"X", "name": "CopyFiles",  "args": { "detail":"E://MyTerraria/MyTerraria_Data/Managed/UnityEngine.AssetBundleModule.dll" }}
+,{ "pid":12345, "tid":2, "ts":1683351441611775, "dur":348, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles E://MyTerraria/MyTerraria_Data/Managed/Unity.VisualScripting.State.dll" }}
+,{ "pid":12345, "tid":2, "ts":1683351441612124, "dur":22, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1683351441612150, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1683351441612153, "dur":505772, "ph":"X", "name": "CopyFiles",  "args": { "detail":"E://MyTerraria/MyTerraria_Data/Managed/Unity.VisualScripting.State.dll" }}
+,{ "pid":12345, "tid":2, "ts":1683351442117941, "dur":874, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles E://MyTerraria/MyTerraria_Data/Managed/Unity.Services.Core.Telemetry.dll" }}
+,{ "pid":12345, "tid":2, "ts":1683351442118816, "dur":37, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1683351442118857, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1683351442118860, "dur":5098, "ph":"X", "name": "CopyFiles",  "args": { "detail":"E://MyTerraria/MyTerraria_Data/Managed/Unity.Services.Core.Telemetry.dll" }}
+,{ "pid":12345, "tid":2, "ts":1683351442123976, "dur":486, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles E://MyTerraria/MyTerraria_Data/Managed/Unity.Services.Core.Environments.dll" }}
+,{ "pid":12345, "tid":2, "ts":1683351442124463, "dur":102, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1683351442124575, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1683351442124582, "dur":4689, "ph":"X", "name": "CopyFiles",  "args": { "detail":"E://MyTerraria/MyTerraria_Data/Managed/Unity.Services.Core.Environments.dll" }}
+,{ "pid":12345, "tid":2, "ts":1683351442129288, "dur":16, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles E://MyTerraria/MyTerraria_Data/Managed/System.Transactions.dll" }}
+,{ "pid":12345, "tid":2, "ts":1683351442129304, "dur":35, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1683351442129347, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1683351442129353, "dur":4569, "ph":"X", "name": "CopyFiles",  "args": { "detail":"E://MyTerraria/MyTerraria_Data/Managed/System.Transactions.dll" }}
+,{ "pid":12345, "tid":2, "ts":1683351442133935, "dur":15, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles E://MyTerraria/MyTerraria_Data/Managed/System.IO.Compression.FileSystem.dll" }}
+,{ "pid":12345, "tid":2, "ts":1683351442133950, "dur":53, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1683351442134011, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1683351442134019, "dur":4259, "ph":"X", "name": "CopyFiles",  "args": { "detail":"E://MyTerraria/MyTerraria_Data/Managed/System.IO.Compression.FileSystem.dll" }}
+,{ "pid":12345, "tid":2, "ts":1683351442138287, "dur":9, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles E://MyTerraria/MyTerraria_Data/Managed/System.Core.dll" }}
+,{ "pid":12345, "tid":2, "ts":1683351442138296, "dur":84, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1683351442138384, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1683351442138387, "dur":4180, "ph":"X", "name": "CopyFiles",  "args": { "detail":"E://MyTerraria/MyTerraria_Data/Managed/System.Core.dll" }}
+,{ "pid":12345, "tid":2, "ts":1683351442142583, "dur":327, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles E://MyTerraria/MyTerraria_Data/StreamingAssets/UnityServicesProjectConfiguration.json" }}
+,{ "pid":12345, "tid":2, "ts":1683351442142911, "dur":29, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1683351442142988, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1683351442143665, "dur":1879, "ph":"X", "name": "CopyFiles",  "args": { "detail":"E://MyTerraria/MyTerraria_Data/StreamingAssets/UnityServicesProjectConfiguration.json" }}
+,{ "pid":12345, "tid":2, "ts":1683351442145564, "dur":19, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles E://MyTerraria/MyTerraria_Data/sharedassets0.assets.resS" }}
+,{ "pid":12345, "tid":2, "ts":1683351442145592, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1683351442145607, "dur":4755, "ph":"X", "name": "CopyFiles",  "args": { "detail":"E://MyTerraria/MyTerraria_Data/sharedassets0.assets.resS" }}
+,{ "pid":12345, "tid":2, "ts":1683351442150382, "dur":14, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles E://MyTerraria/MyTerraria_Data/level0.resS" }}
+,{ "pid":12345, "tid":2, "ts":1683351442150401, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1683351442150406, "dur":3859, "ph":"X", "name": "CopyFiles",  "args": { "detail":"E://MyTerraria/MyTerraria_Data/level0.resS" }}
+,{ "pid":12345, "tid":2, "ts":1683351442154288, "dur":86220, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1683351441210687, "dur":1, "ph":"X", "name": "FirstLock",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1683351441210688, "dur":5088, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1683351441215784, "dur":35, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles E://MyTerraria/MonoBleedingEdge/etc/mono/4.5/Browsers/Compat.browser" }}
+,{ "pid":12345, "tid":3, "ts":1683351441215819, "dur":52, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1683351441215877, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1683351441221688, "dur":1990, "ph":"X", "name": "CopyFiles",  "args": { "detail":"E://MyTerraria/MonoBleedingEdge/etc/mono/4.5/Browsers/Compat.browser" }}
+,{ "pid":12345, "tid":3, "ts":1683351441223700, "dur":22, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles E://MyTerraria/MonoBleedingEdge/etc/mono/4.0/DefaultWsdlHelpGenerator.aspx" }}
+,{ "pid":12345, "tid":3, "ts":1683351441223722, "dur":22, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1683351441223752, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1683351441223760, "dur":2221, "ph":"X", "name": "CopyFiles",  "args": { "detail":"E://MyTerraria/MonoBleedingEdge/etc/mono/4.0/DefaultWsdlHelpGenerator.aspx" }}
+,{ "pid":12345, "tid":3, "ts":1683351441225999, "dur":20, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles E://MyTerraria/MonoBleedingEdge/etc/mono/2.0/DefaultWsdlHelpGenerator.aspx" }}
+,{ "pid":12345, "tid":3, "ts":1683351441226019, "dur":20, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1683351441226047, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1683351441226072, "dur":2023, "ph":"X", "name": "CopyFiles",  "args": { "detail":"E://MyTerraria/MonoBleedingEdge/etc/mono/2.0/DefaultWsdlHelpGenerator.aspx" }}
+,{ "pid":12345, "tid":3, "ts":1683351441228113, "dur":29, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles E://MyTerraria/MyTerraria_Data/Resources/unity default resources" }}
+,{ "pid":12345, "tid":3, "ts":1683351441228142, "dur":23, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1683351441228173, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1683351441228934, "dur":887486, "ph":"X", "name": "CopyFiles",  "args": { "detail":"E://MyTerraria/MyTerraria_Data/Resources/unity default resources" }}
+,{ "pid":12345, "tid":3, "ts":1683351442116439, "dur":1354, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles E://MyTerraria/MyTerraria_Data/Managed/Unity.VisualScripting.Core.dll" }}
+,{ "pid":12345, "tid":3, "ts":1683351442117793, "dur":33, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1683351442117833, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1683351442117839, "dur":5999, "ph":"X", "name": "CopyFiles",  "args": { "detail":"E://MyTerraria/MyTerraria_Data/Managed/Unity.VisualScripting.Core.dll" }}
+,{ "pid":12345, "tid":3, "ts":1683351442123853, "dur":401, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles E://MyTerraria/MyTerraria_Data/Managed/Unity.Services.Core.Internal.dll" }}
+,{ "pid":12345, "tid":3, "ts":1683351442124255, "dur":164, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1683351442124425, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1683351442124430, "dur":4056, "ph":"X", "name": "CopyFiles",  "args": { "detail":"E://MyTerraria/MyTerraria_Data/Managed/Unity.Services.Core.Internal.dll" }}
+,{ "pid":12345, "tid":3, "ts":1683351442128498, "dur":13, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles E://MyTerraria/MyTerraria_Data/Managed/System.Xml.Linq.dll" }}
+,{ "pid":12345, "tid":3, "ts":1683351442128512, "dur":78, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1683351442128594, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1683351442128600, "dur":4425, "ph":"X", "name": "CopyFiles",  "args": { "detail":"E://MyTerraria/MyTerraria_Data/Managed/System.Xml.Linq.dll" }}
+,{ "pid":12345, "tid":3, "ts":1683351442133045, "dur":19, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles E://MyTerraria/MyTerraria_Data/Managed/System.Net.Http.dll" }}
+,{ "pid":12345, "tid":3, "ts":1683351442133064, "dur":208, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1683351442133277, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1683351442133284, "dur":4713, "ph":"X", "name": "CopyFiles",  "args": { "detail":"E://MyTerraria/MyTerraria_Data/Managed/System.Net.Http.dll" }}
+,{ "pid":12345, "tid":3, "ts":1683351442138008, "dur":10, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles E://MyTerraria/MyTerraria_Data/Managed/System.Data.DataSetExtensions.dll" }}
+,{ "pid":12345, "tid":3, "ts":1683351442138018, "dur":31, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1683351442138053, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1683351442138057, "dur":3397, "ph":"X", "name": "CopyFiles",  "args": { "detail":"E://MyTerraria/MyTerraria_Data/Managed/System.Data.DataSetExtensions.dll" }}
+,{ "pid":12345, "tid":3, "ts":1683351442141480, "dur":16, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles E://MyTerraria/MyTerraria_Data/Managed/netstandard.dll" }}
+,{ "pid":12345, "tid":3, "ts":1683351442141496, "dur":147, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1683351442141648, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1683351442141653, "dur":3421, "ph":"X", "name": "CopyFiles",  "args": { "detail":"E://MyTerraria/MyTerraria_Data/Managed/netstandard.dll" }}
+,{ "pid":12345, "tid":3, "ts":1683351442145093, "dur":16, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles E://MyTerraria/MyTerraria_Data/sharedassets1.assets" }}
+,{ "pid":12345, "tid":3, "ts":1683351442145116, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1683351442145122, "dur":2834, "ph":"X", "name": "CopyFiles",  "args": { "detail":"E://MyTerraria/MyTerraria_Data/sharedassets1.assets" }}
+,{ "pid":12345, "tid":3, "ts":1683351442147969, "dur":9, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles E://MyTerraria/MyTerraria_Data/resources.assets" }}
+,{ "pid":12345, "tid":3, "ts":1683351442147981, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1683351442147985, "dur":5685, "ph":"X", "name": "CopyFiles",  "args": { "detail":"E://MyTerraria/MyTerraria_Data/resources.assets" }}
+,{ "pid":12345, "tid":3, "ts":1683351442153696, "dur":382, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles E://MyTerraria/MyTerraria_Data/boot.config" }}
+,{ "pid":12345, "tid":3, "ts":1683351442154078, "dur":37, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1683351442154121, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1683351442154127, "dur":2229, "ph":"X", "name": "CopyFiles",  "args": { "detail":"E://MyTerraria/MyTerraria_Data/boot.config" }}
+,{ "pid":12345, "tid":3, "ts":1683351442156373, "dur":84169, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1683351441211038, "dur":0, "ph":"X", "name": "FirstLock",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1683351441211038, "dur":4797, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1683351441215835, "dur":27, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles E://MyTerraria/MonoBleedingEdge/etc/mono/4.0/Browsers/Compat.browser" }}
+,{ "pid":12345, "tid":4, "ts":1683351441215862, "dur":107, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1683351441215972, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1683351441224106, "dur":2012, "ph":"X", "name": "CopyFiles",  "args": { "detail":"E://MyTerraria/MonoBleedingEdge/etc/mono/4.0/Browsers/Compat.browser" }}
+,{ "pid":12345, "tid":4, "ts":1683351441226139, "dur":21, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles E://MyTerraria/MonoBleedingEdge/etc/mono/browscap.ini" }}
+,{ "pid":12345, "tid":4, "ts":1683351441226160, "dur":21, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1683351441226188, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1683351441226196, "dur":1966, "ph":"X", "name": "CopyFiles",  "args": { "detail":"E://MyTerraria/MonoBleedingEdge/etc/mono/browscap.ini" }}
+,{ "pid":12345, "tid":4, "ts":1683351441228179, "dur":43, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles E://MyTerraria/MyTerraria_Data/Managed/UnityEngine.XRModule.dll" }}
+,{ "pid":12345, "tid":4, "ts":1683351441228223, "dur":34, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1683351441228265, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1683351441229291, "dur":18717, "ph":"X", "name": "CopyFiles",  "args": { "detail":"E://MyTerraria/MyTerraria_Data/Managed/UnityEngine.XRModule.dll" }}
+,{ "pid":12345, "tid":4, "ts":1683351441248022, "dur":25, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles E://MyTerraria/MyTerraria_Data/Managed/UnityEngine.VehiclesModule.dll" }}
+,{ "pid":12345, "tid":4, "ts":1683351441248047, "dur":20, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1683351441248071, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1683351441248075, "dur":104954, "ph":"X", "name": "CopyFiles",  "args": { "detail":"E://MyTerraria/MyTerraria_Data/Managed/UnityEngine.VehiclesModule.dll" }}
+,{ "pid":12345, "tid":4, "ts":1683351441353039, "dur":12, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles E://MyTerraria/MyTerraria_Data/Managed/UnityEngine.UnityWebRequestTextureModule.dll" }}
+,{ "pid":12345, "tid":4, "ts":1683351441353052, "dur":16, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1683351441353071, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1683351441353075, "dur":3899, "ph":"X", "name": "CopyFiles",  "args": { "detail":"E://MyTerraria/MyTerraria_Data/Managed/UnityEngine.UnityWebRequestTextureModule.dll" }}
+,{ "pid":12345, "tid":4, "ts":1683351441356985, "dur":11, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles E://MyTerraria/MyTerraria_Data/Managed/UnityEngine.UnityTestProtocolModule.dll" }}
+,{ "pid":12345, "tid":4, "ts":1683351441356997, "dur":21, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1683351441357021, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1683351441357025, "dur":2221, "ph":"X", "name": "CopyFiles",  "args": { "detail":"E://MyTerraria/MyTerraria_Data/Managed/UnityEngine.UnityTestProtocolModule.dll" }}
+,{ "pid":12345, "tid":4, "ts":1683351441359258, "dur":13, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles E://MyTerraria/MyTerraria_Data/Managed/UnityEngine.UmbraModule.dll" }}
+,{ "pid":12345, "tid":4, "ts":1683351441359272, "dur":17, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1683351441359292, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1683351441359295, "dur":1968, "ph":"X", "name": "CopyFiles",  "args": { "detail":"E://MyTerraria/MyTerraria_Data/Managed/UnityEngine.UmbraModule.dll" }}
+,{ "pid":12345, "tid":4, "ts":1683351441361273, "dur":431, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles E://MyTerraria/MyTerraria_Data/Managed/UnityEngine.UI.dll" }}
+,{ "pid":12345, "tid":4, "ts":1683351441361705, "dur":20, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1683351441361729, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1683351441361733, "dur":2585, "ph":"X", "name": "CopyFiles",  "args": { "detail":"E://MyTerraria/MyTerraria_Data/Managed/UnityEngine.UI.dll" }}
+,{ "pid":12345, "tid":4, "ts":1683351441364327, "dur":10, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles E://MyTerraria/MyTerraria_Data/Managed/UnityEngine.TextCoreFontEngineModule.dll" }}
+,{ "pid":12345, "tid":4, "ts":1683351441364337, "dur":17, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1683351441364389, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1683351441364393, "dur":65745, "ph":"X", "name": "CopyFiles",  "args": { "detail":"E://MyTerraria/MyTerraria_Data/Managed/UnityEngine.TextCoreFontEngineModule.dll" }}
+,{ "pid":12345, "tid":4, "ts":1683351441430147, "dur":10, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles E://MyTerraria/MyTerraria_Data/Managed/UnityEngine.SubstanceModule.dll" }}
+,{ "pid":12345, "tid":4, "ts":1683351441430157, "dur":28, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1683351441430188, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1683351441430191, "dur":1918, "ph":"X", "name": "CopyFiles",  "args": { "detail":"E://MyTerraria/MyTerraria_Data/Managed/UnityEngine.SubstanceModule.dll" }}
+,{ "pid":12345, "tid":4, "ts":1683351441432123, "dur":10, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles E://MyTerraria/MyTerraria_Data/Managed/UnityEngine.SharedInternalsModule.dll" }}
+,{ "pid":12345, "tid":4, "ts":1683351441432133, "dur":19, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1683351441432155, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1683351441432158, "dur":1918, "ph":"X", "name": "CopyFiles",  "args": { "detail":"E://MyTerraria/MyTerraria_Data/Managed/UnityEngine.SharedInternalsModule.dll" }}
+,{ "pid":12345, "tid":4, "ts":1683351441434086, "dur":14, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles E://MyTerraria/MyTerraria_Data/Managed/UnityEngine.ProfilerModule.dll" }}
+,{ "pid":12345, "tid":4, "ts":1683351441434101, "dur":18, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1683351441434121, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1683351441434125, "dur":2435, "ph":"X", "name": "CopyFiles",  "args": { "detail":"E://MyTerraria/MyTerraria_Data/Managed/UnityEngine.ProfilerModule.dll" }}
+,{ "pid":12345, "tid":4, "ts":1683351441436571, "dur":13, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles E://MyTerraria/MyTerraria_Data/Managed/UnityEngine.PerformanceReportingModule.dll" }}
+,{ "pid":12345, "tid":4, "ts":1683351441436584, "dur":70192, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1683351441506781, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1683351441506787, "dur":5213, "ph":"X", "name": "CopyFiles",  "args": { "detail":"E://MyTerraria/MyTerraria_Data/Managed/UnityEngine.PerformanceReportingModule.dll" }}
+,{ "pid":12345, "tid":4, "ts":1683351441512020, "dur":18, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles E://MyTerraria/MyTerraria_Data/Managed/UnityEngine.ImageConversionModule.dll" }}
+,{ "pid":12345, "tid":4, "ts":1683351441512038, "dur":31, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1683351441512082, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1683351441512089, "dur":6002, "ph":"X", "name": "CopyFiles",  "args": { "detail":"E://MyTerraria/MyTerraria_Data/Managed/UnityEngine.ImageConversionModule.dll" }}
+,{ "pid":12345, "tid":4, "ts":1683351441518106, "dur":14, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles E://MyTerraria/MyTerraria_Data/Managed/UnityEngine.DSPGraphModule.dll" }}
+,{ "pid":12345, "tid":4, "ts":1683351441518120, "dur":26, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1683351441518151, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1683351441518155, "dur":86941, "ph":"X", "name": "CopyFiles",  "args": { "detail":"E://MyTerraria/MyTerraria_Data/Managed/UnityEngine.DSPGraphModule.dll" }}
+,{ "pid":12345, "tid":4, "ts":1683351441605113, "dur":24, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles E://MyTerraria/MyTerraria_Data/Managed/UnityEngine.ClusterInputModule.dll" }}
+,{ "pid":12345, "tid":4, "ts":1683351441605138, "dur":52, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1683351441605196, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1683351441605203, "dur":2610, "ph":"X", "name": "CopyFiles",  "args": { "detail":"E://MyTerraria/MyTerraria_Data/Managed/UnityEngine.ClusterInputModule.dll" }}
+,{ "pid":12345, "tid":4, "ts":1683351441607832, "dur":14, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles E://MyTerraria/MyTerraria_Data/Managed/UnityEngine.ARModule.dll" }}
+,{ "pid":12345, "tid":4, "ts":1683351441607846, "dur":23, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1683351441607873, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1683351441607877, "dur":3765, "ph":"X", "name": "CopyFiles",  "args": { "detail":"E://MyTerraria/MyTerraria_Data/Managed/UnityEngine.ARModule.dll" }}
+,{ "pid":12345, "tid":4, "ts":1683351441611667, "dur":19, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles E://MyTerraria/MyTerraria_Data/Managed/UnityEngine.AccessibilityModule.dll" }}
+,{ "pid":12345, "tid":4, "ts":1683351441611686, "dur":75, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1683351441611767, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1683351441611775, "dur":506064, "ph":"X", "name": "CopyFiles",  "args": { "detail":"E://MyTerraria/MyTerraria_Data/Managed/UnityEngine.AccessibilityModule.dll" }}
+,{ "pid":12345, "tid":4, "ts":1683351442117857, "dur":837, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles E://MyTerraria/MyTerraria_Data/Managed/Unity.Services.Core.Threading.dll" }}
+,{ "pid":12345, "tid":4, "ts":1683351442118694, "dur":32, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1683351442118731, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1683351442118736, "dur":5268, "ph":"X", "name": "CopyFiles",  "args": { "detail":"E://MyTerraria/MyTerraria_Data/Managed/Unity.Services.Core.Threading.dll" }}
+,{ "pid":12345, "tid":4, "ts":1683351442124020, "dur":631, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles E://MyTerraria/MyTerraria_Data/Managed/Unity.Services.Core.dll" }}
+,{ "pid":12345, "tid":4, "ts":1683351442124652, "dur":66, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1683351442124726, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1683351442124732, "dur":4360, "ph":"X", "name": "CopyFiles",  "args": { "detail":"E://MyTerraria/MyTerraria_Data/Managed/Unity.Services.Core.dll" }}
+,{ "pid":12345, "tid":4, "ts":1683351442129103, "dur":22, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles E://MyTerraria/MyTerraria_Data/Managed/System.Xml.dll" }}
+,{ "pid":12345, "tid":4, "ts":1683351442129125, "dur":82, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1683351442129214, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1683351442129220, "dur":6817, "ph":"X", "name": "CopyFiles",  "args": { "detail":"E://MyTerraria/MyTerraria_Data/Managed/System.Xml.dll" }}
+,{ "pid":12345, "tid":4, "ts":1683351442136055, "dur":18, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles E://MyTerraria/MyTerraria_Data/Managed/System.EnterpriseServices.dll" }}
+,{ "pid":12345, "tid":4, "ts":1683351442136073, "dur":26, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1683351442136103, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1683351442136108, "dur":3789, "ph":"X", "name": "CopyFiles",  "args": { "detail":"E://MyTerraria/MyTerraria_Data/Managed/System.EnterpriseServices.dll" }}
+,{ "pid":12345, "tid":4, "ts":1683351442139943, "dur":23, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles E://MyTerraria/MyTerraria_Data/Managed/System.ComponentModel.Composition.dll" }}
+,{ "pid":12345, "tid":4, "ts":1683351442139966, "dur":40, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1683351442140012, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1683351442140020, "dur":3903, "ph":"X", "name": "CopyFiles",  "args": { "detail":"E://MyTerraria/MyTerraria_Data/Managed/System.ComponentModel.Composition.dll" }}
+,{ "pid":12345, "tid":4, "ts":1683351442143935, "dur":9, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles E://MyTerraria/MyTerraria_Data/Resources/unity_builtin_extra" }}
+,{ "pid":12345, "tid":4, "ts":1683351442143948, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1683351442143959, "dur":2161, "ph":"X", "name": "CopyFiles",  "args": { "detail":"E://MyTerraria/MyTerraria_Data/Resources/unity_builtin_extra" }}
+,{ "pid":12345, "tid":4, "ts":1683351442146137, "dur":437, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles E://MyTerraria/MyTerraria_Data/RuntimeInitializeOnLoads.json" }}
+,{ "pid":12345, "tid":4, "ts":1683351442146574, "dur":39, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1683351442146618, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1683351442146622, "dur":4419, "ph":"X", "name": "CopyFiles",  "args": { "detail":"E://MyTerraria/MyTerraria_Data/RuntimeInitializeOnLoads.json" }}
+,{ "pid":12345, "tid":4, "ts":1683351442151070, "dur":16, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles E://MyTerraria/MyTerraria_Data/level0" }}
+,{ "pid":12345, "tid":4, "ts":1683351442151094, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1683351442151100, "dur":4500, "ph":"X", "name": "CopyFiles",  "args": { "detail":"E://MyTerraria/MyTerraria_Data/level0" }}
+,{ "pid":12345, "tid":4, "ts":1683351442155611, "dur":84930, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1683351441210888, "dur":0, "ph":"X", "name": "FirstLock",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1683351441210888, "dur":4918, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1683351441215806, "dur":31, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles E://MyTerraria/MonoBleedingEdge/etc/mono/4.5/settings.map" }}
+,{ "pid":12345, "tid":5, "ts":1683351441215837, "dur":65, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1683351441215907, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1683351441221230, "dur":2462, "ph":"X", "name": "CopyFiles",  "args": { "detail":"E://MyTerraria/MonoBleedingEdge/etc/mono/4.5/settings.map" }}
+,{ "pid":12345, "tid":5, "ts":1683351441223712, "dur":22, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles E://MyTerraria/MonoBleedingEdge/etc/mono/2.0/Browsers/Compat.browser" }}
+,{ "pid":12345, "tid":5, "ts":1683351441223734, "dur":29, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1683351441223770, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1683351441225392, "dur":1969, "ph":"X", "name": "CopyFiles",  "args": { "detail":"E://MyTerraria/MonoBleedingEdge/etc/mono/2.0/Browsers/Compat.browser" }}
+,{ "pid":12345, "tid":5, "ts":1683351441227383, "dur":34, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles E://MyTerraria/UnityCrashHandler64.exe" }}
+,{ "pid":12345, "tid":5, "ts":1683351441227417, "dur":17, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1683351441227438, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1683351441227441, "dur":214357, "ph":"X", "name": "CopyFiles",  "args": { "detail":"E://MyTerraria/UnityCrashHandler64.exe" }}
+,{ "pid":12345, "tid":5, "ts":1683351441441812, "dur":16, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles E://MyTerraria/MyTerraria_Data/Managed/UnityEngine.NVIDIAModule.dll" }}
+,{ "pid":12345, "tid":5, "ts":1683351441441828, "dur":64939, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1683351441506776, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1683351441506784, "dur":5015, "ph":"X", "name": "CopyFiles",  "args": { "detail":"E://MyTerraria/MyTerraria_Data/Managed/UnityEngine.NVIDIAModule.dll" }}
+,{ "pid":12345, "tid":5, "ts":1683351441511816, "dur":15, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles E://MyTerraria/MyTerraria_Data/Managed/UnityEngine.InputLegacyModule.dll" }}
+,{ "pid":12345, "tid":5, "ts":1683351441511831, "dur":111, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1683351441511947, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1683351441511951, "dur":5805, "ph":"X", "name": "CopyFiles",  "args": { "detail":"E://MyTerraria/MyTerraria_Data/Managed/UnityEngine.InputLegacyModule.dll" }}
+,{ "pid":12345, "tid":5, "ts":1683351441517783, "dur":10, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles E://MyTerraria/MyTerraria_Data/Managed/UnityEngine.GIModule.dll" }}
+,{ "pid":12345, "tid":5, "ts":1683351441517793, "dur":33, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1683351441517829, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1683351441517832, "dur":85265, "ph":"X", "name": "CopyFiles",  "args": { "detail":"E://MyTerraria/MyTerraria_Data/Managed/UnityEngine.GIModule.dll" }}
+,{ "pid":12345, "tid":5, "ts":1683351441603115, "dur":17, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles E://MyTerraria/MyTerraria_Data/Managed/UnityEngine.CrashReportingModule.dll" }}
+,{ "pid":12345, "tid":5, "ts":1683351441603132, "dur":109, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1683351441603245, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1683351441603249, "dur":3304, "ph":"X", "name": "CopyFiles",  "args": { "detail":"E://MyTerraria/MyTerraria_Data/Managed/UnityEngine.CrashReportingModule.dll" }}
+,{ "pid":12345, "tid":5, "ts":1683351441606573, "dur":17, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles E://MyTerraria/MyTerraria_Data/Managed/UnityEngine.AutoStreamingModule.dll" }}
+,{ "pid":12345, "tid":5, "ts":1683351441606590, "dur":26, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1683351441606667, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1683351441606675, "dur":3699, "ph":"X", "name": "CopyFiles",  "args": { "detail":"E://MyTerraria/MyTerraria_Data/Managed/UnityEngine.AutoStreamingModule.dll" }}
+,{ "pid":12345, "tid":5, "ts":1683351441610390, "dur":17, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles E://MyTerraria/MyTerraria_Data/Managed/UnityEngine.AndroidJNIModule.dll" }}
+,{ "pid":12345, "tid":5, "ts":1683351441610407, "dur":25, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1683351441610440, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1683351441610446, "dur":506004, "ph":"X", "name": "CopyFiles",  "args": { "detail":"E://MyTerraria/MyTerraria_Data/Managed/UnityEngine.AndroidJNIModule.dll" }}
+,{ "pid":12345, "tid":5, "ts":1683351442116468, "dur":23, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles E://MyTerraria/MyTerraria_Data/Managed/Unity.VisualScripting.Antlr3.Runtime.dll" }}
+,{ "pid":12345, "tid":5, "ts":1683351442116492, "dur":25, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1683351442116520, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1683351442116525, "dur":4762, "ph":"X", "name": "CopyFiles",  "args": { "detail":"E://MyTerraria/MyTerraria_Data/Managed/Unity.VisualScripting.Antlr3.Runtime.dll" }}
+,{ "pid":12345, "tid":5, "ts":1683351442121303, "dur":335, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles E://MyTerraria/MyTerraria_Data/Managed/Unity.Services.Core.Scheduler.dll" }}
+,{ "pid":12345, "tid":5, "ts":1683351442121639, "dur":41, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1683351442121686, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1683351442121693, "dur":3456, "ph":"X", "name": "CopyFiles",  "args": { "detail":"E://MyTerraria/MyTerraria_Data/Managed/Unity.Services.Core.Scheduler.dll" }}
+,{ "pid":12345, "tid":5, "ts":1683351442125164, "dur":274, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles E://MyTerraria/MyTerraria_Data/Managed/Unity.Services.Core.Device.dll" }}
+,{ "pid":12345, "tid":5, "ts":1683351442125438, "dur":37, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1683351442125478, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1683351442125481, "dur":4855, "ph":"X", "name": "CopyFiles",  "args": { "detail":"E://MyTerraria/MyTerraria_Data/Managed/Unity.Services.Core.Device.dll" }}
+,{ "pid":12345, "tid":5, "ts":1683351442130348, "dur":9, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles E://MyTerraria/MyTerraria_Data/Managed/System.Security.dll" }}
+,{ "pid":12345, "tid":5, "ts":1683351442130358, "dur":63, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1683351442130424, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1683351442130428, "dur":5671, "ph":"X", "name": "CopyFiles",  "args": { "detail":"E://MyTerraria/MyTerraria_Data/Managed/System.Security.dll" }}
+,{ "pid":12345, "tid":5, "ts":1683351442136114, "dur":18, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles E://MyTerraria/MyTerraria_Data/Managed/System.Drawing.dll" }}
+,{ "pid":12345, "tid":5, "ts":1683351442136133, "dur":38, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1683351442136179, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1683351442136185, "dur":4444, "ph":"X", "name": "CopyFiles",  "args": { "detail":"E://MyTerraria/MyTerraria_Data/Managed/System.Drawing.dll" }}
+,{ "pid":12345, "tid":5, "ts":1683351442140645, "dur":16, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles E://MyTerraria/MyTerraria_Data/Managed/Newtonsoft.Json.dll" }}
+,{ "pid":12345, "tid":5, "ts":1683351442140662, "dur":23, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1683351442140693, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1683351442140699, "dur":3861, "ph":"X", "name": "CopyFiles",  "args": { "detail":"E://MyTerraria/MyTerraria_Data/Managed/Newtonsoft.Json.dll" }}
+,{ "pid":12345, "tid":5, "ts":1683351442144576, "dur":15, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles E://MyTerraria/MyTerraria_Data/sharedassets1.assets.resS" }}
+,{ "pid":12345, "tid":5, "ts":1683351442144600, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1683351442144606, "dur":2621, "ph":"X", "name": "CopyFiles",  "args": { "detail":"E://MyTerraria/MyTerraria_Data/sharedassets1.assets.resS" }}
+,{ "pid":12345, "tid":5, "ts":1683351442147238, "dur":14, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles E://MyTerraria/MyTerraria_Data/resources.assets.resS" }}
+,{ "pid":12345, "tid":5, "ts":1683351442147255, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1683351442147257, "dur":8483, "ph":"X", "name": "CopyFiles",  "args": { "detail":"E://MyTerraria/MyTerraria_Data/resources.assets.resS" }}
+,{ "pid":12345, "tid":5, "ts":1683351442155760, "dur":84807, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":6, "ts":1683351441211188, "dur":0, "ph":"X", "name": "FirstLock",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":6, "ts":1683351441211188, "dur":4642, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":6, "ts":1683351441215832, "dur":31, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles E://MyTerraria/MonoBleedingEdge/etc/mono/4.5/DefaultWsdlHelpGenerator.aspx" }}
+,{ "pid":12345, "tid":6, "ts":1683351441215863, "dur":87, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":6, "ts":1683351441215958, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":6, "ts":1683351441222494, "dur":2170, "ph":"X", "name": "CopyFiles",  "args": { "detail":"E://MyTerraria/MonoBleedingEdge/etc/mono/4.5/DefaultWsdlHelpGenerator.aspx" }}
+,{ "pid":12345, "tid":6, "ts":1683351441224682, "dur":28, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles E://MyTerraria/MonoBleedingEdge/etc/mono/2.0/machine.config" }}
+,{ "pid":12345, "tid":6, "ts":1683351441224710, "dur":19, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":6, "ts":1683351441224736, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":6, "ts":1683351441224757, "dur":2480, "ph":"X", "name": "CopyFiles",  "args": { "detail":"E://MyTerraria/MonoBleedingEdge/etc/mono/2.0/machine.config" }}
+,{ "pid":12345, "tid":6, "ts":1683351441227253, "dur":32, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles E://MyTerraria/UnityPlayer.dll" }}
+,{ "pid":12345, "tid":6, "ts":1683351441227285, "dur":19, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":6, "ts":1683351441227353, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":6, "ts":1683351441227359, "dur":1013113, "ph":"X", "name": "CopyFiles",  "args": { "detail":"E://MyTerraria/UnityPlayer.dll" }}
+,{ "pid":12345, "tid":6, "ts":1683351442240487, "dur":1, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"Player" }}
+,{ "pid":12345, "tid":6, "ts":1683351442240488, "dur":1, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":7, "ts":1683351441211482, "dur":1, "ph":"X", "name": "FirstLock",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":7, "ts":1683351441211483, "dur":4323, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":7, "ts":1683351441215807, "dur":36, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles E://MyTerraria/MonoBleedingEdge/etc/mono/4.5/machine.config" }}
+,{ "pid":12345, "tid":7, "ts":1683351441215843, "dur":44, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":7, "ts":1683351441215891, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":7, "ts":1683351441220993, "dur":2659, "ph":"X", "name": "CopyFiles",  "args": { "detail":"E://MyTerraria/MonoBleedingEdge/etc/mono/4.5/machine.config" }}
+,{ "pid":12345, "tid":7, "ts":1683351441223672, "dur":19, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles E://MyTerraria/MonoBleedingEdge/etc/mono/4.0/settings.map" }}
+,{ "pid":12345, "tid":7, "ts":1683351441223691, "dur":27, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":7, "ts":1683351441223722, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":7, "ts":1683351441223727, "dur":2398, "ph":"X", "name": "CopyFiles",  "args": { "detail":"E://MyTerraria/MonoBleedingEdge/etc/mono/4.0/settings.map" }}
+,{ "pid":12345, "tid":7, "ts":1683351441226144, "dur":28, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles E://MyTerraria/MonoBleedingEdge/EmbedRuntime/MonoPosixHelper.dll" }}
+,{ "pid":12345, "tid":7, "ts":1683351441226172, "dur":33, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":7, "ts":1683351441226211, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":7, "ts":1683351441227794, "dur":20119, "ph":"X", "name": "CopyFiles",  "args": { "detail":"E://MyTerraria/MonoBleedingEdge/EmbedRuntime/MonoPosixHelper.dll" }}
+,{ "pid":12345, "tid":7, "ts":1683351441247938, "dur":20, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles E://MyTerraria/MyTerraria_Data/Managed/UnityEngine.VirtualTexturingModule.dll" }}
+,{ "pid":12345, "tid":7, "ts":1683351441247959, "dur":24, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":7, "ts":1683351441247989, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":7, "ts":1683351441247997, "dur":105224, "ph":"X", "name": "CopyFiles",  "args": { "detail":"E://MyTerraria/MyTerraria_Data/Managed/UnityEngine.VirtualTexturingModule.dll" }}
+,{ "pid":12345, "tid":7, "ts":1683351441353235, "dur":15, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles E://MyTerraria/MyTerraria_Data/Managed/UnityEngine.UnityWebRequestModule.dll" }}
+,{ "pid":12345, "tid":7, "ts":1683351441353250, "dur":18, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":7, "ts":1683351441353271, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":7, "ts":1683351441353274, "dur":3787, "ph":"X", "name": "CopyFiles",  "args": { "detail":"E://MyTerraria/MyTerraria_Data/Managed/UnityEngine.UnityWebRequestModule.dll" }}
+,{ "pid":12345, "tid":7, "ts":1683351441357072, "dur":10, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles E://MyTerraria/MyTerraria_Data/Managed/UnityEngine.UnityCurlModule.dll" }}
+,{ "pid":12345, "tid":7, "ts":1683351441357083, "dur":17, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":7, "ts":1683351441357102, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":7, "ts":1683351441357106, "dur":2091, "ph":"X", "name": "CopyFiles",  "args": { "detail":"E://MyTerraria/MyTerraria_Data/Managed/UnityEngine.UnityCurlModule.dll" }}
+,{ "pid":12345, "tid":7, "ts":1683351441359206, "dur":11, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles E://MyTerraria/MyTerraria_Data/Managed/UnityEngine.UNETModule.dll" }}
+,{ "pid":12345, "tid":7, "ts":1683351441359217, "dur":19, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":7, "ts":1683351441359239, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":7, "ts":1683351441359242, "dur":1826, "ph":"X", "name": "CopyFiles",  "args": { "detail":"E://MyTerraria/MyTerraria_Data/Managed/UnityEngine.UNETModule.dll" }}
+,{ "pid":12345, "tid":7, "ts":1683351441361082, "dur":15, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles E://MyTerraria/MyTerraria_Data/Managed/UnityEngine.UIElementsModule.dll" }}
+,{ "pid":12345, "tid":7, "ts":1683351441361097, "dur":24, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":7, "ts":1683351441361156, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":7, "ts":1683351441361160, "dur":2136, "ph":"X", "name": "CopyFiles",  "args": { "detail":"E://MyTerraria/MyTerraria_Data/Managed/UnityEngine.UIElementsModule.dll" }}
+,{ "pid":12345, "tid":7, "ts":1683351441363306, "dur":10, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles E://MyTerraria/MyTerraria_Data/Managed/UnityEngine.TextRenderingModule.dll" }}
+,{ "pid":12345, "tid":7, "ts":1683351441363316, "dur":49, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":7, "ts":1683351441363368, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":7, "ts":1683351441363372, "dur":64524, "ph":"X", "name": "CopyFiles",  "args": { "detail":"E://MyTerraria/MyTerraria_Data/Managed/UnityEngine.TextRenderingModule.dll" }}
+,{ "pid":12345, "tid":7, "ts":1683351441427909, "dur":11, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles E://MyTerraria/MyTerraria_Data/Managed/UnityEngine.TerrainPhysicsModule.dll" }}
+,{ "pid":12345, "tid":7, "ts":1683351441427921, "dur":21, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":7, "ts":1683351441427945, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":7, "ts":1683351441427950, "dur":3460, "ph":"X", "name": "CopyFiles",  "args": { "detail":"E://MyTerraria/MyTerraria_Data/Managed/UnityEngine.TerrainPhysicsModule.dll" }}
+,{ "pid":12345, "tid":7, "ts":1683351441431420, "dur":10, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles E://MyTerraria/MyTerraria_Data/Managed/UnityEngine.StreamingModule.dll" }}
+,{ "pid":12345, "tid":7, "ts":1683351441431430, "dur":16, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":7, "ts":1683351441431449, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":7, "ts":1683351441431484, "dur":2192, "ph":"X", "name": "CopyFiles",  "args": { "detail":"E://MyTerraria/MyTerraria_Data/Managed/UnityEngine.StreamingModule.dll" }}
+,{ "pid":12345, "tid":7, "ts":1683351441433695, "dur":21, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles E://MyTerraria/MyTerraria_Data/Managed/UnityEngine.RuntimeInitializeOnLoadManagerInitializerModule.dll" }}
+,{ "pid":12345, "tid":7, "ts":1683351441433716, "dur":53, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":7, "ts":1683351441433776, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":7, "ts":1683351441433783, "dur":2831, "ph":"X", "name": "CopyFiles",  "args": { "detail":"E://MyTerraria/MyTerraria_Data/Managed/UnityEngine.RuntimeInitializeOnLoadManagerInitializerModule.dll" }}
+,{ "pid":12345, "tid":7, "ts":1683351441436633, "dur":17, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles E://MyTerraria/MyTerraria_Data/Managed/UnityEngine.ParticleSystemModule.dll" }}
+,{ "pid":12345, "tid":7, "ts":1683351441436650, "dur":70126, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":7, "ts":1683351441506781, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":7, "ts":1683351441506787, "dur":4912, "ph":"X", "name": "CopyFiles",  "args": { "detail":"E://MyTerraria/MyTerraria_Data/Managed/UnityEngine.ParticleSystemModule.dll" }}
+,{ "pid":12345, "tid":7, "ts":1683351441511710, "dur":11, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles E://MyTerraria/MyTerraria_Data/Managed/UnityEngine.InputModule.dll" }}
+,{ "pid":12345, "tid":7, "ts":1683351441511721, "dur":17, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":7, "ts":1683351441511741, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":7, "ts":1683351441511745, "dur":4554, "ph":"X", "name": "CopyFiles",  "args": { "detail":"E://MyTerraria/MyTerraria_Data/Managed/UnityEngine.InputModule.dll" }}
+,{ "pid":12345, "tid":7, "ts":1683351441516317, "dur":14, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles E://MyTerraria/MyTerraria_Data/Managed/UnityEngine.GridModule.dll" }}
+,{ "pid":12345, "tid":7, "ts":1683351441516332, "dur":72, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":7, "ts":1683351441516408, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":7, "ts":1683351441516411, "dur":2954, "ph":"X", "name": "CopyFiles",  "args": { "detail":"E://MyTerraria/MyTerraria_Data/Managed/UnityEngine.GridModule.dll" }}
+,{ "pid":12345, "tid":7, "ts":1683351441519375, "dur":13, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles E://MyTerraria/MyTerraria_Data/Managed/UnityEngine.DirectorModule.dll" }}
+,{ "pid":12345, "tid":7, "ts":1683351441519388, "dur":83023, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":7, "ts":1683351441602459, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":7, "ts":1683351441602466, "dur":4051, "ph":"X", "name": "CopyFiles",  "args": { "detail":"E://MyTerraria/MyTerraria_Data/Managed/UnityEngine.DirectorModule.dll" }}
+,{ "pid":12345, "tid":7, "ts":1683351441606539, "dur":27, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles E://MyTerraria/MyTerraria_Data/Managed/UnityEngine.ClothModule.dll" }}
+,{ "pid":12345, "tid":7, "ts":1683351441606567, "dur":26, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":7, "ts":1683351441606598, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":7, "ts":1683351441606605, "dur":3739, "ph":"X", "name": "CopyFiles",  "args": { "detail":"E://MyTerraria/MyTerraria_Data/Managed/UnityEngine.ClothModule.dll" }}
+,{ "pid":12345, "tid":7, "ts":1683351441610357, "dur":11, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles E://MyTerraria/MyTerraria_Data/Managed/UnityEngine.AnimationModule.dll" }}
+,{ "pid":12345, "tid":7, "ts":1683351441610368, "dur":19, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":7, "ts":1683351441610390, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":7, "ts":1683351441610394, "dur":505935, "ph":"X", "name": "CopyFiles",  "args": { "detail":"E://MyTerraria/MyTerraria_Data/Managed/UnityEngine.AnimationModule.dll" }}
+,{ "pid":12345, "tid":7, "ts":1683351442116348, "dur":1030, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles E://MyTerraria/MyTerraria_Data/Managed/Unity.VisualScripting.Flow.dll" }}
+,{ "pid":12345, "tid":7, "ts":1683351442117379, "dur":32, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":7, "ts":1683351442117457, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":7, "ts":1683351442117464, "dur":4851, "ph":"X", "name": "CopyFiles",  "args": { "detail":"E://MyTerraria/MyTerraria_Data/Managed/Unity.VisualScripting.Flow.dll" }}
+,{ "pid":12345, "tid":7, "ts":1683351442122335, "dur":370, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles E://MyTerraria/MyTerraria_Data/Managed/Unity.Services.Core.Networking.dll" }}
+,{ "pid":12345, "tid":7, "ts":1683351442122705, "dur":33, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":7, "ts":1683351442122782, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":7, "ts":1683351442122788, "dur":2896, "ph":"X", "name": "CopyFiles",  "args": { "detail":"E://MyTerraria/MyTerraria_Data/Managed/Unity.Services.Core.Networking.dll" }}
+,{ "pid":12345, "tid":7, "ts":1683351442125709, "dur":317, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles E://MyTerraria/MyTerraria_Data/Managed/Unity.Services.Core.Configuration.dll" }}
+,{ "pid":12345, "tid":7, "ts":1683351442126027, "dur":83, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":7, "ts":1683351442126113, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":7, "ts":1683351442126117, "dur":4876, "ph":"X", "name": "CopyFiles",  "args": { "detail":"E://MyTerraria/MyTerraria_Data/Managed/Unity.Services.Core.Configuration.dll" }}
+,{ "pid":12345, "tid":7, "ts":1683351442131003, "dur":9, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles E://MyTerraria/MyTerraria_Data/Managed/System.Runtime.Serialization.dll" }}
+,{ "pid":12345, "tid":7, "ts":1683351442131012, "dur":52, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":7, "ts":1683351442131067, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":7, "ts":1683351442131070, "dur":5121, "ph":"X", "name": "CopyFiles",  "args": { "detail":"E://MyTerraria/MyTerraria_Data/Managed/System.Runtime.Serialization.dll" }}
+,{ "pid":12345, "tid":7, "ts":1683351442136205, "dur":10, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles E://MyTerraria/MyTerraria_Data/Managed/System.dll" }}
+,{ "pid":12345, "tid":7, "ts":1683351442136215, "dur":49, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":7, "ts":1683351442136267, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":7, "ts":1683351442136271, "dur":5937, "ph":"X", "name": "CopyFiles",  "args": { "detail":"E://MyTerraria/MyTerraria_Data/Managed/System.dll" }}
+,{ "pid":12345, "tid":7, "ts":1683351442142227, "dur":18, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles E://MyTerraria/MyTerraria_Data/Managed/Mono.Security.dll" }}
+,{ "pid":12345, "tid":7, "ts":1683351442142245, "dur":128, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":7, "ts":1683351442142376, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":7, "ts":1683351442142380, "dur":3249, "ph":"X", "name": "CopyFiles",  "args": { "detail":"E://MyTerraria/MyTerraria_Data/Managed/Mono.Security.dll" }}
+,{ "pid":12345, "tid":7, "ts":1683351442145644, "dur":15, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles E://MyTerraria/MyTerraria_Data/sharedassets0.assets" }}
+,{ "pid":12345, "tid":7, "ts":1683351442145667, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":7, "ts":1683351442145712, "dur":2934, "ph":"X", "name": "CopyFiles",  "args": { "detail":"E://MyTerraria/MyTerraria_Data/sharedassets0.assets" }}
+,{ "pid":12345, "tid":7, "ts":1683351442148663, "dur":17, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles E://MyTerraria/MyTerraria_Data/level1" }}
+,{ "pid":12345, "tid":7, "ts":1683351442148685, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":7, "ts":1683351442148690, "dur":5027, "ph":"X", "name": "CopyFiles",  "args": { "detail":"E://MyTerraria/MyTerraria_Data/level1" }}
+,{ "pid":12345, "tid":7, "ts":1683351442153736, "dur":86773, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":8, "ts":1683351441211334, "dur":0, "ph":"X", "name": "FirstLock",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":8, "ts":1683351441211334, "dur":4446, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":8, "ts":1683351441215784, "dur":44, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles E://MyTerraria/MonoBleedingEdge/etc/mono/4.5/web.config" }}
+,{ "pid":12345, "tid":8, "ts":1683351441215829, "dur":86, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":8, "ts":1683351441215920, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":8, "ts":1683351441221298, "dur":2417, "ph":"X", "name": "CopyFiles",  "args": { "detail":"E://MyTerraria/MonoBleedingEdge/etc/mono/4.5/web.config" }}
+,{ "pid":12345, "tid":8, "ts":1683351441223735, "dur":29, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles E://MyTerraria/MonoBleedingEdge/etc/mono/2.0/web.config" }}
+,{ "pid":12345, "tid":8, "ts":1683351441223764, "dur":25, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":8, "ts":1683351441223796, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":8, "ts":1683351441224648, "dur":2364, "ph":"X", "name": "CopyFiles",  "args": { "detail":"E://MyTerraria/MonoBleedingEdge/etc/mono/2.0/web.config" }}
+,{ "pid":12345, "tid":8, "ts":1683351441227029, "dur":36, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles E://MyTerraria/MonoBleedingEdge/EmbedRuntime/mono-2.0-bdwgc.dll" }}
+,{ "pid":12345, "tid":8, "ts":1683351441227065, "dur":24, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":8, "ts":1683351441227097, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":8, "ts":1683351441227737, "dur":888729, "ph":"X", "name": "CopyFiles",  "args": { "detail":"E://MyTerraria/MonoBleedingEdge/EmbedRuntime/mono-2.0-bdwgc.dll" }}
+,{ "pid":12345, "tid":8, "ts":1683351442116495, "dur":852, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles E://MyTerraria/MyTerraria_Data/Managed/Unity.Timeline.dll" }}
+,{ "pid":12345, "tid":8, "ts":1683351442117348, "dur":28, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":8, "ts":1683351442117381, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":8, "ts":1683351442117386, "dur":4258, "ph":"X", "name": "CopyFiles",  "args": { "detail":"E://MyTerraria/MyTerraria_Data/Managed/Unity.Timeline.dll" }}
+,{ "pid":12345, "tid":8, "ts":1683351442121661, "dur":312, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles E://MyTerraria/MyTerraria_Data/Managed/Unity.Services.Core.Registration.dll" }}
+,{ "pid":12345, "tid":8, "ts":1683351442121973, "dur":84, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":8, "ts":1683351442122063, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":8, "ts":1683351442122069, "dur":3719, "ph":"X", "name": "CopyFiles",  "args": { "detail":"E://MyTerraria/MyTerraria_Data/Managed/Unity.Services.Core.Registration.dll" }}
+,{ "pid":12345, "tid":8, "ts":1683351442125807, "dur":258, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles E://MyTerraria/MyTerraria_Data/Managed/Unity.Services.Core.Analytics.dll" }}
+,{ "pid":12345, "tid":8, "ts":1683351442126066, "dur":90, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":8, "ts":1683351442126160, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":8, "ts":1683351442126163, "dur":5210, "ph":"X", "name": "CopyFiles",  "args": { "detail":"E://MyTerraria/MyTerraria_Data/Managed/Unity.Services.Core.Analytics.dll" }}
+,{ "pid":12345, "tid":8, "ts":1683351442131385, "dur":12, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles E://MyTerraria/MyTerraria_Data/Managed/System.Numerics.dll" }}
+,{ "pid":12345, "tid":8, "ts":1683351442131397, "dur":28, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":8, "ts":1683351442131428, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":8, "ts":1683351442131431, "dur":4807, "ph":"X", "name": "CopyFiles",  "args": { "detail":"E://MyTerraria/MyTerraria_Data/Managed/System.Numerics.dll" }}
+,{ "pid":12345, "tid":8, "ts":1683351442136253, "dur":13, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles E://MyTerraria/MyTerraria_Data/Managed/System.Data.dll" }}
+,{ "pid":12345, "tid":8, "ts":1683351442136267, "dur":46, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":8, "ts":1683351442136317, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":8, "ts":1683351442136321, "dur":5240, "ph":"X", "name": "CopyFiles",  "args": { "detail":"E://MyTerraria/MyTerraria_Data/Managed/System.Data.dll" }}
+,{ "pid":12345, "tid":8, "ts":1683351442141571, "dur":9, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles E://MyTerraria/MyTerraria_Data/Managed/mscorlib.dll" }}
+,{ "pid":12345, "tid":8, "ts":1683351442141580, "dur":201, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":8, "ts":1683351442141785, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":8, "ts":1683351442141815, "dur":6205, "ph":"X", "name": "CopyFiles",  "args": { "detail":"E://MyTerraria/MyTerraria_Data/Managed/mscorlib.dll" }}
+,{ "pid":12345, "tid":8, "ts":1683351442148035, "dur":12, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles E://MyTerraria/MyTerraria_Data/level1.resS" }}
+,{ "pid":12345, "tid":8, "ts":1683351442148051, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":8, "ts":1683351442148054, "dur":5607, "ph":"X", "name": "CopyFiles",  "args": { "detail":"E://MyTerraria/MyTerraria_Data/level1.resS" }}
+,{ "pid":12345, "tid":8, "ts":1683351442153679, "dur":16, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles E://MyTerraria/MyTerraria_Data/globalgamemanagers" }}
+,{ "pid":12345, "tid":8, "ts":1683351442153700, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":8, "ts":1683351442153706, "dur":2283, "ph":"X", "name": "CopyFiles",  "args": { "detail":"E://MyTerraria/MyTerraria_Data/globalgamemanagers" }}
+,{ "pid":12345, "tid":8, "ts":1683351442155999, "dur":84568, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1683351442245575, "dur":2633, "ph":"X", "name": "ProfilerWriteOutput" }
+,{ "pid": 0, "tid": 1, "ts": 1683351442275272, "dur": 1748, "ph": "X", "name": "backend_profiler1.traceevents", "args": {} },
+{ "pid": 0, "tid": 1, "ts": 1683351442273243, "dur": 3804, "ph": "X", "name": "Write chrome-trace events", "args": {} },

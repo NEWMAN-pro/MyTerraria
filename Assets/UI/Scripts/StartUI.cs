@@ -10,6 +10,8 @@ public class StartUI : MonoBehaviour
     public static string key = "";
     // 角色名字
     public static string playerName = "";
+    // 地图种子
+    public static int seed = -1;
     // 是否是新游戏
     public static bool flag = true;
 
@@ -45,11 +47,18 @@ public class StartUI : MonoBehaviour
         this.transform.GetChild(1).gameObject.SetActive(true);
     }
 
+    // 退出游戏
+    public void ExitGameButton()
+    {
+        Application.Quit();
+    }
+
     // 创建世界
     public void CreateWorld()
     {
         playerName = GameObject.Find("InputPlayerName").GetComponent<InputField>().text;
         key = GameObject.Find("InputWorldName").GetComponent<InputField>().text + ".txt";
+        seed = int.Parse(GameObject.Find("Seed").GetComponent<InputField>().text);
         flag = true;
         ToScenes();
     }

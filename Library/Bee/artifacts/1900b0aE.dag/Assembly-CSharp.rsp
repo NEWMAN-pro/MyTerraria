@@ -425,6 +425,7 @@
 "Assets/UI/Scripts/CreateUI.cs"
 "Assets/UI/Scripts/Inventory.cs"
 "Assets/UI/Scripts/Make.cs"
+"Assets/UI/Scripts/MessagePopup.cs"
 "Assets/UI/Scripts/SelectArchive.cs"
 "Assets/UI/Scripts/StartUI.cs"
 "Assets/UI/Scripts/State.cs"

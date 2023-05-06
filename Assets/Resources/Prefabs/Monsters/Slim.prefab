@@ -161,6 +161,7 @@ MonoBehaviour:
   jump: 0
   dieFlag: 0
   attackRange: 0
+  hitTime: 0
   range: 0
   target: {fileID: 0}
   animator: {fileID: 2118623726208146981}

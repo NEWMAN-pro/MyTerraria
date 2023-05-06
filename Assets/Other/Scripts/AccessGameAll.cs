@@ -48,6 +48,8 @@ public class AccessGameAll : MonoBehaviour
         FileStream stream = new(path + StartUI.key, FileMode.Create);
         formatter.Serialize(stream, data);
         stream.Close();
+        MessagePopup popup = FindObjectOfType<MessagePopup>();
+        popup.ShowMessage("保存成功");
     }
 
     // 读取游戏
