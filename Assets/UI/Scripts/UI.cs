@@ -48,7 +48,7 @@ public class UI : MonoBehaviour
     public void OpenUI()
     {
         this.transform.GetChild(1).gameObject.SetActive(flag);
-        this.transform.GetChild(2).gameObject.SetActive(flag);
+        //this.transform.GetChild(2).gameObject.SetActive(flag);
         this.transform.GetChild(3).gameObject.SetActive(flag);
         this.transform.GetChild(4).gameObject.SetActive(flag);
         this.transform.GetChild(7).gameObject.SetActive(!flag);

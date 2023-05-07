@@ -15,7 +15,7 @@ E:/unity/project/MyTerraria
 -logFile
 Logs/AssetImportWorker0.log
 -srvPort
-64498
+60792
 Successfully changed project path to: E:/unity/project/MyTerraria
 E:/unity/project/MyTerraria
 [UnityMemory] Configuration Parameters - Can be set up in boot.config
@@ -48,7 +48,7 @@ E:/unity/project/MyTerraria
     "memorysetup-temp-allocator-size-gi-baking-worker=262144"
     "memorysetup-temp-allocator-size-gfx=262144"
 AS: AutoStreaming module initializing.
-Refreshing native plugins compatible for Editor in 121.79 ms, found 3 plugins.
+Refreshing native plugins compatible for Editor in 108.86 ms, found 3 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Initialize engine version: 2021.3.6f1c1 (07401303b748)
 [Subsystems] Discovering subsystems at path E:/unity/2021.3.6f1c1/Editor/Data/Resources/UnitySubsystems
@@ -64,94 +64,94 @@ Initialize mono
 Mono path[0] = 'E:/unity/2021.3.6f1c1/Editor/Data/Managed'
 Mono path[1] = 'E:/unity/2021.3.6f1c1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit-win32'
 Mono config path = 'E:/unity/2021.3.6f1c1/Editor/Data/MonoBleedingEdge/etc'
-Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56824
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56144
 Begin MonoManager ReloadAssembly
 Registering precompiled unity dll's ...
 Register platform support module: E:/unity/2021.3.6f1c1/Editor/Data/PlaybackEngines/WebGLSupport/UnityEditor.WebGL.Extensions.dll
 Trying to register platform support module: E:/unity/2021.3.6f1c1/Editor/Data/PlaybackEngines/AndroidPlayer/UnityEditor.Android.Extensions.dll (that doesn't exist). Retrying without overrides.
 Platform support module is not available: E:/unity/2021.3.6f1c1/Editor/Data/PlaybackEngines/AndroidPlayer/UnityEditor.Android.Extensions.dll
 Register platform support module: E:/unity/2021.3.6f1c1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
-Registered in 0.016051 seconds.
+Registered in 0.011727 seconds.
 Native extension for WindowsStandalone target not found
 Native extension for WebGL target not found
-Refreshing native plugins compatible for Editor in 114.17 ms, found 3 plugins.
+Refreshing native plugins compatible for Editor in 101.95 ms, found 3 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Mono: successfully reloaded assembly
-- Completed reload, in  1.099 seconds
+- Completed reload, in  0.937 seconds
 Domain Reload Profiling:
-	ReloadAssembly (1099ms)
-		BeginReloadAssembly (213ms)
+	ReloadAssembly (937ms)
+		BeginReloadAssembly (182ms)
 			ExecutionOrderSort (0ms)
 			DisableScriptedObjects (0ms)
 			BackupInstance (0ms)
 			ReleaseScriptingObjects (0ms)
 			CreateAndSetChildDomain (1ms)
-		EndReloadAssembly (646ms)
-			LoadAssemblies (200ms)
+		EndReloadAssembly (570ms)
+			LoadAssemblies (166ms)
 			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (146ms)
+			SetupTypeCache (126ms)
 			ReleaseScriptCaches (0ms)
-			RebuildScriptCaches (33ms)
-			SetupLoadedEditorAssemblies (370ms)
+			RebuildScriptCaches (32ms)
+			SetupLoadedEditorAssemblies (326ms)
 				LogAssemblyErrors (0ms)
-				InitializePlatformSupportModulesInManaged (16ms)
+				InitializePlatformSupportModulesInManaged (10ms)
 				SetLoadedEditorAssemblies (0ms)
-				RefreshPlugins (114ms)
-				BeforeProcessingInitializeOnLoad (2ms)
-				ProcessInitializeOnLoadAttributes (180ms)
-				ProcessInitializeOnLoadMethodAttributes (58ms)
+				RefreshPlugins (102ms)
+				BeforeProcessingInitializeOnLoad (1ms)
+				ProcessInitializeOnLoadAttributes (150ms)
+				ProcessInitializeOnLoadMethodAttributes (62ms)
 				AfterProcessingInitializeOnLoad (0ms)
 				EditorAssembliesLoaded (0ms)
 			ExecutionOrderSort2 (0ms)
 			AwakeInstancesAfterBackupRestoration (0ms)
 Platform modules already initialized, skipping
 Registering precompiled user dll's ...
-Registered in 0.035118 seconds.
+Registered in 0.035596 seconds.
 Begin MonoManager ReloadAssembly
 Symbol file LoadedFromMemory doesn't match image E:\unity\project\MyTerraria\Library\PackageCache\com.unity.visualscripting@1.7.8\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll
 Symbol file LoadedFromMemory doesn't match image E:\unity\project\MyTerraria\Library\PackageCache\com.unity.visualscripting@1.7.8\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll
 Native extension for WindowsStandalone target not found
 Native extension for WebGL target not found
-Refreshing native plugins compatible for Editor in 0.88 ms, found 3 plugins.
+Refreshing native plugins compatible for Editor in 0.54 ms, found 3 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Mono: successfully reloaded assembly
-- Completed reload, in  1.602 seconds
+- Completed reload, in  1.634 seconds
 Domain Reload Profiling:
-	ReloadAssembly (1603ms)
-		BeginReloadAssembly (243ms)
+	ReloadAssembly (1635ms)
+		BeginReloadAssembly (241ms)
 			ExecutionOrderSort (0ms)
 			DisableScriptedObjects (6ms)
 			BackupInstance (0ms)
 			ReleaseScriptingObjects (0ms)
-			CreateAndSetChildDomain (21ms)
-		EndReloadAssembly (1139ms)
-			LoadAssemblies (237ms)
+			CreateAndSetChildDomain (26ms)
+		EndReloadAssembly (1168ms)
+			LoadAssemblies (240ms)
 			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (337ms)
+			SetupTypeCache (372ms)
 			ReleaseScriptCaches (1ms)
-			RebuildScriptCaches (74ms)
-			SetupLoadedEditorAssemblies (484ms)
+			RebuildScriptCaches (52ms)
+			SetupLoadedEditorAssemblies (487ms)
 				LogAssemblyErrors (0ms)
-				InitializePlatformSupportModulesInManaged (9ms)
-				SetLoadedEditorAssemblies (1ms)
+				InitializePlatformSupportModulesInManaged (7ms)
+				SetLoadedEditorAssemblies (0ms)
 				RefreshPlugins (1ms)
-				BeforeProcessingInitializeOnLoad (133ms)
-				ProcessInitializeOnLoadAttributes (271ms)
-				ProcessInitializeOnLoadMethodAttributes (31ms)
+				BeforeProcessingInitializeOnLoad (131ms)
+				ProcessInitializeOnLoadAttributes (282ms)
+				ProcessInitializeOnLoadMethodAttributes (28ms)
 				AfterProcessingInitializeOnLoad (38ms)
 				EditorAssembliesLoaded (0ms)
 			ExecutionOrderSort2 (0ms)
-			AwakeInstancesAfterBackupRestoration (17ms)
+			AwakeInstancesAfterBackupRestoration (11ms)
 Platform modules already initialized, skipping
 ========================================================================
 Worker process is ready to serve import requests
-Launched and connected shader compiler UnityShaderCompiler.exe after 0.08 seconds
-Refreshing native plugins compatible for Editor in 0.55 ms, found 3 plugins.
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.10 seconds
+Refreshing native plugins compatible for Editor in 1.17 ms, found 3 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Unloading 3489 Unused Serialized files (Serialized files now loaded: 0)
 Unloading 25 unused Assets / (63.0 KB). Loaded Objects now: 4018.
 Memory consumption went from 251.8 MB to 251.7 MB.
-Total: 3.624800 ms (FindLiveObjects: 0.298700 ms CreateObjectMapping: 0.221500 ms MarkObjects: 2.988300 ms  DeleteObjects: 0.115500 ms)
+Total: 4.887300 ms (FindLiveObjects: 0.321200 ms CreateObjectMapping: 0.261700 ms MarkObjects: 4.101400 ms  DeleteObjects: 0.201500 ms)
 
 AssetImportParameters requested are different than current active one (requested -> active):
   custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
@@ -164,63 +164,3 @@ AssetImportParameters requested are different than current active one (requested
   custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
   custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
   custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-========================================================================
-Received Import Request.
-  Time since last request: 718487.218991 seconds.
-  path: Assets/Monster/Textures/slime.png
-  artifactKey: Guid(2ed0491c927500e47b5908c4d67e8b41) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Monster/Textures/slime.png using Guid(2ed0491c927500e47b5908c4d67e8b41) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1db4faf545b9dda530637134ba07b3a9') in 0.158819 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 8.631719 seconds.
-  path: Assets/Monster/Textures/slime.png
-  artifactKey: Guid(2ed0491c927500e47b5908c4d67e8b41) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Monster/Textures/slime.png using Guid(2ed0491c927500e47b5908c4d67e8b41) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f70b96947f9b44702d16edfdff28a944') in 0.034420 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 33.313265 seconds.
-  path: Assets/Scenes/Test.unity
-  artifactKey: Guid(9be255f450529ec458d544587d00798e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scenes/Test.unity using Guid(9be255f450529ec458d544587d00798e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c7fc84620f69c1daeefa306a216dee03') in 0.003807 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 71.114683 seconds.
-  path: Assets/Monster/Textures/slime.png
-  artifactKey: Guid(2ed0491c927500e47b5908c4d67e8b41) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Monster/Textures/slime.png using Guid(2ed0491c927500e47b5908c4d67e8b41) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'aed948fc096b3c9fa10e9d265035c7ac') in 0.040350 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 24.647581 seconds.
-  path: Assets/Monster/Textures/slime.png
-  artifactKey: Guid(2ed0491c927500e47b5908c4d67e8b41) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Monster/Textures/slime.png using Guid(2ed0491c927500e47b5908c4d67e8b41) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1f961cb09c3b3dad8a4e3b0c088eb414') in 0.019960 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 7.444173 seconds.
-  path: Assets/Monster/Textures/slime.png
-  artifactKey: Guid(2ed0491c927500e47b5908c4d67e8b41) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Monster/Textures/slime.png using Guid(2ed0491c927500e47b5908c4d67e8b41) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'dec795b403a71a3b4768e4264a2b6d91') in 0.016512 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 16.079905 seconds.
-  path: Assets/Monster/Textures/slime.png
-  artifactKey: Guid(2ed0491c927500e47b5908c4d67e8b41) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Monster/Textures/slime.png using Guid(2ed0491c927500e47b5908c4d67e8b41) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3a2150064f74da0179ee407324eee878') in 0.043624 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 88.355042 seconds.
-  path: Assets/Monster/Textures/slime.png
-  artifactKey: Guid(2ed0491c927500e47b5908c4d67e8b41) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Monster/Textures/slime.png using Guid(2ed0491c927500e47b5908c4d67e8b41) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd90f1ad432b866f441165f8afd4e9ff4') in 0.056581 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 215.834780 seconds.
-  path: Assets/Monster/Textures/slime.png
-  artifactKey: Guid(2ed0491c927500e47b5908c4d67e8b41) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Monster/Textures/slime.png using Guid(2ed0491c927500e47b5908c4d67e8b41) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '17155fde2aa7219664e4b4a2554c5f69') in 0.027426 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 4453.966209 seconds.
-  path: Assets/Monster/Textures/Slim.fbx
-  artifactKey: Guid(3eff0d9bed05fd5479aee5183ab302ed) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Monster/Textures/Slim.fbx using Guid(3eff0d9bed05fd5479aee5183ab302ed) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a62591f0532c1e65f5471fc4a88ec63e') in 0.246990 seconds 

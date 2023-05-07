@@ -64,6 +64,7 @@ public class Make : MonoBehaviour
     private void OnEnable()
     {
         material = -1;
+        CreateUI(null, 0, this.transform);
         CreateSynthesis();
     }
 

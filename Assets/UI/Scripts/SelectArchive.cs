@@ -56,4 +56,12 @@ public class SelectArchive : MonoBehaviour
         StartUI.flag = false;
         StartUI.ToScenes();
     }
+
+    // 退出是销毁所有子对象
+    public void OnDisable()
+    {
+        Transform content = this.transform.GetChild(0).GetChild(0).GetChild(0);
+        for (int i = 0; i < content.childCount; i++)
+            Destroy(content.GetChild(i).gameObject);
+    }
 }

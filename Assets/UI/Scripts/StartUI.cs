@@ -36,15 +36,15 @@ public class StartUI : MonoBehaviour
     // 新游戏
     public void NewGame()
     {
-        this.transform.GetChild(0).gameObject.SetActive(false);
-        this.transform.GetChild(2).gameObject.SetActive(true);
+        this.transform.GetChild(1).gameObject.SetActive(false);
+        this.transform.GetChild(3).gameObject.SetActive(true);
     }
 
     // 继续游戏
     public void Continue()
     {
-        this.transform.GetChild(0).gameObject.SetActive(false);
-        this.transform.GetChild(1).gameObject.SetActive(true);
+        this.transform.GetChild(1).gameObject.SetActive(false);
+        this.transform.GetChild(2).gameObject.SetActive(true);
     }
 
     // 退出游戏
@@ -66,10 +66,10 @@ public class StartUI : MonoBehaviour
     // 返回主界面
     public void Back()
     {
-        this.transform.GetChild(0).gameObject.SetActive(true);
-        this.transform.GetChild(1).gameObject.SetActive(false);
+        this.transform.GetChild(1).gameObject.SetActive(true);
         this.transform.GetChild(2).gameObject.SetActive(false);
-        this.transform.GetChild(2).GetChild(1).gameObject.GetComponent<InputField>().text = "";
-        this.transform.GetChild(2).GetChild(3).gameObject.GetComponent<InputField>().text = "";
+        this.transform.GetChild(3).gameObject.SetActive(false);
+        this.transform.GetChild(3).GetChild(1).gameObject.GetComponent<InputField>().text = "";
+        this.transform.GetChild(3).GetChild(3).gameObject.GetComponent<InputField>().text = "";
     }
 }
