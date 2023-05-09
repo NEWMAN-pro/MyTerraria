@@ -511,7 +511,15 @@ public class PlayController : MonoBehaviour
             Vector3 direction = -hitInfo.normal.normalized;
             direction.y = 1;
 
-            int damage = WeaponList.GetWeapon(item.id).ATK;
+            int damage = 0;
+            if (item.type == Type.Weapon)
+            {
+                damage = WeaponList.GetWeapon(item.id).ATK;
+            }
+            else if(item.type == Type.Block)
+            {
+                damage = 5;
+            }
 
             // 扣除怪物血量
             monster.GetComponent<Monster>().Hit(damage, direction, 1);

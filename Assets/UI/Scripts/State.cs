@@ -22,13 +22,9 @@ public class State : MonoBehaviour
         MPPrefab = Resources.Load("Prefabs/MP") as GameObject;
         for(int i = 0; i < 10; i++)
         {
-            GameObject hp = Instantiate(HPPrefab);
-            hp.transform.SetParent(this.transform);
-            hp.GetComponent<RectTransform>().anchoredPosition = new Vector2(-270f + i * 60, -30);
+            GameObject hp = Instantiate(HPPrefab, this.transform.GetChild(2));
             HPList.Add(hp);
-            GameObject mp = Instantiate(MPPrefab);
-            mp.transform.SetParent(this.transform);
-            mp.GetComponent<RectTransform>().anchoredPosition = new Vector2(-270f + i * 60, 30);
+            GameObject mp = Instantiate(MPPrefab, this.transform.GetChild(3));
             MPList.Add(mp);
 
         }

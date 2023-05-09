@@ -43,8 +43,10 @@ ScriptsOnlyBuild:
     UnityEditor.Graphs.dll:
     - UnityEditor.Graphs.AnimationBlendTree.Graph
     - UnityEditor.Graphs.AnimationBlendTree.GraphGUI
+    - UnityEditor.Graphs.AnimationStateMachine.AnyStateNode
     - UnityEditor.Graphs.AnimationStateMachine.Graph
     - UnityEditor.Graphs.AnimationStateMachine.GraphGUI
+    - UnityEditor.Graphs.AnimationStateMachine.StateNode
     - UnityEditor.Graphs.AnimatorControllerTool
     UnityEditor.TestRunner.dll:
     - UnityEditor.TestTools.TestRunner.Api.CallbacksHolder
@@ -153,12 +155,6 @@ ScriptsOnlyBuild:
     fullTypeName: Backpack
     methodName: Select
   - assembly: Assembly-CSharp
-    fullTypeName: UI
-    methodName: Continue
-  - assembly: Assembly-CSharp
-    fullTypeName: AccessGameAll
-    methodName: ReadGame
-  - assembly: Assembly-CSharp
     fullTypeName: Backpack
     methodName: Select
   - assembly: Assembly-CSharp
@@ -204,6 +200,9 @@ ScriptsOnlyBuild:
     fullTypeName: Backpack
     methodName: Select
   - assembly: Assembly-CSharp
+    fullTypeName: UI
+    methodName: Operation
+  - assembly: Assembly-CSharp
     fullTypeName: Backpack
     methodName: Select
   - assembly: Assembly-CSharp
@@ -248,6 +247,9 @@ ScriptsOnlyBuild:
   - assembly: Assembly-CSharp
     fullTypeName: Backpack
     methodName: Select
+  - assembly: Assembly-CSharp
+    fullTypeName: UI
+    methodName: Die
   - assembly: Assembly-CSharp
     fullTypeName: Backpack
     methodName: Select
@@ -456,6 +458,9 @@ ScriptsOnlyBuild:
     fullTypeName: Backpack
     methodName: Select
   - assembly: Assembly-CSharp
+    fullTypeName: UI
+    methodName: Operation
+  - assembly: Assembly-CSharp
     fullTypeName: Box
     methodName: Snatch
   - assembly: Assembly-CSharp
@@ -523,8 +528,6 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 64
       Script: {instanceID: 0}
-    - Class: 81
-      Script: {instanceID: 0}
     - Class: 89
       Script: {instanceID: 0}
     - Class: 104
@@ -576,27 +579,27 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 5270}
     - Class: 114
-      Script: {instanceID: 5928}
+      Script: {instanceID: 5694}
     - Class: 114
-      Script: {instanceID: 5996}
+      Script: {instanceID: 5930}
     - Class: 114
-      Script: {instanceID: 6316}
+      Script: {instanceID: 5998}
     - Class: 114
-      Script: {instanceID: 6338}
+      Script: {instanceID: 6318}
     - Class: 114
-      Script: {instanceID: 6492}
+      Script: {instanceID: 6340}
     - Class: 114
-      Script: {instanceID: 6518}
+      Script: {instanceID: 6494}
     - Class: 114
-      Script: {instanceID: 6532}
+      Script: {instanceID: 6520}
     - Class: 114
-      Script: {instanceID: 7666}
+      Script: {instanceID: 6534}
     - Class: 114
-      Script: {instanceID: 8030}
+      Script: {instanceID: 7668}
     - Class: 114
-      Script: {instanceID: 8114}
+      Script: {instanceID: 8032}
     - Class: 114
-      Script: {instanceID: 51278}
+      Script: {instanceID: 8116}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -691,29 +694,29 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 5434}
     - Class: 114
-      Script: {instanceID: 5716}
+      Script: {instanceID: 5718}
     - Class: 114
-      Script: {instanceID: 5996}
+      Script: {instanceID: 5998}
     - Class: 114
-      Script: {instanceID: 6138}
+      Script: {instanceID: 6140}
     - Class: 114
-      Script: {instanceID: 6260}
+      Script: {instanceID: 6262}
     - Class: 114
-      Script: {instanceID: 6316}
+      Script: {instanceID: 6318}
     - Class: 114
-      Script: {instanceID: 6338}
-    - Class: 114
-      Script: {instanceID: 6518}
+      Script: {instanceID: 6340}
     - Class: 114
       Script: {instanceID: 6520}
     - Class: 114
-      Script: {instanceID: 6532}
+      Script: {instanceID: 6522}
     - Class: 114
-      Script: {instanceID: 6968}
+      Script: {instanceID: 6534}
     - Class: 114
-      Script: {instanceID: 7242}
+      Script: {instanceID: 6970}
     - Class: 114
-      Script: {instanceID: 7666}
+      Script: {instanceID: 7244}
+    - Class: 114
+      Script: {instanceID: 7668}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -1427,6 +1430,12 @@ ScriptsOnlyBuild:
     className: UnityOnDeselectMessageListener
   - hash:
       serializedVersion: 2
+      Hash: bc954822856c194fdd199c5e62c22033
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: MessagePopup
+  - hash:
+      serializedVersion: 2
       Hash: 30f3213a6e218a461fa00e428f22d3eb
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
@@ -1761,12 +1770,6 @@ ScriptsOnlyBuild:
     assemblyName: Unity.VisualScripting.Core.dll
     namespaceName: Unity.VisualScripting
     className: UnityOnSliderValueChangedMessageListener
-  - hash:
-      serializedVersion: 2
-      Hash: bc954822856c194fdd199c5e62c22033
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: MessagePopup
   platform: 19
   scenePathNames:
   - Assets/Scenes/Start.unity

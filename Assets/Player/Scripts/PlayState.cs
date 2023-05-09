@@ -42,6 +42,12 @@ public class PlayState : MonoBehaviour
         }
     }
 
+    private void OnEnable()
+    {
+        HP = maxHP;
+        MP = maxMP;
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -63,6 +69,7 @@ public class PlayState : MonoBehaviour
         if(HP <= 0)
         {
             Debug.Log("玩家死亡");
+            GameObject.Find("UI").GetComponent<UI>().Die(true);
             return;
         }
     }
@@ -91,5 +98,15 @@ public class PlayState : MonoBehaviour
     public void SetHome(Vector3 posi)
     {
         this.home = posi;
+    }
+
+    // 复活
+    public void Revive()
+    {
+        SetHP(100);
+        SetMP(100);
+        this.GetComponent<CharacterController>().enabled = false;
+        this.transform.position = home;
+        this.GetComponent<CharacterController>().enabled = true;
     }
 }

@@ -108,4 +108,51 @@ public class UI : MonoBehaviour
     {
         SceneManager.LoadScene(0);
     }
+
+    // 操作说明
+    public void Operation(bool flag)
+    {
+        for(int i = 0; i < this.transform.GetChild(5).childCount; i++)
+        {
+            if(i == 5)
+            {
+                this.transform.GetChild(5).GetChild(i).gameObject.SetActive(flag);
+            }
+            else
+            {
+                this.transform.GetChild(5).GetChild(i).gameObject.SetActive(!flag);
+            }
+        }
+    }
+
+    // 死亡界面
+    public void Die(bool flag)
+    {
+        if (flag)
+        {
+            for (int i = 0; i < this.transform.childCount - 1; i++)
+            {
+                if (i == 9)
+                {
+                    this.transform.GetChild(i).gameObject.SetActive(true);
+                }
+                else
+                {
+                    this.transform.GetChild(i).gameObject.SetActive(false);
+                }
+            }
+            Cursor.lockState = CursorLockMode.Confined;
+            GameObject.Find("Map").GetComponent<PauseGameAll>().OnPauseGame();
+        }
+        else
+        {
+            this.transform.GetChild(9).gameObject.SetActive(false);
+            this.transform.GetChild(0).gameObject.SetActive(true);
+            this.transform.GetChild(6).gameObject.SetActive(true);
+            this.transform.GetChild(7).gameObject.SetActive(true);
+            Cursor.lockState = CursorLockMode.Locked;
+            GameObject.Find("Map").GetComponent<PauseGameAll>().UnPauseGame();
+            GameObject.Find("Player").GetComponent<PlayState>().Revive();
+        }
+    }
 }
