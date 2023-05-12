@@ -53,7 +53,11 @@ namespace Soultia.Voxel
         // 恢复游戏
         IEnumerator SetTrue()
         {
-            yield return new WaitForSeconds(5);
+            float startTime = Time.unscaledTime;
+            while (Time.unscaledTime - startTime < 10)
+            {
+                yield return null;
+            }
             this.transform.GetComponent<PauseGameAll>().UnPauseGame();
         }
 
